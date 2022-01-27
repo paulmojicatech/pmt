@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Pmt.PmtSecurity.Controllers;
+namespace pmt_security.Controllers;
 
 [ApiController]
 [Route("[controller]")]
