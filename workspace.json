@@ -1,7 +1,7 @@
 {
   "version": 2,
   "projects": {
-    "pmt-security": "apps/pmt-security",
-    "pmt-security-test": "apps/pmt-security-test"
+    "mfe-docs": "apps/mfe-docs",
+    "mfe-docs-e2e": "apps/mfe-docs-e2e"
   }
 }
