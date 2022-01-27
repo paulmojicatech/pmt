@@ -6,7 +6,8 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "docker-security": "docker run -p 3000:80 pmt-monorepo-security-image",
+    "docker-build-security": "docker run -p 3000:80 --name pmt-security -d pmt-monorepo-security-image",
+    "docker-run-security": "docker start pmt-security",
     "postinstall": "ngcc --properties es2015 browser module main"
   },
   "private": true,
@@ -50,6 +51,7 @@
     "@angular/platform-browser": "~13.1.0",
     "@angular/platform-browser-dynamic": "~13.1.0",
     "@angular/router": "~13.1.0",
+    "@nrwl/angular": "^13.5.3",
     "rxjs": "~7.4.0",
     "tslib": "^2.0.0",
     "webpack": "^5.67.0",

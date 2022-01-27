@@ -34,9 +34,7 @@
       }
     ]
   },
-  "plugins": [
-    "@nx-dotnet/core"
-  ],
+  "plugins": [],
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",
@@ -51,5 +49,6 @@
     "@nrwl/angular:component": {
       "style": "scss"
     }
-  }
+  },
+  "defaultProject": "mfe-docs"
 }
