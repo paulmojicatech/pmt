@@ -1,4 +1,4 @@
-namespace Pmt.PmtSecurity;
+namespace pmt_security;
 
 public class WeatherForecast
 {

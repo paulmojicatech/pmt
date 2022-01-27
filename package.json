@@ -6,14 +6,13 @@
     "start": "nx serve",
     "build": "nx build",
     "test": "nx test",
-    "prepare": "nx g @nx-dotnet/core:restore"
+    "docker-security": "docker run -p 3000:80 pmt-monorepo-security-image"
   },
   "private": true,
   "devDependencies": {
     "@nrwl/cli": "13.5.3",
     "@nrwl/tao": "13.5.3",
     "@nrwl/workspace": "13.5.3",
-    "@nx-dotnet/core": "^1.8.0",
     "@types/node": "16.11.7",
     "prettier": "^2.5.1",
     "typescript": "~4.4.3"
