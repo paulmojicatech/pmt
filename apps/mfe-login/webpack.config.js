@@ -28,7 +28,7 @@ sharedMappings.register(
 
 module.exports = {
   output: {
-    uniqueName: 'mfe-docs',
+    uniqueName: 'mfe-login',
     publicPath: 'auto',
   },
   optimization: {
@@ -44,8 +44,10 @@ module.exports = {
   },
   plugins: [
     new ModuleFederationPlugin({
-      remotes: {
-        'mfe-login': 'http://localhost:4201/remoteEntry.js',
+      name: 'mfe-login',
+      filename: 'remoteEntry.js',
+      exposes: {
+        './Module': 'apps/mfe-login/src/app/remote-entry/entry.module.ts',
       },
       shared: share({
         '@angular/core': {

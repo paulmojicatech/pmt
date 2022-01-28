@@ -1,0 +1,28 @@
+{
+  "root": "apps/mfe-login-e2e",
+  "sourceRoot": "apps/mfe-login-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/mfe-login-e2e/cypress.json",
+        "devServerTarget": "mfe-login:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "mfe-login:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/mfe-login-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["mfe-login"]
+}
