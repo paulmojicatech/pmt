@@ -1,3 +1,29 @@
 ﻿<Properties StartupConfiguration="{8B502994-F1DF-46F7-BFA1-6FCE14470FFC}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/User.cs">
+    <Files>
+      <File FileName="Models/UserDTO.cs" Line="11" Column="57" />
+      <File FileName="Program.cs" />
+      <File FileName="Models/User.cs" Line="6" Column="5" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="pmt-security" expanded="True">
+            <Node name="pmt-security" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.pmt-security PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
