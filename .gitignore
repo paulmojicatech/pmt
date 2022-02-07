@@ -43,3 +43,6 @@ apps/*/obj
 libs/*/bin
 libs/*/obj
 .angular
+
+# Configs
+apps/pmt-security/appsettings.json
