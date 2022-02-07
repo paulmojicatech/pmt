@@ -1,6 +1,7 @@
 using System;
 using pmt_security.Models;
 using System.Security.Cryptography;
+using pmt_security.Contexts;
 
 namespace pmt_security.Services
 {
@@ -8,6 +9,7 @@ namespace pmt_security.Services
   {
 
     private UserDTO _userDTO;
+   
 
     public UserService(UserDTO userDTO)
     {
@@ -22,6 +24,7 @@ namespace pmt_security.Services
         byte[] passwordSalt = hmac.Key;
         return new User()
         {
+          Id = Guid.NewGuid(),
           UserName = this._userDTO.UserName,
           PasswordHash = passwordHash,
           PasswordSalt = passwordSalt

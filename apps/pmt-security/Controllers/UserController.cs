@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using pmt_security.Contexts;
 using pmt_security.Models;
 using pmt_security.Services;
 
@@ -10,16 +11,30 @@ using pmt_security.Services;
 
 namespace pmt_security.Controllers
 {
-    public class UserController : Controller
+  public class UserController : ControllerBase
+  {
+
+    private UserContext _ctx;
+
+    public UserController(UserContext ctx)
     {
-        [Route("user")]
-        [HttpPost]
-        public IActionResult RegisterUser(UserDTO userDTO)
-        {
-            UserService service = new UserService(userDTO);
-            User user = service.GenerateUser();
-            return Ok(user);
-        }
+      _ctx = ctx;
     }
+
+
+
+    [Route("user")]
+    [HttpPost]
+    public IActionResult RegisterUser(UserDTO userDTO)
+    {
+
+      UserService service = new UserService(userDTO);
+      User user = service.GenerateUser();
+      var users = _ctx.Users;
+      _ctx.Add(user);
+      _ctx.SaveChanges();
+      return Ok(user);
+    }
+  }
 }
 
