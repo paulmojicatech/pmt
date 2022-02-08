@@ -27,7 +27,8 @@ namespace pmt_security.Services
           Id = Guid.NewGuid(),
           UserName = this._userDTO.UserName,
           PasswordHash = passwordHash,
-          PasswordSalt = passwordSalt
+          PasswordSalt = passwordSalt,
+          Email = this._userDTO.Email
         };
       }
     }

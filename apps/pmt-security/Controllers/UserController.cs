@@ -27,13 +27,21 @@ namespace pmt_security.Controllers
     [HttpPost]
     public IActionResult RegisterUser(UserDTO userDTO)
     {
+      UserService service;
+      try
+      {
+        service = new UserService(userDTO);
+        User user = service.GenerateUser();
+        var users = _ctx.Users;
+        _ctx.Add(user);
+        _ctx.SaveChanges();
+        return Ok(user);
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
 
-      UserService service = new UserService(userDTO);
-      User user = service.GenerateUser();
-      var users = _ctx.Users;
-      _ctx.Add(user);
-      _ctx.SaveChanges();
-      return Ok(user);
     }
   }
 }
