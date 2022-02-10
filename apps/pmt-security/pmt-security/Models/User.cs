@@ -1,10 +1,13 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
 
 namespace pmt_security.Models
 {
   [Table("Users")]
+  [Index(nameof(UserName), IsUnique = true)]
+  [Index(nameof(Email), IsUnique = true)]
   public class User
   {
     [Key]

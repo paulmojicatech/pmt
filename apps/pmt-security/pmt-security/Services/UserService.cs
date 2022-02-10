@@ -7,30 +7,43 @@ namespace pmt_security.Services
 {
   public class UserService
   {
+    private UserContext _ctx;
 
-    private UserDTO _userDTO;
-   
-
-    public UserService(UserDTO userDTO)
+    public UserService(UserContext ctx)
     {
-      this._userDTO = userDTO;
+      this._ctx = ctx;
     }
 
-    public User GenerateUser()
+    public User GenerateUser(UserDTO userDTO)
     {
-      using (var hmac = new HMACSHA512())
+      try
       {
-        byte[] passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(this._userDTO.Password));
-        byte[] passwordSalt = hmac.Key;
-        return new User()
+        using (var hmac = new HMACSHA512())
         {
-          Id = Guid.NewGuid(),
-          UserName = this._userDTO.UserName,
-          PasswordHash = passwordHash,
-          PasswordSalt = passwordSalt,
-          Email = this._userDTO.Email
-        };
+          byte[] passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userDTO.Password));
+          byte[] passwordSalt = hmac.Key;
+          User user = new User()
+          {
+            Id = Guid.NewGuid(),
+            UserName = userDTO.UserName,
+            PasswordHash = passwordHash,
+            PasswordSalt = passwordSalt,
+            Email = userDTO.Email
+          };
+          this._ctx.Add(user);
+          this._ctx.SaveChanges();
+          return user;
+        }
       }
+      catch(Exception ex)
+      {
+        throw new Exception("User DTO", ex.InnerException);
+      }
+    }
+
+    public IEnumerable<User> GetAllUsers()
+    {
+      return null;
     }
 
   }
