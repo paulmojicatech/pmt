@@ -22,9 +22,6 @@ namespace pmt_security.Models
     [Required]
     public byte[]? PasswordHash { get; set; }
 
-    [Required]
-    public byte[]? PasswordSalt { get; set; }
-
     public bool IsActive {get;set;} = false;
 
 

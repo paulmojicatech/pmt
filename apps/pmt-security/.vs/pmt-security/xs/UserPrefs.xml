@@ -1,5 +1,12 @@
 ﻿<Properties StartupConfiguration="{9481FB8D-43CE-44E1-BC93-90C0F80C891B}|SelfHost">
-  <MonoDevelop.Ide.Workbench ActiveDocument="pmt-security/Services/UserService.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.IdentityServer PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="pmt-security/Program.cs">
     <Files>
       <File FileName="IdentityServer/Config.cs" Line="28" Column="1" />
       <File FileName="IdentityServer/HostingExtensions.cs" Line="27" Column="1" />
@@ -7,9 +14,11 @@
       <File FileName="IdentityServer/Properties/launchSettings.json" Line="12" Column="4" />
       <File FileName="IdentityServer/Program.cs" Line="33" Column="2" />
       <File FileName="pmt-security/appsettings.json" Line="13" Column="3" />
-      <File FileName="pmt-security/Program.cs" Line="62" Column="25" />
-      <File FileName="pmt-security/Controllers/UsersController.cs" Line="41" Column="33" />
-      <File FileName="pmt-security/Services/UserService.cs" Line="34" Column="35" />
+      <File FileName="pmt-security/Program.cs" Line="57" Column="1" />
+      <File FileName="pmt-security/Controllers/UsersController.cs" Line="28" Column="1" />
+      <File FileName="pmt-security/Services/UserService.cs" Line="46" Column="18" />
+      <File FileName="pmt-security/Models/User.cs" Line="19" Column="15" />
+      <File FileName="pmt-security/Properties/launchSettings.json" Line="29" Column="6" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,8 +26,8 @@
           <Node name="pmt-security" expanded="True">
             <Node name="IdentityServer" expanded="True" />
             <Node name="pmt-security" expanded="True">
-              <Node name="Controllers" expanded="True" />
               <Node name="Services" expanded="True" />
+              <Node name="Program.cs" selected="True" />
             </Node>
           </Node>
         </State>
@@ -28,11 +37,4 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.ItemProperties.IdentityServer PreferredExecutionTarget="/Applications/Microsoft Edge.app" />
 </Properties>

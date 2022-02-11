@@ -38,6 +38,17 @@ builder.Services
     };
   });
 
+// Identity Scopes
+builder.Services
+  .AddAuthorization(options =>
+  {
+    options.AddPolicy("ApiScope", policy =>
+    {
+      policy.RequireAuthenticatedUser();
+      policy.RequireClaim("scope", "UserAPI");
+    });
+  });
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -62,6 +73,6 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers().RequireAuthorization("ApiScope");
 
 app.Run();

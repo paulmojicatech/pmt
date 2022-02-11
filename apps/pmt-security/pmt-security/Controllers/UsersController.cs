@@ -12,6 +12,7 @@ using pmt_security.Services;
 
 namespace pmt_security.Controllers
 {
+  [Route("[controller]")]
   public class UserController : ControllerBase
   {
     private UserContext _ctx;
@@ -21,7 +22,6 @@ namespace pmt_security.Controllers
     }
 
     [Authorize]
-    [Route("user")]
     [HttpGet]
     public IActionResult GetUsers()
     {
@@ -30,8 +30,6 @@ namespace pmt_security.Controllers
     }
 
 
-
-    [Route("user")]
     [HttpPost]
     public IActionResult RegisterUser(UserDTO userDTO)
     {

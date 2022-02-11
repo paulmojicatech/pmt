@@ -2,10 +2,11 @@ using System;
 using pmt_security.Models;
 using System.Security.Cryptography;
 using pmt_security.Contexts;
+using pmt_security.Services.Interfaces;
 
 namespace pmt_security.Services
 {
-  public class UserService
+  public class UserService : IUserService
   {
     private UserContext _ctx;
 
@@ -18,22 +19,18 @@ namespace pmt_security.Services
     {
       try
       {
-        using (var hmac = new HMACSHA512())
+        byte[] passwordHash = Util.GenerateHash(userDTO.Password);
+        User user = new User()
         {
-          byte[] passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(userDTO.Password));
-          byte[] passwordSalt = hmac.Key;
-          User user = new User()
-          {
-            Id = Guid.NewGuid(),
-            UserName = userDTO.UserName,
-            PasswordHash = passwordHash,
-            PasswordSalt = passwordSalt,
-            Email = userDTO.Email
-          };
-          this._ctx.Add(user);
-          this._ctx.SaveChanges();
-          return user;
-        }
+          Id = Guid.NewGuid(),
+          UserName = userDTO.UserName,
+          PasswordHash = passwordHash,
+          Email = userDTO.Email
+        };
+        this._ctx.Add(user);
+        this._ctx.SaveChanges();
+        return user;
+        
       }
       catch(Exception ex)
       {
@@ -41,10 +38,7 @@ namespace pmt_security.Services
       }
     }
 
-    public IEnumerable<User> GetAllUsers()
-    {
-      return null;
-    }
+    public IEnumerable<User>? GetAllUsers() => _ctx.Users;
 
   }
 }

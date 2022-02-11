@@ -20,5 +20,9 @@
     <None Remove="Microsoft.EntityFrameworkCore" />
     <None Remove="Npgsql.EntityFrameworkCore.PostgreSQL" />
     <None Remove="Microsoft.AspNetCore.Authentication.JwtBearer" />
+    <None Remove="Services\Interfaces\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\Interfaces\" />
   </ItemGroup>
 </Project>
