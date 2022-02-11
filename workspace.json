@@ -4,6 +4,7 @@
     "mfe-docs": "apps/mfe-docs",
     "mfe-docs-e2e": "apps/mfe-docs-e2e",
     "mfe-login": "apps/mfe-login",
-    "mfe-login-e2e": "apps/mfe-login-e2e"
+    "mfe-login-e2e": "apps/mfe-login-e2e",
+    "pmt-common-angular-components": "libs/pmt-common-angular-components"
   }
 }

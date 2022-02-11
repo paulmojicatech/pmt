@@ -1,0 +1,1 @@
+export type PmtInputType = 'text' | 'tel' | 'email' | 'number';

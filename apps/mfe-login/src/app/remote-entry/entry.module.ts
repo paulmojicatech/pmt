@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { RemoteEntryComponent } from './entry.component';
 import { Route, RouterModule } from '@angular/router';
+import { PmtInputModule } from '@pmt/pmt-common-angular-components';
 
 const routes: Route[] = [
   {
@@ -14,7 +14,7 @@ const routes: Route[] = [
 
 @NgModule({
   declarations: [RemoteEntryComponent],
-  imports: [CommonModule, RouterModule.forChild(routes)],
+  imports: [CommonModule, RouterModule.forChild(routes), PmtInputModule],
   providers: [],
   exports: [RemoteEntryComponent],
 })
