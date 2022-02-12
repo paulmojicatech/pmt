@@ -9,15 +9,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RemoteEntryComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private _builder: FormBuilder){}
+  constructor(private _builder: FormBuilder) {}
 
   ngOnInit(): void {
-      this.loginForm = this._builder.group({
-        user: [null, Validators.required]
-      });
+    this.loginForm = this._builder.group({
+      user: [null, Validators.required],
+    });
 
-      this.loginForm.get('user')?.valueChanges.subscribe(value => {
-        console.log('FORM CH', value);
-      })
+    this.loginForm.get('user')?.valueChanges.subscribe((value) => {
+      console.log('FORM CH', value);
+    });
   }
 }
