@@ -1,9 +1,13 @@
-import { Component, forwardRef, Input } from '@angular/core';
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
-  ControlValueAccessor,
-  FormGroup,
-  NG_VALUE_ACCESSOR,
-} from '@angular/forms';
+  Component,
+  EventEmitter,
+  forwardRef,
+  Input,
+  Output,
+  ViewChild,
+} from '@angular/core';
+import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { PmtInputType } from './models/pmt-input.interface';
 
 @Component({
@@ -18,47 +22,12 @@ import { PmtInputType } from './models/pmt-input.interface';
     },
   ],
 })
-export class InputComponent implements ControlValueAccessor {
+export class InputComponent {
   @Input()
   type: PmtInputType = 'text';
 
-  @Input()
-  controlName = '';
-
-  @Input()
-  parentForm?: FormGroup;
-
-  val: string | number = '';
-  set value(val: string | number) {
-    if (val !== undefined && this.val !== val) {
-      this.val = val;
-      this.onChange(val);
-      this.onTouch();
-    }
-  }
-
-  onChange = (value: string | number) => {
-    console.log('CHANGED');
-    this.writeValue(value);
-    // this.parentForm?.get(this.controlName)?.patchValue(value);
-  };
-
-  onTouch = () => {
-    console.log('TOUCHED');
-  };
-
-  registerOnChange(fn: any): void {
-    console.log('REG ON CH');
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: any): void {
-    console.log('REG ON T');
-    this.onTouch = fn;
-  }
-
-  writeValue(value: string | number): void {
-    console.log(value);
-    
-  }
+  @Output()
+  touchEvent = new EventEmitter<void>();
+  @Output()
+  changeEvent = new EventEmitter<string>();
 }
