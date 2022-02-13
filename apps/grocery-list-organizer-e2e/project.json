@@ -1,0 +1,28 @@
+{
+  "root": "apps/grocery-list-organizer-e2e",
+  "sourceRoot": "apps/grocery-list-organizer-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/grocery-list-organizer-e2e/cypress.json",
+        "devServerTarget": "grocery-list-organizer:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "grocery-list-organizer:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/grocery-list-organizer-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["grocery-list-organizer"]
+}
