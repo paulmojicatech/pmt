@@ -1,0 +1,74 @@
+.container {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Segoe UI';
+  font-size: 1.25rem;
+
+  .form-container {
+    border: 1px solid #c3c3c3;
+    border-radius: 4px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0 2rem;
+  }
+
+  .login-button-container {
+    margin-top: 2rem;
+    width: 100%;
+    ion-button {
+      width: 100%;
+    }
+  }
+
+  .bio-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    label {
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+      margin-right: 2rem;
+      margin-left: 2rem;
+    }
+    ion-icon {
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.links-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  width: 100%;
+  .forgot-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+}
+
+.register-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+button.link {
+  &:hover {
+    cursor: pointer;
+  }
+  background-color: transparent;
+  color: rgb(56, 128, 255);
+  border: none;
+  font-size: 1rem;
+}

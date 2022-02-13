@@ -19,8 +19,4 @@ export class RemoteEntryComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this.loginFormSvc.buildLoginForm();
   }
-
-  handleFormUpdate(controlName: string, value: string): void {
-    this.loginForm.get(controlName)?.patchValue(value);
-  }
 }
