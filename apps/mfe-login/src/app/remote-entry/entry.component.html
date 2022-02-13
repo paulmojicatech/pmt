@@ -12,6 +12,11 @@
                 <ion-icon src="../../assets/svg/lock-open.svg"></ion-icon>
                 <pmt-input placeholder="Password" [isMobile]="true" formControlName="password"></pmt-input>
             </ion-item>
+            
+            <div class="login-button-container">
+                <ion-button [disabled]="loginForm.invalid" type="submit">Login</ion-button>
+            </div>
+
             <div class="bio-container">
                 <label>Use Biometrics</label>
                 <ion-icon src="../../assets/svg/fingerprint.svg" size="large"></ion-icon>

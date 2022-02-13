@@ -26,6 +26,14 @@
     padding: 0 2rem;
   }
 
+  .login-button-container {
+    margin-top: 2rem;
+    width: 100%;
+    ion-button {
+      width: 100%;
+    }
+  }
+
   .bio-container {
     display: flex;
     flex-direction: column;
