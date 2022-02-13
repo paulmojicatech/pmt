@@ -4,6 +4,7 @@
  * for the Module Federation Plugin to expose the Module correctly.
  * */
 import { NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Route, RouterModule } from '@angular/router';
@@ -31,6 +32,7 @@ const routes: Route[] = [
     BrowserModule,
     RouterModule.forRoot(routes),
     BrowserAnimationsModule,
+    ReactiveFormsModule,
     IonicModule.forRoot(),
   ],
   providers: [],

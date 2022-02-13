@@ -6,6 +6,6 @@
 <ng-template #mobileInput>
     <ion-item lines="full">
         <ion-label>{{label}}</ion-label>
-        <ion-input [placeholder]="placeholder" [type]="type"></ion-input>
+        <ion-input [(ngModel)]="value" [placeholder]="placeholder" [type]="type"></ion-input>
     </ion-item>
 </ng-template>
