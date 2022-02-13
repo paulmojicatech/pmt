@@ -1,4 +1,11 @@
-<mat-form-field>
+<mat-form-field *ngIf="!isMobile; else mobileInput;">
     <mat-label>{{label}}</mat-label>
     <input  matInput [type]="type" [(ngModel)]="value" />
 </mat-form-field>
+
+<ng-template #mobileInput>
+    <ion-item lines="full">
+        <ion-label>{{label}}</ion-label>
+        <ion-input [(ngModel)]="value" [placeholder]="placeholder" [type]="type"></ion-input>
+    </ion-item>
+</ng-template>

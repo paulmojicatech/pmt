@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { LoginFormService } from '../services/login-form.service';
+import { LoginStateService } from '../services/login-state.service';
 
 @Component({
   selector: 'pmt-mfe-login-entry',
@@ -9,15 +11,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class RemoteEntryComponent implements OnInit {
   loginForm!: FormGroup;
 
-  constructor(private _builder: FormBuilder) {}
+  constructor(
+    public loginStateSvc: LoginStateService,
+    private loginFormSvc: LoginFormService
+  ) {}
 
   ngOnInit(): void {
-    this.loginForm = this._builder.group({
-      user: [null, Validators.required],
-    });
+    this.loginForm = this.loginFormSvc.buildLoginForm();
+  }
 
-    this.loginForm.get('user')?.valueChanges.subscribe((value) => {
-      console.log('FORM CH', value);
-    });
+  handleFormUpdate(controlName: string, value: string): void {
+    this.loginForm.get(controlName)?.patchValue(value);
   }
 }
