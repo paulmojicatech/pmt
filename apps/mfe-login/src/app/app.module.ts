@@ -12,6 +12,12 @@ import { AppComponent } from './app.component';
 
 const routes: Route[] = [
   {
+    path: 'register',
+    pathMatch: 'full',
+    loadChildren: () =>
+      import('./register/register.module').then((m) => m.RegisterModule),
+  },
+  {
     path: '',
     pathMatch: 'full',
     loadChildren: () =>
