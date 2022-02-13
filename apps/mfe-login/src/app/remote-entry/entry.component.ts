@@ -14,6 +14,7 @@ export class RemoteEntryComponent implements OnInit {
   ngOnInit(): void {
     this.loginForm = this._builder.group({
       user: [null, Validators.required],
+      password: [null, Validators.required],
     });
 
     this.loginForm.get('user')?.valueChanges.subscribe((value) => {

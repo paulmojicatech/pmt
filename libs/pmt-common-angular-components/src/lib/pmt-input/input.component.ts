@@ -26,6 +26,12 @@ export class InputComponent implements ControlValueAccessor {
   type: PmtInputType = 'text';
   @Input()
   label = '';
+  @Input()
+  placeholder = '';
+  @Input()
+  isMobile = false;
+  @Input()
+  iconUrl?: string;
 
   @Output()
   touchEvent = new EventEmitter<void>();

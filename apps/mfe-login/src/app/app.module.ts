@@ -7,19 +7,26 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { Route, RouterModule } from '@angular/router';
+import { IonicModule } from '@ionic/angular';
 import { AppComponent } from './app.component';
 
 const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    loadChildren: () => import('./remote-entry/entry.module').then(m => m.RemoteEntryModule)
-  }
+    loadChildren: () =>
+      import('./remote-entry/entry.module').then((m) => m.RemoteEntryModule),
+  },
 ];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, RouterModule.forRoot(routes), BrowserAnimationsModule],
+  imports: [
+    BrowserModule,
+    RouterModule.forRoot(routes),
+    BrowserAnimationsModule,
+    IonicModule.forRoot(),
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

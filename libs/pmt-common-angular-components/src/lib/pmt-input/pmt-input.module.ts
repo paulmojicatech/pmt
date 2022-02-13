@@ -6,7 +6,7 @@ import { MatInputModule } from '@angular/material/input';
 import { PmtCustomValidatorDirective } from '../directives/pmt-custom-validator.directive';
 import { PmtSharedComponentsModule } from '../pmt-shared-components.module';
 import { InputComponent } from './input.component';
-
+import { IonicModule } from '@ionic/angular';
 @NgModule({
   declarations: [InputComponent],
   imports: [
@@ -14,6 +14,7 @@ import { InputComponent } from './input.component';
     FormsModule,
     MatFormFieldModule,
     MatInputModule,
+    IonicModule,
     PmtSharedComponentsModule,
   ],
   exports: [InputComponent],
