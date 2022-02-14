@@ -20,6 +20,9 @@
       ],
       "@pmt/pmt-common-angular-components": [
         "libs/pmt-common-angular-components/src/index.ts"
+      ],
+      "@pmt/pmt-login-shared-business-logic": [
+        "libs/pmt-login-shared-business-logic/src/index.ts"
       ]
     }
   },

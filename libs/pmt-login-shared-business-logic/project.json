@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/pmt-login-shared-business-logic",
+  "sourceRoot": "libs/pmt-login-shared-business-logic/src",
+  "prefix": "pmt",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/pmt-login-shared-business-logic"],
+      "options": {
+        "jestConfig": "libs/pmt-login-shared-business-logic/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/pmt-login-shared-business-logic/src/**/*.ts",
+          "libs/pmt-login-shared-business-logic/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

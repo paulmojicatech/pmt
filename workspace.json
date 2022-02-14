@@ -8,6 +8,7 @@
     "mfe-docs-e2e": "apps/mfe-docs-e2e",
     "mfe-login": "apps/mfe-login",
     "mfe-login-e2e": "apps/mfe-login-e2e",
-    "pmt-common-angular-components": "libs/pmt-common-angular-components"
+    "pmt-common-angular-components": "libs/pmt-common-angular-components",
+    "pmt-login-shared-business-logic": "libs/pmt-login-shared-business-logic"
   }
 }

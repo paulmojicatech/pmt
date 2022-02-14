@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { ProfileModule } from '../profile/profile.module';
 import { TabsPage } from './tabs.page';
 
 const routes: Routes = [
@@ -13,6 +14,23 @@ const routes: Routes = [
           import('../current-list/current-list.module').then(
             (m) => m.CurrentListModule
           ),
+      },
+      {
+        path: 'items-to-get',
+        loadChildren: () =>
+          import('../items-to-get/items-to-get.module').then(
+            (m) => m.ItemsToGetModule
+          ),
+      },
+      {
+        path: 'recipes',
+        loadChildren: () =>
+          import('../recipes/recipes.module').then((m) => m.RecipesModule),
+      },
+      {
+        path: 'profile',
+        loadChildren: () =>
+          import('../profile/profile.module').then((m) => m.ProfileModule),
       },
     ],
   },
