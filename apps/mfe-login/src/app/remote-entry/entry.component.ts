@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { LoginFormService } from '../services/login-form.service';
-import { LoginStateService } from '../services/login-state.service';
+import { FormGroup } from '@angular/forms';
+import { LoginFormService } from '@pmt/pmt-login-shared-business-logic';
+import { LoginStateService } from '@pmt/pmt-login-shared-business-logic';
 
 @Component({
   selector: 'pmt-mfe-login-entry',
@@ -18,9 +18,5 @@ export class RemoteEntryComponent implements OnInit {
 
   ngOnInit(): void {
     this.loginForm = this.loginFormSvc.buildLoginForm();
-  }
-
-  handleFormUpdate(controlName: string, value: string): void {
-    this.loginForm.get(controlName)?.patchValue(value);
   }
 }

@@ -15,8 +15,14 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@pmt/grocery-list-organizer-shared-business-logic": [
+        "libs/grocery-list-organizer-shared-business-logic/src/index.ts"
+      ],
       "@pmt/pmt-common-angular-components": [
         "libs/pmt-common-angular-components/src/index.ts"
+      ],
+      "@pmt/pmt-login-shared-business-logic": [
+        "libs/pmt-login-shared-business-logic/src/index.ts"
       ]
     }
   },

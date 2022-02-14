@@ -1,0 +1,21 @@
+.grocery-item-container {
+  height: 4rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 1rem 0;
+  width: 100%;
+
+  .item-name {
+    font-size: 1.25rem;
+    font-weight: 500;
+  }
+
+  .item-details {
+    display: flex;
+    justify-content: space-between;
+    .label {
+      font-weight: 500;
+    }
+  }
+}

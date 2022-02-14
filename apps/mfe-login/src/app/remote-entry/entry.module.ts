@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RemoteEntryComponent } from './entry.component';
-import { Route, RouterModule } from '@angular/router';
-import { PmtInputModule } from '@pmt/pmt-common-angular-components';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { Route, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
+import { PmtLoginModule } from '@pmt/pmt-common-angular-components';
+import { RemoteEntryComponent } from './entry.component';
 
 const routes: Route[] = [
   {
@@ -20,7 +20,7 @@ const routes: Route[] = [
     CommonModule,
     RouterModule.forChild(routes),
     IonicModule,
-    PmtInputModule,
+    PmtLoginModule,
     ReactiveFormsModule,
   ],
   providers: [],
