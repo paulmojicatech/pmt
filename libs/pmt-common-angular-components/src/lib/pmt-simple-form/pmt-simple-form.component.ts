@@ -18,6 +18,8 @@ export class PmtSimpleFormComponent implements OnInit {
   formControls!: PmtFormControl[];
   @Input()
   parentForm!: FormGroup;
+  @Input()
+  isMobile = false;
 
   ngOnInit(): void {
     this.setValidators();

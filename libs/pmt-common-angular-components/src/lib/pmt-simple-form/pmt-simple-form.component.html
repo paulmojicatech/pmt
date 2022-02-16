@@ -1,15 +1,14 @@
 <div class="form-container">
     <form [formGroup]="parentForm">
         <div *ngFor="let ctl of formControls">
-            <ng-container *ngSwitch="ctl.type">
-                <div *ngSwitchCase="'list'">
-                    <select>
+       
+            <ng-container>
+                    <!-- <select *ngSwitchCase="'list'" [formControlName]="ctl.name">
                         <option *ngFor="let item of ctl.items" [value]="item.value"{{item.value}}></option>
-                    </select>
-                </div>
-                <div *ngSwitchDefault="'text'">
-                    <pmt-input [label]="ctl.label" [type]="ctl.type" [placeholder]="ctl.label"></pmt-input>
-                </div>
+                    </select> -->
+              
+                    <pmt-input [isMobile]="isMobile" [formControlName]="ctl.name" [label]="ctl.label" [type]="ctl.type"></pmt-input>
+            
             </ng-container>
         </div>
     </form>

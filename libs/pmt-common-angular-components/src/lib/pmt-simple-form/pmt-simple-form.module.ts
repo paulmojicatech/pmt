@@ -7,5 +7,6 @@ import { PmtInputModule } from '../pmt-input/pmt-input.module';
 @NgModule({
   declarations: [PmtSimpleFormComponent],
   imports: [CommonModule, ReactiveFormsModule, PmtInputModule],
+  exports: [PmtSimpleFormComponent],
 })
 export class PmtSimpleFormModule {}
