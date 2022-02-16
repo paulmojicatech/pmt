@@ -2,8 +2,13 @@
     <form [formGroup]="parentForm">
         <div *ngFor="let ctl of formControls">
             <ng-container *ngSwitch="ctl.type">
-                <div *ngSwitchDefault="text">
-                    <pmt-input label="Email" [type]="ctl.type" [placeholder]="ctl.label"></pmt-input>
+                <div *ngSwitchCase="'list'">
+                    <select>
+                        <option *ngFor="let item of ctl.items" [value]="item.value"{{item.value}}></option>
+                    </select>
+                </div>
+                <div *ngSwitchDefault="'text'">
+                    <pmt-input [label]="ctl.label" [type]="ctl.type" [placeholder]="ctl.label"></pmt-input>
                 </div>
             </ng-container>
         </div>

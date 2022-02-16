@@ -6,6 +6,7 @@ export interface PmtFormControl {
   id: string;
   label: string;
   validators?: PmtFormControlValidator[];
+  items?: { label: string; value: string }[];
 }
 
 export type PmtFormControlType =

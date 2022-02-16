@@ -4,11 +4,8 @@ import {
   Input,
   OnInit,
 } from '@angular/core';
-import { FormGroup, Validator, ValidatorFn } from '@angular/forms';
-import {
-  PmtFormControl,
-  PmtFormControlValidator,
-} from './models/pmt-simple-form.interface';
+import { FormGroup, ValidatorFn } from '@angular/forms';
+import { PmtFormControl } from './models/pmt-simple-form.interface';
 
 @Component({
   selector: 'pmt-simple-form',
