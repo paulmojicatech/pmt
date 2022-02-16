@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
 @Component({
-  selector: 'pmt-register',
+  selector: 'pmt-register-wrapper',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss'],
 })
