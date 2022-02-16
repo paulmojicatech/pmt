@@ -1,9 +1,10 @@
-import { Validator, ValidatorFn } from '@angular/forms';
+import { ValidatorFn } from '@angular/forms';
 
 export interface PmtFormControl {
   type: PmtFormControlType;
   name: string;
   id: string;
+  label: string;
   validators?: PmtFormControlValidator[];
 }
 

@@ -9,6 +9,8 @@ import { FormGroup } from '@angular/forms';
 export class PmtLoginComponent {
   @Input()
   loginForm!: FormGroup;
+  @Input()
+  isMobile = false;
 
   @Output()
   loginEvent = new EventEmitter<void>();

@@ -6,11 +6,11 @@
             </div>
             <ion-item lines="none">
                 <ion-icon src="../../assets/svg/person.svg"></ion-icon>
-                <pmt-input (changeEvent)="handleFormUpdate('user', $event)" placeholder="User" [isMobile]="true" formControlName="user"></pmt-input>
+                <pmt-input (changeEvent)="handleFormUpdate('user', $event)" placeholder="User" [isMobile]="isMobile" formControlName="user"></pmt-input>
             </ion-item>
             <ion-item lines="none">
                 <ion-icon src="../../assets/svg/lock-open.svg"></ion-icon>
-                <pmt-input (changeEvent)="handleFormUpdate('password', $event)" placeholder="Password" [isMobile]="true" formControlName="password"></pmt-input>
+                <pmt-input (changeEvent)="handleFormUpdate('password', $event)" placeholder="Password" [isMobile]="isMobile" formControlName="password"></pmt-input>
             </ion-item>
             
             <div class="login-button-container">
