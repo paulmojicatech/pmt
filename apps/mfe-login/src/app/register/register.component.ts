@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { PmtFormControl } from '@pmt/pmt-common-angular-components';
+import { RegisterFormService } from '@pmt/pmt-login-shared-business-logic';
 
 @Component({
   selector: 'pmt-register-wrapper',
@@ -8,29 +9,21 @@ import { PmtFormControl } from '@pmt/pmt-common-angular-components';
   styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent implements OnInit {
-  readonly FORM_CONTROLS: PmtFormControl[] = [
-    {
-      id: 'email',
-      name: 'email',
-      type: 'email',
-      validators: [
-        {
-          id: 'required',
-          validator: Validators.required,
-          errorMsg: 'Email is required',
-        },
-      ],
-      label: 'Email',
-    },
-  ];
-
   registerForm!: FormGroup;
 
-  constructor(private _builder: FormBuilder) {}
+  readonly LINKED_ACCOUNT_CONTROL: PmtFormControl = {
+    id: 'linkedAccount',
+    name: 'linkedAccount',
+    type: 'email',
+    label: 'Account to Link To',
+  };
+  constructor(private _registerFormSvc: RegisterFormService) {}
 
   ngOnInit(): void {
-    this.registerForm = this._builder.group({
-      email: [null],
-    });
+    this.registerForm = this._registerFormSvc.buildForm();
+    this.registerForm = this._registerFormSvc.addControl(
+      this.registerForm,
+      this.LINKED_ACCOUNT_CONTROL
+    );
   }
 }

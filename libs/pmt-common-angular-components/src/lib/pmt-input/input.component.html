@@ -1,6 +1,6 @@
 <mat-form-field *ngIf="!isMobile; else mobileInput;">
     <mat-label>{{label}}</mat-label>
-    <input  matInput type="{{type}}" [(ngModel)]="value" />
+    <input class="form-control" matInput type="{{type}}" [(ngModel)]="value" />
 </mat-form-field>
 
 <ng-template #mobileInput>
