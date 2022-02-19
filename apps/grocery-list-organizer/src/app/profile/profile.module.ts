@@ -4,13 +4,20 @@ import { ProfileComponent } from './profile.component';
 import { Route, RouterModule } from '@angular/router';
 import { LoginComponent } from './login/login.component';
 import { PmtLoginModule } from '@pmt/pmt-common-angular-components';
-import { ReactiveFormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
+import { ProfileLandingComponent } from './profile-landing.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Route[] = [
   {
     path: 'login',
     pathMatch: 'full',
     component: LoginComponent,
+  },
+  {
+    path: 'register',
+    pathMatch: 'full',
+    component: RegisterComponent,
   },
   {
     path: '',
@@ -20,7 +27,12 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [ProfileComponent, LoginComponent],
-  imports: [CommonModule, RouterModule.forChild(routes), PmtLoginModule],
+  declarations: [ProfileComponent, LoginComponent, ProfileLandingComponent],
+  imports: [
+    CommonModule,
+    IonicModule,
+    RouterModule.forChild(routes),
+    PmtLoginModule,
+  ],
 })
 export class ProfileModule {}

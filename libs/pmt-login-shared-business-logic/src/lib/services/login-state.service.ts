@@ -7,7 +7,7 @@ import { NavController } from '@ionic/angular';
 export class LoginStateService {
   constructor(private _router: NavController) {}
 
-  routeToRegisterUser(): void {
-    this._router.navigateForward(['register']);
+  routeToRegisterUser(route: string[] = ['register']): void {
+    this._router.navigateForward(route);
   }
 }
