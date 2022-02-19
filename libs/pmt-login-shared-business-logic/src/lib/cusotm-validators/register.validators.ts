@@ -6,7 +6,6 @@ export function crossFieldEqualValidator(
   errorMsg: string
 ): ValidatorFn {
   return (control: AbstractControl): { [key: string]: string } | null => {
-    console.log('CONTROL', control);
     const firstControl = control.get(controlName);
     const dependentControl = control.get(compareControlName);
     if (firstControl?.value !== dependentControl?.value) {

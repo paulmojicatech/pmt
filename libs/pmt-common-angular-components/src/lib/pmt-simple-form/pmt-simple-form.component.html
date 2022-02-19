@@ -1,6 +1,6 @@
 <div class="form-container">
-    <form [formGroup]="parentForm">
-        <div *ngFor="let ctl of formControls">
+    <form novalidate [formGroup]="parentForm">
+        <div *ngFor="let ctl of formControls;">
        
             <ng-container [ngSwitch]="ctl.type">
                     <select class="form-control" *ngSwitchCase="'list'" [formControlName]="ctl.id">

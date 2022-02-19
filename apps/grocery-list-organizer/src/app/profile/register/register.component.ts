@@ -31,10 +31,5 @@ export class RegisterComponent implements OnInit {
       ...this._registerFormSvc.getFormControls(),
       this.LINKED_ACCOUNT_CONTROL,
     ];
-
-    this.registerForm.valueChanges.subscribe((ch) => {
-      console.log(ch);
-      console.log(this.registerForm.valid);
-    });
   }
 }
