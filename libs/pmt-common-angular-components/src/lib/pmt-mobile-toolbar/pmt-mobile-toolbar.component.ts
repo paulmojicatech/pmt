@@ -8,4 +8,8 @@ import { Component, Input } from '@angular/core';
 export class PmtMobileToolbarComponent {
   @Input()
   title = '';
+  @Input()
+  hasBack = false;
+  @Input()
+  defaultHref = '';
 }
