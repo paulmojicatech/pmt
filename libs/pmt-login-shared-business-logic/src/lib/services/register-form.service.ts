@@ -21,6 +21,9 @@ export class RegisterFormService {
       email: [null, Validators.required],
       confirmEmail: [null, Validators.required],
     });
+    registerForm.addValidators(
+      crossFieldEqualValidator('confirmEmail', 'email', 'Emails do not match')
+    );
     return registerForm;
   }
 
@@ -43,5 +46,53 @@ export class RegisterFormService {
   ): FormGroup {
     currentForm.get(controlName)?.addValidators(validator);
     return currentForm;
+  }
+
+  getFormControls(): PmtFormControl[] {
+    return [
+      {
+        id: 'name',
+        name: 'name',
+        type: 'text',
+        validators: [
+          {
+            id: 'required',
+            validator: Validators.required,
+            errorMsg: 'Name is required',
+          },
+        ],
+        label: 'Name',
+      },
+      {
+        id: 'email',
+        name: 'email',
+        type: 'text',
+        validators: [
+          {
+            id: 'required',
+            validator: Validators.required,
+            errorMsg: 'Email is required',
+          },
+        ],
+        label: 'Email',
+      },
+      {
+        id: 'confirmEmail',
+        name: 'confirmEmail',
+        type: 'text',
+        validators: [
+          {
+            id: 'required',
+            validator: crossFieldEqualValidator(
+              'confirmEmail',
+              'email',
+              'Email field does not match.'
+            ),
+            errorMsg: 'Email field does not match.',
+          },
+        ],
+        label: 'Confirm email',
+      },
+    ];
   }
 }

@@ -9,7 +9,7 @@
 
                     <mat-checkbox *ngSwitchCase="'checkbox'">{{ctl.label}}</mat-checkbox>
 
-                    <pmt-input class="form-control" *ngSwitchDefault [isMobile]="isMobile" [formControlName]="ctl.id" [label]="ctl.label" [type]="ctl.type"></pmt-input>
+                    <pmt-input (changeEvent)="parentForm.get(ctl.id)?.patchValue($event)" class="form-control" *ngSwitchDefault [isMobile]="isMobile" [formControlName]="ctl.id" [label]="ctl.label" [type]="ctl.type"></pmt-input>
             
             </ng-container>
         </div>
