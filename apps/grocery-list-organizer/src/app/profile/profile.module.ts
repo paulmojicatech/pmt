@@ -1,11 +1,13 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ProfileComponent } from './profile.component';
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
+import {
+  PmtLoginModule,
+  PmtSimpleFormModule,
+} from '@pmt/pmt-common-angular-components';
 import { LoginComponent } from './login/login.component';
-import { PmtLoginModule } from '@pmt/pmt-common-angular-components';
-import { IonicModule } from '@ionic/angular';
-import { ProfileLandingComponent } from './profile-landing.component';
+import { ProfileComponent } from './profile.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Route[] = [
@@ -27,12 +29,14 @@ const routes: Route[] = [
 ];
 
 @NgModule({
-  declarations: [ProfileComponent, LoginComponent, ProfileLandingComponent],
+  declarations: [ProfileComponent, LoginComponent, RegisterComponent],
   imports: [
     CommonModule,
-    IonicModule,
     RouterModule.forChild(routes),
     PmtLoginModule,
+    ReactiveFormsModule,
+    PmtSimpleFormModule,
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })
 export class ProfileModule {}

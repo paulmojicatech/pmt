@@ -1,6 +1,6 @@
 <div class="form-container">
-    <form [formGroup]="parentForm">
-        <div *ngFor="let ctl of formControls">
+    <form novalidate [formGroup]="parentForm">
+        <div *ngFor="let ctl of formControls;">
        
             <ng-container [ngSwitch]="ctl.type">
                     <select class="form-control" *ngSwitchCase="'list'" [formControlName]="ctl.id">
@@ -9,7 +9,7 @@
 
                     <mat-checkbox *ngSwitchCase="'checkbox'">{{ctl.label}}</mat-checkbox>
 
-                    <pmt-input class="form-control" *ngSwitchDefault [isMobile]="isMobile" [formControlName]="ctl.id" [label]="ctl.label" [type]="ctl.type"></pmt-input>
+                    <pmt-input (changeEvent)="parentForm.get(ctl.id)?.patchValue($event)" class="form-control" *ngSwitchDefault [isMobile]="isMobile" [formControlName]="ctl.id" [label]="ctl.label" [type]="ctl.type"></pmt-input>
             
             </ng-container>
         </div>

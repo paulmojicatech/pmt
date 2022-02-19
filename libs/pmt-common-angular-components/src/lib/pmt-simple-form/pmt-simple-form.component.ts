@@ -14,65 +14,11 @@ import { PmtFormControl } from './models/pmt-simple-form.interface';
   styleUrls: ['./pmt-simple-form.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class PmtSimpleFormComponent implements OnInit {
+export class PmtSimpleFormComponent {
   @Input()
   parentForm!: FormGroup;
   @Input()
   isMobile = false;
   @Input()
-  customControls: PmtFormControl[] = [];
-
-  readonly DEFAULT_FORM_CONTROLS: PmtFormControl[] = [
-    {
-      id: 'name',
-      name: 'name',
-      type: 'text',
-      validators: [
-        {
-          id: 'required',
-          validator: Validators.required,
-          errorMsg: 'Name is required',
-        },
-      ],
-      label: 'Name',
-    },
-    {
-      id: 'email',
-      name: 'email',
-      type: 'email',
-      validators: [
-        {
-          id: 'required',
-          validator: Validators.required,
-          errorMsg: 'Email is required',
-        },
-      ],
-      label: 'Email',
-    },
-    {
-      id: 'confirmEmail',
-      name: 'confirmEmail',
-      type: 'email',
-      validators: [
-        {
-          id: 'required',
-          validator: crossFieldEqualValidator(
-            'confirmEmail',
-            'email',
-            'Email field does not match.'
-          ),
-          errorMsg: 'Email field does not match.',
-        },
-      ],
-      label: 'Confirm email',
-    },
-  ];
-
-  formControls = this.DEFAULT_FORM_CONTROLS;
-
-  ngOnInit(): void {
-    if (this.customControls?.length) {
-      this.formControls = [...this.formControls, ...this.customControls];
-    }
-  }
+  formControls: PmtFormControl[] = [];
 }
