@@ -2,6 +2,12 @@ import { CommonModule } from '@angular/common';
 import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
+import {
+  ProfileEffects,
+  profileReducer,
+} from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
   PmtLoginModule,
   PmtMobileToolbarModule,
@@ -25,7 +31,8 @@ const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'login',
+    component: ProfileComponent,
+    children: [],
   },
 ];
 
@@ -34,6 +41,8 @@ const routes: Route[] = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    StoreModule.forFeature('profile', profileReducer),
+    EffectsModule.forFeature([ProfileEffects]),
     PmtLoginModule,
     ReactiveFormsModule,
     PmtSimpleFormModule,

@@ -20,4 +20,11 @@ export * from './lib/state/current-grocery-items/reducer/current-grocery-items.r
 export * from './lib/state/current-grocery-items/index';
 //#endregion
 
+//#region Profile
+export * from './lib/state/profile/actions/profile.actions';
+export * from './lib/state/profile/effects/profile.effects';
+export * from './lib/state/profile/reducer/profile.reducer';
+export * from './lib/state/profile/index';
+//#endregion
+
 //#endregion
