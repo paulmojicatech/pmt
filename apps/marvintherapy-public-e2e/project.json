@@ -1,0 +1,28 @@
+{
+  "root": "apps/marvintherapy-public-e2e",
+  "sourceRoot": "apps/marvintherapy-public-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/marvintherapy-public-e2e/cypress.json",
+        "devServerTarget": "marvintherapy-public:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "marvintherapy-public:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/marvintherapy-public-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["marvintherapy-public"]
+}
