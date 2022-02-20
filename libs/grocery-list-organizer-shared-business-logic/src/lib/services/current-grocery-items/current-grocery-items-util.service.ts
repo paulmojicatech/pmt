@@ -18,7 +18,7 @@ export class CurrentGroceryItemsUtilService {
     private _storageSvc: IonicStorageService
   ) {}
 
-  getCurrentItemsFromStore(): Observable<CurrentGroceryItem[]> {
+  getCurrentItemsForStore(): Observable<CurrentGroceryItem[]> {
     const items$ = this._store.select(getCurrentItems);
     const storedItems$ = from(
       this._storageSvc.getItem(IonicStorageType.CURRENT_ITEMS)

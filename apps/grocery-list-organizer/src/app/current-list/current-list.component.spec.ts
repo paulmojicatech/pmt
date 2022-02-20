@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { IonicModule } from '@ionic/angular';
+import { PmtMobileToolbarModule } from '@pmt/pmt-common-angular-components';
 
 import { CurrentListComponent } from './current-list.component';
 
@@ -8,9 +10,9 @@ describe('CurrentListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CurrentListComponent ]
-    })
-    .compileComponents();
+      imports: [IonicModule, PmtMobileToolbarModule],
+      declarations: [CurrentListComponent],
+    }).compileComponents();
   });
 
   beforeEach(() => {

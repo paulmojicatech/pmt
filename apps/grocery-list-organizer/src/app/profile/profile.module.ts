@@ -4,6 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import {
   PmtLoginModule,
+  PmtMobileToolbarModule,
   PmtSimpleFormModule,
 } from '@pmt/pmt-common-angular-components';
 import { LoginComponent } from './login/login.component';
@@ -36,6 +37,7 @@ const routes: Route[] = [
     PmtLoginModule,
     ReactiveFormsModule,
     PmtSimpleFormModule,
+    PmtMobileToolbarModule,
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
 })

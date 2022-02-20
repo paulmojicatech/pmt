@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { Store } from '@ngrx/store';
+import {
+  GlobalState,
+  initializeApp,
+} from '@pmt/grocery-list-organizer-shared-business-logic';
 
 @Component({
   selector: 'pmt-root',
@@ -6,5 +11,7 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  constructor() {}
+  constructor(private _store: Store<GlobalState>) {
+    this._store.dispatch(initializeApp());
+  }
 }
