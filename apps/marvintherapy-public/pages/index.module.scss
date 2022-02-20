@@ -1,2 +1,18 @@
-.page {
+.mainContent {
+  margin: 2rem;
+  text-align: center;
+}
+
+.noBottomMargin {
+  margin: 2rem;
+  margin-bottom: 0;
+  text-align: center;
+}
+
+.emailContent {
+  text-align: center;
+  .emailLink {
+    color: rgb(0, 114, 229);
+    font-size: 1.25rem;
+  }
 }
