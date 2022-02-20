@@ -2,6 +2,8 @@ export enum IonicStorageType {
   CURRENT_ITEMS,
   AVAILABLE_ITEMS,
   COMPLETED_ITEMS,
+  REFRESH_TOKEN,
+  LINKED_ACCOUNT,
 }
 
 export interface GroceryItem {
@@ -30,3 +32,9 @@ export type AvailableGroceryItem = Omit<
   | 'dateThrownAway'
   | 'qtyThrownAway'
 >;
+
+export type LinkedAccount = {
+  id: string;
+  accountHolderName: string;
+  accountHolderEmail: string;
+};

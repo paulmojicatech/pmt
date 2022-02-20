@@ -18,7 +18,7 @@ export class CurrentGroceryItemsEffects {
       ofType(loadCurrentItems),
       switchMap(() =>
         this._currentItemsUtilSvc
-          .getCurrentItemsFromStore()
+          .getCurrentItemsForStore()
           .pipe(
             map((currentItems) => loadCurrentItemsSuccess({ currentItems }))
           )
