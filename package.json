@@ -10,6 +10,8 @@
     "docker-run-security": "docker start pmt-security",
     "grocery-ionic-ios": "nx build grocery-list-organizer && nx run grocery-list-organizer:sync:ios && nx run grocery-list-organizer:open:ios",
     "grocery-ionic-android": "nx build grocery-list-organizer && nx run grocery-list-organizer:sync:android && nx run grocery-list-organizer:open:android",
+    "grocery-ionic-ios-prod": "nx build grocery-list-organizer --prod && nx run grocery-list-organizer:sync:ios && nx run grocery-list-organizer:open:ios",
+    "grocery-ionic-android-prod": "nx build grocery-list-organizer --prod && nx run grocery-list-organizer:sync:android && nx run grocery-list-organizer:open:android",
     "postinstall": "ngcc --properties es2015 browser module main"
   },
   "private": true,
