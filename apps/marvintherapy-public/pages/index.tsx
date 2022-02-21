@@ -19,6 +19,7 @@ import { Fragment } from 'react';
 import PmtCard from '../components/card/card';
 import Image from 'next/image';
 import PmtFooter from '../components/footer/footer';
+import { ServiceType } from './services/models/services.interface';
 
 export const Index = () => {
   return (
@@ -41,19 +42,28 @@ export const Index = () => {
 
         <div className={styles.cardSection}>
           <PmtCard
-            isPartial={true}
-            cardTitle={INDIVIDUAL_TYPE_HEADER}
-            cardDescription={INDIVIDUAL_TYPE_DESCRIPTION}
+            {...{
+              isPartial: true,
+              cardTitle: INDIVIDUAL_TYPE_HEADER,
+              cardDescription: INDIVIDUAL_TYPE_DESCRIPTION,
+              type: ServiceType.INDIVIDUAL_COUPLE,
+            }}
           />
           <PmtCard
-            isPartial={true}
-            cardTitle={CLINICAL_SUPERVISION_HEADER}
-            cardDescription={CLINICAL_SUPERVISION_DESCRIPTION}
+            {...{
+              isPartial: true,
+              cardTitle: CLINICAL_SUPERVISION_HEADER,
+              cardDescription: CLINICAL_SUPERVISION_DESCRIPTION,
+              type: ServiceType.CLINICAL_SUPERVISION,
+            }}
           />
           <PmtCard
-            isPartial={true}
-            cardTitle={TELEHEALTH_HEADER}
-            cardDescription={TELEHEALTH_DESCRIPTION}
+            {...{
+              isPartial: true,
+              cardTitle: TELEHEALTH_HEADER,
+              cardDescription: TELEHEALTH_DESCRIPTION,
+              type: ServiceType.TELEHEALTH,
+            }}
           />
         </div>
 

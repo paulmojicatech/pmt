@@ -31,6 +31,31 @@ individual and group supervision to clinicians in private practice, mental healt
 She works to assess the clinical associate at their current level and to build upon their strengths.  Mrs. Abraham's clinical focus lies in the mental health care and
 treatment of children, adolescents, adults, and the geriatric population.  She also has dedicated many years to working with residential treatment programs in New York,
 multiple juvenile justice systems, psychiatric hospitals, and homeless housing facilities with a particular interest in women's issues and women's health.`;
+export const CLINICAL_SUPERVISION_SUMMARY =
+  'All supervisees must have valid proof of malpractice insurance prior to first supervision session.';
+export const CLINICAL_SUPERVISION_TYPES = {
+  title: 'Supervision Types currently offered:',
+  items: [
+    'Individual Supervision : $70',
+    'Group Supervision : $50 (based on availability)',
+  ],
+};
+export const INDIVIDUAL_THERAPY_ITEMS = {
+  title: 'Treatment specialization includes:',
+  typesOfTreatments: [
+    'Therapy for Depression and Anxiety and Panic',
+    'Bipolar Disorder and management',
+    'Self-esteem and body image issues',
+    'Adjusting to life changes',
+    'Relationship and intimacy issues',
+    'Grief Counseling',
+    'Work and Career issues',
+    'Anger and Stress Management',
+    'Conflict Resolution',
+    'Trauma and Loss',
+    'Self-harming behaviors',
+  ],
+};
 
 export const TELEHEALTH_HEADER = 'Telehealth';
 export const TELEHEALTH_DESCRIPTION = `Behavioral health — like other areas of health care — has changed significantly due to the COVID-19 public health emergency. Mental health providers can now offer and get reimbursed for behavioral telehealth services.
