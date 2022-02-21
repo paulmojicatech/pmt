@@ -2,8 +2,8 @@ import PmtHeader from '../components/header/header';
 import {
   HOME_COMPONENT_MAIN_CONTENT,
   BOLD_TEXT,
-  INIDIVIDUAL_TYPE_HEADER,
-  INIDIVIDUAL_TYPE_DESCRIPTION,
+  INDIVIDUAL_TYPE_HEADER,
+  INDIVIDUAL_TYPE_DESCRIPTION,
   CLINICAL_SUPERVISION_HEADER,
   CLINICAL_SUPERVISION_DESCRIPTION,
   TELEHEALTH_HEADER,
@@ -19,6 +19,7 @@ import { Fragment } from 'react';
 import PmtCard from '../components/card/card';
 import Image from 'next/image';
 import PmtFooter from '../components/footer/footer';
+import { ServiceType } from '../models/services.interface';
 
 export const Index = () => {
   return (
@@ -41,16 +42,28 @@ export const Index = () => {
 
         <div className={styles.cardSection}>
           <PmtCard
-            cardTitle={INIDIVIDUAL_TYPE_HEADER}
-            cardDescription={INIDIVIDUAL_TYPE_DESCRIPTION}
+            {...{
+              isPartial: true,
+              cardTitle: INDIVIDUAL_TYPE_HEADER,
+              cardDescription: INDIVIDUAL_TYPE_DESCRIPTION,
+              type: ServiceType.INDIVIDUAL_COUPLE,
+            }}
           />
           <PmtCard
-            cardTitle={CLINICAL_SUPERVISION_HEADER}
-            cardDescription={CLINICAL_SUPERVISION_DESCRIPTION}
+            {...{
+              isPartial: true,
+              cardTitle: CLINICAL_SUPERVISION_HEADER,
+              cardDescription: CLINICAL_SUPERVISION_DESCRIPTION,
+              type: ServiceType.CLINICAL_SUPERVISION,
+            }}
           />
           <PmtCard
-            cardTitle={TELEHEALTH_HEADER}
-            cardDescription={TELEHEALTH_DESCRIPTION}
+            {...{
+              isPartial: true,
+              cardTitle: TELEHEALTH_HEADER,
+              cardDescription: TELEHEALTH_DESCRIPTION,
+              type: ServiceType.TELEHEALTH,
+            }}
           />
         </div>
 

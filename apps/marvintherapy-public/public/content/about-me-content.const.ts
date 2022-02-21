@@ -31,3 +31,31 @@ export const EDUCATION = [
     awards: [],
   },
 ];
+
+export const LICENSE_AND_AWARDS = [
+  'Licensed Clinical Social Worker (LCSW), in the State of North Carolina',
+  'Licensed Clinical Social Worker (LCSW), in the State of Florida',
+  'Licensed Clinical Social Worker (LCSW), in New York State',
+  'Licensed Master Social Worker (LMSW), in New York State',
+  'FARS / CFARS certified',
+  'Child and Adolescent Needs and Strengths with Mental Health Challenges (CANS-MH), certified',
+  'University of South Florida course The Baker Act - certificate',
+  '5 hour Cultural Competency / Communication - certificate',
+  'Bridges to Health (B2H) Home & Community Based Services Medicaid Waiver WSP Training Program in Crisis Services - certificate',
+  'Hoarding Disorder: Effective Approaches to Assessment, Diagnosis & Treatment certified 1/30/15',
+  'Clinical Supervision Certificate Training. NASWNC. Certified June, 2015',
+  'The Blueprint for Surviving Infidelity: A Proven Plan for Helping Couples Rebuild Trust- Certified 2/19/16',
+  'Addressing the Gendered Dimensions of Harassment and Bullying. Certified 4/15/16',
+];
+
+export const ADDITIONAL_TRAINING = [
+  'Child Abuse Training',
+  'Mandated Reporter Training',
+  'CPI Certified by the Crisis Prevention Institute, Inc. Completed training in the Nonviolent Crisis Intervention program',
+  'Member of the National Association of Counselors in Private Practice since 2015',
+  'Member of Psychotherapy Networker since 2015',
+  'Member of Open Path Psychotherapy Collective since 2015',
+  'Member of the Columbia Alumni Association of the Carolinas',
+  'Certified Clinical Child & Adolescent Anxiety Treatment Professional -Evergreen Certifications 4/18/21',
+  'Certified as a Dialectical Behavior Therapist by DBTNCAA 9/8/2017',
+];

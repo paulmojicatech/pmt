@@ -1,10 +1,13 @@
 import { Fragment } from 'react';
 import styles from './about.module.scss';
-import { PmtHeader } from '../../components/header/header';
+import PmtHeader from '../../components/header/header';
+import PmtFooter from '../../components/footer/footer';
 import Image from 'next/image';
 import {
   ABOUT_ME_CONTENT,
+  ADDITIONAL_TRAINING,
   EDUCATION,
+  LICENSE_AND_AWARDS,
 } from '../../public/content/about-me-content.const';
 
 export const About = () => {
@@ -50,7 +53,27 @@ export const About = () => {
             );
           })}
         </div>
+
+        <div className={styles.awardsContainer}>
+          <h3>License, certifications, and awards</h3>
+          <ul>
+            {LICENSE_AND_AWARDS.map((item, index) => {
+              return <li key={index}>{item}</li>;
+            })}
+          </ul>
+        </div>
+
+        <div className={styles.trainingContainer}>
+          <h3>Additional Training and Professional Memberships</h3>
+          <ul>
+            {ADDITIONAL_TRAINING.map((item, index) => {
+              return <li key={index}>{item}</li>;
+            })}
+          </ul>
+        </div>
       </main>
+
+      <PmtFooter />
     </Fragment>
   );
 };
