@@ -1,6 +1,8 @@
 .container,
 .lastAboutMe,
-.educationContainer {
+.educationContainer,
+.awardsContainer,
+.trainingContainer {
   margin: 3rem 3rem 0;
   display: flex;
   font-size: 1.25rem;
@@ -9,7 +11,9 @@
   margin-top: unset;
   margin-bottom: 3rem;
 }
-.educationContainer {
+.educationContainer,
+.awardsContainer,
+.trainingContainer {
   flex-direction: column;
   .educationItemContainer {
     margin-top: 1rem;
