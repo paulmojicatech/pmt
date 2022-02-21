@@ -3,3 +3,5 @@ export enum ServiceType {
   INDIVIDUAL_COUPLE,
   TELEHEALTH,
 }
+
+export default ServiceType;

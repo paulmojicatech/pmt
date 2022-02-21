@@ -19,7 +19,7 @@ import { Fragment } from 'react';
 import PmtCard from '../components/card/card';
 import Image from 'next/image';
 import PmtFooter from '../components/footer/footer';
-import { ServiceType } from './services/models/services.interface';
+import { ServiceType } from '../models/services.interface';
 
 export const Index = () => {
   return (

@@ -1,4 +1,4 @@
-import { ServiceType } from '../../../pages/services/models/services.interface';
+import { ServiceType } from '../../../models/services.interface';
 
 export type IndividualsCouplesTherapy = {
   type: ServiceType;

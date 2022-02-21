@@ -8,7 +8,7 @@ import CardContent from '@mui/material/CardContent';
 import Typeography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
 import Button from '@mui/material/Button';
-import { ServiceType } from '../../pages/services/models/services.interface';
+import { ServiceType } from '../../models/services.interface';
 import styles from './card.module.scss';
 
 export const PmtCard = (props: ServiceCardProps) => {

@@ -2,7 +2,7 @@ import PmtHeader from '../../components/header/header';
 import PmtCard from '../../components/card/card';
 import PmtFooter from '../../components/footer/footer';
 import { Fragment, useState } from 'react';
-import { ServiceType } from './models/services.interface';
+import { ServiceType } from '../../models/services.interface';
 import {
   CLINICAL_SUPERVISION_DESCRIPTION,
   CLINICAL_SUPERVISION_HEADER,
