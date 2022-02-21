@@ -8,9 +8,9 @@ export const BOLD_TEXT = `Currently offering a FREE 15 minute consultation.
 Take the first step in achieving positive change!
 Schedule your FREE 15 minute phone consultation today at`;
 
-export const INIDIVIDUAL_TYPE_HEADER =
+export const INDIVIDUAL_TYPE_HEADER =
   'Individual, Marriage/Couple and Family Therapy';
-export const INIDIVIDUAL_TYPE_DESCRIPTION = `As a clinical psychotherapist, I work from different theoretical perspectives to meet
+export const INDIVIDUAL_TYPE_DESCRIPTION = `As a clinical psychotherapist, I work from different theoretical perspectives to meet
 clients’ diverse needs.  I take into account the preferences and the issues that clients
 want to resolve in deciding which is the best approach or combination of approaches for
 treatment. That being said, my primary treatment modality is Cognitive Behavioral Therapy
@@ -49,7 +49,7 @@ export const ADDRESS = `8211 Avanti Drive, Marvin, NC 28173`;
 export const TYPES_OF_THERAPY = [
   {
     header: 'Individual, Marriage/Couple and Family Therapy',
-    description: INIDIVIDUAL_TYPE_DESCRIPTION,
+    description: INDIVIDUAL_TYPE_DESCRIPTION,
     TreatmentSpecializations: {
       Text: 'Treatment specialization includes: ',
       Items: [
@@ -74,31 +74,26 @@ export const TYPES_OF_THERAPY = [
   },
 ];
 
-export const CLINICAL_SUPERVISION = {
-  Header: 'Clinical Supervision',
-  Text:
-    'Choosing the right clinical supervisor is arguably the most important factor in clinician success and preparedness. Kirstin R. Abraham, LCSW has over 10 years ' +
-    "of clinical experience in the mental health field and has successfully supervised LPC's and LCSWA's in Florida and North Carolina since 2012. She has provided both " +
-    "individual and group supervision to clinicians in private practice, mental health centers, and hospital settings. Mrs. Abraham's style is personable and nurturing. " +
-    "She works to assess the clinical associate at their current level and to build upon their strengths.  Mrs. Abraham's clinical focus lies in the mental health care and " +
-    'treatment of children, adolescents, adults, and the geriatric population.  She also has dedicated many years to working with residential treatment programs in New York, ' +
-    "multiple juvenile justice systems, psychiatric hospitals, and homeless housing facilities with a particular interest in women's issues and women's health.",
-  SupervisionTypes: [
-    {
-      Type: 'Individual Supervision',
-      Cost: '$70',
-    },
-    {
-      Type: 'Group Supervision',
-      Cost: '$50 (based on availability)',
-    },
-  ],
-  SupervisionHeader: 'Supervision Types currently offered:',
-  Summary:
-    'All supervisees must have valid proof of malpractice insurance prior to first supervision session.',
-};
-
-export enum ServiceType {
-  IMCAFT = 'Individual, Marriage / Couple and Family Therapy',
-  CS = 'Clinical Supervision',
-}
+// export const CLINICAL_SUPERVISION = {
+//   Header: 'Clinical Supervision',
+//   Text:
+//     'Choosing the right clinical supervisor is arguably the most important factor in clinician success and preparedness. Kirstin R. Abraham, LCSW has over 10 years ' +
+//     "of clinical experience in the mental health field and has successfully supervised LPC's and LCSWA's in Florida and North Carolina since 2012. She has provided both " +
+//     "individual and group supervision to clinicians in private practice, mental health centers, and hospital settings. Mrs. Abraham's style is personable and nurturing. " +
+//     "She works to assess the clinical associate at their current level and to build upon their strengths.  Mrs. Abraham's clinical focus lies in the mental health care and " +
+//     'treatment of children, adolescents, adults, and the geriatric population.  She also has dedicated many years to working with residential treatment programs in New York, ' +
+//     "multiple juvenile justice systems, psychiatric hospitals, and homeless housing facilities with a particular interest in women's issues and women's health.",
+//   SupervisionTypes: [
+//     {
+//       Type: 'Individual Supervision',
+//       Cost: '$70',
+//     },
+//     {
+//       Type: 'Group Supervision',
+//       Cost: '$50 (based on availability)',
+//     },
+//   ],
+//   SupervisionHeader: 'Supervision Types currently offered:',
+//   Summary:
+//     'All supervisees must have valid proof of malpractice insurance prior to first supervision session.',
+// };

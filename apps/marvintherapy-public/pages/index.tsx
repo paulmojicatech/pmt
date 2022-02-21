@@ -2,8 +2,8 @@ import PmtHeader from '../components/header/header';
 import {
   HOME_COMPONENT_MAIN_CONTENT,
   BOLD_TEXT,
-  INIDIVIDUAL_TYPE_HEADER,
-  INIDIVIDUAL_TYPE_DESCRIPTION,
+  INDIVIDUAL_TYPE_HEADER,
+  INDIVIDUAL_TYPE_DESCRIPTION,
   CLINICAL_SUPERVISION_HEADER,
   CLINICAL_SUPERVISION_DESCRIPTION,
   TELEHEALTH_HEADER,
@@ -41,14 +41,17 @@ export const Index = () => {
 
         <div className={styles.cardSection}>
           <PmtCard
-            cardTitle={INIDIVIDUAL_TYPE_HEADER}
-            cardDescription={INIDIVIDUAL_TYPE_DESCRIPTION}
+            isPartial={true}
+            cardTitle={INDIVIDUAL_TYPE_HEADER}
+            cardDescription={INDIVIDUAL_TYPE_DESCRIPTION}
           />
           <PmtCard
+            isPartial={true}
             cardTitle={CLINICAL_SUPERVISION_HEADER}
             cardDescription={CLINICAL_SUPERVISION_DESCRIPTION}
           />
           <PmtCard
+            isPartial={true}
             cardTitle={TELEHEALTH_HEADER}
             cardDescription={TELEHEALTH_DESCRIPTION}
           />
