@@ -1,5 +1,6 @@
 import PmtHeader from '../../components/header/header';
 import PmtCard from '../../components/card/card';
+import PmtFooter from '../../components/footer/footer';
 import { Fragment, useState } from 'react';
 import { ServiceType } from './models/services.interface';
 import {
@@ -20,6 +21,7 @@ import {
   IndividualsCouplesTherapy,
   ServiceCardProps,
 } from '../../components/card/models/card.interface';
+import Image from 'next/image';
 
 export const Services = () => {
   const initialState: ServiceCardProps = {
@@ -85,6 +87,17 @@ export const Services = () => {
       <div className={styles.cardContainer}>
         <PmtCard {...selectedService} />
       </div>
+
+      <div className={styles.imageContainer}>
+        <Image
+          src="/images/image_4.jpg"
+          alt="Kirstin R. Abraham, LCSW"
+          height={350}
+          width={285}
+        />
+      </div>
+
+      <PmtFooter />
     </Fragment>
   );
 };

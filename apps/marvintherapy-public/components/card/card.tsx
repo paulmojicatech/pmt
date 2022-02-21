@@ -1,5 +1,9 @@
 import Card from '@mui/material/Card';
-import { ClinicalTherapy, ServiceCardProps } from './models/card.interface';
+import {
+  ClinicalTherapy,
+  IndividualsCouplesTherapy,
+  ServiceCardProps,
+} from './models/card.interface';
 import CardContent from '@mui/material/CardContent';
 import Typeography from '@mui/material/Typography';
 import CardActions from '@mui/material/CardActions';
@@ -40,25 +44,62 @@ export const PmtCard = (props: ServiceCardProps) => {
           <Typeography className={styles.descriptionContainer}>
             {props.cardDescription}
           </Typeography>
-          <p>
-            <Typeography>
-              {(props as ClinicalTherapy).supervisionTypes.title}
-            </Typeography>
-            <ul className={styles.listContainer}>
-              {(props as ClinicalTherapy).supervisionTypes.items.map(
-                (item, index) => {
-                  return <li key={index}>{item}</li>;
-                }
-              )}
-            </ul>
-          </p>
+          <Typeography>
+            {(props as ClinicalTherapy).supervisionTypes.title}
+          </Typeography>
+          <ul className={styles.listContainer}>
+            {(props as ClinicalTherapy).supervisionTypes.items.map(
+              (item, index) => {
+                return <li key={index}>{item}</li>;
+              }
+            )}
+          </ul>
         </CardContent>
       </Card>
     );
   } else if (props.type === ServiceType.INDIVIDUAL_COUPLE) {
-    return <div>Indiv Profil</div>;
+    return (
+      <Card sx={{ width: '75%' }}>
+        <CardContent>
+          <Typeography
+            gutterBottom
+            sx={[{ fontSize: 18 }, { fontWeight: 600 }]}
+          >
+            {props.cardTitle}
+          </Typeography>
+          <Typeography className={styles.descriptionContainer}>
+            {props.cardDescription}
+          </Typeography>
+          <Typeography>
+            {(props as IndividualsCouplesTherapy).treatments.title}
+          </Typeography>
+          <ul className={styles.listContainer}>
+            {(
+              props as IndividualsCouplesTherapy
+            ).treatments.typesOfTreatments.map((item, index) => {
+              return <li key={index}>{item}</li>;
+            })}
+          </ul>
+          <Typeography>
+            {(props as IndividualsCouplesTherapy).summary}
+          </Typeography>
+        </CardContent>
+      </Card>
+    );
   } else {
-    return <div>Telehealth</div>;
+    return (
+      <Card sx={{ width: '75%' }}>
+        <CardContent>
+          <Typeography
+            gutterBottom
+            sx={[{ fontSize: 18 }, { fontWeight: 600 }]}
+          >
+            {props.cardTitle}
+          </Typeography>
+          <Typeography>{props.cardDescription}</Typeography>
+        </CardContent>
+      </Card>
+    );
   }
 };
 
