@@ -1,0 +1,26 @@
+.topContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.headerContainer {
+  font-family: sans-serif;
+  color: #fff;
+}
+
+.title {
+  padding-left: 1rem;
+  font-size: 2rem;
+}
+
+.menuItems {
+  padding-right: 1rem;
+  padding-top: 2.25rem;
+  font-size: 1rem;
+  a {
+    margin: 0.5rem;
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}

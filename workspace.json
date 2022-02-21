@@ -4,6 +4,8 @@
     "grocery-list-organizer": "apps/grocery-list-organizer",
     "grocery-list-organizer-e2e": "apps/grocery-list-organizer-e2e",
     "grocery-list-organizer-shared-business-logic": "libs/grocery-list-organizer-shared-business-logic",
+    "marvintherapy-public": "apps/marvintherapy-public",
+    "marvintherapy-public-e2e": "apps/marvintherapy-public-e2e",
     "mfe-docs": "apps/mfe-docs",
     "mfe-docs-e2e": "apps/mfe-docs-e2e",
     "mfe-login": "apps/mfe-login",
