@@ -18,7 +18,6 @@ import styles from './index.module.scss';
 import { Fragment } from 'react';
 import PmtCard from '../components/card/card';
 import Image from 'next/image';
-import { SocialIcon } from 'react-social-icons';
 import PmtFooter from '../components/footer/footer';
 
 export const Index = () => {
