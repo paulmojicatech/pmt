@@ -27,7 +27,7 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
       },
       {
         dispalyName: 'Helpful Forms',
-        routePath: '/forms',
+        routePath: '/helpfulForms',
       },
     ];
   }
