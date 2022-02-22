@@ -3,6 +3,8 @@ import { Fragment } from 'react';
 import styles from './helpfulForms.module.scss';
 import { HELPFUL_FORMS } from '../../models/helpfulForms.interface';
 import PmtFooter from '../../components/footer/footer';
+import Image from 'next/image';
+
 export const HelpfulForms = () => {
   return (
     <Fragment>
@@ -54,6 +56,15 @@ export const HelpfulForms = () => {
               {HELPFUL_FORMS.pdfLink.link.text}
             </a>
           </p>
+        </section>
+
+        <section className={styles.imageContainer}>
+          <Image
+            src="/images/image_5.jpg"
+            alt="Kirstin R. Abraham, LCSW"
+            height={350}
+            width={285}
+          />
         </section>
       </main>
 

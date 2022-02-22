@@ -4,15 +4,6 @@ export const HELPFUL_FORMS = {
     'first therapy session.',
   forms: [
     {
-      text: 'COVID Information',
-      formDetails: [
-        {
-          text: 'Telehealth',
-          href: '/forms/COVID.pdf',
-        },
-      ],
-    },
-    {
       text: 'Intake / Consent',
       formDetails: [
         {
