@@ -29,6 +29,10 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
         dispalyName: 'Helpful Forms',
         routePath: '/helpfulForms',
       },
+      {
+        dispalyName: 'Rates and Insurance',
+        routePath: '/rates',
+      },
     ];
   }
 
