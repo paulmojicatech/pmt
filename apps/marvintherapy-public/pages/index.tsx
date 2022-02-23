@@ -20,12 +20,15 @@ import PmtCard from '../components/card/card';
 import Image from 'next/image';
 import PmtFooter from '../components/footer/footer';
 import { ServiceType } from '../models/services.interface';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const Index = () => {
+  const isMobile = useMediaQuery('(max-width: 800px)');
   return (
     <Fragment>
       <div className="header-container">
-        <PmtHeader backgroundUrl="../images/home.jpg" />
+        {isMobile && <PmtHeader backgroundUrl="../images/home-mobile.jpeg" />}
+        {!isMobile && <PmtHeader backgroundUrl="../images/home.jpg" />}
       </div>
 
       <main>
