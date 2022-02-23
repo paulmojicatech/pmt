@@ -1,7 +1,16 @@
 import styles from './header.module.scss';
 import Link from 'next/link';
+import useMediaQuery from '@mui/material/useMediaQuery';
+import MenuIcon from '@mui/icons-material/Menu';
+import { Fragment, useState } from 'react';
+import { Menu, MenuItem } from '@mui/material';
 
 export const PmtHeader = (props: { backgroundUrl: string }) => {
+  const [anchorElement, setAnchorElement] = useState(undefined);
+  const handleMenuOpen = (event) => setAnchorElement(event.currentTarget);
+  const handleMenuClose = () => setAnchorElement(null);
+  const isOpen = !!anchorElement;
+  const isMobile = useMediaQuery('(max-width: 800px)');
   function getBackgroundStyle(): { [key: string]: string } {
     return {
       backgroundImage: 'url(' + props.backgroundUrl + ')',
@@ -35,22 +44,53 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
       },
     ];
   }
-
   return (
-    <div className={styles.headerContainer} style={getBackgroundStyle()}>
-      <header className={styles.topContainer}>
-        <div className={styles.title}>KIRSTIN R. ABRAHAM, LCSW</div>
-        <div className={styles.menuItems}>
-          {getRoutes().map((route) => {
-            return (
-              <Link key={route.routePath} href={route.routePath}>
-                {route.dispalyName}
-              </Link>
-            );
-          })}
-        </div>
-      </header>
-    </div>
+    <Fragment>
+      <div className={styles.headerContainer} style={getBackgroundStyle()}>
+        <header className={styles.topContainer}>
+          <div className={styles.title}>KIRSTIN R. ABRAHAM, LCSW</div>
+          <div className={styles.menuItems}>
+            {isMobile && (
+              <Fragment>
+                <MenuIcon
+                  id="menuButton"
+                  onClick={handleMenuOpen}
+                  className={styles.menuIconButton}
+                  fontSize="large"
+                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={open ? 'true' : undefined}
+                />
+                <Menu
+                  MenuListProps={{
+                    'aria-labelledby': 'menuButton',
+                  }}
+                  anchorEl={anchorElement}
+                  open={isOpen}
+                  onClose={handleMenuClose}
+                >
+                  {getRoutes().map((route) => {
+                    return (
+                      <MenuItem key={route.routePath}>
+                        <Link href={route.routePath}>{route.dispalyName}</Link>
+                      </MenuItem>
+                    );
+                  })}
+                </Menu>
+              </Fragment>
+            )}
+            {!isMobile &&
+              getRoutes().map((route) => {
+                return (
+                  <Link key={route.routePath} href={route.routePath}>
+                    {route.dispalyName}
+                  </Link>
+                );
+              })}
+          </div>
+        </header>
+      </div>
+    </Fragment>
   );
 };
 
