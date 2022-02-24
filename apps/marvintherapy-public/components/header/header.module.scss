@@ -13,6 +13,16 @@
   font-size: 2rem;
 }
 
+@media screen and (max-width: 800px) {
+  .moreButton {
+    display: none;
+  }
+}
+
+.moreButton {
+  color: #fff;
+}
+
 @media (max-width: 800px) {
   .menuItems {
     padding-top: 0.25rem;

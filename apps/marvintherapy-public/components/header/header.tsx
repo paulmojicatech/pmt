@@ -3,13 +3,18 @@ import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Fragment, useState } from 'react';
-import { Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
 
 export const PmtHeader = (props: { backgroundUrl: string }) => {
   const [anchorElement, setAnchorElement] = useState(undefined);
+  const [moreAnchorElement, setMoreAnchorElement] = useState(undefined);
   const handleMenuOpen = (event) => setAnchorElement(event.currentTarget);
   const handleMenuClose = () => setAnchorElement(null);
+  const handleMoreMenuOpen = (event) =>
+    setMoreAnchorElement(event.currentTarget);
+  const handleMoreMenuClose = () => setMoreAnchorElement(null);
   const isOpen = !!anchorElement;
+  const isMoreOpen = !!moreAnchorElement;
   const isMobile = useMediaQuery('(max-width: 800px)');
   function getBackgroundStyle(): { [key: string]: string } {
     return {
@@ -20,27 +25,36 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
     };
   }
 
-  function getRoutes(): { dispalyName: string; routePath: string }[] {
+  function getRoutes(): { displayName: string; routePath: string }[] {
     return [
       {
-        dispalyName: 'Home',
+        displayName: 'Home',
         routePath: '/',
       },
       {
-        dispalyName: 'About Me',
+        displayName: 'About Me',
         routePath: '/about',
       },
       {
-        dispalyName: 'Services Provided',
+        displayName: 'Services Provided',
         routePath: '/services',
       },
       {
-        dispalyName: 'Helpful Forms',
+        displayName: 'Helpful Forms',
         routePath: '/helpfulForms',
       },
       {
-        dispalyName: 'Rates and Insurance',
+        displayName: 'Rates and Insurance',
         routePath: '/rates',
+      },
+    ];
+  }
+
+  function getMoreRoutes(): { displayName: string; routePath: string }[] {
+    return [
+      {
+        displayName: 'Make a Payment',
+        routePath: '/payment',
       },
     ];
   }
@@ -57,9 +71,9 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
                   onClick={handleMenuOpen}
                   className={styles.menuIconButton}
                   fontSize="large"
-                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-controls={isOpen ? 'basic-menu' : undefined}
                   aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
+                  aria-expanded={isOpen ? 'true' : undefined}
                 />
                 <Menu
                   MenuListProps={{
@@ -69,10 +83,10 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
                   open={isOpen}
                   onClose={handleMenuClose}
                 >
-                  {getRoutes().map((route) => {
+                  {[...getRoutes(), ...getMoreRoutes()].map((route) => {
                     return (
                       <MenuItem key={route.routePath}>
-                        <Link href={route.routePath}>{route.dispalyName}</Link>
+                        <Link href={route.routePath}>{route.displayName}</Link>
                       </MenuItem>
                     );
                   })}
@@ -83,10 +97,38 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
               getRoutes().map((route) => {
                 return (
                   <Link key={route.routePath} href={route.routePath}>
-                    {route.dispalyName}
+                    {route.displayName}
                   </Link>
                 );
               })}
+            <Button
+              className={styles.moreButton}
+              id="moreButton"
+              onClick={handleMoreMenuOpen}
+              aria-controls={isMoreOpen ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={isMoreOpen ? 'true' : undefined}
+            >
+              More
+            </Button>
+            <Menu
+              MenuListProps={{
+                'aria-labelledby': 'moreButton',
+              }}
+              anchorEl={moreAnchorElement}
+              open={isMoreOpen}
+              onClose={handleMoreMenuClose}
+            >
+              {getMoreRoutes().map((moreItem) => {
+                return (
+                  <MenuItem key={moreItem.routePath}>
+                    <Link href={moreItem.routePath}>
+                      {moreItem.displayName}
+                    </Link>
+                  </MenuItem>
+                );
+              })}
+            </Menu>
           </div>
         </header>
       </div>
