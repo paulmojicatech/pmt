@@ -6,8 +6,17 @@
   justify-content: center;
 }
 
+@media (max-width: 800px) {
+  .cardContainer {
+    margin: 1rem;
+  }
+}
+@media (min-width: 800px) {
+  .cardContainer {
+    margin: 3rem;
+  }
+}
 .cardContainer {
-  margin: 3rem;
   display: flex;
   justify-content: center;
 }

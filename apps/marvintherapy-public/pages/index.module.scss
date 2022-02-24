@@ -56,23 +56,29 @@
     align-items: center;
   }
 
-  .socialCollection {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 3rem;
-    span {
-      margin: 0 4rem;
-      &.facebook,
-      &.linkedIn {
-        background-color: #fff;
-        height: 58px;
-        position: relative;
-        bottom: 2px;
-      }
-      &.linkedIn {
-        bottom: 5px;
-        height: 55px;
+  @media (max-width: 800px) {
+    display: none;
+  }
+
+  @media (min-width: 800px) {
+    .socialCollection {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 3rem;
+      span {
+        margin: 0 4rem;
+        &.facebook,
+        &.linkedIn {
+          background-color: #fff;
+          height: 58px;
+          position: relative;
+          bottom: 2px;
+        }
+        &.linkedIn {
+          bottom: 5px;
+          height: 55px;
+        }
       }
     }
   }
