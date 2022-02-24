@@ -3,13 +3,18 @@ import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Fragment, useState } from 'react';
-import { Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
 
 export const PmtHeader = (props: { backgroundUrl: string }) => {
   const [anchorElement, setAnchorElement] = useState(undefined);
+  const [moreAnchorElement, setMoreAnchorElement] = useState(undefined);
   const handleMenuOpen = (event) => setAnchorElement(event.currentTarget);
   const handleMenuClose = () => setAnchorElement(null);
+  const handleMoreMenuOpen = (event) =>
+    setMoreAnchorElement(event.currentTarget);
+  const handleMoreMenuClose = () => setMoreAnchorElement(null);
   const isOpen = !!anchorElement;
+  const isMoreOpen = !!moreAnchorElement;
   const isMobile = useMediaQuery('(max-width: 800px)');
   function getBackgroundStyle(): { [key: string]: string } {
     return {
@@ -44,6 +49,15 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
       },
     ];
   }
+
+  function getMoreRoutes(): { displayName: string; routePath: string }[] {
+    return [
+      {
+        displayName: 'Make a Payment',
+        routePath: '/payment',
+      },
+    ];
+  }
   return (
     <Fragment>
       <div className={styles.headerContainer} style={getBackgroundStyle()}>
@@ -57,9 +71,9 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
                   onClick={handleMenuOpen}
                   className={styles.menuIconButton}
                   fontSize="large"
-                  aria-controls={open ? 'basic-menu' : undefined}
+                  aria-controls={isOpen ? 'basic-menu' : undefined}
                   aria-haspopup="true"
-                  aria-expanded={open ? 'true' : undefined}
+                  aria-expanded={isOpen ? 'true' : undefined}
                 />
                 <Menu
                   MenuListProps={{
@@ -87,6 +101,34 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
                   </Link>
                 );
               })}
+            <Button
+              className={styles.moreButton}
+              id="moreButton"
+              onClick={handleMoreMenuOpen}
+              aria-controls={isMoreOpen ? 'basic-menu' : undefined}
+              aria-haspopup="true"
+              aria-expanded={isMoreOpen ? 'true' : undefined}
+            >
+              More
+            </Button>
+            <Menu
+              MenuListProps={{
+                'aria-labelledby': 'moreButton',
+              }}
+              anchorEl={moreAnchorElement}
+              open={isMoreOpen}
+              onClose={handleMoreMenuClose}
+            >
+              {getMoreRoutes().map((moreItem) => {
+                return (
+                  <MenuItem key={moreItem.routePath}>
+                    <Link href={moreItem.routePath}>
+                      {moreItem.displayName}
+                    </Link>
+                  </MenuItem>
+                );
+              })}
+            </Menu>
           </div>
         </header>
       </div>
