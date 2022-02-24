@@ -25,26 +25,26 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
     };
   }
 
-  function getRoutes(): { dispalyName: string; routePath: string }[] {
+  function getRoutes(): { displayName: string; routePath: string }[] {
     return [
       {
-        dispalyName: 'Home',
+        displayName: 'Home',
         routePath: '/',
       },
       {
-        dispalyName: 'About Me',
+        displayName: 'About Me',
         routePath: '/about',
       },
       {
-        dispalyName: 'Services Provided',
+        displayName: 'Services Provided',
         routePath: '/services',
       },
       {
-        dispalyName: 'Helpful Forms',
+        displayName: 'Helpful Forms',
         routePath: '/helpfulForms',
       },
       {
-        dispalyName: 'Rates and Insurance',
+        displayName: 'Rates and Insurance',
         routePath: '/rates',
       },
     ];
@@ -83,10 +83,10 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
                   open={isOpen}
                   onClose={handleMenuClose}
                 >
-                  {getRoutes().map((route) => {
+                  {[...getRoutes(), ...getMoreRoutes()].map((route) => {
                     return (
                       <MenuItem key={route.routePath}>
-                        <Link href={route.routePath}>{route.dispalyName}</Link>
+                        <Link href={route.routePath}>{route.displayName}</Link>
                       </MenuItem>
                     );
                   })}
@@ -97,7 +97,7 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
               getRoutes().map((route) => {
                 return (
                   <Link key={route.routePath} href={route.routePath}>
-                    {route.dispalyName}
+                    {route.displayName}
                   </Link>
                 );
               })}

@@ -13,6 +13,12 @@
   font-size: 2rem;
 }
 
+@media screen and (max-width: 800px) {
+  .moreButton {
+    display: none;
+  }
+}
+
 .moreButton {
   color: #fff;
 }
