@@ -129,7 +129,7 @@ export const Index = () => {
                 target="blank"
               >
                 <Image
-                  src="/images/linkedIn.svg"
+                  src="/images/linkedin.svg"
                   alt="LinkedIn"
                   width={60}
                   height={60}
