@@ -3,7 +3,8 @@ import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Fragment, useState } from 'react';
-import { Button, Menu, MenuItem, createTheme, useTheme } from '@mui/material';
+import { Button, Menu, MenuItem } from '@mui/material';
+import Head from 'next/head';
 
 export const PmtHeader = (props: { backgroundUrl: string }) => {
   const [anchorElement, setAnchorElement] = useState(undefined);
@@ -16,12 +17,6 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
   const isOpen = !!anchorElement;
   const isMoreOpen = !!moreAnchorElement;
   const isMobile = useMediaQuery('(max-width: 800px)');
-
-  const theme = createTheme({
-    palette: {
-      primary: { main: '#46AD8D', contrastText: '#fff' },
-    },
-  });
 
   function getBackgroundStyle(): { [key: string]: string } {
     return {
@@ -67,6 +62,10 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
   }
   return (
     <Fragment>
+      <Head>
+        <title>Kirstin R. Abraham, LCSW</title>
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <div className={styles.headerContainer} style={getBackgroundStyle()}>
         <header className={styles.topContainer}>
           <div className={styles.title}>KIRSTIN R. ABRAHAM, LCSW</div>
@@ -111,8 +110,8 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
             {!isMobile && (
               <Fragment>
                 <Button
-                  className={styles.moreButton}
                   id="moreButton"
+                  sx={{ color: '#fff' }}
                   onClick={handleMoreMenuOpen}
                   aria-controls={isMoreOpen ? 'basic-menu' : undefined}
                   aria-haspopup="true"
