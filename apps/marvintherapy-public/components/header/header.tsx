@@ -3,7 +3,7 @@ import Link from 'next/link';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Fragment, useState } from 'react';
-import { Button, Menu, MenuItem } from '@mui/material';
+import { Button, Menu, MenuItem, createTheme, useTheme } from '@mui/material';
 
 export const PmtHeader = (props: { backgroundUrl: string }) => {
   const [anchorElement, setAnchorElement] = useState(undefined);
@@ -16,6 +16,13 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
   const isOpen = !!anchorElement;
   const isMoreOpen = !!moreAnchorElement;
   const isMobile = useMediaQuery('(max-width: 800px)');
+
+  const theme = createTheme({
+    palette: {
+      primary: { main: '#46AD8D', contrastText: '#fff' },
+    },
+  });
+
   function getBackgroundStyle(): { [key: string]: string } {
     return {
       backgroundImage: 'url(' + props.backgroundUrl + ')',
@@ -101,34 +108,38 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
                   </Link>
                 );
               })}
-            <Button
-              className={styles.moreButton}
-              id="moreButton"
-              onClick={handleMoreMenuOpen}
-              aria-controls={isMoreOpen ? 'basic-menu' : undefined}
-              aria-haspopup="true"
-              aria-expanded={isMoreOpen ? 'true' : undefined}
-            >
-              More
-            </Button>
-            <Menu
-              MenuListProps={{
-                'aria-labelledby': 'moreButton',
-              }}
-              anchorEl={moreAnchorElement}
-              open={isMoreOpen}
-              onClose={handleMoreMenuClose}
-            >
-              {getMoreRoutes().map((moreItem) => {
-                return (
-                  <MenuItem key={moreItem.routePath}>
-                    <Link href={moreItem.routePath}>
-                      {moreItem.displayName}
-                    </Link>
-                  </MenuItem>
-                );
-              })}
-            </Menu>
+            {!isMobile && (
+              <Fragment>
+                <Button
+                  className={styles.moreButton}
+                  id="moreButton"
+                  onClick={handleMoreMenuOpen}
+                  aria-controls={isMoreOpen ? 'basic-menu' : undefined}
+                  aria-haspopup="true"
+                  aria-expanded={isMoreOpen ? 'true' : undefined}
+                >
+                  More
+                </Button>
+                <Menu
+                  MenuListProps={{
+                    'aria-labelledby': 'moreButton',
+                  }}
+                  anchorEl={moreAnchorElement}
+                  open={isMoreOpen}
+                  onClose={handleMoreMenuClose}
+                >
+                  {getMoreRoutes().map((moreItem) => {
+                    return (
+                      <MenuItem key={moreItem.routePath}>
+                        <Link href={moreItem.routePath}>
+                          {moreItem.displayName}
+                        </Link>
+                      </MenuItem>
+                    );
+                  })}
+                </Menu>
+              </Fragment>
+            )}
           </div>
         </header>
       </div>
