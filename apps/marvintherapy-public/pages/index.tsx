@@ -19,7 +19,7 @@ import { Fragment } from 'react';
 import PmtCard from '../components/card/card';
 import Image from 'next/image';
 import PmtFooter from '../components/footer/footer';
-import { ServiceType } from '../models/services.interface';
+import { CardType } from '../models/services.interface';
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 export const Index = () => {
@@ -49,7 +49,7 @@ export const Index = () => {
               cardActionRoute: '/services',
               cardTitle: INDIVIDUAL_TYPE_HEADER,
               cardDescription: INDIVIDUAL_TYPE_DESCRIPTION,
-              type: ServiceType.INDIVIDUAL_COUPLE,
+              type: CardType.INDIVIDUAL_COUPLE,
             }}
           />
           <PmtCard
@@ -57,7 +57,7 @@ export const Index = () => {
               cardActionRoute: '/services',
               cardTitle: CLINICAL_SUPERVISION_HEADER,
               cardDescription: CLINICAL_SUPERVISION_DESCRIPTION,
-              type: ServiceType.CLINICAL_SUPERVISION,
+              type: CardType.CLINICAL_SUPERVISION,
             }}
           />
           <PmtCard
@@ -65,7 +65,7 @@ export const Index = () => {
               cardActionRoute: '/services',
               cardTitle: TELEHEALTH_HEADER,
               cardDescription: TELEHEALTH_DESCRIPTION,
-              type: ServiceType.TELEHEALTH,
+              type: CardType.TELEHEALTH,
             }}
           />
         </div>
