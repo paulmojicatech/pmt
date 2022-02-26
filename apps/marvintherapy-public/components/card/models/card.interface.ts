@@ -1,10 +1,17 @@
 import { ServiceType } from '../../../models/services.interface';
 
-export type IndividualsCouplesTherapy = {
+export type ServiceCardProp = {
   type: ServiceType;
-  isPartial: boolean;
   cardTitle: string;
   cardDescription: string;
+};
+
+export type PartialServiceCardProp = ServiceCardProp & {
+  cardActionRoute: string;
+};
+
+export type IndividualsCouplesTherapy = ServiceCardProp & {
+  type: ServiceType;
   treatments: {
     title: string;
     typesOfTreatments: string[];
@@ -12,14 +19,10 @@ export type IndividualsCouplesTherapy = {
   summary: string;
 };
 
-export type ClinicalTherapy = Omit<IndividualsCouplesTherapy, 'treatments'> & {
+export type ClinicalTherapy = ServiceCardProp & {
   supervisionTypes: {
     title: string;
     items: string[];
   };
+  summary: string;
 };
-
-export type ServiceCardProps = Omit<
-  IndividualsCouplesTherapy,
-  'treatments' | 'summary'
->;
