@@ -4,6 +4,7 @@ import {
   IndividualsCouplesTherapy,
   PartialServiceCardProp,
   CardProps,
+  HowCanItHelp,
 } from './models/card.interface';
 import CardContent from '@mui/material/CardContent';
 import Typeography from '@mui/material/Typography';
@@ -86,6 +87,16 @@ export const PmtCard = (props: CardProps) => {
             )}
             {props.type === CardType.TELEHEALTH && (
               <Typeography>{props.cardDescription}</Typeography>
+            )}
+            {props.type === CardType.HOW_CAN_IT_HELP && (
+              <Fragment>
+                <Typeography>{props.cardDescription}</Typeography>
+                <ul>
+                  {(props as HowCanItHelp)?.ways.map((way, index) => {
+                    return <li key={`w_${index}`}>{way}</li>;
+                  })}
+                </ul>
+              </Fragment>
             )}
           </CardContent>
         </Card>

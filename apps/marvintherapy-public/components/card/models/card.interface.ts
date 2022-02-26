@@ -27,6 +27,6 @@ export type ClinicalTherapy = CardProps & {
   summary: string;
 };
 
-export type HowCanIHelp = CardProps & {
+export type HowCanItHelp = CardProps & {
   ways: string[];
 };
