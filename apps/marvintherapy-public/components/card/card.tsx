@@ -2,7 +2,8 @@ import Card from '@mui/material/Card';
 import {
   ClinicalTherapy,
   IndividualsCouplesTherapy,
-  ServiceCardProps,
+  PartialServiceCardProp,
+  ServiceCardProp,
 } from './models/card.interface';
 import CardContent from '@mui/material/CardContent';
 import Typeography from '@mui/material/Typography';
@@ -11,8 +12,8 @@ import Button from '@mui/material/Button';
 import { ServiceType } from '../../models/services.interface';
 import styles from './card.module.scss';
 
-export const PmtCard = (props: ServiceCardProps) => {
-  if (props.isPartial) {
+export const PmtCard = (props: ServiceCardProp) => {
+  if ((props as PartialServiceCardProp)?.cardActionRoute) {
     return (
       <Card sx={{ width: '30%' }}>
         <CardContent>
@@ -27,7 +28,12 @@ export const PmtCard = (props: ServiceCardProps) => {
           </Typeography>
         </CardContent>
         <CardActions>
-          <Button size="small">Learn More</Button>
+          <Button
+            size="small"
+            href={(props as PartialServiceCardProp).cardActionRoute}
+          >
+            Learn More
+          </Button>
         </CardActions>
       </Card>
     );
@@ -71,7 +77,7 @@ export const PmtCard = (props: ServiceCardProps) => {
             {props.cardDescription}
           </Typeography>
           <Typeography>
-            {(props as IndividualsCouplesTherapy).treatments.title}
+            {(props as IndividualsCouplesTherapy)?.treatments?.title}
           </Typeography>
           <ul className={styles.listContainer}>
             {(

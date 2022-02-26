@@ -19,13 +19,12 @@ import Button from '@mui/material/Button';
 import {
   ClinicalTherapy,
   IndividualsCouplesTherapy,
-  ServiceCardProps,
+  ServiceCardProp,
 } from '../../components/card/models/card.interface';
 import Image from 'next/image';
 
 export const Services = () => {
-  const initialState: ServiceCardProps = {
-    isPartial: false,
+  const initialState: ServiceCardProp = {
     type: ServiceType.CLINICAL_SUPERVISION,
     cardTitle: CLINICAL_SUPERVISION_HEADER,
     cardDescription: CLINICAL_SUPERVISION_DESCRIPTION,
@@ -39,22 +38,20 @@ export const Services = () => {
 
   const individualCard: IndividualsCouplesTherapy = {
     type: ServiceType.INDIVIDUAL_COUPLE,
-    isPartial: false,
     cardTitle: INDIVIDUAL_TYPE_HEADER,
     cardDescription: INDIVIDUAL_TYPE_DESCRIPTION,
     treatments: INDIVIDUAL_THERAPY_ITEMS,
     summary: `Kirstin works with a wide range of emotional and behavioral issues that occur throughout the life span. In a comfortable and supportive atmosphere, she offers a highly personalized approach, tailored to each of her clients' individual needs. Phone and video therapy sessions are also available through a HIPAA secured private network for clients who cannot make an in-person appointment.`,
   };
 
-  const telehealthCard: ServiceCardProps = {
+  const telehealthCard: ServiceCardProp = {
     type: ServiceType.TELEHEALTH,
-    isPartial: false,
     cardTitle: TELEHEALTH_HEADER,
     cardDescription: TELEHEALTH_DESCRIPTION,
   };
 
   const [selectedService, setService] = useState(
-    clinicalCard as ServiceCardProps
+    clinicalCard as ServiceCardProp
   );
 
   return (

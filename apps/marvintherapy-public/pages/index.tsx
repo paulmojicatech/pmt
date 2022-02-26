@@ -46,7 +46,7 @@ export const Index = () => {
         <div className={styles.cardSection}>
           <PmtCard
             {...{
-              isPartial: true,
+              cardActionRoute: '/services',
               cardTitle: INDIVIDUAL_TYPE_HEADER,
               cardDescription: INDIVIDUAL_TYPE_DESCRIPTION,
               type: ServiceType.INDIVIDUAL_COUPLE,
@@ -54,7 +54,7 @@ export const Index = () => {
           />
           <PmtCard
             {...{
-              isPartial: true,
+              cardActionRoute: '/services',
               cardTitle: CLINICAL_SUPERVISION_HEADER,
               cardDescription: CLINICAL_SUPERVISION_DESCRIPTION,
               type: ServiceType.CLINICAL_SUPERVISION,
@@ -62,7 +62,7 @@ export const Index = () => {
           />
           <PmtCard
             {...{
-              isPartial: true,
+              cardActionRoute: '/services',
               cardTitle: TELEHEALTH_HEADER,
               cardDescription: TELEHEALTH_DESCRIPTION,
               type: ServiceType.TELEHEALTH,
