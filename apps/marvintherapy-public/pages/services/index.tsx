@@ -2,7 +2,7 @@ import PmtHeader from '../../components/header/header';
 import PmtCard from '../../components/card/card';
 import PmtFooter from '../../components/footer/footer';
 import { Fragment, useState } from 'react';
-import { ServiceType } from '../../models/services.interface';
+import { CardType } from '../../models/services.interface';
 import {
   CLINICAL_SUPERVISION_DESCRIPTION,
   CLINICAL_SUPERVISION_HEADER,
@@ -19,13 +19,13 @@ import Button from '@mui/material/Button';
 import {
   ClinicalTherapy,
   IndividualsCouplesTherapy,
-  ServiceCardProp,
+  CardProps,
 } from '../../components/card/models/card.interface';
 import Image from 'next/image';
 
 export const Services = () => {
-  const initialState: ServiceCardProp = {
-    type: ServiceType.CLINICAL_SUPERVISION,
+  const initialState: CardProps = {
+    type: CardType.CLINICAL_SUPERVISION,
     cardTitle: CLINICAL_SUPERVISION_HEADER,
     cardDescription: CLINICAL_SUPERVISION_DESCRIPTION,
   };
@@ -37,22 +37,20 @@ export const Services = () => {
   };
 
   const individualCard: IndividualsCouplesTherapy = {
-    type: ServiceType.INDIVIDUAL_COUPLE,
+    type: CardType.INDIVIDUAL_COUPLE,
     cardTitle: INDIVIDUAL_TYPE_HEADER,
     cardDescription: INDIVIDUAL_TYPE_DESCRIPTION,
     treatments: INDIVIDUAL_THERAPY_ITEMS,
     summary: `Kirstin works with a wide range of emotional and behavioral issues that occur throughout the life span. In a comfortable and supportive atmosphere, she offers a highly personalized approach, tailored to each of her clients' individual needs. Phone and video therapy sessions are also available through a HIPAA secured private network for clients who cannot make an in-person appointment.`,
   };
 
-  const telehealthCard: ServiceCardProp = {
-    type: ServiceType.TELEHEALTH,
+  const telehealthCard: CardProps = {
+    type: CardType.TELEHEALTH,
     cardTitle: TELEHEALTH_HEADER,
     cardDescription: TELEHEALTH_DESCRIPTION,
   };
 
-  const [selectedService, setService] = useState(
-    clinicalCard as ServiceCardProp
-  );
+  const [selectedService, setService] = useState(clinicalCard as CardProps);
 
   return (
     <Fragment>

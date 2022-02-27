@@ -1,17 +1,17 @@
-import { ServiceType } from '../../../models/services.interface';
+import { CardType } from '../../../models/services.interface';
 
-export type ServiceCardProp = {
-  type: ServiceType;
+export type CardProps = {
+  type: CardType;
   cardTitle: string;
   cardDescription: string;
 };
 
-export type PartialServiceCardProp = ServiceCardProp & {
+export type PartialServiceCardProp = CardProps & {
   cardActionRoute: string;
 };
 
-export type IndividualsCouplesTherapy = ServiceCardProp & {
-  type: ServiceType;
+export type IndividualsCouplesTherapy = CardProps & {
+  type: CardType;
   treatments: {
     title: string;
     typesOfTreatments: string[];
@@ -19,10 +19,14 @@ export type IndividualsCouplesTherapy = ServiceCardProp & {
   summary: string;
 };
 
-export type ClinicalTherapy = ServiceCardProp & {
+export type ClinicalTherapy = CardProps & {
   supervisionTypes: {
     title: string;
     items: string[];
   };
   summary: string;
+};
+
+export type HowCanItHelp = CardProps & {
+  ways: string[];
 };
