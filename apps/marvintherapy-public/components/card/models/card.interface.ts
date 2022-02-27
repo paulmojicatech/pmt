@@ -30,3 +30,14 @@ export type ClinicalTherapy = CardProps & {
 export type HowCanItHelp = CardProps & {
   ways: string[];
 };
+
+export type DoYouTakeInsurance = CardProps & {
+  acceptedInsurances: {
+    header: string;
+    plans: string[];
+  };
+};
+
+export type IsItConfidential = CardProps & {
+  bulletPoints: string[];
+};

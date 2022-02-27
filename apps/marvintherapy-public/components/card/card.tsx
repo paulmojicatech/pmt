@@ -5,6 +5,8 @@ import {
   PartialServiceCardProp,
   CardProps,
   HowCanItHelp,
+  DoYouTakeInsurance,
+  IsItConfidential,
 } from './models/card.interface';
 import CardContent from '@mui/material/CardContent';
 import Typeography from '@mui/material/Typography';
@@ -85,7 +87,10 @@ export const PmtCard = (props: CardProps) => {
                 </Typeography>
               </Fragment>
             )}
-            {props.type === CardType.TELEHEALTH && (
+            {(props.type === CardType.TELEHEALTH ||
+              props.type === CardType.WHY_DO_PEOPLE_GO ||
+              props.type === CardType.WHAT_IS_IT_LIKE ||
+              props.type === CardType.MEDICATION_VS_PSYCHOTHERAPY) && (
               <Typeography>{props.cardDescription}</Typeography>
             )}
             {props.type === CardType.HOW_CAN_IT_HELP && (
@@ -95,6 +100,33 @@ export const PmtCard = (props: CardProps) => {
                   {(props as HowCanItHelp)?.ways.map((way, index) => {
                     return <li key={`w_${index}`}>{way}</li>;
                   })}
+                </ul>
+              </Fragment>
+            )}
+            {props.type === CardType.DO_YOU_TAKE_INSURANCE && (
+              <Fragment>
+                <Typeography>{props.cardDescription}</Typeography>
+                <Typeography>
+                  {(props as DoYouTakeInsurance)?.acceptedInsurances?.header}
+                </Typeography>
+                <ul>
+                  {(props as DoYouTakeInsurance)?.acceptedInsurances?.plans.map(
+                    (plan, index) => {
+                      return <li key={`p_${index}`}>{plan}</li>;
+                    }
+                  )}
+                </ul>
+              </Fragment>
+            )}
+            {props.type === CardType.IS_IT_CONFIDENTIAL && (
+              <Fragment>
+                <Typeography>{props.cardDescription}</Typeography>
+                <ul>
+                  {(props as IsItConfidential).bulletPoints.map(
+                    (point, index) => {
+                      return <li key={`bp_${index}`}>{point}</li>;
+                    }
+                  )}
                 </ul>
               </Fragment>
             )}
