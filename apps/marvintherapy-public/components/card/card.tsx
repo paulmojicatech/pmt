@@ -20,7 +20,7 @@ export const PmtCard = (props: CardProps) => {
   if ((props as PartialServiceCardProp)?.cardActionRoute) {
     return (
       <Fragment>
-        <Card sx={{ width: '30%' }}>
+        <Card sx={{ width: '30%', textAlign: 'center' }}>
           <CardContent>
             <Typeography
               gutterBottom
@@ -47,7 +47,7 @@ export const PmtCard = (props: CardProps) => {
   } else {
     return (
       <Fragment>
-        <Card sx={{ width: '75%' }}>
+        <Card sx={{ width: '100%' }}>
           <CardContent>
             <Typeography
               gutterBottom
