@@ -62,14 +62,14 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
         displayName: 'Common Questions',
         routePath: '/questions',
       },
+      {
+        displayName: 'Privacy & Policy',
+        routePath: '/privacy',
+      },
     ];
   }
   return (
     <Fragment>
-      <Head>
-        <title>Kirstin R. Abraham, LCSW</title>
-        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
-      </Head>
       <div className={styles.headerContainer} style={getBackgroundStyle()}>
         <header className={styles.topContainer}>
           <div className={styles.title}>KIRSTIN R. ABRAHAM, LCSW</div>
