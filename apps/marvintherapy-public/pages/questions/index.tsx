@@ -22,7 +22,9 @@ export const Questions = () => {
                     {question.cardTitle}
                   </Button>
                   {selectedQuestion === question.type && (
-                    <PmtCard {...question} />
+                    <div className={styles.cardContainer}>
+                      <PmtCard {...question} />
+                    </div>
                   )}
                 </div>
               </Fragment>
