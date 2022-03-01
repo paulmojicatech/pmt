@@ -23,7 +23,7 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
       backgroundImage: 'url(' + props.backgroundUrl + ')',
       backgroundRepeat: 'no-repeat',
       backgroundSize: 'cover',
-      height: '30rem',
+      height: !isMobile ? '30rem' : '15rem',
     };
   }
 
