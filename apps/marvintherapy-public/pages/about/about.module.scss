@@ -7,6 +7,14 @@
   display: flex;
   font-size: 1.25rem;
 }
+
+@media (max-width: 800px) {
+  .container {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
 .lastAboutMe {
   margin-top: unset;
   margin-bottom: 3rem;
@@ -34,9 +42,6 @@
 }
 
 @media (max-width: 800px) {
-  .imageContainer {
-    display: none;
-  }
 }
 
 @media (min-width: 800px) {
