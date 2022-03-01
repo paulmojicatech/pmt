@@ -85,7 +85,7 @@ export const Services = () => {
 
       <div className={styles.imageContainer}>
         <Image
-          src="/images/image_4.jpg"
+          src="/images/image_5.jpg"
           alt="Kirstin R. Abraham, LCSW"
           height={350}
           width={285}
