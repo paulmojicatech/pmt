@@ -46,3 +46,5 @@ libs/*/obj
 
 # Configs
 apps/pmt-security/appsettings.json
+apps/marvintherapy-api/marvintherapy-api/appsettings.Development.json
+apps/marvintherapy-api/marvintherapy-api/appsettings.json
