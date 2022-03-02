@@ -10,7 +10,7 @@ import Select from '@mui/material/Select';
 import DatePicker from '@mui/lab/DatePicker';
 
 export const Appointments = () => {
-  const [value, setValue] = useState(undefined);
+  const [dateVal, setDate] = useState(undefined);
 
   const shouldDisableDate = (date: Date) => {
     return date.getDay() !== 2 && date.getDay() !== 3 && date.getDay() !== 4;
@@ -30,19 +30,36 @@ export const Appointments = () => {
                 <DatePicker
                   shouldDisableDate={shouldDisableDate}
                   label="Date"
-                  value={value}
+                  value={dateVal}
                   onChange={(newValue) => {
-                    setValue(newValue);
+                    setDate(newValue);
                   }}
                   renderInput={(params) => <TextField {...params} />}
                 />
-                <Select sx={{ marginLeft: '1rem', width: '7rem' }}>
+                <Select
+                  sx={{ marginLeft: '1rem', width: '7rem' }}
+                  id="timeSelect"
+                >
                   <MenuItem value={'9AM'}>9AM</MenuItem>
                   <MenuItem value={'10AM'}>10AM</MenuItem>
                   <MenuItem value={'11AM'}>11AM</MenuItem>
                   <MenuItem value={'4PM'}>4PM</MenuItem>
                   <MenuItem value={'5PM'}>5PM</MenuItem>
                 </Select>
+              </div>
+              <div className={styles.userInfo}>
+                <TextField
+                  label="Name"
+                  sx={{ marginBottom: '2rem' }}
+                  id="name"
+                  variant={'outlined'}
+                />
+                <TextField
+                  label="Email"
+                  id="email"
+                  type={'email'}
+                  variant={'outlined'}
+                />
               </div>
             </LocalizationProvider>
           </form>

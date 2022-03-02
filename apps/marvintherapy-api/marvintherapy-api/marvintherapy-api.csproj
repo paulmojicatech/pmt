@@ -19,10 +19,16 @@
     <None Remove="DataAccess\" />
     <None Remove="MongoDB.Driver" />
     <None Remove="MongoDB.Bson" />
+    <None Remove="Services\Interfaces\" />
+    <None Remove="DataAccess\Interfaces\" />
+    <None Remove="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Controllers\" />
     <Folder Include="Services\" />
     <Folder Include="DataAccess\" />
+    <Folder Include="Services\Interfaces\" />
+    <Folder Include="DataAccess\Interfaces\" />
+    <Folder Include="Models\" />
   </ItemGroup>
 </Project>
