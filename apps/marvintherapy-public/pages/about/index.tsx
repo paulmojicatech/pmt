@@ -75,7 +75,7 @@ export const About = () => {
 
         <div className={styles.imageContainerBotton}>
           <Image
-            src="/images/image_4.jpg"
+            src="/images/image_3.jpg"
             alt="Kirstin R. Abraham, LCSW"
             width={285}
             height={350}
