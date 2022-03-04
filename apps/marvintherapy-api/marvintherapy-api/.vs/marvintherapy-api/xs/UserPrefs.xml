@@ -15,9 +15,7 @@
         <State name="__root__">
           <Node name="marvintherapy-api" expanded="True">
             <Node name="marvintherapy-api" expanded="True">
-              <Node name="Controllers" expanded="True">
-                <Node name="AppointmentsController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>

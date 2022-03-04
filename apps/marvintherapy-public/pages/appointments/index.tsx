@@ -11,7 +11,9 @@ import DatePicker from '@mui/lab/DatePicker';
 import { EmailService } from '../../utils/email.service';
 
 export const Appointments = () => {
-  const [dateVal, setDate] = useState(undefined);
+  const currentDate = new Date().toLocaleDateString();
+  const [dateVal, setDate] = useState(currentDate);
+  const [timeVal, setTime] = useState('9AM');
   const [nameVal, setName] = useState(undefined);
   const [emailVal, setEmail] = useState(undefined);
 
@@ -22,7 +24,11 @@ export const Appointments = () => {
   const emailSvc = new EmailService();
   const requestAppointment = async () => {
     try {
-      await emailSvc.requestAppointment(nameVal, emailVal, dateVal);
+      await emailSvc.requestAppointment(
+        nameVal,
+        emailVal,
+        `${dateVal} ${timeVal}`
+      );
       alert('Succcess');
     } catch (err) {
       console.log('ERROR', err);
@@ -45,13 +51,16 @@ export const Appointments = () => {
                   label="Date"
                   value={dateVal}
                   onChange={(newValue) => {
-                    setDate(newValue);
+                    setDate(newValue.toLocaleDateString());
                   }}
                   renderInput={(params) => <TextField {...params} />}
                 />
                 <Select
                   sx={{ marginLeft: '1rem', width: '7rem' }}
-                  id="timeSelect"
+                  value={timeVal}
+                  onChange={(ch) => {
+                    setTime(ch.target.value);
+                  }}
                 >
                   <MenuItem value={'9AM'}>9AM</MenuItem>
                   <MenuItem value={'10AM'}>10AM</MenuItem>
