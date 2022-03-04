@@ -1,21 +1,34 @@
 import PmtFooter from '../../components/footer/footer';
 import PmtHeader from '../../components/header/header';
-import { Fragment, useState } from 'react';
+import { Fragment, Ref, useState } from 'react';
 import styles from './appointments.module.scss';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
 
-import { MenuItem, TextField } from '@mui/material';
+import { Button, MenuItem, TextField } from '@mui/material';
 import Select from '@mui/material/Select';
 import DatePicker from '@mui/lab/DatePicker';
+import { EmailService } from '../../utils/email.service';
 
 export const Appointments = () => {
   const [dateVal, setDate] = useState(undefined);
+  const [nameVal, setName] = useState(undefined);
+  const [emailVal, setEmail] = useState(undefined);
 
   const shouldDisableDate = (date: Date) => {
     return date.getDay() !== 2 && date.getDay() !== 3 && date.getDay() !== 4;
   };
 
+  const emailSvc = new EmailService();
+  const requestAppointment = async () => {
+    try {
+      await emailSvc.requestAppointment(nameVal, emailVal, dateVal);
+      alert('Succcess');
+    } catch (err) {
+      console.log('ERROR', err);
+      alert('Error');
+    }
+  };
   return (
     <Fragment>
       <PmtHeader backgroundUrl="./images/appointments.jpg" />
@@ -52,6 +65,10 @@ export const Appointments = () => {
                   label="Name"
                   sx={{ marginBottom: '2rem' }}
                   id="name"
+                  value={nameVal}
+                  onChange={(ev) => {
+                    setName(ev.target.value);
+                  }}
                   variant={'outlined'}
                 />
                 <TextField
@@ -59,7 +76,16 @@ export const Appointments = () => {
                   id="email"
                   type={'email'}
                   variant={'outlined'}
+                  value={emailVal}
+                  onChange={(ev) => {
+                    setEmail(ev.target.value);
+                  }}
                 />
+              </div>
+              <div className={styles.sendContainer}>
+                <Button onClick={() => requestAppointment()}>
+                  Send Request
+                </Button>
               </div>
             </LocalizationProvider>
           </form>

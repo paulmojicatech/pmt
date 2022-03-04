@@ -14,6 +14,20 @@ builder.Services.AddControllers().AddJsonOptions(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// CORS
+// Add services to the container.
+string corsPolicy = "MY_CORS";
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: corsPolicy,
+                    builder =>
+                    {
+                      builder.WithHeaders("*");
+                      builder.WithMethods("*");
+                      builder.WithOrigins("*");
+                    });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,6 +42,6 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+app.UseCors(corsPolicy);
 app.Run();
 
