@@ -1,0 +1,40 @@
+﻿<Properties StartupConfiguration="{C1E0713A-2F2F-483D-BE06-F0941B65CC7F}|Default">
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/AppointmentsController.cs">
+    <Files>
+      <File FileName="Services/Interfaces/IEmailService.cs" Line="6" Column="10" />
+      <File FileName="Models/AppointmentRequest.cs" Line="14" Column="20" />
+      <File FileName="Services/AppointmentsApi.cs" Line="1" Column="1" />
+      <File FileName="Controllers/AppointmentsController.cs" Line="40" Column="44" />
+      <File FileName="Services/EmailApi.cs" Line="37" Column="61" />
+      <File FileName="appsettings.json" Line="8" Column="20" />
+      <File FileName="Program.cs" Line="27" Column="48" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="marvintherapy-api" expanded="True">
+            <Node name="marvintherapy-api" expanded="True">
+              <Node name="Controllers" expanded="True" />
+              <Node name="Models" expanded="True" />
+              <Node name="Services" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/Controllers/AppointmentsController.cs" relfile="Controllers/AppointmentsController.cs" line="38" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/Services/EmailApi.cs" relfile="Services/EmailApi.cs" line="42" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/Controllers/AppointmentsController.cs" relfile="Controllers/AppointmentsController.cs" line="45" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.ItemProperties.marvintherapy-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+</Properties>

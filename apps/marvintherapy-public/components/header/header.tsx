@@ -4,7 +4,6 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 import MenuIcon from '@mui/icons-material/Menu';
 import { Fragment, useState } from 'react';
 import { Button, Menu, MenuItem } from '@mui/material';
-import Head from 'next/head';
 
 export const PmtHeader = (props: { backgroundUrl: string }) => {
   const [anchorElement, setAnchorElement] = useState(undefined);
@@ -22,7 +21,7 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
     return {
       backgroundImage: 'url(' + props.backgroundUrl + ')',
       backgroundRepeat: 'no-repeat',
-      backgroundSize: 'cover',
+      backgroundSize: '100% 100%',
       height: !isMobile ? '30rem' : '15rem',
     };
   }
@@ -54,6 +53,10 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
 
   function getMoreRoutes(): { displayName: string; routePath: string }[] {
     return [
+      {
+        displayName: 'Appointment Request',
+        routePath: '/appointments',
+      },
       {
         displayName: 'Make a Payment',
         routePath: '/payment',
