@@ -26,7 +26,7 @@ namespace marvintherapy_api.Controllers
     [HttpGet]
     public async Task<IActionResult> GetAvailableAppointments()
     {
-      return BadRequest();
+      return Ok(_config.GetSection("EmailSettings")["SMTP_ADMIN"]);
     }
 
     [HttpPost]
@@ -38,7 +38,7 @@ namespace marvintherapy_api.Controllers
         string[] to = new string[] { _config.GetSection("EmailSettings")["SMTP_EMAIL"], _config.GetSection("EmailSettings")["SMTP_ADMIN"] };
         string body = $"New Appointment Request from {newRequest.name} with email address {newRequest.email} for the requested date {newRequest.requestDate}";
         _emailSvc.SendEmail(to, "New Appointment Request", body);
-        return Ok();
+        return Ok("Success Post");
       }
       catch (Exception ex)
       {

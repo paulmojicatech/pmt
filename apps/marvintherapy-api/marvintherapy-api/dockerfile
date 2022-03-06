@@ -1,0 +1,21 @@
+# Download Microsoft SDK container
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+
+WORKDIR /marvintherapy-api
+
+COPY ./*.csproj .
+RUN dotnet restore
+
+COPY . ./
+RUN dotnet publish -c Release -o out
+
+#Download Microsoft runtime container
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine as runtime
+
+WORKDIR /marvintherapy-api
+
+COPY --from=build /marvintherapy-api/out .
+
+EXPOSE 80
+
+ENTRYPOINT [ "dotnet", "marvintherapy-api.dll" ]

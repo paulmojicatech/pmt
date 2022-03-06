@@ -9,6 +9,7 @@ import CirclularProgress from '@mui/material/CircularProgress';
 import { Button, MenuItem, TextField } from '@mui/material';
 import Select from '@mui/material/Select';
 import DatePicker from '@mui/lab/DatePicker';
+import Image from 'next/image';
 import { EmailService } from '../../utils/email.service';
 
 export const Appointments = () => {
@@ -98,12 +99,23 @@ export const Appointments = () => {
                     />
                   </div>
                   <div className={styles.sendContainer}>
-                    <Button onClick={() => requestAppointment()}>
+                    <Button
+                      variant="contained"
+                      onClick={() => requestAppointment()}
+                    >
                       Send Request
                     </Button>
                   </div>
                 </LocalizationProvider>
               </form>
+            </div>
+            <div className={styles.imageContainer}>
+              <Image
+                src="/images/image_2.jpg"
+                alt="Kirstin R. Abraham, LCSW"
+                width={285}
+                height={350}
+              />
             </div>
           </div>
         )}
