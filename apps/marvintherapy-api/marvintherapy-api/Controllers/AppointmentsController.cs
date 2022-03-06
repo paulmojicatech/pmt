@@ -1,6 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mime;
+using System.Text;
+using System.Text.Json;
 using System.Threading.Tasks;
 using marvintherapy_api.Models;
 using marvintherapy_api.Services;
@@ -30,15 +33,27 @@ namespace marvintherapy_api.Controllers
     }
 
     [HttpPost]
-    public IActionResult RequestAnAppointment([FromBody] AppointmentRequest newRequest)
+    public async Task<IActionResult> RequestAnAppointment([FromBody] AppointmentRequest newRequest)
     {
       try
       {
 
         string[] to = new string[] { _config.GetSection("EmailSettings")["SMTP_EMAIL"], _config.GetSection("EmailSettings")["SMTP_ADMIN"] };
         string body = $"New Appointment Request from {newRequest.name} with email address {newRequest.email} for the requested date {newRequest.requestDate}";
-        _emailSvc.SendEmail(to, "New Appointment Request", body);
-        return Ok("Success Post");
+        object jsonObj = new AzureSendEmailBody
+        {
+          name = newRequest.name,
+          phone = string.Empty,
+          email = newRequest.email,
+          message = body
+        };
+        HttpClient httpAzureClient = new HttpClient();
+        using StringContent json = new(
+        JsonSerializer.Serialize(jsonObj),
+        Encoding.UTF8,
+        MediaTypeNames.Application.Json);
+        await httpAzureClient.PostAsync(_config.GetSection("AzureFunctionEndpoints")["SendManualEmail"], json);
+        return Ok();
       }
       catch (Exception ex)
       {
