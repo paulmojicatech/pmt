@@ -29,7 +29,7 @@ namespace marvintherapy_api.Controllers
     [HttpGet]
     public async Task<IActionResult> GetAvailableAppointments()
     {
-      return Ok(_config.GetSection("EmailSettings")["SMTP_ADMIN"]);
+      return Ok("Healh check");
     }
 
     [HttpPost]
