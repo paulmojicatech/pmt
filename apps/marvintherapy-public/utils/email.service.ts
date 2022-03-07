@@ -7,17 +7,21 @@ export class EmailService {
     name: string,
     email: string,
     requestDate: string
-  ): Promise<void> {
-    const body = JSON.stringify({ name, email, requestDate });
-    await fetch(`${this._sendEmailUrl}appointments`, {
-      method: 'POST',
-      body,
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Allow-Headers': '*',
-      },
-    });
-    return Promise.resolve();
+  ): Promise<Response> {
+    try {
+      const body = JSON.stringify({ name, email, requestDate });
+      const resp = await fetch(`${this._sendEmailUrl}appointments`, {
+        method: 'POST',
+        body,
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': '*',
+        },
+      });
+      return Promise.resolve(resp);
+    } catch (ex) {
+      return Promise.reject(ex);
+    }
   }
 }
