@@ -8,6 +8,8 @@
     "test": "nx test",
     "docker-build-security": "docker run -p 3000:80 --name pmt-security -d pmt-monorepo-security-image",
     "docker-run-security": "docker start pmt-security",
+    "docker-build-marvintherapy-public": "nx build --prod marvintherapy-public && docker build -t paulmojicatech/marvintherapy-public-image -f marvintherapy-public-dockerfile . && docker push paulmojicatech/marvintherapy-public-image",
+    "docker-build-marvintherapy-api": "cd apps/marvintherapy-api/marvintherapy-api && docker build -t paulmojicatech/marvintherapy-api-image . &&  docker push paulmojicatech/marvintherapy-api-image && ../../..",
     "grocery-ionic-ios": "nx build grocery-list-organizer && nx run grocery-list-organizer:sync:ios && nx run grocery-list-organizer:open:ios",
     "grocery-ionic-android": "nx build grocery-list-organizer && nx run grocery-list-organizer:sync:android && nx run grocery-list-organizer:open:android",
     "grocery-ionic-ios-prod": "nx build grocery-list-organizer --prod && nx run grocery-list-organizer:sync:ios && nx run grocery-list-organizer:open:ios",

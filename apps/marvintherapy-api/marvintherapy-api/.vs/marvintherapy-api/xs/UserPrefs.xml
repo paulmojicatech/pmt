@@ -5,10 +5,11 @@
       <File FileName="Services/Interfaces/IEmailService.cs" Line="6" Column="10" />
       <File FileName="Models/AppointmentRequest.cs" Line="14" Column="20" />
       <File FileName="Services/AppointmentsApi.cs" Line="1" Column="1" />
-      <File FileName="Controllers/AppointmentsController.cs" Line="40" Column="44" />
-      <File FileName="Services/EmailApi.cs" Line="37" Column="61" />
+      <File FileName="Controllers/AppointmentsController.cs" Line="41" Column="10" />
+      <File FileName="Services/EmailApi.cs" Line="23" Column="17" />
       <File FileName="appsettings.json" Line="8" Column="20" />
       <File FileName="Program.cs" Line="27" Column="48" />
+      <File FileName="appsettings.Development.json" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -18,6 +19,7 @@
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
+              <Node name="appsettings.json" expanded="True" />
             </Node>
           </Node>
         </State>
@@ -30,9 +32,7 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/Controllers/AppointmentsController.cs" relfile="Controllers/AppointmentsController.cs" line="38" column="1" />
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/Services/EmailApi.cs" relfile="Services/EmailApi.cs" line="42" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/Controllers/AppointmentsController.cs" relfile="Controllers/AppointmentsController.cs" line="45" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.marvintherapy-api PreferredExecutionTarget="/Applications/Google Chrome.app" />
