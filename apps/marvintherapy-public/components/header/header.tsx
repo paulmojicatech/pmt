@@ -58,6 +58,10 @@ export const PmtHeader = (props: { backgroundUrl: string }) => {
         routePath: '/appointments',
       },
       {
+        displayName: 'Contact Me',
+        routePath: '/contact',
+      },
+      {
         displayName: 'Make a Payment',
         routePath: '/payment',
       },

@@ -24,4 +24,32 @@ export class EmailService {
       return Promise.reject(ex);
     }
   }
+
+  async sendMessage(
+    name: string,
+    email: string,
+    phone: string,
+    message: string
+  ): Promise<void> {
+    const body = {
+      name,
+      email,
+      phone,
+      message,
+    };
+    try {
+      await fetch(`${settings.AZURE_SEND_EMAIL_URL}`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': '*',
+        },
+      });
+      return Promise.resolve();
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }
 }
