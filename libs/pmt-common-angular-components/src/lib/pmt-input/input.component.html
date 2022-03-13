@@ -1,4 +1,4 @@
-<mat-form-field *ngIf="!isMobile; else mobileInput;">
+<mat-form-field appearance="outline" *ngIf="!isMobile; else mobileInput;">
     <mat-label>{{label}}</mat-label>
     <input class="form-control" matInput type="{{type}}" [(ngModel)]="value" />
 </mat-form-field>

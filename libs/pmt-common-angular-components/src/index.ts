@@ -9,3 +9,5 @@ export * from './lib/pmt-simple-form/models/pmt-simple-form.interface';
 export { PmtMobileToolbarModule } from './lib/pmt-mobile-toolbar/pmt-mobile-toolbar.module';
 
 export { PmtLoginModule } from './lib/pmt-login/pmt-login.module';
+
+export { PmtAutocompleteModule } from './lib/pmt-autocomplete/pmt-autocomplete.module';

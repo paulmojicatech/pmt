@@ -1,0 +1,16 @@
+.grocery-item-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  font-size: 1.25rem;
+  padding: 1.25rem 0;
+  .item-name {
+    margin-left: 1rem;
+    flex: 5;
+  }
+  .qty {
+    position: relative;
+    right: 0;
+  }
+}
