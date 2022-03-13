@@ -1,4 +1,4 @@
-<pmt-mobile-toolbar title="Things to Get" [actionItems]="['create-outline']">
+<pmt-mobile-toolbar title="Things to Get" [actionItems]="['create-outline']" (actionItemEvent)="itemsToGetStateSvc.setIsModalOpen(true)">
 </pmt-mobile-toolbar>
 
 <ion-content>

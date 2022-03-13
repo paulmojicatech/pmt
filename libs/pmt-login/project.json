@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/pmt-login",
+  "sourceRoot": "libs/pmt-login/src",
+  "prefix": "pmt",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/pmt-login"],
+      "options": {
+        "jestConfig": "libs/pmt-login/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/pmt-login/src/**/*.ts",
+          "libs/pmt-login/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

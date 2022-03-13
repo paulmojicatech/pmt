@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  GlobalState,
   ProfileState,
   routeToProfileModule,
-} from '@pmt/grocery-list-organizer-shared-business-logic';
+} from '@pmt/grocery-list-organizer-business-logic-profile';
 
 @Component({
   selector: 'pmt-profile',

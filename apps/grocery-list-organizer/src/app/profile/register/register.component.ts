@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { PmtFormControl } from '@pmt/pmt-common-angular-components';
+import { PmtFormControl } from '@pmt/pmt-simple-form';
 import { RegisterFormService } from '@pmt/pmt-login-shared-business-logic';
 
 @Component({

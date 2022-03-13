@@ -1,0 +1,28 @@
+{
+  "projectType": "library",
+  "root": "libs/grocery-list-organizer-business-logic-profile",
+  "sourceRoot": "libs/grocery-list-organizer-business-logic-profile/src",
+  "prefix": "pmt",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": [
+        "coverage/libs/grocery-list-organizer-business-logic-profile"
+      ],
+      "options": {
+        "jestConfig": "libs/grocery-list-organizer-business-logic-profile/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/grocery-list-organizer-business-logic-profile/src/**/*.ts",
+          "libs/grocery-list-organizer-business-logic-profile/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

@@ -4,6 +4,7 @@ export enum IonicStorageType {
   COMPLETED_ITEMS,
   REFRESH_TOKEN,
   LINKED_ACCOUNT,
+  ITEMS_TO_GET,
 }
 
 export interface GroceryItem {

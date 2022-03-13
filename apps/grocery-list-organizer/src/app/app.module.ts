@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
-import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -22,7 +21,6 @@ import { EffectsModule } from '@ngrx/effects';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
-    BrowserModule,
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),

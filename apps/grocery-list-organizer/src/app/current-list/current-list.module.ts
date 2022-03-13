@@ -2,10 +2,8 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { Route, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import {
-  PmtInputModule,
-  PmtMobileToolbarModule,
-} from '@pmt/pmt-common-angular-components';
+import { PmtMobileToolbarModule } from '@pmt/pmt-mobile-toolbar';
+import { PmtInputModule } from '@pmt/pmt-input';
 import { CurrentListComponent } from './current-list.component';
 
 const routes: Route[] = [

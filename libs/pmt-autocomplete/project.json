@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/pmt-autocomplete",
+  "sourceRoot": "libs/pmt-autocomplete/src",
+  "prefix": "pmt",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/pmt-autocomplete"],
+      "options": {
+        "jestConfig": "libs/pmt-autocomplete/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/pmt-autocomplete/src/**/*.ts",
+          "libs/pmt-autocomplete/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
