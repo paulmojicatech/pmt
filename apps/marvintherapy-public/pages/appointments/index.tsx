@@ -4,7 +4,7 @@ import { Fragment, useState } from 'react';
 import styles from './appointments.module.scss';
 import AdapterDateFns from '@mui/lab/AdapterDateFns';
 import LocalizationProvider from '@mui/lab/LocalizationProvider';
-import CirclularProgress from '@mui/material/CircularProgress';
+import CircularProgress from '@mui/material/CircularProgress';
 
 import { Button, MenuItem, TextField } from '@mui/material';
 import Select from '@mui/material/Select';
@@ -40,7 +40,6 @@ export const Appointments = () => {
         emailVal,
         `${dateVal} ${timeVal}`
       );
-      console.log('RESP', resp);
       if (resp.status === 200) {
         setState({
           ...state,
@@ -164,7 +163,7 @@ export const Appointments = () => {
             />
           </Fragment>
         )}
-        {isSending && <CirclularProgress />}
+        {isSending && <CircularProgress />}
       </main>
       <PmtFooter />
     </Fragment>

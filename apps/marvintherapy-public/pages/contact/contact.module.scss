@@ -1,6 +1,12 @@
 .container {
   display: flex;
   justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.imageContainer {
+  margin-top: 2rem;
 }
 
 .formContainer {
@@ -11,4 +17,8 @@
   padding-top: 1rem;
   justify-content: center;
   align-items: center;
+}
+
+.sendContainer {
+  align-self: flex-end;
 }
