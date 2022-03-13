@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'pmt-mobile-toolbar',
@@ -12,4 +12,9 @@ export class PmtMobileToolbarComponent {
   hasBack = false;
   @Input()
   defaultHref = '';
+  @Input()
+  actionItems: string[] = [];
+
+  @Output()
+  actionItemEvent = new EventEmitter<string>();
 }

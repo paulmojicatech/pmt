@@ -1,1 +1,19 @@
-<p>items-to-get works!</p>
+<pmt-mobile-toolbar title="Things to Get" [actionItems]="['create-outline']">
+</pmt-mobile-toolbar>
+
+<ion-content>
+    <ion-list>
+        <ion-item lines="full">
+            <div class="grocery-item-container">
+                <ion-checkbox class="checkbox"></ion-checkbox>
+                <span class="item-name">Milk</span>
+                <span class="qty">Qty: 1</span>
+            </div>
+        </ion-item>
+    </ion-list>
+    <ion-modal [isOpen]="false">
+        <ng-template>
+            <pmt-autocomplete label="Enter an item"></pmt-autocomplete>
+        </ng-template>
+    </ion-modal>
+</ion-content>
