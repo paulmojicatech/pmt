@@ -1,19 +1,34 @@
-<pmt-mobile-toolbar title="Things to Get" [actionItems]="['create-outline']" (actionItemEvent)="itemsToGetStateSvc.setIsModalOpen(true)">
+<pmt-mobile-toolbar title="Things to Get" [actionItems]="['create-outline']"
+    (actionItemEvent)="itemsToGetStateSvc.setIsModalOpen(true)">
 </pmt-mobile-toolbar>
 
-<ion-content>
+<ion-content *ngIf="viewModel$ | async as viewModel">
+    
     <ion-list>
-        <ion-item lines="full">
+        <ion-item *ngFor="let item of viewModel.itemsNeeded" lines="full">
             <div class="grocery-item-container">
                 <ion-checkbox class="checkbox"></ion-checkbox>
-                <span class="item-name">Milk</span>
-                <span class="qty">Qty: 1</span>
+                <span class="item-name">{{item.name}}</span>
+                <span class="qty">Qty: {{item.qty}}</span>
             </div>
         </ion-item>
     </ion-list>
-    <ion-modal [isOpen]="false">
+    <ion-modal [isOpen]="viewModel.isModalOpen">
         <ng-template>
-            <pmt-autocomplete label="Enter an item"></pmt-autocomplete>
+            <pmt-mobile-toolbar title="Add item" [actionItems]="['close-outline']" (actionItemEvent)="itemsToGetStateSvc.setIsModalOpen(false)"></pmt-mobile-toolbar>
+            <div class="form-container">
+                <form novalidate [formGroup]="itemsToGetForm">
+                    <div class="autocomplete-container">
+                        <pmt-autocomplete (valueChangedEv)="handleAutocompleteChangeEv($event)" [allItems]="viewModel.allAvailableItems" label="Enter an item"></pmt-autocomplete>
+                    </div>
+                    <pmt-input formControlName="qty" label="Qty"></pmt-input>
+                    <div class="action-container">
+                        <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
+                    </div>
+                </form>
+            </div>
         </ng-template>
     </ion-modal>
+    
+
 </ion-content>

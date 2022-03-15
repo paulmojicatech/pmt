@@ -6,8 +6,10 @@ import {
   IonicStorageService,
   GroceryItem,
   IonicStorageType,
+  AvailableGroceryItem,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
+  loadAllAvailableItems,
   loadItemsToGet,
   loadItemsToGetSucccess,
 } from '../actions/items-to-get.actions';
@@ -35,6 +37,21 @@ export class ItemsToGetEffects {
         )
       ),
       map((items) => loadItemsToGetSucccess({ items }))
+    )
+  );
+
+  loadAllAvailableItems$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(loadItemsToGet),
+      switchMap(() =>
+        this._storageSvc.getItem(IonicStorageType.AVAILABLE_ITEMS).pipe(
+          map((itemsString) => {
+            const allAvailableItems: AvailableGroceryItem[] =
+              JSON.parse(itemsString);
+            return loadAllAvailableItems({ allAvailableItems });
+          })
+        )
+      )
     )
   );
 }

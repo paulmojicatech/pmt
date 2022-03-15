@@ -17,3 +17,8 @@ export const getIsAddItemsToGetModelOpen = createSelector(
   itemsToGetState,
   (state) => state.isAddItemModalVisible
 );
+
+export const getAllAvailableItems = createSelector(
+  itemsToGetState,
+  (state) => state.allAvailableItems
+);

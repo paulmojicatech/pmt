@@ -8,10 +8,10 @@ export enum IonicStorageType {
 }
 
 export interface GroceryItem {
-  id: string;
   name: string;
   qty: number;
-  datePurchased: string;
+  id?: string;
+  datePurchased?: string;
   dateUsed?: string;
   qtyUsed?: number;
   dateThrownAway?: string;

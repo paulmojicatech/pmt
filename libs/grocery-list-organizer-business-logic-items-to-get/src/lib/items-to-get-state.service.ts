@@ -1,11 +1,27 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, ignoreElements, merge, Observable, tap } from 'rxjs';
 import {
+  CurrentGroceryItem,
+  GroceryItem,
+} from '@pmt/grocery-list-organizer-shared-business-logic';
+import {
+  BehaviorSubject,
+  ignoreElements,
+  map,
+  merge,
+  Observable,
+  tap,
+} from 'rxjs';
+import {
+  addItemToGet,
   loadItemsToGet,
   setIsItemsToGetModalOpen,
 } from './actions/items-to-get.actions';
-import { getIsAddItemsToGetModelOpen, getItemsToGet } from './index';
+import {
+  getAllAvailableItems,
+  getIsAddItemsToGetModelOpen,
+  getItemsToGet,
+} from './index';
 import { ItemsToGetState } from './models/items-to-get-state.interface';
 import { ItemsToGetViewModel } from './models/items-to-get.interface';
 
@@ -17,6 +33,7 @@ export class ItemsToGetStateService {
     itemsNeeded: [],
     noItemsText: 'You currently do not have any items on your grocery list.',
     isModalOpen: false,
+    allAvailableItems: [],
   };
 
   private _viewModelSub$ = new BehaviorSubject<ItemsToGetViewModel>(
@@ -46,11 +63,28 @@ export class ItemsToGetStateService {
       }),
       ignoreElements()
     );
+    const allAvailableItems$ = this._store.select(getAllAvailableItems).pipe(
+      map((allAvailableItems) => {
+        return allAvailableItems.map((item) => item.name);
+      }),
+      tap((allAvailableItems) => {
+        this._viewModelSub$.next({
+          ...this._viewModelSub$.getValue(),
+          allAvailableItems,
+        });
+      }),
+      ignoreElements()
+    );
 
-    return merge(this.viewModel$, items$, isModalOpen$);
+    return merge(this.viewModel$, items$, isModalOpen$, allAvailableItems$);
   }
 
   setIsModalOpen(isOpen: boolean): void {
     this._store.dispatch(setIsItemsToGetModalOpen({ isOpen }));
+  }
+
+  addItem(itemToAdd: GroceryItem): void {
+    this._store.dispatch(addItemToGet({ item: itemToAdd }));
+    this._store.dispatch(setIsItemsToGetModalOpen({ isOpen: false }));
   }
 }
