@@ -1,30 +1,16 @@
-import { Component, forwardRef, OnInit } from '@angular/core';
-import {
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  NG_VALUE_ACCESSOR,
-  Validators,
-} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {
   ItemsToGetStateService,
   ItemsToGetViewModel,
 } from '@pmt/grocery-list-organizer-business-logic-items-to-get';
 import { GroceryItem } from '@pmt/grocery-list-organizer-shared-business-logic';
-import { PmtAutocompleteComponent } from '@pmt/pmt-autocomplete';
 import { Observable } from 'rxjs';
 
 @Component({
   selector: 'pmt-items-to-get',
   templateUrl: './items-to-get.component.html',
   styleUrls: ['./items-to-get.component.scss'],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => PmtAutocompleteComponent),
-      multi: true,
-    },
-  ],
 })
 export class ItemsToGetComponent implements OnInit {
   viewModel$!: Observable<ItemsToGetViewModel>;
