@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { Route, RouterModule } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
-import { PmtLoginModule } from '@pmt/pmt-common-angular-components';
+import { PmtLoginModule } from '@pmt/pmt-login';
 import { RemoteEntryComponent } from './entry.component';
 
 const routes: Route[] = [

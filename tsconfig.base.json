@@ -15,15 +15,29 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@pmt/grocery-list-organizer-business-logic-current-grocery-items": [
+        "libs/grocery-list-organizer-business-logic-current-grocery-items/src/index.ts"
+      ],
+      "@pmt/grocery-list-organizer-business-logic-items-to-get": [
+        "libs/grocery-list-organizer-business-logic-items-to-get/src/index.ts"
+      ],
+      "@pmt/grocery-list-organizer-business-logic-profile": [
+        "libs/grocery-list-organizer-business-logic-profile/src/index.ts"
+      ],
       "@pmt/grocery-list-organizer-shared-business-logic": [
         "libs/grocery-list-organizer-shared-business-logic/src/index.ts"
       ],
+      "@pmt/pmt-autocomplete": ["libs/pmt-autocomplete/src/index.ts"],
       "@pmt/pmt-common-angular-components": [
         "libs/pmt-common-angular-components/src/index.ts"
       ],
+      "@pmt/pmt-input": ["libs/pmt-input/src/index.ts"],
+      "@pmt/pmt-login": ["libs/pmt-login/src/index.ts"],
       "@pmt/pmt-login-shared-business-logic": [
         "libs/pmt-login-shared-business-logic/src/index.ts"
-      ]
+      ],
+      "@pmt/pmt-mobile-toolbar": ["libs/pmt-mobile-toolbar/src/index.ts"],
+      "@pmt/pmt-simple-form": ["libs/pmt-simple-form/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

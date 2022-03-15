@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/pmt-mobile-toolbar",
+  "sourceRoot": "libs/pmt-mobile-toolbar/src",
+  "prefix": "pmt",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/pmt-mobile-toolbar"],
+      "options": {
+        "jestConfig": "libs/pmt-mobile-toolbar/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/pmt-mobile-toolbar/src/**/*.ts",
+          "libs/pmt-mobile-toolbar/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

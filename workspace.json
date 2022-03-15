@@ -2,6 +2,9 @@
   "version": 2,
   "projects": {
     "grocery-list-organizer": "apps/grocery-list-organizer",
+    "grocery-list-organizer-business-logic-current-grocery-items": "libs/grocery-list-organizer-business-logic-current-grocery-items",
+    "grocery-list-organizer-business-logic-items-to-get": "libs/grocery-list-organizer-business-logic-items-to-get",
+    "grocery-list-organizer-business-logic-profile": "libs/grocery-list-organizer-business-logic-profile",
     "grocery-list-organizer-e2e": "apps/grocery-list-organizer-e2e",
     "grocery-list-organizer-shared-business-logic": "libs/grocery-list-organizer-shared-business-logic",
     "marvintherapy-public": "apps/marvintherapy-public",
@@ -10,7 +13,12 @@
     "mfe-docs-e2e": "apps/mfe-docs-e2e",
     "mfe-login": "apps/mfe-login",
     "mfe-login-e2e": "apps/mfe-login-e2e",
+    "pmt-autocomplete": "libs/pmt-autocomplete",
     "pmt-common-angular-components": "libs/pmt-common-angular-components",
-    "pmt-login-shared-business-logic": "libs/pmt-login-shared-business-logic"
+    "pmt-input": "libs/pmt-input",
+    "pmt-login": "libs/pmt-login",
+    "pmt-login-shared-business-logic": "libs/pmt-login-shared-business-logic",
+    "pmt-mobile-toolbar": "libs/pmt-mobile-toolbar",
+    "pmt-simple-form": "libs/pmt-simple-form"
   }
 }

@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-import { PmtMobileToolbarModule } from '@pmt/pmt-common-angular-components';
+import { PmtMobileToolbarModule } from '@pmt/pmt-mobile-toolbar';
 
 import { CurrentListComponent } from './current-list.component';
 

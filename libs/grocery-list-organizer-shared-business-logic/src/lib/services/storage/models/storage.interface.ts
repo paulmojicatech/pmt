@@ -4,13 +4,14 @@ export enum IonicStorageType {
   COMPLETED_ITEMS,
   REFRESH_TOKEN,
   LINKED_ACCOUNT,
+  ITEMS_TO_GET,
 }
 
 export interface GroceryItem {
-  id: string;
   name: string;
   qty: number;
-  datePurchased: string;
+  id?: string;
+  datePurchased?: string;
   dateUsed?: string;
   qtyUsed?: number;
   dateThrownAway?: string;

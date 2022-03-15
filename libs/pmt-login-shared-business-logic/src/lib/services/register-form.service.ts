@@ -6,7 +6,7 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { PmtFormControl } from '@pmt/pmt-common-angular-components';
+import { PmtFormControl } from '@pmt/pmt-simple-form';
 import { crossFieldEqualValidator } from '../cusotm-validators/register.validators';
 
 @Injectable({
