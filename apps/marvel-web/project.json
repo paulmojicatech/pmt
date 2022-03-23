@@ -1,0 +1,94 @@
+{
+  "projectType": "application",
+  "root": "apps/marvel-web",
+  "sourceRoot": "apps/marvel-web/src",
+  "prefix": "pmt",
+  "targets": {
+    "build": {
+      "executor": "@angular-devkit/build-angular:browser",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/marvel-web",
+        "index": "apps/marvel-web/src/index.html",
+        "main": "apps/marvel-web/src/main.ts",
+        "polyfills": "apps/marvel-web/src/polyfills.ts",
+        "tsConfig": "apps/marvel-web/tsconfig.app.json",
+        "inlineStyleLanguage": "scss",
+        "assets": [
+          "apps/marvel-web/src/favicon.ico",
+          "apps/marvel-web/src/assets"
+        ],
+        "styles": ["apps/marvel-web/src/styles.scss"],
+        "scripts": []
+      },
+      "configurations": {
+        "production": {
+          "budgets": [
+            {
+              "type": "initial",
+              "maximumWarning": "500kb",
+              "maximumError": "1mb"
+            },
+            {
+              "type": "anyComponentStyle",
+              "maximumWarning": "2kb",
+              "maximumError": "4kb"
+            }
+          ],
+          "fileReplacements": [
+            {
+              "replace": "apps/marvel-web/src/environments/environment.ts",
+              "with": "apps/marvel-web/src/environments/environment.prod.ts"
+            }
+          ],
+          "outputHashing": "all"
+        },
+        "development": {
+          "buildOptimizer": false,
+          "optimization": false,
+          "vendorChunk": true,
+          "extractLicenses": false,
+          "sourceMap": true,
+          "namedChunks": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-devkit/build-angular:dev-server",
+      "configurations": {
+        "production": {
+          "browserTarget": "marvel-web:build:production"
+        },
+        "development": {
+          "browserTarget": "marvel-web:build:development"
+        }
+      },
+      "defaultConfiguration": "development"
+    },
+    "extract-i18n": {
+      "executor": "@angular-devkit/build-angular:extract-i18n",
+      "options": {
+        "browserTarget": "marvel-web:build"
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "apps/marvel-web/src/**/*.ts",
+          "apps/marvel-web/src/**/*.html"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/marvel-web"],
+      "options": {
+        "jestConfig": "apps/marvel-web/jest.config.js",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
