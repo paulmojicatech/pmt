@@ -1,0 +1,28 @@
+{
+  "root": "apps/marvel-web-e2e",
+  "sourceRoot": "apps/marvel-web-e2e/src",
+  "projectType": "application",
+  "targets": {
+    "e2e": {
+      "executor": "@nrwl/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/marvel-web-e2e/cypress.json",
+        "devServerTarget": "marvel-web:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "marvel-web:serve:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/marvel-web-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["marvel-web"]
+}

@@ -1,0 +1,26 @@
+{
+  "projectType": "library",
+  "root": "libs/marvel-shared-components",
+  "sourceRoot": "libs/marvel-shared-components/src",
+  "prefix": "pmt",
+  "targets": {
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/marvel-shared-components"],
+      "options": {
+        "jestConfig": "libs/marvel-shared-components/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "options": {
+        "lintFilePatterns": [
+          "libs/marvel-shared-components/src/**/*.ts",
+          "libs/marvel-shared-components/src/**/*.html"
+        ]
+      }
+    }
+  },
+  "tags": []
+}
