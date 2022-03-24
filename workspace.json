@@ -7,6 +7,7 @@
     "grocery-list-organizer-business-logic-profile": "libs/grocery-list-organizer-business-logic-profile",
     "grocery-list-organizer-e2e": "apps/grocery-list-organizer-e2e",
     "grocery-list-organizer-shared-business-logic": "libs/grocery-list-organizer-shared-business-logic",
+    "marvel-shared-business-logic": "libs/marvel-shared-business-logic",
     "marvel-shared-components": "libs/marvel-shared-components",
     "marvel-web": "apps/marvel-web",
     "marvel-web-e2e": "apps/marvel-web-e2e",
