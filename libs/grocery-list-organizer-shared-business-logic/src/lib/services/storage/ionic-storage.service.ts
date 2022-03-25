@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
-import { from, Observable, take } from 'rxjs';
+import { EMPTY, from, Observable, take } from 'rxjs';
 import { IonicStorageType } from './models/storage.interface';
 import { PRELOADED_ITEMS } from './const/preload-items';
 
@@ -13,7 +13,8 @@ export class IonicStorageService {
   }
 
   getItem(key: IonicStorageType): Observable<string> {
-    const value$ = from(this._storage.get(`${key}`));
+    console.log('STORAGE', this?._storage);
+    const value$ = from(this._storage.get(`${key}`) ?? EMPTY);
     return value$.pipe(take(1));
   }
 

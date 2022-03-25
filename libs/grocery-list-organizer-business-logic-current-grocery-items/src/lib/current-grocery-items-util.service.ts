@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { filter, from, iif, map, Observable, of, switchMap } from 'rxjs';
-import { getCurrentItems } from '../../state/current-grocery-items';
-import { CurrentGroceryItemsState } from '../../state/current-grocery-items/reducer/current-grocery-items.reducer';
-import { IonicStorageService } from '../storage/ionic-storage.service';
 import {
+  IonicStorageService,
   CurrentGroceryItem,
   IonicStorageType,
-} from '../storage/models/storage.interface';
+} from '@pmt/grocery-list-organizer-shared-business-logic';
+import { from, map, Observable, of, switchMap } from 'rxjs';
+import { getCurrentItems } from './index';
+import { CurrentGroceryItemsState } from './reducer/current-grocery-items.reducer';
 
 @Injectable({
   providedIn: 'root',
