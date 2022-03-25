@@ -1,0 +1,6 @@
+{
+	"appId": "io.ionic.starter",
+	"appName": "grocery-list-organizer",
+	"webDir": "../../dist/apps/grocery-list-organizer",
+	"bundledWebRuntime": false
+}
