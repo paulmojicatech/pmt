@@ -13,7 +13,7 @@
             </div>
         </ion-item>
     </ion-list>
-    <ion-modal [isOpen]="viewModel.isModalOpen">
+    <ion-modal #ionModal [isOpen]="viewModel.isModalOpen">
         <ng-template>
             <pmt-mobile-toolbar title="Add item" [actionItems]="['close-outline']" (actionItemEvent)="itemsToGetStateSvc.setIsModalOpen(false)"></pmt-mobile-toolbar>
             <div class="form-container">
@@ -23,7 +23,7 @@
                     </div>
                     <pmt-input formControlName="qty" label="Qty"></pmt-input>
                     <div class="action-container">
-                        <button mat-raised-button color="primary" (click)="addItem()">Add Item</button>
+                        <button [disabled]="itemsToGetForm.invalid" mat-raised-button color="primary" (click)="addItem()">Add Item</button>
                     </div>
                 </form>
             </div>
