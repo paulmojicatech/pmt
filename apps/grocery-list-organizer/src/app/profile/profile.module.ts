@@ -29,8 +29,7 @@ const routes: Route[] = [
   {
     path: '',
     pathMatch: 'full',
-    component: ProfileComponent,
-    children: [],
+    redirectTo: 'login',
   },
 ];
 

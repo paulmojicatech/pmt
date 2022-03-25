@@ -10,6 +10,7 @@ export enum ItemsToGetActionType {
   SET_IS_ITEMS_TO_GET_MODAL_OPEN = '[Items to Get] Set Is Items to Get Modal Open',
   ADD_ITEM_TO_GET = '[Items to Get] Add Item to Get',
   LOAD_ALL_AVAILABLE_ITEMS = '[Items to Get] Load All Available Items',
+  ADD_ITEM_TO_ALL_AVAILABLE_ITEMS = '[Items to Get] Add item to all available items',
 }
 
 export const loadItemsToGet = createAction(
@@ -34,4 +35,9 @@ export const addItemToGet = createAction(
 export const loadAllAvailableItems = createAction(
   ItemsToGetActionType.LOAD_ALL_AVAILABLE_ITEMS,
   props<{ allAvailableItems: AvailableGroceryItem[] }>()
+);
+
+export const addItemToAllAvailableItems = createAction(
+  ItemsToGetActionType.ADD_ITEM_TO_ALL_AVAILABLE_ITEMS,
+  props<{ itemToAdd: AvailableGroceryItem }>()
 );

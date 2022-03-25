@@ -1,5 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 import {
+  addItemToAllAvailableItems,
   addItemToGet,
   loadAllAvailableItems,
   loadItemsToGetSucccess,
@@ -37,5 +38,9 @@ export const itemsToGetReducer = createReducer(
   on(loadAllAvailableItems, (state, { allAvailableItems }) => ({
     ...state,
     allAvailableItems,
-  }))
+  })),
+  on(addItemToAllAvailableItems, (state, { itemToAdd }) => {
+    const updatedItems = [...state.allAvailableItems, itemToAdd];
+    return { ...state, allAvailableItems: updatedItems };
+  })
 );
