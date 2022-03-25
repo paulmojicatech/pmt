@@ -1,4 +1,32 @@
 ﻿<Properties StartupConfiguration="{A111339C-BAB7-4B40-8B0F-C0A2E052363E}|Default">
-  <MonoDevelop.Ide.ItemProperties.marvel-api FirstBuild="True" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/TokenApi.cs">
+    <Files>
+      <File FileName="Controllers/TokenController.cs" Line="15" Column="1" NotebookId="1" />
+      <File FileName="Controllers/WeatherForecastController.cs" Line="1" Column="1" NotebookId="1" />
+      <File FileName="Services/TokenApi.cs" Line="10" Column="12" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="marvel-api" expanded="True">
+            <Node name="marvel-api" expanded="True">
+              <Node name="Services" expanded="True">
+                <Node name="TokenApi.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.marvel-api FirstBuild="True" PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

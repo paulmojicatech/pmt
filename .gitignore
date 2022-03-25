@@ -54,3 +54,4 @@ apps/marvintherapy-public/settings.ts
 apps/marvintherapy-public/env.ts
 apps/marvel-api/appsettings.Development.json
 apps/marvel-api/appsettings.json
+.env
