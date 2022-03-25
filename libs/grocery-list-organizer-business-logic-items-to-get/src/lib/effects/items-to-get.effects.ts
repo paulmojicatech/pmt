@@ -9,6 +9,7 @@ import {
   AvailableGroceryItem,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
+  addItemToAllAvailableItems,
   addItemToGet,
   loadAllAvailableItems,
   loadItemsToGet,
@@ -79,6 +80,41 @@ export class ItemsToGetEffects {
             JSON.stringify(updatedItems)
           );
         })
+      ),
+    { dispatch: false }
+  );
+
+  addItemToGetAddToAllAvailableItems$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(addItemToGet),
+      switchMap((action) =>
+        this._itemsToGetUtilSvc.isItemToAddInAllAvailableList(action.item).pipe(
+          map((isAvailable) => {
+            return { item: action.item, isAvailable };
+          })
+        )
+      ),
+      filter((newStream) => !newStream.isAvailable),
+      map((newStream) =>
+        addItemToAllAvailableItems({ itemToAdd: newStream.item })
+      )
+    )
+  );
+  addItemToAllAvailableItemsUpdateStorage$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(addItemToAllAvailableItems),
+        switchMap((action) =>
+          this._storageSvc.getItem(IonicStorageType.AVAILABLE_ITEMS).pipe(
+            tap((allItemsStr) => {
+              const allItems = [...JSON.parse(allItemsStr), action.itemToAdd];
+              this._storageSvc.setItem(
+                IonicStorageType.AVAILABLE_ITEMS,
+                JSON.stringify(allItems)
+              );
+            })
+          )
+        )
       ),
     { dispatch: false }
   );
