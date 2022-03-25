@@ -1,3 +1,11 @@
+export interface Character {
+  id: number;
+  name: string;
+  description: string;
+  thumbnail: string;
+  comics: { resourceURI: string }[];
+}
+
 export interface CharacterHttpResp {
   code: number;
   status: string;
@@ -10,7 +18,7 @@ export interface CharacterHttpResp {
     results: {
       id: number;
       name: string;
-      description: '';
+      description: string;
       modified: string;
       thumbnail: {
         path: string;

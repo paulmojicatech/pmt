@@ -105,6 +105,7 @@
     "react-dom": "17.0.2",
     "regenerator-runtime": "0.13.7",
     "rxjs": "~7.4.0",
+    "ts-md5": "^1.2.11",
     "tslib": "^2.0.0",
     "webpack": "^5.67.0",
     "zone.js": "~0.11.4"

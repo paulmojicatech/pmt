@@ -1,4 +1,5 @@
-import { createAction } from '@ngrx/store';
+import { createAction, props } from '@ngrx/store';
+import { Recomendation } from '../../../models/home.interface';
 
 export enum HomeActionType {
   ROUTE_TO_HOME = '[Home] Route To Home',
@@ -11,4 +12,9 @@ export const routeToHome = createAction(HomeActionType.ROUTE_TO_HOME);
 
 export const loadRecommendations = createAction(
   HomeActionType.LOAD_RECOMMENDATIONS
+);
+
+export const loadRecommendationsSuccess = createAction(
+  HomeActionType.LOAD_RECOMMENDATIONS_SUCCESS,
+  props<{ recomendations: Recomendation }>()
 );
