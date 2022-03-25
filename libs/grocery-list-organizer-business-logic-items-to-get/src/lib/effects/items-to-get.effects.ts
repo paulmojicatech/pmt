@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { filter, map, switchMap } from 'rxjs';
+import { filter, map, switchMap, tap } from 'rxjs';
 import { ItemsToGetUtilService } from '../items-to-get-util.service';
 import {
   IonicStorageService,
@@ -9,6 +9,7 @@ import {
   AvailableGroceryItem,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
+  addItemToGet,
   loadAllAvailableItems,
   loadItemsToGet,
   loadItemsToGetSucccess,
@@ -53,5 +54,32 @@ export class ItemsToGetEffects {
         )
       )
     )
+  );
+
+  addItemToGetAddToStorage$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(addItemToGet),
+        switchMap((action) =>
+          this._storageSvc.getItem(IonicStorageType.ITEMS_TO_GET).pipe(
+            map((currentItems) => {
+              const itemsToGet =
+                JSON.parse(currentItems)?.length > 0
+                  ? JSON.parse(currentItems)
+                  : [];
+              return { itemsToGet, action };
+            })
+          )
+        ),
+        tap((newStream) => {
+          const { itemsToGet, action } = newStream;
+          const updatedItems = [...itemsToGet, action.item];
+          this._storageSvc.setItem(
+            IonicStorageType.ITEMS_TO_GET,
+            JSON.stringify(updatedItems)
+          );
+        })
+      ),
+    { dispatch: false }
   );
 }
