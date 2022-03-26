@@ -19,3 +19,12 @@
     }
   }
 }
+
+.no-item-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 2.5rem;
+  font-weight: 400;
+}

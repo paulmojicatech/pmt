@@ -6,15 +6,15 @@ import {
   IonicStorageType,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
 import { from, map, Observable, of, switchMap } from 'rxjs';
-import { getCurrentItems } from './index';
-import { CurrentGroceryItemsState } from './reducer/current-grocery-items.reducer';
+import { getCurrentItems } from '../index';
+import { CurrentListState } from '../models/current-list.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CurrentGroceryItemsUtilService {
   constructor(
-    private _store: Store<CurrentGroceryItemsState>,
+    private _store: Store<CurrentListState>,
     private _storageSvc: IonicStorageService
   ) {}
 
