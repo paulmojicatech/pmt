@@ -4,7 +4,7 @@
 
 <ion-content *ngIf="viewModel$ | async as viewModel">
     
-    <ion-list>
+    <ion-list *ngIf="viewModel.itemsNeeded?.length; else noItemText">
         <ion-item *ngFor="let item of viewModel.itemsNeeded" lines="full">
             <div class="grocery-item-container">
                 <ion-checkbox class="checkbox"></ion-checkbox>
@@ -29,6 +29,12 @@
             </div>
         </ng-template>
     </ion-modal>
-    
+    <ng-template #noItemText>
+        <main class="no-item-section">
+            <div>
+                {{viewModel.noItemsText}}
+            </div>
+        </main>
+    </ng-template>
 
 </ion-content>
