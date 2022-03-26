@@ -1,10 +1,10 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { CurrentGroceryItemsState } from './reducer/current-grocery-items.reducer';
+import { CurrentListState } from './models/current-list.interface';
 
 export const currentGroceryItemStore =
-  createFeatureSelector<CurrentGroceryItemsState>('current-grocery-items');
+  createFeatureSelector<CurrentListState>('current-list');
 
 export const getCurrentItems = createSelector(
   currentGroceryItemStore,
-  (state) => state.currentItems
+  (state) => state.currentItems ?? []
 );

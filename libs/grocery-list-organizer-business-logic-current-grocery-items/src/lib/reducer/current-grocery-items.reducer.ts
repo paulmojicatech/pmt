@@ -1,12 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { CurrentGroceryItem } from '../../../services/storage/models/storage.interface';
 import { loadCurrentItemsSuccess } from '../actions/current-grocery-items.actions';
+import { CurrentListState } from '../models/current-list.interface';
 
-export interface CurrentGroceryItemsState {
-  currentItems?: CurrentGroceryItem[];
-}
-
-const initialState: CurrentGroceryItemsState = {
+const initialState: CurrentListState = {
   currentItems: undefined,
 };
 

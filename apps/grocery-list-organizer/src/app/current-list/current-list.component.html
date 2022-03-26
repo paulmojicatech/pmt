@@ -2,23 +2,31 @@
     <pmt-mobile-toolbar class="header" title="Current Items">
     </pmt-mobile-toolbar>
 
-    <ion-content>
-        <ion-list>
-            <ion-item lines="full">
+    <ion-content *ngIf="viewModel$ | async as viewModel">
+        <ion-list *ngIf="viewModel.currentItems?.length; else noItemText">
+            <ion-item lines="full" *ngFor="let item of viewModel.currentItems;">
                 <div class="grocery-item-container">
-                    <span class="item-name">Milk</span>
+                    <span class="item-name">{{item.name}}</span>
                     <div class="item-details">
                         <div class="details-container">
                             <span class="label">Date Purchased:</span>
-                            <span>1/1/2022</span>
+                            <span>{{item.datePurchased}}</span>
                         </div>
                         <div class="details-container">
                             <span class="label">Qty Left:</span>
-                            <span>3</span>
+                            <span>{{item.qty}}</span>
                         </div>
                     </div>
                 </div>
             </ion-item>
         </ion-list>
+        <ng-template #noItemText>
+            <main class="no-item-section">
+                <div>
+                    {{viewModel.noItemsText}}
+                </div>
+                
+            </main>
+        </ng-template>
     </ion-content>
 

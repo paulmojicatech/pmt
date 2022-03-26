@@ -18,6 +18,7 @@ import { from, Observable, Subject, takeLast, takeUntil } from 'rxjs';
   selector: 'pmt-items-to-get',
   templateUrl: './items-to-get.component.html',
   styleUrls: ['./items-to-get.component.scss'],
+  providers: [ItemsToGetStateService],
 })
 export class ItemsToGetComponent implements OnInit, AfterViewInit, OnDestroy {
   @ViewChild('ionModal')

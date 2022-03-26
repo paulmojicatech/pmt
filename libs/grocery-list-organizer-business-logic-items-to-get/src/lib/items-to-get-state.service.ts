@@ -25,9 +25,7 @@ import {
 import { ItemsToGetState } from './models/items-to-get-state.interface';
 import { ItemsToGetViewModel } from './models/items-to-get.interface';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class ItemsToGetStateService {
   readonly INITIAL_STATE: ItemsToGetViewModel = {
     itemsNeeded: [],

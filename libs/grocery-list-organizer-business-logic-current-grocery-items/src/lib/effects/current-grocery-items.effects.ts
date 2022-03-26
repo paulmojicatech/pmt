@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { map, switchMap } from 'rxjs';
-import { CurrentGroceryItemsUtilService } from '../current-grocery-items-util.service';
+import { CurrentGroceryItemsUtilService } from '../services/current-grocery-items-util.service';
 import {
   loadCurrentItems,
   loadCurrentItemsSuccess,
