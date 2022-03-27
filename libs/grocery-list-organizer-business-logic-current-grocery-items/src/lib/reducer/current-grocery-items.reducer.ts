@@ -1,5 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
-import { loadCurrentItemsSuccess } from '../actions/current-grocery-items.actions';
+import {
+  addItemToCurrentList,
+  loadCurrentItemsSuccess,
+} from '../actions/current-grocery-items.actions';
 import { CurrentListState } from '../models/current-list.interface';
 
 const initialState: CurrentListState = {
@@ -11,5 +14,9 @@ export const currentGroceryItemsReducer = createReducer(
   on(loadCurrentItemsSuccess, (state, { currentItems }) => ({
     ...state,
     currentItems,
-  }))
+  })),
+  on(addItemToCurrentList, (state, { itemToAdd }) => {
+    const updatedItems = [...(state.currentItems ?? []), itemToAdd];
+    return { ...state, currentItems: updatedItems };
+  })
 );

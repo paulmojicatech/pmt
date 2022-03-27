@@ -10,6 +10,13 @@ This is the UI piece of of the Grocery List Organizer mobile app.  It is build w
 + To open the app in Android Studio, run `npm run grocery-ionic-android`
 + To open the app in a web browser, run `nx serve grocery-list-organizer -o`
 
+## Deployment
++ Android
+  + Signing Key exists in `andrdoid-certs/android`.  Alias is `grocery-list-organizer`.  Password is `Password1!`.  
+  + Bundle Id `com.paulmojicatech.grocerylist`
++ iOS
+  + Build Id: `com.paulmojicatech.grocery-list`
+
 ## Dependencies
 + [grocery-list-organizer-business-logic-items-to-get](../../libs/grocery-list-organizer-business-logic-items-to-get/README.md)
 + [grocery-list-orgainzer-business-logic-profile](../../libs/grocery-list-organizer-business-logic-profile/README.md)

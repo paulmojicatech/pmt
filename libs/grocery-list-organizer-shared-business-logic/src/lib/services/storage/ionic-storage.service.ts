@@ -13,7 +13,6 @@ export class IonicStorageService {
   }
 
   getItem(key: IonicStorageType): Observable<string> {
-    console.log('STORAGE', this?._storage);
     const value$ = from(this._storage.get(`${key}`) ?? EMPTY);
     return value$.pipe(take(1));
   }

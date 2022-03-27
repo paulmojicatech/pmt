@@ -15,6 +15,7 @@ import {
 import {
   addItemToGet,
   loadItemsToGet,
+  removeItemToGet,
   setIsItemsToGetModalOpen,
 } from './actions/items-to-get.actions';
 import {
@@ -84,5 +85,9 @@ export class ItemsToGetStateService {
   addItem(itemToAdd: GroceryItem): void {
     this._store.dispatch(addItemToGet({ item: itemToAdd }));
     this._store.dispatch(setIsItemsToGetModalOpen({ isOpen: false }));
+  }
+
+  removeItemFromItemsToGet(itemToRemove: CurrentGroceryItem): void {
+    this._store.dispatch(removeItemToGet({ itemToRemove }));
   }
 }

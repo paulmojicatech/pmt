@@ -4,6 +4,7 @@ import {
   addItemToGet,
   loadAllAvailableItems,
   loadItemsToGetSucccess,
+  removeItemToGet,
   setIsItemsToGetModalOpen,
 } from '../actions/items-to-get.actions';
 import { ItemsToGetState } from '../models/items-to-get-state.interface';
@@ -42,5 +43,11 @@ export const itemsToGetReducer = createReducer(
   on(addItemToAllAvailableItems, (state, { itemToAdd }) => {
     const updatedItems = [...state.allAvailableItems, itemToAdd];
     return { ...state, allAvailableItems: updatedItems };
+  }),
+  on(removeItemToGet, (state, { itemToRemove }) => {
+    const itemsToGet = state.itemsToGet.filter(
+      (item) => item.name !== itemToRemove.name
+    );
+    return { ...state, itemsToGet };
   })
 );

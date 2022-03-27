@@ -17,13 +17,7 @@ export class ProfileEffects {
     () =>
       this._actions$.pipe(
         ofType(routeToProfileModule),
-        switchMap(() =>
-          this._profileUtilSvc.getIsAccountLinked().pipe(
-            tap((isLinked) => {
-              console.log(isLinked);
-            })
-          )
-        ),
+        switchMap(() => this._profileUtilSvc.getIsAccountLinked()),
         filter((isLinked) => !isLinked),
         tap(() => {
           this._router.navigate(['tabs', 'profile', 'login']);

@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import {
-  IonicStorageService,
   CurrentGroceryItem,
+  IonicStorageService,
   IonicStorageType,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
-import { from, map, Observable, of, switchMap } from 'rxjs';
-import { getCurrentItems } from '../index';
+import { filter, map, Observable, take } from 'rxjs';
+import { loadCurrentItemsSuccess } from '../actions/current-grocery-items.actions';
 import { CurrentListState } from '../models/current-list.interface';
 
 @Injectable({
@@ -18,27 +18,32 @@ export class CurrentGroceryItemsUtilService {
     private _storageSvc: IonicStorageService
   ) {}
 
-  getCurrentItemsForStore(): Observable<CurrentGroceryItem[]> {
-    const items$ = this._store.select(getCurrentItems);
-    const storedItems$ = from(
-      this._storageSvc.getItem(IonicStorageType.CURRENT_ITEMS)
-    ).pipe(
-      map((items) => {
-        if (items) {
-          return JSON.parse(items) as CurrentGroceryItem[];
-        } else {
-          return [];
-        }
-      })
-    );
-    return items$.pipe(
-      switchMap((items) => {
-        if (items) {
-          return of(items);
-        } else {
-          return storedItems$;
-        }
-      })
-    );
+  loadItemsFromStorage(): void {
+    this._storageSvc
+      .getItem(IonicStorageType.CURRENT_ITEMS)
+      .pipe(
+        filter((itemsStr) => !!itemsStr),
+        take(1)
+      )
+      .subscribe((itemsStr) => {
+        this._store.dispatch(
+          loadCurrentItemsSuccess({ currentItems: JSON.parse(itemsStr) })
+        );
+      });
+  }
+
+  addItemToCurrentListOnStorage(itemToAdd: CurrentGroceryItem): void {
+    this._storageSvc
+      .getItem(IonicStorageType.CURRENT_ITEMS)
+      .pipe(take(1))
+      .subscribe((itemsStr) => {
+        const currentItems = itemsStr
+          ? [...JSON.parse(itemsStr), itemToAdd]
+          : [itemToAdd];
+        this._storageSvc.setItem(
+          IonicStorageType.CURRENT_ITEMS,
+          JSON.stringify(currentItems)
+        );
+      });
   }
 }

@@ -16,6 +16,10 @@ import {
   globalReducer,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
 import { EffectsModule } from '@ngrx/effects';
+import {
+  CurrentGroceryItemsEffects,
+  currentGroceryItemsReducer,
+} from '@pmt/grocery-list-organizer-business-logic-current-grocery-items';
 
 @NgModule({
   declarations: [AppComponent],
@@ -24,8 +28,11 @@ import { EffectsModule } from '@ngrx/effects';
     BrowserAnimationsModule,
     IonicModule.forRoot(),
     IonicStorageModule.forRoot(),
-    StoreModule.forRoot({ app: globalReducer }),
-    EffectsModule.forRoot([GlobalEffects]),
+    StoreModule.forRoot({
+      app: globalReducer,
+      'current-list': currentGroceryItemsReducer,
+    }),
+    EffectsModule.forRoot([GlobalEffects, CurrentGroceryItemsEffects]),
     StoreDevtoolsModule.instrument({}),
     AppRoutingModule,
     ReactiveFormsModule,
