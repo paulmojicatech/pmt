@@ -14,9 +14,9 @@ import { Observable } from 'rxjs';
 export class CurrentListComponent implements OnInit {
   viewModel$!: Observable<CurrentListViewModel>;
 
-  constructor(private _currentListStateSvc: CurrentListStateService) {}
+  constructor(public currentListStateSvc: CurrentListStateService) {}
 
   ngOnInit(): void {
-    this.viewModel$ = this._currentListStateSvc.getViewModel();
+    this.viewModel$ = this.currentListStateSvc.getViewModel();
   }
 }
