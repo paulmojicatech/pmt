@@ -11,7 +11,10 @@ import {
   ItemsToGetStateService,
   ItemsToGetViewModel,
 } from '@pmt/grocery-list-organizer-business-logic-items-to-get';
-import { GroceryItem } from '@pmt/grocery-list-organizer-shared-business-logic';
+import {
+  CurrentGroceryItem,
+  GroceryItem,
+} from '@pmt/grocery-list-organizer-shared-business-logic';
 import { from, Observable, Subject, takeLast, takeUntil } from 'rxjs';
 
 @Component({
@@ -65,5 +68,9 @@ export class ItemsToGetComponent implements OnInit, AfterViewInit, OnDestroy {
 
   handleAutocompleteChangeEv(updatedValue: string): void {
     this.itemsToGetForm.get('itemToAdd')?.patchValue(updatedValue);
+  }
+
+  handleItemToGetChanged(itemToRemove: CurrentGroceryItem): void {
+    this.itemsToGetStateSvc.removeItemFromItemsToGet(itemToRemove);
   }
 }

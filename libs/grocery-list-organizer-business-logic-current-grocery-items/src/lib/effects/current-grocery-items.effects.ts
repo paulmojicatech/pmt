@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap } from 'rxjs';
+import { map, switchMap, tap } from 'rxjs';
 import { CurrentGroceryItemsUtilService } from '../services/current-grocery-items-util.service';
 import {
+  addItemToCurrentList,
   loadCurrentItems,
   loadCurrentItemsSuccess,
 } from '../actions/current-grocery-items.actions';
+import { initializeApp } from '@pmt/grocery-list-organizer-shared-business-logic';
 @Injectable()
 export class CurrentGroceryItemsEffects {
   constructor(
@@ -13,16 +15,25 @@ export class CurrentGroceryItemsEffects {
     private _currentItemsUtilSvc: CurrentGroceryItemsUtilService
   ) {}
 
-  loadCurrentItems$ = createEffect(() =>
-    this._actions$.pipe(
-      ofType(loadCurrentItems),
-      switchMap(() =>
-        this._currentItemsUtilSvc
-          .getCurrentItemsForStore()
-          .pipe(
-            map((currentItems) => loadCurrentItemsSuccess({ currentItems }))
-          )
-      )
-    )
+  initAppLoadItems$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(initializeApp),
+        tap(() => this._currentItemsUtilSvc.loadItemsFromStorage())
+      ),
+    { dispatch: false }
+  );
+
+  addItemToCurrentListUpdateStorage$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(addItemToCurrentList),
+        tap((action) => {
+          this._currentItemsUtilSvc.addItemToCurrentListOnStorage(
+            action.itemToAdd
+          );
+        })
+      ),
+    { dispatch: false }
   );
 }

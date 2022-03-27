@@ -11,6 +11,7 @@ export enum ItemsToGetActionType {
   ADD_ITEM_TO_GET = '[Items to Get] Add Item to Get',
   LOAD_ALL_AVAILABLE_ITEMS = '[Items to Get] Load All Available Items',
   ADD_ITEM_TO_ALL_AVAILABLE_ITEMS = '[Items to Get] Add item to all available items',
+  REMOVE_ITEM_TO_GET = '[Items to Get] Remove Item to Get',
 }
 
 export const loadItemsToGet = createAction(
@@ -40,4 +41,9 @@ export const loadAllAvailableItems = createAction(
 export const addItemToAllAvailableItems = createAction(
   ItemsToGetActionType.ADD_ITEM_TO_ALL_AVAILABLE_ITEMS,
   props<{ itemToAdd: AvailableGroceryItem }>()
+);
+
+export const removeItemToGet = createAction(
+  ItemsToGetActionType.REMOVE_ITEM_TO_GET,
+  props<{ itemToRemove: GroceryItem }>()
 );

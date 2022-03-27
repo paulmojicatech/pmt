@@ -7,7 +7,7 @@
     <ion-list *ngIf="viewModel.itemsNeeded?.length; else noItemText">
         <ion-item *ngFor="let item of viewModel.itemsNeeded" lines="full">
             <div class="grocery-item-container">
-                <ion-checkbox class="checkbox"></ion-checkbox>
+                <ion-checkbox (ionChange)="handleItemToGetChanged(item)" class="checkbox"></ion-checkbox>
                 <span class="item-name">{{item.name}}</span>
                 <span class="qty">Qty: {{item.qty}}</span>
             </div>

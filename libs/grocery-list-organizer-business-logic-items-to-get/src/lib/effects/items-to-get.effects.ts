@@ -7,6 +7,7 @@ import {
   GroceryItem,
   IonicStorageType,
   AvailableGroceryItem,
+  CurrentGroceryItem,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
   addItemToAllAvailableItems,
@@ -14,7 +15,9 @@ import {
   loadAllAvailableItems,
   loadItemsToGet,
   loadItemsToGetSucccess,
+  removeItemToGet,
 } from '../actions/items-to-get.actions';
+import { addItemToCurrentList } from '@pmt/grocery-list-organizer-business-logic-current-grocery-items';
 
 @Injectable()
 export class ItemsToGetEffects {
@@ -117,5 +120,38 @@ export class ItemsToGetEffects {
         )
       ),
     { dispatch: false }
+  );
+  removeItemFromItemsToGetUpdateStorage$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(removeItemToGet),
+        switchMap((action) =>
+          this._storageSvc.getItem(IonicStorageType.ITEMS_TO_GET).pipe(
+            tap((itemsStr) => {
+              const itemsToGet = (
+                JSON.parse(itemsStr) as CurrentGroceryItem[]
+              ).filter((item) => item.name !== action.itemToRemove.name);
+              this._storageSvc.setItem(
+                IonicStorageType.ITEMS_TO_GET,
+                JSON.stringify(itemsToGet)
+              );
+            })
+          )
+        )
+      ),
+    { dispatch: false }
+  );
+  removeItemFromItemsToGetAddItemToCurrentList$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(removeItemToGet),
+      map((action) => {
+        const itemToAdd: CurrentGroceryItem = {
+          ...action.itemToRemove,
+          id: `${new Date()}_${action.itemToRemove.name}`,
+          datePurchased: new Date().toDateString(),
+        };
+        return addItemToCurrentList({ itemToAdd });
+      })
+    )
   );
 }
