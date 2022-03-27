@@ -2,6 +2,7 @@ import { createReducer, on } from '@ngrx/store';
 import {
   addItemToCurrentList,
   loadCurrentItemsSuccess,
+  markItemAsUsed,
 } from '../actions/current-grocery-items.actions';
 import { CurrentListState } from '../models/current-list.interface';
 
@@ -18,5 +19,11 @@ export const currentGroceryItemsReducer = createReducer(
   on(addItemToCurrentList, (state, { itemToAdd }) => {
     const updatedItems = [...(state.currentItems ?? []), itemToAdd];
     return { ...state, currentItems: updatedItems };
+  }),
+  on(markItemAsUsed, (state, { usedItem }) => {
+    const currentItems = state.currentItems?.filter(
+      (item) => item.id !== usedItem.id
+    );
+    return { ...state, currentItems };
   })
 );

@@ -1,13 +1,12 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { map, switchMap, tap } from 'rxjs';
-import { CurrentGroceryItemsUtilService } from '../services/current-grocery-items-util.service';
+import { initializeApp } from '@pmt/grocery-list-organizer-shared-business-logic';
+import { tap } from 'rxjs';
 import {
   addItemToCurrentList,
-  loadCurrentItems,
-  loadCurrentItemsSuccess,
+  markItemAsUsed,
 } from '../actions/current-grocery-items.actions';
-import { initializeApp } from '@pmt/grocery-list-organizer-shared-business-logic';
+import { CurrentGroceryItemsUtilService } from '../services/current-grocery-items-util.service';
 @Injectable()
 export class CurrentGroceryItemsEffects {
   constructor(
@@ -31,6 +30,19 @@ export class CurrentGroceryItemsEffects {
         tap((action) => {
           this._currentItemsUtilSvc.addItemToCurrentListOnStorage(
             action.itemToAdd
+          );
+        })
+      ),
+    { dispatch: false }
+  );
+
+  markItemAsUsed$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(markItemAsUsed),
+        tap((action) => {
+          this._currentItemsUtilSvc.updateStorageAfterItemMarkedAsUsed(
+            action.usedItem
           );
         })
       ),

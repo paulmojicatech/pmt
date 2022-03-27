@@ -5,6 +5,7 @@ export enum CurrentItemActionType {
   LOAD_CURRENT_ITEMS = '[Current] Load Current Items',
   LOAD_CURRENT_ITEMS_SUCCESS = '[Current] Load Current Items Success',
   ADD_ITEM_TO_CURRENT_LIST = '[Current] Add Item to Current List',
+  MARK_ITEM_AS_USED = '[Current] Mark Item As Used',
 }
 
 export const loadCurrentItems = createAction(
@@ -19,4 +20,9 @@ export const loadCurrentItemsSuccess = createAction(
 export const addItemToCurrentList = createAction(
   CurrentItemActionType.ADD_ITEM_TO_CURRENT_LIST,
   props<{ itemToAdd: CurrentGroceryItem }>()
+);
+
+export const markItemAsUsed = createAction(
+  CurrentItemActionType.MARK_ITEM_AS_USED,
+  props<{ usedItem: CurrentGroceryItem }>()
 );
