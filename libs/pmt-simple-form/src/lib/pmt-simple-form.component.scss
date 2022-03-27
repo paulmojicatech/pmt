@@ -1,3 +1,14 @@
+.form-container {
+  color: #111;
+}
+
 mat-input {
   width: 100%;
+}
+.action-container {
+  position: relative;
+  bottom: 0;
+  width: 100%;
+  display: inline-flex;
+  justify-content: flex-end;
 }

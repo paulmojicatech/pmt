@@ -15,4 +15,6 @@ export class PmtSimpleFormComponent {
   isMobile = false;
   @Input()
   formControls: PmtFormControl[] = [];
+  @Input()
+  buttons: { text: string; isPrimary: boolean }[] = [];
 }
