@@ -1,6 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
+import { CurrentGroceryItem } from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
   addItemToCurrentList,
+  decrementItemQty,
   loadCurrentItemsSuccess,
   markItemAsUsed,
 } from '../actions/current-grocery-items.actions';
@@ -25,5 +27,16 @@ export const currentGroceryItemsReducer = createReducer(
       (item) => item.id !== usedItem.id
     );
     return { ...state, currentItems };
+  }),
+  on(decrementItemQty, (state, { itemToDecrement }) => {
+    const updatedItems = state.currentItems?.map((item) => {
+      if (item.id === itemToDecrement.id) {
+        const updatedItem = { ...item, qty: itemToDecrement.qty - 1 };
+        return updatedItem;
+      }
+      return item;
+    });
+
+    return { ...state, currentItems: updatedItems };
   })
 );

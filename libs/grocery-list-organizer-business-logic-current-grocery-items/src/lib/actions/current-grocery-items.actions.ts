@@ -6,6 +6,7 @@ export enum CurrentItemActionType {
   LOAD_CURRENT_ITEMS_SUCCESS = '[Current] Load Current Items Success',
   ADD_ITEM_TO_CURRENT_LIST = '[Current] Add Item to Current List',
   MARK_ITEM_AS_USED = '[Current] Mark Item As Used',
+  DECREMENT_ITEM_QTY = '[Current] Decrement Item Qty',
 }
 
 export const loadCurrentItems = createAction(
@@ -25,4 +26,9 @@ export const addItemToCurrentList = createAction(
 export const markItemAsUsed = createAction(
   CurrentItemActionType.MARK_ITEM_AS_USED,
   props<{ usedItem: CurrentGroceryItem }>()
+);
+
+export const decrementItemQty = createAction(
+  CurrentItemActionType.DECREMENT_ITEM_QTY,
+  props<{ itemToDecrement: CurrentGroceryItem }>()
 );
