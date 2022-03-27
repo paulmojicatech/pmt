@@ -16,6 +16,12 @@ export class RegisterComponent implements OnInit {
     type: 'text',
     label: 'Link To',
   };
+  readonly BUTTONS = [
+    {
+      text: 'Register',
+      isPrimary: true,
+    },
+  ];
 
   formControls!: PmtFormControl[];
 
