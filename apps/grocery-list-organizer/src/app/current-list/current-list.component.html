@@ -14,7 +14,7 @@
                     <ion-item-option (click)="currentListStateSvc.markItemAsUsed(item)">
                         <ion-icon name="checkmark-sharp"></ion-icon>
                     </ion-item-option>
-                    <ion-item-option *ngIf="item.qty > 1"><ion-icon name="remove-sharp"></ion-icon></ion-item-option>
+                    <ion-item-option (click)="currentListStateSvc.decrementItem(item)" *ngIf="item.qty > 1"><ion-icon name="remove-sharp"></ion-icon></ion-item-option>
                 </ion-item-options>
                 <ion-item lines="full">
                     <div class="grocery-item-container">

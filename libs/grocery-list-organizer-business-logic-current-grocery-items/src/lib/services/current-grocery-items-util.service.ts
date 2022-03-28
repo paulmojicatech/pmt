@@ -81,4 +81,25 @@ export class CurrentGroceryItemsUtilService {
       }
     );
   }
+
+  updateStoargeAfterDecrementItem(itemToDecrement: CurrentGroceryItem): void {
+    this._storageSvc
+      .getItem(IonicStorageType.CURRENT_ITEMS)
+      .pipe(take(1))
+      .subscribe((itemsStr) => {
+        const currentItems = (JSON.parse(itemsStr) as CurrentGroceryItem[]).map(
+          (item) => {
+            if (item.id === itemToDecrement.id) {
+              const updatedItem = { ...item, qty: itemToDecrement.qty - 1 };
+              return updatedItem;
+            }
+            return item;
+          }
+        );
+        this._storageSvc.setItem(
+          IonicStorageType.CURRENT_ITEMS,
+          JSON.stringify(currentItems)
+        );
+      });
+  }
 }
