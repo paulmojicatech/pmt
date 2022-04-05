@@ -3,8 +3,9 @@
     </pmt-mobile-toolbar>
 
     <ion-content *ngIf="viewModel$ | async as viewModel">
+        <pmt-input placeholder="Search" [isMobile]="true" iconUrl="search" (changeEvent)="currentListStateSvc.handleSearchValueUpdate($event)"></pmt-input>
         <ion-list *ngIf="viewModel.currentItems?.length; else noItemText">
-            <ion-item-sliding *ngFor="let item of viewModel.currentItems;">
+            <ion-item-sliding *ngFor="let item of viewModel.currentItems | pmtSearchValue : 'name' : viewModel.searchValue!;">
                 <ion-item-options side="start">
                     <ion-item-option color="danger">
                         <ion-icon name="trash-sharp"></ion-icon>

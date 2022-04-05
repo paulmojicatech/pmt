@@ -33,6 +33,7 @@ export class ItemsToGetStateService {
     noItemsText: 'You currently do not have any items on your grocery list.',
     isModalOpen: false,
     allAvailableItems: [],
+    searchValue: undefined,
   };
 
   private _viewModelSub$ = new BehaviorSubject<ItemsToGetViewModel>(
@@ -89,5 +90,12 @@ export class ItemsToGetStateService {
 
   removeItemFromItemsToGet(itemToRemove: CurrentGroceryItem): void {
     this._store.dispatch(removeItemToGet({ itemToRemove }));
+  }
+
+  handleSearchValueUpdated(searchValue: string): void {
+    this._viewModelSub$.next({
+      ...this._viewModelSub$.getValue(),
+      searchValue,
+    });
   }
 }
