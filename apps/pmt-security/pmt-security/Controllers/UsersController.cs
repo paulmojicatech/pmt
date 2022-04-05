@@ -29,7 +29,6 @@ namespace pmt_security.Controllers
       return BadRequest();
     }
 
-
     [HttpPost]
     public IActionResult RegisterUser(UserDTO userDTO)
     {

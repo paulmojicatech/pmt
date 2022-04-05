@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "giqE/46UkAX8JHXuIVJ+GCwq4ykDrFzBdRBes+1MVFqHYDAox+x7N4Sxps0Qn+MIhFWZRkUso5UXzzIyFGl0vg==",
+  "dgSpecHash": "l+3Ct1wu6g7S7zGExtoXP28aezrWLw3+BmFoWoUqvSfEPZZrkvctZyv0BFWrt9OeGKqI6XbQgBLQvdWzhro9rg==",
   "success": true,
   "projectFilePath": "/Users/paulmojica/dev/pmt/pmt/apps/pmt-security/IdentityServer/IdentityServer.csproj",
   "expectedPackageFiles": [

@@ -9,7 +9,8 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 String corsPolicy = "MY_CORS";
-builder.Services.AddCors(options => {
+builder.Services.AddCors(options =>
+{
   options.AddPolicy(name: corsPolicy,
                     builder =>
                     {
@@ -44,6 +45,7 @@ builder.Services
   {
     options.AddPolicy("ApiScope", policy =>
     {
+
       policy.RequireAuthenticatedUser();
       policy.RequireClaim("scope", "UserAPI");
     });
@@ -73,6 +75,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers().RequireAuthorization("ApiScope");
+// app.MapControllers().RequireAuthorization("ApiScope");
+app.MapControllers();
 
 app.Run();
