@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
+builder.Services.AddControllers();
 
 // Entity Framework
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("postgres")));
@@ -21,10 +21,18 @@ if (app.Environment.IsDevelopment())
   app.UseSwaggerUI();
 }
 
+// Entity Framework
+using (var scope = app.Services.CreateScope())
+{
+  var services = scope.ServiceProvider;
+
+  var context = services.GetRequiredService<UserContext>();
+  context.Database.EnsureCreated();
+
+}
+
 app.UseHttpsRedirection();
-
 app.MapControllers();
-
 app.Run();
 
 
