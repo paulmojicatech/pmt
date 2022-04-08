@@ -1,5 +1,4 @@
 import { createReducer, on } from '@ngrx/store';
-import { CurrentGroceryItem } from '@pmt/grocery-list-organizer-shared-business-logic';
 import {
   addItemToCurrentList,
   decrementItemQty,

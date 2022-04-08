@@ -3,9 +3,9 @@
 </pmt-mobile-toolbar>
 
 <ion-content *ngIf="viewModel$ | async as viewModel">
-    
+    <pmt-input placeholder="Search" [isMobile]="true" (changeEvent)="itemsToGetStateSvc.handleSearchValueUpdated($event)"></pmt-input>
     <ion-list *ngIf="viewModel.itemsNeeded?.length; else noItemText">
-        <ion-item *ngFor="let item of viewModel.itemsNeeded" lines="full">
+        <ion-item *ngFor="let item of viewModel.itemsNeeded | pmtSearchValue : 'name' : viewModel.searchValue!" lines="full">
             <div class="grocery-item-container">
                 <ion-checkbox (ionChange)="handleItemToGetChanged(item)" class="checkbox"></ion-checkbox>
                 <span class="item-name">{{item.name}}</span>

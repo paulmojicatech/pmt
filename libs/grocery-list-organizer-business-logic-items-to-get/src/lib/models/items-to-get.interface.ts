@@ -5,4 +5,5 @@ export interface ItemsToGetViewModel {
   itemsNeeded: GroceryItem[];
   noItemsText: string;
   allAvailableItems: string[];
+  searchValue: string | undefined;
 }
