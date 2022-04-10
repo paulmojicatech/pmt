@@ -1,6 +1,7 @@
 using System;
 using pmt_auth.Contexts;
 using pmt_auth.Models;
+using pmt_auth.Util;
 
 namespace pmt_auth.Services
 {
@@ -18,7 +19,7 @@ namespace pmt_auth.Services
     {
       try
       {
-        byte[] passwordHash = System.Text.Encoding.UTF8.GetBytes(user.Password);
+        byte[] passwordHash = HashUtil.GenerateHash(user.Password);
         User userInstance = new User
         {
           FirstName = user.FirstName,
