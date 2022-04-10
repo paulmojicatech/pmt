@@ -37,7 +37,10 @@ namespace pmt_auth.Services
       }
     }
 
-
+    public User? GetUser(string userName)
+    {
+      return _ctx.Users.FirstOrDefault(u => u.UserId.ToLower() == userName.ToLower());
+    }
   }
 }
 
