@@ -22,7 +22,7 @@ namespace pmt_auth.Services
         User userInstance = new User
         {
           FirstName = user.FirstName,
-          UserName = user.UserName,
+          UserId = user.UserId,
           PasswordHash = passwordHash,
           LastName = user.LastName,
           Email = user.Email

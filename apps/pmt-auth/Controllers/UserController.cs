@@ -24,12 +24,20 @@ namespace pmt_auth.Controllers
 
     [AllowAnonymous]
     [HttpPost]
-    public IActionResult RegisterUser(UserDTO userReq)
+    public IActionResult RegisterUser([FromBody] RegisterUserRequest userReq)
     {
       try
       {
+        UserDTO user = new UserDTO
+        {
+          UserId = userReq.userId,
+          FirstName = userReq.firstName,
+          LastName = userReq.lastName,
+          Password = userReq.password,
+          Email = userReq.email
+        };
         UserApi userSvc = new UserApi(_ctx);
-        userSvc.RegisterUser(userReq);
+        userSvc.RegisterUser(user);
       }
       catch (Exception ex)
       {

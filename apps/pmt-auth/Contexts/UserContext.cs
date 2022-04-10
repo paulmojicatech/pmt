@@ -12,8 +12,15 @@ namespace pmt_auth.Contexts
     }
 
     public DbSet<User> Users { get; set; }
+    public DbSet<Role> Roles { get; set; }
 
-
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<User>()
+        .HasMany<Role>(u => u.Roles)
+        .WithMany(u => u.Users)
+        .UsingEntity(ur => ur.ToTable("UserRoles"));
+    }
   }
 }
 
