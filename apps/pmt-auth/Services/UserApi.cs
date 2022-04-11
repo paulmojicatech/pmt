@@ -19,12 +19,12 @@ namespace pmt_auth.Services
     {
       try
       {
-        byte[] passwordHash = HashUtil.GenerateHash(user.Password);
+        // HashUtil.GenerateHash(user.Password, out byte[] hashedPassword);
         User userInstance = new User
         {
           FirstName = user.FirstName,
           UserId = user.UserId,
-          PasswordHash = passwordHash,
+          Password = user.Password, // TODO: Encrypt Pwd
           LastName = user.LastName,
           Email = user.Email
         };
@@ -39,7 +39,7 @@ namespace pmt_auth.Services
 
     public User? GetUser(string userName)
     {
-      return _ctx.Users.FirstOrDefault(u => u.UserId.ToLower() == userName.ToLower());
+      return _ctx.Users.FirstOrDefault(u => u.UserId.ToLower() == userName.ToLower() && u.IsActive);
     }
   }
 }

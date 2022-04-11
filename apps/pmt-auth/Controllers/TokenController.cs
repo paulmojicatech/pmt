@@ -15,31 +15,42 @@ namespace pmt_auth.Controllers
   [Route("security/[controller]")]
   public class TokenController : Controller
   {
-    private UserContext _userCtx;
-    private TokenContext _tokenCtx;
+    private UserContext _ctx;
 
-    public TokenController(UserContext userCtx, TokenContext tokenCtx)
+    public TokenController(UserContext ctx)
     {
-      _userCtx = userCtx;
-      _tokenCtx = tokenCtx;
+      _ctx = ctx;
     }
 
     [HttpPost]
     [AllowAnonymous]
-    public IActionResult GenerateAccessToken(GetTokenRequest req)
+    public IActionResult GenerateAccessToken([FromBody] GetTokenRequest req)
     {
       if (string.IsNullOrEmpty(req.userName) || string.IsNullOrEmpty(req.password))
       {
-        return BadRequest();
+        return BadRequest("User Name and Password are required");
       }
-      UserApi userSvc = new UserApi(_userCtx);
-      User? user = userSvc.GetUser(req.userName);
-      if (user == null)
+      UserApi userSvc = new UserApi(_ctx);
+      try
       {
-        return BadRequest();
-      }
+        User? user = userSvc.GetUser(req.userName);
+        if (user == null)
+        {
+          return StatusCode(StatusCodes.Status404NotFound);
+        }
 
-      return BadRequest();
+        TokenApi tokenSvc = new TokenApi(_ctx);
+        Token token = tokenSvc.CreateAccessToken(user, req.password);
+        return Ok(token);
+      }
+      catch (Exception ex)
+      {
+        if (ex.Message == "401")
+        {
+          return StatusCode(StatusCodes.Status401Unauthorized);
+        }
+        return StatusCode(StatusCodes.Status500InternalServerError);
+      }
     }
   }
 }

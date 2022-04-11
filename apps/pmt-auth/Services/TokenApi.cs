@@ -7,29 +7,43 @@ namespace pmt_auth.Services
 {
   public class TokenApi
   {
-    private TokenContext _ctx;
+    private UserContext _ctx;
 
-    public TokenApi(TokenContext ctx)
+    public TokenApi(UserContext ctx)
     {
       _ctx = ctx;
     }
 
-    public Token GetAccessToken(byte[] persistedPassword, string passwordToValidate)
+    public Token CreateAccessToken(User userToValidate, string passwordToValidate)
     {
       Token token;
-      bool isValidatedPassword = HashUtil.CompareHash(persistedPassword, passwordToValidate);
-      string accessToken = System.Text.Encoding.UTF8.GetString(HashUtil.GenerateHash(Guid.NewGuid().ToString()));
-      if (isValidatedPassword)
+      try
       {
-        token = new Token
+        if (userToValidate.Password == passwordToValidate)
         {
-          AccessToken = accessToken,
-          ExpiresDate = DateTime.Now.AddDays(60)
-        };
-        return token;
+          HashUtil.GenerateHash(Guid.NewGuid().ToString(), out byte[] hashedAccessToken);
+          string accessToken = Convert.ToBase64String(hashedAccessToken);
+          token = new Token
+          {
+            AccessToken = accessToken,
+            IssueDate = DateTime.UtcNow,
+            ExpiresDate = DateTime.UtcNow.AddDays(60),
+            UserName = userToValidate.UserId
+          };
+          _ctx.Add(token);
+          _ctx.SaveChanges();
+          return token;
+        }
+        throw new Exception("401");
       }
-      throw new Exception();
+      catch
+      {
+        throw;
+      }
+
     }
+
   }
 }
+
 

@@ -1,11 +1,20 @@
 ﻿<Properties StartupConfiguration="{EBC883FC-9D52-4587-A6D3-6C20CB2E3714}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/TokenController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Services/UserApi.cs">
     <Files>
-      <File FileName="Controllers/TokenController.cs" Line="40" Column="8" />
-      <File FileName="Controllers/UserController.cs" Line="1" Column="1" />
-      <File FileName="Models/GetTokenRequest.cs" Line="6" Column="57" />
-      <File FileName="Models/User.cs" Line="1" Column="1" />
+      <File FileName="Controllers/TokenController.cs" Line="29" Column="1" />
+      <File FileName="Controllers/UserController.cs" Line="31" Column="1" />
+      <File FileName="Models/GetTokenRequest.cs" Line="4" Column="16" />
+      <File FileName="Models/User.cs" Line="12" Column="27" />
+      <File FileName="Services/TokenApi.cs" Line="21" Column="1" />
+      <File FileName="Services/UserApi.cs" Line="27" Column="57" />
+      <File FileName="Program.cs" Line="13" Column="129" />
+      <File FileName="Models/RegisterUserRequest.cs" Line="1" Column="1" />
+      <File FileName="Util/HashUtil.cs" Line="21" Column="41" />
+      <File FileName="Contexts/UserContext.cs" Line="28" Column="54" />
+      <File FileName="Models/Token.cs" Line="19" Column="3" />
+      <File FileName="Models/Role.cs" Line="16" Column="43" />
+      <File FileName="Models/UserDTO.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,13 +25,17 @@
               <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
-              <Node name="Util" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
+        <State>
+          <Value>Convert.ToBase64String(persistedHash)</Value>
+          <Value>Convert.ToBase64String(hashToCompare)</Value>
+          <Value>Convert.ToBase64String(hashedValue);</Value>
+          <Value>ex</Value>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
@@ -30,10 +43,13 @@
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Services/UserApi.cs" relfile="Services/UserApi.cs" line="22" column="1" />
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Controllers/UserController.cs" relfile="Controllers/UserController.cs" line="44" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Controllers/UserController.cs" relfile="Controllers/UserController.cs" line="41" column="1" />
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Controllers/UserController.cs" relfile="Controllers/UserController.cs" line="31" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Controllers/TokenController.cs" relfile="Controllers/TokenController.cs" line="29" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Controllers/TokenController.cs" relfile="Controllers/TokenController.cs" line="39" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Services/TokenApi.cs" relfile="Services/TokenApi.cs" line="19" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Services/UserApi.cs" relfile="Services/UserApi.cs" line="23" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/pmt-auth/Controllers/TokenController.cs" relfile="Controllers/TokenController.cs" line="48" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.pmt-auth PreferredExecutionTarget="/Applications/Google Chrome.app" />

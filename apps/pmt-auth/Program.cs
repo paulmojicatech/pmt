@@ -11,7 +11,6 @@ builder.Services.AddControllers().AddJsonOptions(option => option.JsonSerializer
 
 // Entity Framework
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("postgres")));
-
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,11 +27,12 @@ using (var scope = app.Services.CreateScope())
 
   var context = services.GetRequiredService<UserContext>();
   context.Database.EnsureCreated();
-
 }
 
+app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
+
 app.Run();
 
 
