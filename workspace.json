@@ -20,6 +20,7 @@
     "pmt-autocomplete": "libs/pmt-autocomplete",
     "pmt-common-angular-components": "libs/pmt-common-angular-components",
     "pmt-input": "libs/pmt-input",
+    "pmt-loader": "libs/pmt-loader",
     "pmt-login": "libs/pmt-login",
     "pmt-login-shared-business-logic": "libs/pmt-login-shared-business-logic",
     "pmt-mobile-toolbar": "libs/pmt-mobile-toolbar",
