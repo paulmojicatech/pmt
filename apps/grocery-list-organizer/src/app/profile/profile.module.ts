@@ -14,6 +14,8 @@ import { PmtSimpleFormModule } from '@pmt/pmt-simple-form';
 import { LoginComponent } from './login/login.component';
 import { ProfileComponent } from './profile.component';
 import { RegisterComponent } from './register/register.component';
+import { IonicModule } from '@ionic/angular';
+import { HttpClientModule } from '@angular/common/http';
 
 const routes: Route[] = [
   {
@@ -41,6 +43,7 @@ const routes: Route[] = [
     StoreModule.forFeature('profile', profileReducer),
     EffectsModule.forFeature([ProfileEffects]),
     PmtLoginModule,
+    IonicModule,
     ReactiveFormsModule,
     PmtSimpleFormModule,
     PmtMobileToolbarModule,

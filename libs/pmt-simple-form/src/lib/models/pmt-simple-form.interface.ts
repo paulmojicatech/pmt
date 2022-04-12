@@ -12,6 +12,7 @@ export interface PmtFormControl {
 
 export type PmtFormControlType =
   | 'text'
+  | 'password'
   | 'tel'
   | 'number'
   | 'email'

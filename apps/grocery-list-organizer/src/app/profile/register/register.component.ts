@@ -25,16 +25,16 @@ export class RegisterComponent implements OnInit {
 
   formControls!: PmtFormControl[];
 
-  constructor(private _registerFormSvc: RegisterFormService) {}
+  constructor(public registerFormSvc: RegisterFormService) {}
 
   ngOnInit(): void {
-    this.registerForm = this._registerFormSvc.buildForm();
-    this.registerForm = this._registerFormSvc.addControl(
+    this.registerForm = this.registerFormSvc.buildForm();
+    this.registerForm = this.registerFormSvc.addControl(
       this.registerForm,
       this.LINKED_ACCOUNT_CONTROL
     );
     this.formControls = [
-      ...this._registerFormSvc.getFormControls(),
+      ...this.registerFormSvc.getFormControls(),
       this.LINKED_ACCOUNT_CONTROL,
     ];
   }

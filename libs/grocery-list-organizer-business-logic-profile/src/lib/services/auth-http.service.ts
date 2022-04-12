@@ -1,6 +1,14 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { catchError, map, Observable, throwError } from 'rxjs';
+import {
+  catchError,
+  interval,
+  map,
+  Observable,
+  of,
+  take,
+  throwError,
+} from 'rxjs';
 import { RegisterProfileHttpRequest } from '../models/register.interface';
 
 @Injectable({ providedIn: 'root' })

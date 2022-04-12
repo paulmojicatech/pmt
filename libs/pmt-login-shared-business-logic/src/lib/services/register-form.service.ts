@@ -6,6 +6,12 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import {
+  registerProfile,
+  RegisterProfileHttpRequest,
+} from '@pmt/grocery-list-organizer-business-logic-profile';
+import { AppState } from '@pmt/marvel-shared-business-logic';
 import { PmtFormControl } from '@pmt/pmt-simple-form';
 import { crossFieldEqualValidator } from '../cusotm-validators/register.validators';
 
@@ -13,16 +19,27 @@ import { crossFieldEqualValidator } from '../cusotm-validators/register.validato
   providedIn: 'root',
 })
 export class RegisterFormService {
-  constructor(private _builder: FormBuilder) {}
+  constructor(private _builder: FormBuilder, private _store: Store<AppState>) {}
 
   buildForm(): FormGroup {
     const registerForm = this._builder.group({
-      name: [null, Validators.required],
+      firstName: [null, Validators.required],
+      lastName: [null, Validators.required],
       email: [null, Validators.required],
       confirmEmail: [null, Validators.required],
+      userName: [null, Validators.required],
+      password: [null, Validators.required],
+      confirmPassword: [null, Validators.required],
     });
     registerForm.addValidators(
       crossFieldEqualValidator('confirmEmail', 'email', 'Emails do not match')
+    );
+    registerForm.addValidators(
+      crossFieldEqualValidator(
+        'confirmPassword',
+        'password',
+        'Passwords do not match'
+      )
     );
     return registerForm;
   }
@@ -51,8 +68,8 @@ export class RegisterFormService {
   getFormControls(): PmtFormControl[] {
     return [
       {
-        id: 'name',
-        name: 'name',
+        id: 'firstName',
+        name: 'firstName',
         type: 'text',
         validators: [
           {
@@ -61,7 +78,20 @@ export class RegisterFormService {
             errorMsg: 'Name is required',
           },
         ],
-        label: 'Name',
+        label: 'First Name',
+      },
+      {
+        id: 'lastName',
+        name: 'lastName',
+        type: 'text',
+        validators: [
+          {
+            id: 'required',
+            validator: Validators.required,
+            errorMsg: 'Last name is required',
+          },
+        ],
+        label: 'Last Name',
       },
       {
         id: 'email',
@@ -93,6 +123,58 @@ export class RegisterFormService {
         ],
         label: 'Confirm email',
       },
+      {
+        id: 'userName',
+        name: 'userName',
+        type: 'text',
+        validators: [
+          {
+            id: 'required',
+            validator: Validators.required,
+            errorMsg: 'User name is required',
+          },
+        ],
+        label: 'User Name',
+      },
+      {
+        id: 'password',
+        name: 'password',
+        type: 'password',
+        validators: [
+          {
+            id: 'required',
+            validator: Validators.required,
+            errorMsg: 'Password is required',
+          },
+        ],
+        label: 'Password',
+      },
+      {
+        id: 'confirmPassword',
+        name: 'confirmPassword',
+        type: 'password',
+        validators: [
+          {
+            id: 'required',
+            validator: Validators.required,
+            errorMsg: 'Password is required',
+          },
+        ],
+        label: 'Confirm Password',
+      },
     ];
+  }
+
+  handleRegisterEvent(registerForm: FormGroup): void {
+    const req: RegisterProfileHttpRequest = {
+      firstName: registerForm.get('firstName')?.value,
+      lastName: registerForm.get('lastName')?.value,
+      email: registerForm.get('email')?.value,
+      userId: registerForm.get('userName')?.value,
+      password: registerForm.get('password')?.value,
+    };
+    this._store.dispatch(
+      registerProfile({ req, url: `https://fantalytic.io/security/user` })
+    );
   }
 }

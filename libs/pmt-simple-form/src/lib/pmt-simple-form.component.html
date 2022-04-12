@@ -15,6 +15,6 @@
         </div>
     </form>
     <footer class="action-container">
-        <button [disabled]="parentForm.invalid" mat-raised-button *ngFor="let btn of buttons" [color]="btn.isPrimary ? 'primary': ''" [type]="btn.isPrimary ? 'submit' : 'button'">{{btn.text}}</button>
+        <button (click)="actionEv.emit({isPrimary: btn.isPrimary})" [disabled]="parentForm.invalid" mat-raised-button *ngFor="let btn of buttons" [color]="btn.isPrimary ? 'primary': ''" [type]="btn.isPrimary ? 'submit' : 'button'">{{btn.text}}</button>
     </footer>
 </div>
