@@ -36,8 +36,10 @@ using (var scope = app.Services.CreateScope())
 app.UseCors();
 
 
+app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
+
 app.Run();
 
 
