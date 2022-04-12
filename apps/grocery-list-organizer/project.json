@@ -6,9 +6,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/grocery-list-organizer",
         "index": "apps/grocery-list-organizer/src/index.html",
@@ -94,9 +92,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/grocery-list-organizer"
-      ],
+      "outputs": ["coverage/apps/grocery-list-organizer"],
       "options": {
         "jestConfig": "apps/grocery-list-organizer/jest.config.js",
         "passWithNoTests": true

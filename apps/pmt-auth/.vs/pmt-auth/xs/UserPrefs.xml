@@ -1,6 +1,6 @@
 ﻿<Properties StartupConfiguration="{EBC883FC-9D52-4587-A6D3-6C20CB2E3714}|Default">
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Services/UserApi.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/UserController.cs">
     <Files>
       <File FileName="Controllers/TokenController.cs" Line="29" Column="1" />
       <File FileName="Controllers/UserController.cs" Line="31" Column="1" />

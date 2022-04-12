@@ -1,9 +1,15 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { filter, switchMap, tap } from 'rxjs';
+import { catchError, filter, map, switchMap, tap } from 'rxjs';
 import { ProfileUtilService } from '../profile-util.service';
-import { routeToProfileModule } from '../actions/profile.actions';
+import {
+  registerProfile,
+  registerProfileFail,
+  registerProfileSuccess,
+  routeToProfileModule,
+} from '../actions/profile.actions';
+import { toggleSpinner } from '@pmt/grocery-list-organizer-shared-business-logic';
 
 @Injectable()
 export class ProfileEffects {
@@ -24,5 +30,38 @@ export class ProfileEffects {
         })
       ),
     { dispatch: false }
+  );
+
+  registerProfile$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(registerProfile),
+      switchMap((action) =>
+        this._profileUtilSvc.registerUser(action.req, action.url).pipe(
+          map(() => registerProfileSuccess()),
+          catchError((err) => [registerProfileFail({ errorMsg: err })])
+        )
+      )
+    )
+  );
+
+  registerProfileShowSpinner$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(registerProfile),
+      map(() => toggleSpinner({ isShowSpinner: true }))
+    )
+  );
+
+  registerProfileHideSpinnerSuccess$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(registerProfileSuccess),
+      map(() => toggleSpinner({ isShowSpinner: false }))
+    )
+  );
+
+  registerProfileHideSpinnerFail$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(registerProfileFail),
+      map(() => toggleSpinner({ isShowSpinner: false }))
+    )
   );
 }

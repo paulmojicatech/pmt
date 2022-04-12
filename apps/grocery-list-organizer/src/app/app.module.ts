@@ -20,6 +20,7 @@ import {
   CurrentGroceryItemsEffects,
   currentGroceryItemsReducer,
 } from '@pmt/grocery-list-organizer-business-logic-current-grocery-items';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [AppComponent],
@@ -32,6 +33,7 @@ import {
       app: globalReducer,
       'current-list': currentGroceryItemsReducer,
     }),
+    HttpClientModule,
     EffectsModule.forRoot([GlobalEffects, CurrentGroceryItemsEffects]),
     StoreDevtoolsModule.instrument({}),
     AppRoutingModule,

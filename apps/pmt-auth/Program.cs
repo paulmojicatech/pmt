@@ -9,6 +9,10 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase);
 
+// CORS
+builder.Services.AddCors(option => option.AddPolicy("localhost", policy => policy.WithOrigins("http://localhost:4200")));
+
+
 // Entity Framework
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("postgres")));
 var app = builder.Build();
@@ -28,11 +32,17 @@ using (var scope = app.Services.CreateScope())
   var context = services.GetRequiredService<UserContext>();
   context.Database.EnsureCreated();
 }
+// CORS
+app.UseCors();
+
 
 app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
 
 app.Run();
+
+
+
 
 

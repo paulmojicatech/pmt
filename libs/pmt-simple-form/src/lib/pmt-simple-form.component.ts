@@ -1,4 +1,10 @@
-import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  EventEmitter,
+  Input,
+  Output,
+} from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { PmtFormControl } from './models/pmt-simple-form.interface';
 
@@ -17,4 +23,7 @@ export class PmtSimpleFormComponent {
   formControls: PmtFormControl[] = [];
   @Input()
   buttons: { text: string; isPrimary: boolean }[] = [];
+
+  @Output()
+  actionEv = new EventEmitter<{ isPrimary: boolean }>();
 }
