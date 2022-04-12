@@ -19,7 +19,11 @@ export class AuthHttpService {
     req: RegisterProfileHttpRequest,
     url: string
   ): Observable<boolean> {
-    return this._httpClient.post(url, req).pipe(
+    const headers = {
+      'Access-Control-Allow-Origin': '*',
+      'Content-Type': 'application/json',
+    };
+    return this._httpClient.post(url, req, { headers }).pipe(
       map(() => true),
       catchError((err) => throwError(() => new Error(`${err}`)))
     );
