@@ -35,12 +35,12 @@ using (var scope = app.Services.CreateScope())
 // CORS
 app.UseCors();
 
-app.UseHttpsRedirection();
 
-app.UseAuthorization();
 app.UseHttpsRedirection();
 app.MapControllers();
-
 app.Run();
+
+
+
 
 

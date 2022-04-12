@@ -41,6 +41,8 @@ namespace pmt_auth.Services
     {
       return _ctx.Users.FirstOrDefault(u => u.UserId.ToLower() == userName.ToLower() && u.IsActive);
     }
+
+
   }
 }
 
