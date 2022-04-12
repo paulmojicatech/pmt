@@ -13,10 +13,6 @@ builder.Services.AddControllers().AddJsonOptions(option => option.JsonSerializer
 builder.Services.AddCors(option => option.AddPolicy("localhost", policy => policy.WithOrigins("http://localhost:4200")));
 
 
-// CORS
-builder.Services.AddCors(option => option.AddPolicy("localhost", policy => policy.WithOrigins("http://localhost:4200")));
-
-
 // Entity Framework
 builder.Services.AddDbContext<UserContext>(options => options.UseNpgsql(builder.Configuration.GetConnectionString("postgres")));
 var app = builder.Build();
