@@ -4,6 +4,7 @@ export enum GlobalActionType {
   INITIALIZE_APP = '[Global]Initialize App',
   SET_IS_ACCOUNT_LINKED = '[Global]Set Is Account Linked',
   PRELOAD_DEVICE = '[Global]Preload Device With Available Items',
+  TOGGLE_SPINNER = '[Global]Toggle Spinner',
 }
 
 export const initializeApp = createAction(GlobalActionType.INITIALIZE_APP);
@@ -14,3 +15,8 @@ export const setIsAccountLinked = createAction(
 );
 
 export const preloadDevice = createAction(GlobalActionType.PRELOAD_DEVICE);
+
+export const toggleSpinner = createAction(
+  GlobalActionType.TOGGLE_SPINNER,
+  props<{ isShowSpinner: boolean }>()
+);
