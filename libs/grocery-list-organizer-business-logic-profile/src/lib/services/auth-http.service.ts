@@ -1,8 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HTTP } from '@awesome-cordova-plugins/http/ngx/index';
-import { catchError, from, map, Observable, throwError } from 'rxjs';
-import { RegisterProfileHttpRequest } from '../models/register.interface';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { catchError, map, Observable, throwError } from 'rxjs';
+import { RegisterProfileHttpRequest } from '../models/register.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthHttpService {
@@ -24,19 +23,5 @@ export class AuthHttpService {
         return throwError(() => new Error(`${err}`));
       })
     );
-
-    // const headers = {
-    //   'Content-Type': 'application/json',
-    //   'Access-Control-Allow-Origin': '*',
-    // };
-    // return from(this._http.post(url, req, headers)).pipe(
-    //   map(() => {
-    //     console.log('TEST');
-    //     return true;
-    //   }),
-    //   catchError((err) => {
-    //     return throwError(() => new Error(`${err}`));
-    //   })
-    // );
   }
 }
