@@ -5,7 +5,7 @@ import {
   IonicStorageService,
   IonicStorageType,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
-import { filter, forkJoin, map, Observable, take } from 'rxjs';
+import { filter, forkJoin, from, map, take } from 'rxjs';
 import { loadCurrentItemsSuccess } from '../actions/current-grocery-items.actions';
 import { CurrentListState } from '../models/current-list.interface';
 
@@ -95,6 +95,33 @@ export class CurrentGroceryItemsUtilService {
             }
             return item;
           }
+        );
+        this._storageSvc.setItem(
+          IonicStorageType.CURRENT_ITEMS,
+          JSON.stringify(currentItems)
+        );
+      });
+  }
+
+  updateStorageAfterItemThrownAway(itemToThrowAway: CurrentGroceryItem): void {
+    const currentItems$ = from(
+      this._storageSvc.getItem(IonicStorageType.CURRENT_ITEMS)
+    );
+    forkJoin([
+      this._storageSvc.getItem(IonicStorageType.THROWN_AWAY_ITEMS),
+      currentItems$,
+    ])
+      .pipe(take(1))
+      .subscribe(([itemsStr, currentItemsStr]) => {
+        const updatedThrownAwayItems = !itemsStr
+          ? [itemToThrowAway]
+          : [...JSON.parse(itemsStr), itemToThrowAway];
+        const currentItems = (
+          JSON.parse(currentItemsStr) as CurrentGroceryItem[]
+        ).filter((item) => item.id !== itemToThrowAway.id);
+        this._storageSvc.setItem(
+          IonicStorageType.THROWN_AWAY_ITEMS,
+          JSON.stringify(updatedThrownAwayItems)
         );
         this._storageSvc.setItem(
           IonicStorageType.CURRENT_ITEMS,

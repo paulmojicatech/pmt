@@ -4,6 +4,7 @@ import {
   decrementItemQty,
   loadCurrentItemsSuccess,
   markItemAsUsed,
+  throwAwayItem,
 } from '../actions/current-grocery-items.actions';
 import { CurrentListState } from '../models/current-list.interface';
 
@@ -35,7 +36,12 @@ export const currentGroceryItemsReducer = createReducer(
       }
       return item;
     });
-
+    return { ...state, currentItems: updatedItems };
+  }),
+  on(throwAwayItem, (state, { itemToThrowAway }) => {
+    const updatedItems = state.currentItems?.filter(
+      (item) => item.id !== itemToThrowAway.id
+    );
     return { ...state, currentItems: updatedItems };
   })
 );

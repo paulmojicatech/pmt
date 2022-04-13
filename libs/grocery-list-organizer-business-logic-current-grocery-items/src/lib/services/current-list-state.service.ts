@@ -6,6 +6,7 @@ import { getCurrentItems } from '..';
 import {
   decrementItemQty,
   markItemAsUsed,
+  throwAwayItem,
 } from '../actions/current-grocery-items.actions';
 import {
   CurrentListState,
@@ -49,6 +50,10 @@ export class CurrentListStateService {
 
   decrementItem(itemToDecrement: CurrentGroceryItem): void {
     this._store.dispatch(decrementItemQty({ itemToDecrement }));
+  }
+
+  throwAwayItem(itemToThrowAway: CurrentGroceryItem): void {
+    this._store.dispatch(throwAwayItem({ itemToThrowAway }));
   }
 
   handleSearchValueUpdate(searchValue: string): void {
