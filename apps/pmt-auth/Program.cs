@@ -37,7 +37,8 @@ app.UseCors("localhost");
 
 
 app.UseAuthorization();
-app.UseHttpsRedirection();
+// Redirection done by nginx
+// app.UseHttpsRedirection(); 
 app.MapControllers();
 
 app.Run();

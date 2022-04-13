@@ -22,6 +22,8 @@ import {
 } from '@pmt/grocery-list-organizer-business-logic-current-grocery-items';
 import { HttpClientModule } from '@angular/common/http';
 
+import { HTTP } from '@awesome-cordova-plugins/http/ngx/index';
+
 @NgModule({
   declarations: [AppComponent],
   entryComponents: [],
@@ -39,7 +41,10 @@ import { HttpClientModule } from '@angular/common/http';
     AppRoutingModule,
     ReactiveFormsModule,
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
+  providers: [
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy },
+    HTTP,
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

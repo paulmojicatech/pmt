@@ -174,7 +174,10 @@ export class RegisterFormService {
       password: registerForm.get('password')?.value,
     };
     this._store.dispatch(
-      registerProfile({ req, url: `https://fantalytic.io/security/user` })
+      registerProfile({
+        req,
+        url: `http://fantalytic.io/security/user`,
+      })
     );
   }
 }
