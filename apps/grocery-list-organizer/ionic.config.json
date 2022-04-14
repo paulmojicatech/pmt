@@ -3,5 +3,11 @@
   "integrations": {
     "capacitor": {}
   },
+  "proxies": [
+    {
+      "path": "/security/*",
+      "proxyUrl": "http://fantalytic.io"
+    }
+  ],
   "type": "angular"
 }

@@ -10,7 +10,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddControllers().AddJsonOptions(option => option.JsonSerializerOptions.PropertyNamingPolicy = System.Text.Json.JsonNamingPolicy.CamelCase);
 
 // CORS
-builder.Services.AddCors(option => option.AddPolicy("localhost", policy => policy.WithOrigins("http://localhost:4200")));
+builder.Services.AddCors(option => option.AddPolicy("localhost", policy => policy.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader()));
 
 
 // Entity Framework
@@ -33,11 +33,12 @@ using (var scope = app.Services.CreateScope())
   context.Database.EnsureCreated();
 }
 // CORS
-app.UseCors();
+app.UseCors("localhost");
 
 
 app.UseAuthorization();
-app.UseHttpsRedirection();
+// Redirection done by nginx
+// app.UseHttpsRedirection(); 
 app.MapControllers();
 
 app.Run();

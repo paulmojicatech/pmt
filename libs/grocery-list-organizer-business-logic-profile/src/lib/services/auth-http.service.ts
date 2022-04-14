@@ -1,27 +1,27 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import {
-  catchError,
-  interval,
-  map,
-  Observable,
-  of,
-  take,
-  throwError,
-} from 'rxjs';
+import { catchError, map, Observable, throwError } from 'rxjs';
 import { RegisterProfileHttpRequest } from '../models/register.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthHttpService {
-  constructor(private _httpClient: HttpClient) {}
+  constructor(private _http: HttpClient) {}
 
   registerUser(
     req: RegisterProfileHttpRequest,
     url: string
   ): Observable<boolean> {
-    return this._httpClient.post(url, req).pipe(
-      map(() => true),
-      catchError((err) => throwError(() => new Error(`${err}`)))
+    const headers = new HttpHeaders();
+    headers.append('Access-Control-Allow-Origin', '*');
+    headers.append('Content-Type', 'application/json');
+    return this._http.post(url, req, { headers }).pipe(
+      map(() => {
+        return true;
+      }),
+      catchError((err) => {
+        console.log('ERR', err);
+        return throwError(() => new Error(`${err}`));
+      })
     );
   }
 }

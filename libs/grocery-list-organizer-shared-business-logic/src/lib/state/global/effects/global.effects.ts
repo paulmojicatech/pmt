@@ -7,6 +7,7 @@ import { UtilService } from '../../../services/util.service';
 import {
   initializeApp,
   setIsAccountLinked,
+  showToastMessage,
   toggleSpinner,
 } from '../actions/global.actions';
 
@@ -44,6 +45,17 @@ export class GlobalEffects {
       this._actions$.pipe(
         ofType(toggleSpinner),
         tap((action) => this._utilSvc.toggleSpinner(action.isShowSpinner))
+      ),
+    { dispatch: false }
+  );
+
+  showToastMessage$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(showToastMessage),
+        tap((action) =>
+          this._utilSvc.showToastMessage(action.message, action.isError)
+        )
       ),
     { dispatch: false }
   );

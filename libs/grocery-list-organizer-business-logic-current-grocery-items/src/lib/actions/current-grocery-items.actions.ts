@@ -7,6 +7,7 @@ export enum CurrentItemActionType {
   ADD_ITEM_TO_CURRENT_LIST = '[Current] Add Item to Current List',
   MARK_ITEM_AS_USED = '[Current] Mark Item As Used',
   DECREMENT_ITEM_QTY = '[Current] Decrement Item Qty',
+  THROW_AWAY_ITEM = '[Current] Throw Away Item',
 }
 
 export const loadCurrentItems = createAction(
@@ -31,4 +32,9 @@ export const markItemAsUsed = createAction(
 export const decrementItemQty = createAction(
   CurrentItemActionType.DECREMENT_ITEM_QTY,
   props<{ itemToDecrement: CurrentGroceryItem }>()
+);
+
+export const throwAwayItem = createAction(
+  CurrentItemActionType.THROW_AWAY_ITEM,
+  props<{ itemToThrowAway: CurrentGroceryItem }>()
 );

@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { LoadingController } from '@ionic/angular';
+import { LoadingController, ToastController } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root',
@@ -7,7 +7,10 @@ import { LoadingController } from '@ionic/angular';
 export class UtilService {
   private _loader?: HTMLIonLoadingElement;
 
-  constructor(private _loadingController: LoadingController) {}
+  constructor(
+    private _loadingController: LoadingController,
+    private _toastController: ToastController
+  ) {}
 
   async toggleSpinner(shouldShow: boolean): Promise<void> {
     if (shouldShow && !this._loader) {
@@ -17,5 +20,15 @@ export class UtilService {
       this._loader?.dismiss();
       this._loader = undefined;
     }
+  }
+
+  async showToastMessage(message: string, isError: boolean): Promise<void> {
+    const toast = await this._toastController.create({
+      message,
+      color: isError ? 'danger' : 'success',
+      duration: 2000,
+      position: 'top',
+    });
+    toast.present();
   }
 }

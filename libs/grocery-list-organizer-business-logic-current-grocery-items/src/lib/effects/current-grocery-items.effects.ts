@@ -6,6 +6,7 @@ import {
   addItemToCurrentList,
   decrementItemQty,
   markItemAsUsed,
+  throwAwayItem,
 } from '../actions/current-grocery-items.actions';
 import { CurrentGroceryItemsUtilService } from '../services/current-grocery-items-util.service';
 @Injectable()
@@ -59,6 +60,19 @@ export class CurrentGroceryItemsEffects {
             action.itemToDecrement
           );
         })
+      ),
+    { dispatch: false }
+  );
+
+  throwAwayItem$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(throwAwayItem),
+        tap((action) =>
+          this._currentItemsUtilSvc.updateStorageAfterItemThrownAway(
+            action.itemToThrowAway
+          )
+        )
       ),
     { dispatch: false }
   );
