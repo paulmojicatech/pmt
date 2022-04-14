@@ -9,7 +9,10 @@ import {
   registerProfileSuccess,
   routeToProfileModule,
 } from '../actions/profile.actions';
-import { toggleSpinner } from '@pmt/grocery-list-organizer-shared-business-logic';
+import {
+  showToastMessage,
+  toggleSpinner,
+} from '@pmt/grocery-list-organizer-shared-business-logic';
 
 @Injectable()
 export class ProfileEffects {
@@ -51,10 +54,34 @@ export class ProfileEffects {
     )
   );
 
+  registerProfileToastSuccess$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(registerProfileSuccess),
+      map(() =>
+        showToastMessage({
+          isError: false,
+          message: 'Your profile is now registered.',
+        })
+      )
+    )
+  );
+
   registerProfileHideSpinnerSuccess$ = createEffect(() =>
     this._actions$.pipe(
       ofType(registerProfileSuccess),
       map(() => toggleSpinner({ isShowSpinner: false }))
+    )
+  );
+
+  registerProfileToastFail$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(registerProfileFail),
+      map(() =>
+        showToastMessage({
+          isError: true,
+          message: 'There was an error registering your profile.',
+        })
+      )
     )
   );
 

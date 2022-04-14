@@ -10,12 +10,7 @@ import { RegisterFormService } from '@pmt/pmt-login-shared-business-logic';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
-  readonly LINKED_ACCOUNT_CONTROL: PmtFormControl = {
-    id: 'linkedAccount',
-    name: 'linkedAccount',
-    type: 'text',
-    label: 'Link To',
-  };
+
   readonly BUTTONS = [
     {
       text: 'Register',
@@ -29,13 +24,6 @@ export class RegisterComponent implements OnInit {
 
   ngOnInit(): void {
     this.registerForm = this.registerFormSvc.buildForm();
-    this.registerForm = this.registerFormSvc.addControl(
-      this.registerForm,
-      this.LINKED_ACCOUNT_CONTROL
-    );
-    this.formControls = [
-      ...this.registerFormSvc.getFormControls(),
-      this.LINKED_ACCOUNT_CONTROL,
-    ];
+    this.formControls = this.registerFormSvc.getFormControls();
   }
 }
