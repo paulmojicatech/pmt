@@ -73,6 +73,15 @@ export class ProfileEffects {
     )
   );
 
+  registerProfileSuccessRouteToLogin$ = createEffect(
+    () =>
+      this._actions$.pipe(
+        ofType(registerProfileSuccess),
+        tap(() => this._router.navigate(['tabs', 'profile', 'login']))
+      ),
+    { dispatch: false }
+  );
+
   registerProfileToastFail$ = createEffect(() =>
     this._actions$.pipe(
       ofType(registerProfileFail),

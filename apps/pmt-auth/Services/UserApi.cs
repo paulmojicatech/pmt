@@ -19,13 +19,13 @@ namespace pmt_auth.Services
     {
       try
       {
-        // HashUtil.GenerateHash(user.Password, out byte[] hashedPassword);
+        HashUtil.GenerateHash(user.Password, out byte[] hashedPassword, out byte[] passwordSalt);
         User userInstance = new User
         {
           FirstName = user.FirstName,
           UserId = user.UserId,
-          Password = user.Password, // TODO: Encrypt Pwd
-          LastName = user.LastName,
+          PasswordHash = hashedPassword,
+          PasswordSalt = passwordSalt,
           Email = user.Email
         };
         _ctx.Add(userInstance);
