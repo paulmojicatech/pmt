@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using pmt_auth.Contexts;
 using pmt_auth.Models;
 using pmt_auth.Util;
@@ -19,14 +19,14 @@ namespace pmt_auth.Services
     {
       try
       {
-        HashUtil.GenerateHash(user.Password, out byte[] hashedPassword, out byte[] passwordSalt);
+        // HashUtil.GenerateHash(user.Password, out byte[] hashedPassword, out byte[] passwordSalt);
         User userInstance = new User
         {
           FirstName = user.FirstName,
+          LastName = user.LastName,
           UserId = user.UserId,
-          PasswordHash = hashedPassword,
-          PasswordSalt = passwordSalt,
-          Email = user.Email
+          Email = user.Email,
+          Password = user.Password
         };
         _ctx.Add(userInstance);
         _ctx.SaveChanges();
