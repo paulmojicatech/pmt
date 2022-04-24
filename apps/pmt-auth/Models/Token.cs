@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,6 +17,7 @@ namespace pmt_auth.Models
     public DateTime ExpiresDate { get; set; } = DateTime.MinValue;
     public string UserName { get; set; } = string.Empty;
     public List<Role>? Roles { get; set; }
+    public DateTime? LastLogin { get; set; }
 
   }
 }
