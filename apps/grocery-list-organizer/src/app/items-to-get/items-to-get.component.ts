@@ -15,7 +15,7 @@ import {
   CurrentGroceryItem,
   GroceryItem,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
-import { from, Observable, Subject, takeLast, takeUntil } from 'rxjs';
+import { Observable, Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'pmt-items-to-get',

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using pmt_auth.Contexts;
 using pmt_auth.Models;
 using pmt_auth.Util;
@@ -19,9 +19,10 @@ namespace pmt_auth.Services
       Token token;
       try
       {
-        if (userToValidate.Password == passwordToValidate)
+        bool isValid = passwordToValidate == userToValidate.Password;
+        if (isValid)
         {
-          HashUtil.GenerateHash(Guid.NewGuid().ToString(), out byte[] hashedAccessToken);
+          HashUtil.GenerateHash(Guid.NewGuid().ToString(), out byte[] hashedAccessToken, out byte[] tokenSalt);
           string accessToken = Convert.ToBase64String(hashedAccessToken);
           token = new Token
           {

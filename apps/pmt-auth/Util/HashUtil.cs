@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -6,19 +6,23 @@ namespace pmt_auth.Util
 {
   public static class HashUtil
   {
-    public static void GenerateHash(string valueToHash, out byte[] passwordHash)
+    static HMACSHA512 hmac = new HMACSHA512();
+
+    public static void GenerateHash(string valueToHash, out byte[] passwordHash, out byte[] passwordSalt)
     {
-      using (var hmac = new HMACSHA512())
-      {
-        passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(valueToHash));
-      }
+
+      passwordSalt = hmac.Key;
+      passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(valueToHash));
+
     }
 
-    public static bool CompareHash(string persistedValue, string valueToValidate)
+    public static bool CompareHash(string plainText, string persistedValue)
     {
-      GenerateHash(valueToValidate, out byte[] hashToCompare);
-      string password = BitConverter.ToString(hashToCompare);
-      return persistedValue == password;
+
+      byte[] password = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(plainText));
+      string passwordToValidate = Convert.ToBase64String(password);
+      return persistedValue == passwordToValidate;
+
     }
 
   }
