@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 namespace pmt_auth.Models
 {
   public class RegisterUserRequest

@@ -12,11 +12,8 @@ namespace pmt_auth.Models
     [Required]
     public string AccessToken { get; set; } = string.Empty;
     [Required]
-    public DateTime IssueDate { get; set; } = DateTime.MinValue;
-    [Required]
-    public DateTime ExpiresDate { get; set; } = DateTime.MinValue;
     public string UserName { get; set; } = string.Empty;
-    public List<Role>? Roles { get; set; }
+    public string FirstName { get; set; } = string.Empty;
     public DateTime? LastLogin { get; set; }
 
   }

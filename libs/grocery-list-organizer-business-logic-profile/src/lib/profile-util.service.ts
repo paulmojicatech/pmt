@@ -1,10 +1,17 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { catchError, map, Observable, take, throwError } from 'rxjs';
-import { getGlobalState } from '@pmt/grocery-list-organizer-shared-business-logic';
+import {
+  getGlobalState,
+  IonicStorageService,
+  IonicStorageType,
+} from '@pmt/grocery-list-organizer-shared-business-logic';
 import { ProfileState } from './reducer/profile.reducer';
 import { AuthHttpService } from './services/auth-http.service';
-import { RegisterProfileHttpRequest } from './models/register.interface';
+import {
+  Profile,
+  RegisterProfileHttpRequest,
+} from './models/register.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,7 +19,8 @@ import { RegisterProfileHttpRequest } from './models/register.interface';
 export class ProfileUtilService {
   constructor(
     private _store: Store<ProfileState>,
-    private _authHttpSvc: AuthHttpService
+    private _authHttpSvc: AuthHttpService,
+    private _storageSvc: IonicStorageService
   ) {}
 
   getIsAccountLinked(): Observable<boolean> {
@@ -32,5 +40,11 @@ export class ProfileUtilService {
       map(() => true),
       catchError((err) => throwError(() => new Error(`${err}`)))
     );
+  }
+
+  getLinkedAccount(): Observable<Profile> {
+    return this._storageSvc
+      .getItem(IonicStorageType.LINKED_ACCOUNT)
+      .pipe(map((profileStr) => JSON.parse(profileStr)));
   }
 }

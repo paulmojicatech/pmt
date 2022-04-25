@@ -8,8 +8,10 @@ import {
   registerProfileFail,
   registerProfileSuccess,
   routeToProfileModule,
+  setLoggedInProfile,
 } from '../actions/profile.actions';
 import {
+  setIsAccountLinked,
   showToastMessage,
   toggleSpinner,
 } from '@pmt/grocery-list-organizer-shared-business-logic';
@@ -98,6 +100,15 @@ export class ProfileEffects {
     this._actions$.pipe(
       ofType(registerProfileFail),
       map(() => toggleSpinner({ isShowSpinner: false }))
+    )
+  );
+
+  setLoggedInProfile$ = createEffect(() =>
+    this._actions$.pipe(
+      ofType(setIsAccountLinked),
+      filter((action) => action.isAccountLinked),
+      switchMap(() => this._profileUtilSvc.getLinkedAccount()),
+      map((profile) => setLoggedInProfile({ profile }))
     )
   );
 }

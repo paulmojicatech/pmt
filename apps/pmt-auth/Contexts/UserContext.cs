@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using Microsoft.EntityFrameworkCore;
 using pmt_auth.Models;
 
@@ -11,21 +11,19 @@ namespace pmt_auth.Contexts
     {
     }
 
-    public DbSet<User> Users { get; set; }
-    public DbSet<Role> Roles { get; set; }
-    public DbSet<Token> Tokens { get; set; }
+    public DbSet<User>? Users { get; set; }
+    public DbSet<Role>? Roles { get; set; }
+    public DbSet<Token>? Tokens { get; set; }
+    public DbSet<UserRoles>? UserRoles { get; set; }
+
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<User>()
         .HasMany<Role>(u => u.Roles)
         .WithMany(u => u.Users)
-        .UsingEntity(ur => ur.ToTable("UserRoles"));
-
-      modelBuilder.Entity<Token>()
-        .HasMany<Role>(t => t.Roles)
-        .WithMany(r => r.Tokens)
-        .UsingEntity(tr => tr.ToTable("TokenRoles"));
+        .UsingEntity<UserRoles>()
+        .HasKey(ur => new { ur.UserId, ur.RoleId });
     }
   }
 }

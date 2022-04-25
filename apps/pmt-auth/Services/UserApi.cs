@@ -39,7 +39,49 @@ namespace pmt_auth.Services
 
     public User? GetUser(string userName)
     {
-      return _ctx.Users.FirstOrDefault(u => u.UserId.ToLower() == userName.ToLower() && u.IsActive);
+      User? user = _ctx.Users?.FirstOrDefault(u => u.UserId.ToLower() == userName.ToLower() && u.IsActive);
+
+      if (user != null)
+      {
+        IEnumerable<UserRoles> userRoles = _ctx.UserRoles?.Where(ur => ur.UserId == user.UserId).ToList() ?? new List<UserRoles>();
+
+        foreach (UserRoles ur in userRoles)
+        {
+          Role? role = _ctx.Roles?.FirstOrDefault(r => r.RoleId == ur.RoleId);
+          if (role != null && !user.Roles.Exists(r => r.RoleId == role.RoleId))
+          {
+            user.Roles.Add(role);
+          }
+
+        }
+      }
+      return user;
+
+    }
+
+    public void AssignUserRole(User user, PmtSystem system)
+    {
+      try
+      {
+        Role? role = _ctx.Roles?.FirstOrDefault(r => r.RoleId == (int)system);
+        if (role == null)
+        {
+          throw new Exception("Not Found");
+        }
+        bool doesRoleExist = user.Roles?.Exists(r => r.RoleId == role?.RoleId) ?? false;
+        if (!doesRoleExist)
+        {
+          var userRoles = user.Roles ?? new List<Role>();
+          userRoles.Add(role);
+          user.Roles = userRoles;
+          _ctx.Update(user);
+          _ctx.SaveChanges();
+        }
+      }
+      catch
+      {
+        throw;
+      }
     }
 
 

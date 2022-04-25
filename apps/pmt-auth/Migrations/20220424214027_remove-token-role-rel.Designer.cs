@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using pmt_auth.Contexts;
@@ -11,9 +12,10 @@ using pmt_auth.Contexts;
 namespace pmt_auth.Migrations
 {
     [DbContext(typeof(UserContext))]
-    partial class UserContextModelSnapshot : ModelSnapshot
+    [Migration("20220424214027_remove-token-role-rel")]
+    partial class removetokenrolerel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -100,32 +102,32 @@ namespace pmt_auth.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("pmt_auth.Models.UserRoles", b =>
+            modelBuilder.Entity("RoleUser", b =>
                 {
-                    b.Property<string>("UserId")
-                        .HasColumnType("text");
-
-                    b.Property<int>("RoleId")
+                    b.Property<int>("RolesRoleId")
                         .HasColumnType("integer");
 
-                    b.HasKey("UserId", "RoleId");
+                    b.Property<string>("UsersUserId")
+                        .HasColumnType("text");
 
-                    b.HasIndex("RoleId");
+                    b.HasKey("RolesRoleId", "UsersUserId");
 
-                    b.ToTable("UserRoles");
+                    b.HasIndex("UsersUserId");
+
+                    b.ToTable("UserRoles", (string)null);
                 });
 
-            modelBuilder.Entity("pmt_auth.Models.UserRoles", b =>
+            modelBuilder.Entity("RoleUser", b =>
                 {
                     b.HasOne("pmt_auth.Models.Role", null)
                         .WithMany()
-                        .HasForeignKey("RoleId")
+                        .HasForeignKey("RolesRoleId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("pmt_auth.Models.User", null)
                         .WithMany()
-                        .HasForeignKey("UserId")
+                        .HasForeignKey("UsersUserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

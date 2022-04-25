@@ -2,38 +2,57 @@
 using pmt_auth.Contexts;
 using pmt_auth.Models;
 using pmt_auth.Util;
+using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
 
 namespace pmt_auth.Services
 {
   public class TokenApi
   {
     private UserContext _ctx;
+    private IConfiguration _config;
 
-    public TokenApi(UserContext ctx)
+    public TokenApi(UserContext ctx, IConfiguration config)
     {
       _ctx = ctx;
+      _config = config;
     }
 
     public Token CreateAccessToken(User userToValidate, string passwordToValidate)
     {
-      Token token;
+      Token tokenToReturn;
       try
       {
-        bool isValid = passwordToValidate == userToValidate.Password;
+        bool isValid = passwordToValidate == userToValidate.Password && userToValidate.Roles?.Count > 0;
         if (isValid)
         {
-          HashUtil.GenerateHash(Guid.NewGuid().ToString(), out byte[] hashedAccessToken, out byte[] tokenSalt);
-          string accessToken = Convert.ToBase64String(hashedAccessToken);
-          token = new Token
+          List<Claim> claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, userToValidate.UserId)
+            };
+
+          userToValidate.Roles?.ForEach(r => claims.Add(new Claim(ClaimTypes.Role, r.RoleName)));
+
+          SymmetricSecurityKey jwtKey = new SymmetricSecurityKey(System.Text.Encoding.UTF8.GetBytes(_config.GetSection("jwtKey").Value));
+          var creds = new SigningCredentials(jwtKey, SecurityAlgorithms.HmacSha512Signature);
+
+          JwtSecurityToken token = new JwtSecurityToken(
+              claims: claims,
+              expires: DateTime.Now.AddDays(60),
+              signingCredentials: creds);
+
+          var jwt = new JwtSecurityTokenHandler().WriteToken(token);
+          tokenToReturn = new Token
           {
-            AccessToken = accessToken,
-            IssueDate = DateTime.UtcNow,
-            ExpiresDate = DateTime.UtcNow.AddDays(60),
-            UserName = userToValidate.UserId
+            AccessToken = jwt,
+            UserName = userToValidate.UserId,
+            FirstName = userToValidate.FirstName,
+            LastLogin = DateTime.UtcNow
           };
-          _ctx.Add(token);
+          _ctx.Add(tokenToReturn);
           _ctx.SaveChanges();
-          return token;
+          return tokenToReturn;
         }
         throw new Exception("401");
       }

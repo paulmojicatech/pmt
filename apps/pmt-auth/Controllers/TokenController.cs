@@ -13,14 +13,16 @@ using pmt_auth.Util;
 
 namespace pmt_auth.Controllers
 {
-  [Route("security/[controller]")]
+  [Route("security/token")]
   public class TokenController : Controller
   {
     private UserContext _ctx;
+    private IConfiguration _config;
 
-    public TokenController(UserContext ctx)
+    public TokenController(UserContext ctx, IConfiguration configuration)
     {
       _ctx = ctx;
+      _config = configuration;
     }
 
     [HttpPost]
@@ -40,7 +42,7 @@ namespace pmt_auth.Controllers
           return StatusCode(StatusCodes.Status404NotFound);
         }
 
-        TokenApi tokenSvc = new TokenApi(_ctx);
+        TokenApi tokenSvc = new TokenApi(_ctx, _config);
         Token token = tokenSvc.CreateAccessToken(user, req.password);
         return Ok(token);
       }

@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -13,7 +13,7 @@ using pmt_auth.Services;
 
 namespace pmt_auth.Controllers
 {
-  [Route("security/user")]
+
   public class UserController : Controller
   {
     private UserContext _ctx;
@@ -24,6 +24,7 @@ namespace pmt_auth.Controllers
     }
 
     [AllowAnonymous]
+    [Route("security/user")]
     [HttpPost]
     public IActionResult RegisterUser([FromBody] RegisterUserRequest userReq)
     {
@@ -46,6 +47,15 @@ namespace pmt_auth.Controllers
       }
       return Ok();
     }
+
+    [Route("security/user-system")]
+    [HttpPost, Authorize(Roles = "Admin")]
+    public IActionResult AssignUserToSystem([FromBody] AssignUserRequest req)
+    {
+
+      return Ok("It Works");
+    }
+
   }
 }
 

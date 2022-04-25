@@ -6,6 +6,7 @@ export enum GlobalActionType {
   PRELOAD_DEVICE = '[Global]Preload Device With Available Items',
   TOGGLE_SPINNER = '[Global]Toggle Spinner',
   SHOW_TOAST_MESSAGE = '[Global]Show Toast Message',
+  SET_LOGGED_IN_PROFILE = '[Global]Set Logged In Profile',
 }
 
 export const initializeApp = createAction(GlobalActionType.INITIALIZE_APP);
