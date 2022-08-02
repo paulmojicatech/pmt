@@ -11,6 +11,9 @@ export enum ProfileActionType {
   REGISTER_PROFILE_SUCCESS = '[Profile]Register Profile Success',
   REGISTER_PROFILE_FAIL = '[Profile]Register Profile Fail',
   SET_LOGGED_IN_PROFILE = '[Profile]Set Logged In Profile',
+  LOGIN = '[Profile]Log In to App',
+  LOGIN_SUCCESS = '[Profile]Log In to App Success',
+  LOGIN_FAIL = '[Profile]Log In App Fail',
 }
 
 export const routeToProfileModule = createAction(
@@ -37,3 +40,12 @@ export const setLoggedInProfile = createAction(
   ProfileActionType.SET_LOGGED_IN_PROFILE,
   props<{ profile: Profile }>()
 );
+
+export const login = createAction(
+  ProfileActionType.LOGIN,
+  props<{ userName: string; password: string }>()
+);
+
+export const loginSuccess = createAction(ProfileActionType.LOGIN_SUCCESS);
+
+export const loginFail = createAction(ProfileActionType.LOGIN_FAIL);

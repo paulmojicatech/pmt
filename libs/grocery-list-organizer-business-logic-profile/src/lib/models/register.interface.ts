@@ -8,8 +8,10 @@ export interface RegisterProfileHttpRequest {
 
 export interface Profile {
   firstName: string;
-  lastName: string;
   accessToken: string;
-  expirationDate: string;
-  roles: string[];
+}
+
+export interface LoginHttpRequest {
+  userName: string;
+  password: string;
 }

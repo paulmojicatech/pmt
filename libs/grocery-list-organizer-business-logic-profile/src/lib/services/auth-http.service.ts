@@ -1,7 +1,11 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { RegisterProfileHttpRequest } from '../models/register.interface';
+import {
+  LoginHttpRequest,
+  Profile,
+  RegisterProfileHttpRequest,
+} from '../models/register.interface';
 
 @Injectable({ providedIn: 'root' })
 export class AuthHttpService {
@@ -23,5 +27,9 @@ export class AuthHttpService {
         return throwError(() => new Error(`${err}`));
       })
     );
+  }
+
+  loginUser(loginReq: LoginHttpRequest, url: string): Observable<Profile> {
+    return this._http.post<Profile>(url, loginReq);
   }
 }
