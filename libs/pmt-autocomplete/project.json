@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/pmt-autocomplete",
   "sourceRoot": "libs/pmt-autocomplete/src",
   "prefix": "pmt",
   "targets": {

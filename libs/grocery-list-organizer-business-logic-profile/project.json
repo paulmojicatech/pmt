@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/grocery-list-organizer-business-logic-profile",
   "sourceRoot": "libs/grocery-list-organizer-business-logic-profile/src",
   "prefix": "pmt",
   "targets": {

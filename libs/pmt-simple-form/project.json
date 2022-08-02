@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/pmt-simple-form",
   "sourceRoot": "libs/pmt-simple-form/src",
   "prefix": "pmt",
   "targets": {

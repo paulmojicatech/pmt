@@ -1,5 +1,5 @@
 {
-  "root": "apps/grocery-list-organizer-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/grocery-list-organizer-e2e/src",
   "projectType": "application",
   "targets": {
