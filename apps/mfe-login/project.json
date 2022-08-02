@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/mfe-login",
   "sourceRoot": "apps/mfe-login/src",
   "prefix": "pmt",
   "targets": {
@@ -22,7 +22,8 @@
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/mfe-login/webpack.config.js"
-        }
+        },
+        "buildLibsFromSource": false
       },
       "configurations": {
         "production": {

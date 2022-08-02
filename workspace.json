@@ -24,5 +24,6 @@
     "pmt-login-shared-business-logic": "libs/pmt-login-shared-business-logic",
     "pmt-mobile-toolbar": "libs/pmt-mobile-toolbar",
     "pmt-simple-form": "libs/pmt-simple-form"
-  }
+  },
+  "$schema": "./node_modules/nx/schemas/workspace-schema.json"
 }

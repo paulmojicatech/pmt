@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/pmt-login",
   "sourceRoot": "libs/pmt-login/src",
   "prefix": "pmt",
   "targets": {

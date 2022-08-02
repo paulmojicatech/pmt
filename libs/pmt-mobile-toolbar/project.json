@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/pmt-mobile-toolbar",
   "sourceRoot": "libs/pmt-mobile-toolbar/src",
   "prefix": "pmt",
   "targets": {

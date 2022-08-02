@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
-  "root": "apps/mfe-docs",
   "sourceRoot": "apps/mfe-docs/src",
   "prefix": "pmt",
   "targets": {
@@ -19,7 +19,8 @@
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/mfe-docs/webpack.config.js"
-        }
+        },
+        "buildLibsFromSource": false
       },
       "configurations": {
         "production": {

@@ -1,6 +1,6 @@
 {
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
-  "root": "libs/pmt-common-angular-components",
   "sourceRoot": "libs/pmt-common-angular-components/src",
   "prefix": "pmt",
   "targets": {
