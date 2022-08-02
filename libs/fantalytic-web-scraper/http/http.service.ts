@@ -5,7 +5,7 @@ import { WR_TE_STATS } from '../models/defaults/wr_te.const';
 import { PositionTypes } from '../models/parser.interface';
 import { parserHtmlString } from '../parsers/html-parser.service';
 
-const fetch = require('node-fetch');
+const axios = require('axios');
 const cheerio = require('cheerio');
 
 export async function getSiteContent(position: PositionTypes, year: string): Promise<void> {
@@ -24,7 +24,9 @@ export async function getSiteContent(position: PositionTypes, year: string): Pro
         default:
             logError('Position is not supported');
     }
-    const response = await fetch(url).then((resp: any) => resp.text());
+    const response = await axios.get(url).then((resp: any) => {
+        return resp.data;
+    });
     const $ = cheerio.load(response);
     await parserHtmlString(response, position, year);
     return Promise.resolve();

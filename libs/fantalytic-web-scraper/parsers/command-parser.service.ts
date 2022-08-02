@@ -1,4 +1,4 @@
-import { FantalyticCommand } from "../models";
+import { FantalyticCommand } from "../models/index";
 import { GetLocationType, IFantalyticGetCommand, PositionTypes, RootCommandTypes } from "../models/parser.interface";
 
 export class CommandParser {

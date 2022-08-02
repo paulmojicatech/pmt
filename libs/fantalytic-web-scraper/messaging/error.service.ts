@@ -1,5 +1,5 @@
-const chalk = require('chalk');
+import * as chalk from 'chalk';
 
 export function logError(errorMsg: string): void {
-    console.log(chalk.red(`Error parsing command: ${errorMsg}.  Type --help for valid commands`));
+    console.log(chalk.default.red(`Error parsing command: ${errorMsg}.  Type --help for valid commands`));
 }
