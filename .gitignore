@@ -55,3 +55,6 @@ apps/marvintherapy-public/env.ts
 apps/marvel-api/appsettings.Development.json
 apps/marvel-api/appsettings.json
 .env
+apps/fantalytic-api/appsettings.Development.json
+apps/fantalytic-api/appsettings.json
+apps/fantalytic-api/.vs/Pmt.FantalyticApi/xs/project-cache/Pmt.FantalyticApi-Debug.json

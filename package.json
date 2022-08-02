@@ -40,6 +40,7 @@
     "@nrwl/react": "14.5.1",
     "@nrwl/web": "14.5.1",
     "@nrwl/workspace": "14.5.1",
+    "@nx-dotnet/core": "^1.13.0",
     "@nxtend/capacitor": "^13.0.0",
     "@nxtend/ionic-angular": "^13.0.0",
     "@testing-library/react": "13.3.0",
@@ -62,12 +63,12 @@
     "eslint-plugin-react-hooks": "4.6.0",
     "jest": "27.5.1",
     "jest-preset-angular": "11.1.2",
+    "nx": "14.5.1",
     "prettier": "2.7.1",
     "react-test-renderer": "18.2.0",
     "sass": "1.54.0",
     "ts-jest": "27.1.4",
-    "typescript": "4.7.4",
-    "nx": "14.5.1"
+    "typescript": "4.7.4"
   },
   "dependencies": {
     "@angular-architects/module-federation": "^13.0.1",
@@ -84,7 +85,7 @@
     "@capacitor/core": "^3.2.5",
     "@emotion/react": "11.9.3",
     "@emotion/styled": "11.9.3",
-    "@ionic/angular": "^6.0.7",
+    "@ionic/angular": "^6.2.0",
     "@ionic/core": "^6.0.7",
     "@ionic/storage-angular": "^3.0.6",
     "@mui/icons-material": "^5.4.2",
