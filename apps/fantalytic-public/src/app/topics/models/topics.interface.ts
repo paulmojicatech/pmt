@@ -5,3 +5,7 @@ export interface Topic {
     link: string;
     publishedDate: string;
 }
+
+export interface TopicsState {
+    topics: Topic[] | undefined;
+}

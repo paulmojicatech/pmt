@@ -1,25 +1,32 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { filter, Observable } from 'rxjs';
 import { TOPICS_TEXT } from './const/topics.const';
-import { EspnRssFeedService } from './services/espn-rss-feed.service';
-import { HttpClientModule } from '@angular/common/http';
+import { Topic, TopicsState } from './models/topics.interface';
+import { loadTopics } from './ngrx/actions/topics.actions';
+import { getTopics } from './ngrx/selectors/topics.selector';
+import {MatCardModule} from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'pmt-topics',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MatCardModule, MatButtonModule],
   templateUrl: './topics.component.html',
   styleUrls: ['./topics.component.scss'],
 })
 export class TopicsComponent implements OnInit {
   readonly topicsText = TOPICS_TEXT;
 
-  constructor(private _topicsSvc: EspnRssFeedService) {}
+  topics$!: Observable<Topic[]>;
+
+  constructor(private _store: Store<TopicsState>) {}
 
   ngOnInit(): void {
-    this._topicsSvc.getTopics().subscribe(resp => {
-      console.log('RESP', resp);
-    })
-
+    this.topics$ = this._store.select(getTopics).pipe(
+      filter(topics => !!topics)
+    ) as Observable<Topic[]>;
+    this._store.dispatch(loadTopics());
   }
 }

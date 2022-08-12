@@ -1,5 +1,19 @@
 <main class="topics-container">
     <section class="topics-text-container">
-        {{topicsText}}
+        <h3>{{topicsText}}</h3>
+    </section>
+    <section class="topics-card-container">
+        <mat-card *ngFor="let topic of topics$ | async">
+            <mat-card-header>
+                <mat-card-title>{{topic.title}}</mat-card-title>
+            </mat-card-header>
+            <img *ngIf="topic.imageUrl" mat-card-image [src]="topic.imageUrl" [alt]="topic.title" />
+            <mat-card-content>
+                <p>{{topic.description}}</p>
+            </mat-card-content>
+            <mat-card-actions>
+                <a mat-button [href]="topic.link" target="_blank">View Story</a>
+            </mat-card-actions>
+        </mat-card>
     </section>
 </main>
