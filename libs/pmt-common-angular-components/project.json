@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/pmt-common-angular-components"],
+      "outputs": [
+        "coverage/libs/pmt-common-angular-components"
+      ],
       "options": {
         "jestConfig": "libs/pmt-common-angular-components/jest.config.js",
         "passWithNoTests": true

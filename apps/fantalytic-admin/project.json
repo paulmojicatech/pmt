@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/fantalytic-admin",
         "index": "apps/fantalytic-admin/src/index.html",
@@ -18,7 +20,9 @@
           "apps/fantalytic-admin/src/favicon.ico",
           "apps/fantalytic-admin/src/assets"
         ],
-        "styles": ["apps/fantalytic-admin/src/styles.scss"],
+        "styles": [
+          "apps/fantalytic-admin/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/fantalytic-admin"],
+      "outputs": [
+        "coverage/apps/fantalytic-admin"
+      ],
       "options": {
         "jestConfig": "apps/fantalytic-admin/jest.config.ts",
         "passWithNoTests": true

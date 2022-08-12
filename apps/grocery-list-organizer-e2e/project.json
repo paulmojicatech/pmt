@@ -17,12 +17,18 @@
     },
     "lint": {
       "executor": "@nrwl/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/grocery-list-organizer-e2e/**/*.{js,ts}"]
+        "lintFilePatterns": [
+          "apps/grocery-list-organizer-e2e/**/*.{js,ts}"
+        ]
       }
     }
   },
   "tags": [],
-  "implicitDependencies": ["grocery-list-organizer"]
+  "implicitDependencies": [
+    "grocery-list-organizer"
+  ]
 }

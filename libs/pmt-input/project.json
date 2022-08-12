@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/pmt-input"],
+      "outputs": [
+        "coverage/libs/pmt-input"
+      ],
       "options": {
         "jestConfig": "libs/pmt-input/jest.config.js",
         "passWithNoTests": true

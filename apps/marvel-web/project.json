@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/marvel-web",
         "index": "apps/marvel-web/src/index.html",
@@ -18,7 +20,9 @@
           "apps/marvel-web/src/favicon.ico",
           "apps/marvel-web/src/assets"
         ],
-        "styles": ["apps/marvel-web/src/styles.scss"],
+        "styles": [
+          "apps/marvel-web/src/styles.scss"
+        ],
         "scripts": []
       },
       "configurations": {
@@ -83,7 +87,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/marvel-web"],
+      "outputs": [
+        "coverage/apps/marvel-web"
+      ],
       "options": {
         "jestConfig": "apps/marvel-web/jest.config.js",
         "passWithNoTests": true

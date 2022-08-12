@@ -1,0 +1,11 @@
+.topics-container {
+    width: 100vw;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    row-gap: 2rem;
+    .topics-text-container {
+        margin-top: 2rem;
+        grid-column: 2 / 6;
+    }
+
+}
