@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+@import url('./styles/dark-theme.scss');
+@import url('./styles/light-theme.scss');
+
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+div, span, p, h3 {
+    background-color: var(--background-color);
+    color: var(--font-color);
+}
+
+h1 {
+    font-size: 2.5rem;
+    font-weight: 500;
+}
+
+h2 {
+    font-size: 2rem;
+    font-weight: 400;
+}
+
+h3 {
+    font-size: 1.5rem;
+    font-weight: 200;
+}

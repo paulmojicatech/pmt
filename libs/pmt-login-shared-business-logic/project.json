@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/pmt-login-shared-business-logic"],
+      "outputs": [
+        "coverage/libs/pmt-login-shared-business-logic"
+      ],
       "options": {
         "jestConfig": "libs/pmt-login-shared-business-logic/jest.config.js",
         "passWithNoTests": true

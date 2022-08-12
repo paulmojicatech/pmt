@@ -1,6 +1,10 @@
 {
   "version": 2,
   "projects": {
+    "fantalytic-admin": "apps/fantalytic-admin",
+    "fantalytic-admin-e2e": "apps/fantalytic-admin-e2e",
+    "fantalytic-public": "apps/fantalytic-public",
+    "fantalytic-public-e2e": "apps/fantalytic-public-e2e",
     "grocery-list-organizer": "apps/grocery-list-organizer",
     "grocery-list-organizer-business-logic-current-grocery-items": "libs/grocery-list-organizer-business-logic-current-grocery-items",
     "grocery-list-organizer-business-logic-items-to-get": "libs/grocery-list-organizer-business-logic-items-to-get",

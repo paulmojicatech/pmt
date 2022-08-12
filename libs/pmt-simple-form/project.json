@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/pmt-simple-form"],
+      "outputs": [
+        "coverage/libs/pmt-simple-form"
+      ],
       "options": {
         "jestConfig": "libs/pmt-simple-form/jest.config.js",
         "passWithNoTests": true

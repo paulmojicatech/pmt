@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/grocery-list-organizer-shared-business-logic"],
+      "outputs": [
+        "coverage/libs/grocery-list-organizer-shared-business-logic"
+      ],
       "options": {
         "jestConfig": "libs/grocery-list-organizer-shared-business-logic/jest.config.js",
         "passWithNoTests": true

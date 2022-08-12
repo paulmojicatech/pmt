@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nrwl/angular:webpack-browser",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "options": {
         "outputPath": "dist/apps/mfe-docs",
         "index": "apps/mfe-docs/src/index.html",
@@ -14,8 +16,13 @@
         "polyfills": "apps/mfe-docs/src/polyfills.ts",
         "tsConfig": "apps/mfe-docs/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
-        "assets": ["apps/mfe-docs/src/favicon.ico", "apps/mfe-docs/src/assets"],
-        "styles": ["apps/mfe-docs/src/styles.scss"],
+        "assets": [
+          "apps/mfe-docs/src/favicon.ico",
+          "apps/mfe-docs/src/assets"
+        ],
+        "styles": [
+          "apps/mfe-docs/src/styles.scss"
+        ],
         "scripts": [],
         "customWebpackConfig": {
           "path": "apps/mfe-docs/webpack.config.js"
@@ -90,7 +97,9 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/apps/mfe-docs"],
+      "outputs": [
+        "coverage/apps/mfe-docs"
+      ],
       "options": {
         "jestConfig": "apps/mfe-docs/jest.config.js",
         "passWithNoTests": true
@@ -99,7 +108,10 @@
     "serve-mfe": {
       "executor": "@nrwl/workspace:run-commands",
       "options": {
-        "commands": ["nx serve mfe-login", "nx serve mfe-docs"]
+        "commands": [
+          "nx serve mfe-login",
+          "nx serve mfe-docs"
+        ]
       }
     }
   },

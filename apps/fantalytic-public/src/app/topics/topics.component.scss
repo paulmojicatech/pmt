@@ -1,0 +1,38 @@
+@media screen and (max-width: 800px) {
+    .topics-container {
+        h3 {
+            margin: .5rem;
+            text-align: justify;
+        }
+    }
+    .topics-card-container {
+        grid-template-columns: 1fr;
+    }
+    
+}
+
+@media screen and (min-width: 801px) {
+    .topics-container h3 {
+        margin: 2rem 7rem;
+    }
+    .topics-card-container {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+.topics-container {
+    width: 100vw;
+    .topics-text-container {
+       display: flex;
+       align-items: center;
+       
+    }
+    .topics-card-container {
+        display: grid;
+        row-gap: 2rem;
+        column-gap: 2rem;
+        margin: 0 2rem;
+    
+    }
+
+}

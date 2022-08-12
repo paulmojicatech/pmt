@@ -6,7 +6,9 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": ["coverage/libs/marvel-shared-business-logic"],
+      "outputs": [
+        "coverage/libs/marvel-shared-business-logic"
+      ],
       "options": {
         "jestConfig": "libs/marvel-shared-business-logic/jest.config.js",
         "passWithNoTests": true
