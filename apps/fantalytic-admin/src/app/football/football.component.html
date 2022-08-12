@@ -1,0 +1,23 @@
+<mat-stepper #stepper>
+    <mat-step [stepControl]="positionForm" errorMessage="You must select a position.">
+        <form [formGroup]="positionForm">
+            <ng-template matStepLabel>Position Type</ng-template>
+            <div class="position-container">
+                <mat-label>Position</mat-label>
+                <mat-radio-group formControlName="positionType">
+                    <mat-radio-button *ngFor="let type of POSITIONS | keyvalue" [value]="type.key">{{type.value}}</mat-radio-button>
+                </mat-radio-group>
+            </div>
+        </form>
+    </mat-step>
+    <mat-step [stepControl]="fileForm" errorMessage="You must select a file.">        
+        <ng-template matStepLabel>Select a File</ng-template>
+        <div class="file-container">
+            <div>
+                <label>Select or drag a file</label>
+                <input type="file" />
+            </div>
+            
+        </div>
+    </mat-step>
+</mat-stepper>

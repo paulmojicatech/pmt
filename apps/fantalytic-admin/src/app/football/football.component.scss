@@ -1,0 +1,22 @@
+.position-container {
+    display: flex;
+    flex-direction: column;
+
+    mat-radio-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.file-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    border: 3px #eee dashed;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+    }
+}

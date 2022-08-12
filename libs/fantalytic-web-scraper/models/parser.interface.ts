@@ -1,12 +1,6 @@
+import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic.interface';
 import * as stats from './index';
 
-export enum PositionTypes {
-    QB = 'QB',
-    RB = 'RB',
-    WR = 'WR',
-    TE = 'TE',
-    UNKNOWN = 'UNKNOWN'
-}
 
 export enum GetLocationType {
     HTTP = 'HTTP',

@@ -15,6 +15,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@pmt/fantalytic-shared": ["libs/fantalytic-shared/src/index.ts"],
       "@pmt/grocery-list-organizer-business-logic-current-grocery-items": [
         "libs/grocery-list-organizer-business-logic-current-grocery-items/src/index.ts"
       ],

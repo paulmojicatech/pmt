@@ -1,5 +1,5 @@
+import { IQBStats } from "../../fantalytic-shared/src/lib/models/fantalytic.interface";
 import { QB_STATS } from "../models/defaults/qb.const";
-import { IQBStats } from "../models/qb.interface";
 
 const cheerio = require('cheerio');
 

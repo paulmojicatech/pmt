@@ -1,5 +1,6 @@
+import { PositionTypes } from "../../fantalytic-shared/src/lib/models/fantalytic.interface";
 import { FantalyticCommand } from "../models/index";
-import { GetLocationType, IFantalyticGetCommand, PositionTypes, RootCommandTypes } from "../models/parser.interface";
+import { GetLocationType, IFantalyticGetCommand, RootCommandTypes } from "../models/parser.interface";
 
 export class CommandParser {
     constructor() { }
