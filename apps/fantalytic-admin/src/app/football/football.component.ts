@@ -7,6 +7,9 @@ import { MatStepperModule } from '@angular/material/stepper';
 import { PositionTypes } from '@pmt/fantalytic-shared';
 import {MatTableModule} from '@angular/material/table';
 import { MatInputModule } from '@angular/material/input';
+import {AgGridModule} from 'ag-grid-angular';
+import { ColDef } from 'ag-grid-community';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'pmt-football',
@@ -18,7 +21,9 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatRadioModule,
     MatTableModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    AgGridModule
   ],
   templateUrl: './football.component.html',
   styleUrls: ['./football.component.scss'],
@@ -28,6 +33,15 @@ export class FootballComponent implements OnInit {
   positionForm!: FormGroup;
   fileForm!: FormGroup;
   readonly POSITIONS = PositionTypes;
+
+  readonly COLS: ColDef[] = [
+    {
+      field: 'test',
+      headerName: 'Test'
+    }
+  ];
+
+  defaultColDef = {filterable: true, sortable: true};
 
   constructor(private _fb: FormBuilder) {}
 

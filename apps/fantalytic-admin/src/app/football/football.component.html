@@ -1,5 +1,5 @@
 <mat-stepper #stepper>
-    <mat-step [stepControl]="positionForm" errorMessage="You must select a position.">
+    <mat-step [stepControl]="positionForm">
         <form [formGroup]="positionForm">
             <ng-template matStepLabel>Position Type</ng-template>
             <div class="position-container">
@@ -9,15 +9,31 @@
                 </mat-radio-group>
             </div>
         </form>
+        <div class="action-container">
+            <button class="next-btn" mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
     </mat-step>
-    <mat-step [stepControl]="fileForm" errorMessage="You must select a file.">        
+    <mat-step>        
         <ng-template matStepLabel>Select a File</ng-template>
         <div class="file-container">
             <div>
                 <label>Select or drag a file</label>
                 <input type="file" />
             </div>
-            
+        </div>
+        <div class="action-container">
+            <button class="prev-btn" mat-raised-button color="default" matStepperPrevious>Previous</button>
+            <button class="next-btn" mat-raised-button color="primary" matStepperNext>Next</button>
+        </div>
+    </mat-step>
+    <mat-step>
+        <ng-template matStepLabel>Review File</ng-template>
+        <div class="grid-container">
+            <ag-grid-angular class="ag-theme-alpine" [defaultColDef]="defaultColDef" [columnDefs]="COLS"></ag-grid-angular>
+        </div>
+        <div class="action-container">
+            <button class="prev-btn" mat-raised-button color="default" matStepperPrevious>Previous</button>
+            <button class="next-btn" mat-raised-button color="primary">Complete</button>
         </div>
     </mat-step>
 </mat-stepper>
