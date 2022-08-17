@@ -1,8 +1,8 @@
+import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic.interface';
 import { logError } from '../messaging/error.service';
 import { QB_STATS } from '../models/defaults/qb.const';
 import { RB_STATS } from '../models/defaults/rb.const';
 import { WR_TE_STATS } from '../models/defaults/wr_te.const';
-import { PositionTypes } from '../models/parser.interface';
 import { parserHtmlString } from '../parsers/html-parser.service';
 
 const axios = require('axios');

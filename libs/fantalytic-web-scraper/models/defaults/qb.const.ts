@@ -1,4 +1,4 @@
-import { IQBStats } from "../qb.interface";
+import { IQBStats } from "../../../fantalytic-shared/src/lib/models/fantalytic.interface";
 
 export const QB_STATS: IQBStats = {
     url: 'https://www.nfl.com/stats/player-stats/category/passing/{year}/REG/all/passingyards/DESC',

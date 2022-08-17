@@ -79,3 +79,4 @@ libs/fantalytic-web-scraper/parsers/wr-te-parser.service.js
 libs/fantalytic-web-scraper/env.ts
 libs/fantalytic-web-scraper/package-lock.json
 libs/fantalytic-web-scraper/output/*
+apps/fantalytic-public/src/assets/stats/*

@@ -35,4 +35,14 @@
     
     }
 
+    .mat-card {
+        .mat-card-actions {
+            a {
+                position: absolute;
+                bottom: 0;
+            }
+        }
+        
+    }
+
 }

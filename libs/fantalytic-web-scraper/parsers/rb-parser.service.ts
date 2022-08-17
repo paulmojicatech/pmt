@@ -1,5 +1,5 @@
+import { IRBStats } from "../../fantalytic-shared/src/lib/models/fantalytic.interface";
 import { RB_STATS } from "../models/defaults/rb.const";
-import { IRBStats } from "../models/rb.interface";
 
 const cheerio = require('cheerio');
 

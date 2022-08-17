@@ -1,0 +1,40 @@
+.position-container {
+    display: flex;
+    flex-direction: column;
+
+    mat-radio-group {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.file-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+    border: 3px #eee dashed;
+
+    > div {
+        display: flex;
+        flex-direction: column;
+    }
+}
+
+.grid-container {
+    width: 80vw;
+    ag-grid-angular {
+        width: 100%;
+        height: 15vh;
+    }
+}
+
+.action-container {
+    display: grid;
+    justify-content: space-between;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 2rem;
+    .next-btn {
+       grid-column: 3 / 3;
+    }
+}

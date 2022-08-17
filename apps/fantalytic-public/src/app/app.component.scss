@@ -1,0 +1,13 @@
+mat-toolbar {
+    color: var(--alternate-font-color);
+    button {
+        background-color: transparent;
+    }
+    mat-icon {
+        color: var(--alternate-font-color);
+        font-size: 2rem;
+    }
+    .spacer {
+        flex: 1 1 auto;
+    }
+}

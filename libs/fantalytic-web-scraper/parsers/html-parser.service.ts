@@ -1,9 +1,9 @@
-import { PositionTypes } from "../models/parser.interface";
 import { writeFileSync } from 'fs';
 import { parseQBResponse } from "./qb-parser.service";
 import { logError } from "../messaging/error.service";
 import { parseRBResponse } from "./rb-parser.service";
 import { parseWRTEResponse } from './wr-te-parser.service';
+import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic.interface';
 
 export async function parserHtmlString(html: any, type: PositionTypes, year: string, url: string = ''): Promise<any> {
     
