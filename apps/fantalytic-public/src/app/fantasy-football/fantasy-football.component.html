@@ -1,0 +1,12 @@
+<main class="main-container">
+    <div class="grid-container" *ngIf="gridConfig$ | async as gridConfig">
+        <ag-grid-angular #statGrid
+            class="ag-theme-alpine"
+            [columnDefs]="gridConfig.colDef"
+            [rowData]="rowData$ | async"
+            [defaultColDef]="gridConfig.gridOptions"></ag-grid-angular>
+    </div>
+</main>
+
+
+

@@ -1,2 +1,16 @@
-<mat-toolbar color="primary">Fantalytic.io</mat-toolbar>
+<mat-toolbar color="primary">
+    <h1>Fantalytic.io</h1>
+    <div class="spacer"></div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button routerLink="topics" mat-menu-item>
+            Topics
+        </button>
+        <button mat-menu-item routerLink="fantasy-football">
+            Fantasy Football
+        </button>
+    </mat-menu>
+</mat-toolbar>
 <router-outlet></router-outlet>
