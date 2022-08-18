@@ -1,0 +1,6 @@
+FROM nginx:latest
+ 
+COPY ./dist/apps/fantalytic-public/* /usr/share/nginx/html
+
+
+
