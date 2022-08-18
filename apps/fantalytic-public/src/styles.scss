@@ -8,7 +8,7 @@
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 
-div, span, p, h3 {
+div, span, p, h3, section, main {
     background-color: var(--background-color);
     color: var(--font-color);
 }

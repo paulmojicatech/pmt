@@ -31,6 +31,33 @@ export const QB_COL_DEFS: ColDef[] = [
     }
 ];
 
+export const RB_COL_DEF: ColDef[] = [
+    {
+        field: 'player',
+        headerName: 'Player'
+    },
+    {
+        field: 'year',
+        headerName: 'Year'
+    },
+    {
+        field: 'rushingYds',
+        headerName: 'Rushing Yards'
+    },
+    {
+        field: 'rushingYdsPerAttempt',
+        headerName: 'Rushing Yards Per Attepmt'
+    },
+    {
+        field: 'rushingTds',
+        headerName: 'Rushing Touchdowns'
+    },
+    {
+        field: 'rushing20Yds',
+        headerName: '20+ Yard Runs'
+    }
+];
+
 export const FANTASY_FOOTBALL_INITIAL_STATE: FantasyFootballState = {
     gridConfig: {
         colDef: QB_COL_DEFS,
@@ -39,3 +66,4 @@ export const FANTASY_FOOTBALL_INITIAL_STATE: FantasyFootballState = {
     position: PositionTypes.QB,
     rowData: getQbRowData()
 };
+

@@ -1,4 +1,12 @@
 <main class="main-container">
+    <div class="filter-container">
+        <div class="position-container">
+            <span>Position</span>
+            <a>QB</a>
+            <a>RB</a>
+            <a>WR / TE</a>
+        </div>
+    </div>
     <div class="grid-container" *ngIf="gridConfig$ | async as gridConfig">
         <ag-grid-angular #statGrid
             class="ag-theme-alpine"
