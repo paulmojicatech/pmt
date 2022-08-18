@@ -1,5 +1,5 @@
 import { WR_TE_STATS } from "../models/defaults/wr_te.const";
-import { IWRTEStats } from "../models/wr_te.interface";
+import { IWRTEStats } from "../../fantalytic-shared/src/index";
 
 const cheerio = require('cheerio');
 

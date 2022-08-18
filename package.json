@@ -14,7 +14,8 @@
     "grocery-ionic-android-prod": "nx build grocery-list-organizer --prod && nx run grocery-list-organizer:sync:android && nx run grocery-list-organizer:open:android",
     "marvintherapy-public": "nx serve marvintherapy-public",
     "marvintherapy-api": "cd apps/marvintherapy-api/marvintherapy-api && dotnet run",
-    "postinstall": "ngcc --properties es2020 browser module main"
+    "postinstall": "ngcc --properties es2020 browser module main",
+    "docker-deploy-fantalytic-public": "nx build fantalytic-public --prod && docker build -t paulmojicatech/fantalytic-public-image -f fantalytic-public-dockerfile . && docker push paulmojicatech/fantalytic-public-image"
   },
   "private": true,
   "devDependencies": {

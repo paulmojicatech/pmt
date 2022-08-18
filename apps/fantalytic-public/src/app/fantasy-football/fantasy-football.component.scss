@@ -13,17 +13,19 @@
     span, div, a {
         padding: 1rem;
     }
-    a {
+    button {
+        cursor: pointer;
         color: var(--link-color);
         &.selected {
             text-decoration: underline;
+            text-decoration-thickness: 5px;
         }
     }
 }
 
 .grid-container {
     height: 70vh;
-    width: 70vw;
+    width: 90vw;
     grid-column: 2 / 3;
     margin-top: 1rem;
     ag-grid-angular {
