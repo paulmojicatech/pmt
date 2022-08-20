@@ -1,6 +1,9 @@
 .main-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    mat-sidenav-container {
+        width: 100vw;
+    }
 }
 
 .filter-container {

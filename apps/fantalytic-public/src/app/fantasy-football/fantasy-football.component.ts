@@ -1,21 +1,23 @@
 import { CommonModule } from '@angular/common';
-import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 
-import {AgGridAngular, AgGridModule} from 'ag-grid-angular';
-import {ComponentStore} from '@ngrx/component-store';
-import { FantasyFootballState } from './models/fantasy-football.interface';
-import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE } from './const/fantasy-football.const';
-import { map, shareReplay } from 'rxjs';
 import { MatButtonModule } from '@angular/material/button';
-import { PositionTypes } from '@pmt/fantalytic-shared';
-
+import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
+import { ComponentStore } from '@ngrx/component-store';
+import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
+import { map, shareReplay } from 'rxjs';
+import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE } from './const/fantasy-football.const';
+import { FantasyFootballState } from './models/fantasy-football.interface';
+import {FantasyFootballSidebarComponent} from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
 @Component({
   selector: 'pmt-fantasy-football',
   standalone: true,
   imports: [
     CommonModule,
     AgGridModule,
-    MatButtonModule
+    MatButtonModule,
+    MatSidenavModule,
+    FantasyFootballSidebarComponent
   ],
   templateUrl: './fantasy-football.component.html',
   styleUrls: ['./fantasy-football.component.scss'],
@@ -26,6 +28,9 @@ export class FantasyFootballComponent implements OnInit {
 
   @ViewChild('statGrid')
   statGrid!: AgGridAngular;
+
+  @ViewChild('drawer')
+  drawer!: MatSidenav;
 
   gridConfig$ = this._componentStore.state$.pipe(
     map(state => state.gridConfig)
@@ -47,6 +52,16 @@ export class FantasyFootballComponent implements OnInit {
 
   gridReady(): void {
     this.statGrid.api.sizeColumnsToFit();
+  }
+
+  handleUpdatedRowSelected(): void {
+    const selectedRows = this.statGrid.api.getSelectedNodes();
+    if (selectedRows.length) {
+      this.drawer.open();
+    } else {
+      this.drawer.close();
+    }
+    
   }
 
   updatePosition(position: string): void {

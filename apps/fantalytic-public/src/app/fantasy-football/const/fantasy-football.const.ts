@@ -1,4 +1,4 @@
-import {ColDef} from 'ag-grid-community';
+import {ColDef, GridOptions} from 'ag-grid-community';
 import { getBaseGridOptions } from '../../functions/grid.functions';
 import {PositionTypes} from '@pmt/fantalytic-shared';
 import { getQbRowData, getRbRowData, getWrTeRowData } from '../functions/fantasy-football.functions';
@@ -8,7 +8,8 @@ export const QB_COL_DEFS: ColDef[] = [
     {
         field: 'player',
         headerName: 'Player',
-        pinned: 'left'
+        pinned: 'left',
+        checkboxSelection: true
     },
     {
         field: 'year',
@@ -99,7 +100,10 @@ export const WR_TE_COL_DEF: ColDef[] = [
 export const FANTASY_FOOTBALL_INITIAL_STATE: FantasyFootballState = {
     gridConfig: {
         colDef: QB_COL_DEFS,
-        gridOptions: {...getBaseGridOptions(), filter: true}
+        gridOptions: {
+            ...getBaseGridOptions(), 
+            filter: true
+        } as GridOptions
     },
     position: PositionTypes.QB,
     rowData: getQbRowData()
