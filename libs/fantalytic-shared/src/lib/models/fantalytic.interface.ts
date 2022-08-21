@@ -8,6 +8,8 @@ export enum PositionTypes {
     RB = 'RB',
     WR = 'WR',
     TE = 'TE',
+    DEF_RUSH = 'DEF_RUSH',
+    DEF_PASS = 'DEF_PASS',
     UNKNOWN = 'UNKNOWN'
 }
 
@@ -103,4 +105,25 @@ export interface IWRTEStats {
       statSelector: IStatPosition;
       value?: number;
   };
+}
+
+export interface IDefRusingStats {
+    url: string;
+    team: {
+        statSelector: IStatPosition;
+        value?: string;
+    };
+    rushYds: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    ypc: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    td: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+
 }
