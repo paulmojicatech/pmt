@@ -10,6 +10,10 @@ import { recStats2018 } from '../../../assets/stats/2018_wr_te';
 import { recStats2019 } from '../../../assets/stats/2019_wr_te';
 import { recStats2020 } from '../../../assets/stats/2020_wr_te';
 import { recStats2021 } from '../../../assets/stats/2021_wr_te';
+import { defRush2018 } from '../../../assets/stats/2018_def_rush';
+import { defRush2019 } from '../../../assets/stats/2019_def_rush';
+import { defRush2020 } from '../../../assets/stats/2020_def_rush';
+import { defRush2021 } from '../../../assets/stats/2021_def_rush';
 
 //#region QB Stats
 export function getQbRowData(): {[key: string]: number | string}[] {
@@ -157,4 +161,49 @@ export function getWrTeRowData(): {[key: string]: number | string}[] {
 }
 //#endregion
 
+//#region DEF Stats
+export function getDefRushRowData(): {[key: string]: string | number}[] {
+    const stats2018 = defRush2018.map(stat => {
+        return {
+            team: stat.team.value,
+            year: 2018,
+            rushYds: stat.rushYds.value,
+            ypc: stat.ypc.value,
+            td: stat.td.value
+        };
+    });
+
+    const stats2019 = defRush2019.map(stat => {
+        return {
+            team: stat.team.value,
+            year: 2019,
+            rushYds: stat.rushYds.value,
+            ypc: stat.ypc.value,
+            td: stat.td.value
+        };
+    });
+
+    const stats2020 = defRush2020.map(stat => {
+        return {
+            team: stat.team.value,
+            year: 2020,
+            rushYds: stat.rushYds.value,
+            ypc: stat.ypc.value,
+            td: stat.td.value
+        };
+    });
+
+    const stats2021 = defRush2021.map(stat => {
+        return {
+            team: stat.team.value,
+            year: 2021,
+            rushYds: stat.rushYds.value,
+            ypc: stat.ypc.value,
+            td: stat.td.value
+        };
+    });
+
+    return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
+}
+//#endregion
 

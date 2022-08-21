@@ -6,7 +6,7 @@ import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
 import { ComponentStore } from '@ngrx/component-store';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { map, shareReplay } from 'rxjs';
-import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE } from './const/fantasy-football.const';
+import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE, FANTASY_FOOTBAL_DEF_RUSH_STATE } from './const/fantasy-football.const';
 import { FantasyFootballState } from './models/fantasy-football.interface';
 import {FantasyFootballSidebarComponent} from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
 @Component({
@@ -65,12 +65,16 @@ export class FantasyFootballComponent implements OnInit {
   }
 
   updatePosition(position: string): void {
+    this.drawer.close();
     switch (position) {
       case 'RB':
         this._componentStore.setState(FANTASY_FOOTBALL_RB_STATE);
         break;
       case 'WR':
         this._componentStore.setState(FANTASY_FOOTBALL_REC_STATE);
+        break;
+      case 'DEF_RUSH':
+        this._componentStore.setState(FANTASY_FOOTBAL_DEF_RUSH_STATE);
         break;
       default:
         this._componentStore.setState(FANTASY_FOOTBALL_INITIAL_STATE);
