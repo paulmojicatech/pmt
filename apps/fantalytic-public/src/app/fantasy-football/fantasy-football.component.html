@@ -1,19 +1,32 @@
+
 <main class="main-container">
-    <div class="filter-container">
-        <div class="position-container">
-            <span>Position</span>
-            <button (click)="updatePosition('QB')" [ngClass]="{'selected': (position$ | async) === 'QB'}" mat-button>QB</button>
-            <button (click)="updatePosition('RB')" [ngClass]="{'selected': (position$ | async) === 'RB'}" mat-button>RB</button>
-            <button (click)="updatePosition('WR')" [ngClass]="{'selected': (position$ | async) === 'WR' || (position$ | async) === 'TE'}" mat-button>WR / TE</button>
-        </div>
-    </div>
-    <div class="grid-container" *ngIf="gridConfig$ | async as gridConfig">
-        <ag-grid-angular #statGrid
-            class="ag-theme-alpine"
-            [columnDefs]="gridConfig.colDef"
-            [rowData]="rowData$ | async"
-            [defaultColDef]="gridConfig.gridOptions"></ag-grid-angular>
-    </div>
+    <mat-sidenav-container autosize>
+        <mat-sidenav-content>
+            <div class="filter-container">
+                <div class="position-container">
+                    <span>Position</span>
+                    <button (click)="updatePosition('QB')" [ngClass]="{'selected': (position$ | async) === 'QB'}" mat-button>QB</button>
+                    <button (click)="updatePosition('RB')" [ngClass]="{'selected': (position$ | async) === 'RB'}" mat-button>RB</button>
+                    <button (click)="updatePosition('WR')" [ngClass]="{'selected': (position$ | async) === 'WR' || (position$ | async) === 'TE'}" mat-button>WR / TE</button>
+                    <button (click)="updatePosition('DEF_RUSH')" [ngClass]="{'selected': (position$ | async) === 'DEF_RUSH'}" mat-button>DEF (Rushing)</button>
+                </div>
+            </div>
+            <div class="grid-container" *ngIf="gridConfig$ | async as gridConfig">
+                <ag-grid-angular #statGrid
+                    class="ag-theme-alpine"
+                    [columnDefs]="gridConfig.colDef"
+                    [rowData]="rowData$ | async"
+                    rowSelection="multiple"
+                    (rowSelected)="handleUpdatedRowSelected()"
+                    [defaultColDef]="gridConfig.gridOptions"></ag-grid-angular>
+                
+            </div>
+        </mat-sidenav-content>
+        <mat-sidenav #drawer mode="side" position="end">
+            <pmt-fantasy-football-sidebar></pmt-fantasy-football-sidebar>
+        </mat-sidenav>
+    </mat-sidenav-container>
+    
 </main>
 
 

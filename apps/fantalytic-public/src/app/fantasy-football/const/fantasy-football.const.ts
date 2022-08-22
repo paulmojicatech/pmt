@@ -1,14 +1,15 @@
-import {ColDef} from 'ag-grid-community';
+import {ColDef, GridOptions} from 'ag-grid-community';
 import { getBaseGridOptions } from '../../functions/grid.functions';
 import {PositionTypes} from '@pmt/fantalytic-shared';
-import { getQbRowData, getRbRowData, getWrTeRowData } from '../functions/fantasy-football.functions';
+import { getDefRushRowData, getQbRowData, getRbRowData, getWrTeRowData } from '../functions/fantasy-football.functions';
 import { FantasyFootballState } from '../models/fantasy-football.interface';
 
 export const QB_COL_DEFS: ColDef[] = [
     {
         field: 'player',
         headerName: 'Player',
-        pinned: 'left'
+        pinned: 'left',
+        checkboxSelection: true
     },
     {
         field: 'year',
@@ -36,7 +37,8 @@ export const RB_COL_DEF: ColDef[] = [
     {
         field: 'player',
         headerName: 'Player',
-        pinned: 'left'
+        pinned: 'left',
+        checkboxSelection: true
     },
     {
         field: 'year',
@@ -64,7 +66,8 @@ export const WR_TE_COL_DEF: ColDef[] = [
     {
         field: 'player',
         headerName: 'Player',
-        pinned: 'left'
+        pinned: 'left',
+        checkboxSelection: true
     },
     {
         field: 'year',
@@ -96,10 +99,38 @@ export const WR_TE_COL_DEF: ColDef[] = [
     }
 ];
 
+export const DEF_RUSH_COL_DEF: ColDef[] = [
+    {
+        field: 'team',
+        headerName: 'Team',
+        pinned: 'left',
+        checkboxSelection: true
+    },
+    {
+        field: 'year',
+        headerName: 'Year'
+    },
+    {
+        field: 'rushYds',
+        headerName: 'Allowed Rushing Yards'
+    },
+    {
+        field: 'ypc',
+        headerName: 'Allowed Yards Per Carry'
+    },
+    {
+        field: 'td',
+        headerName: 'Allowed Rushing Touchdowns'
+    }
+];
+
 export const FANTASY_FOOTBALL_INITIAL_STATE: FantasyFootballState = {
     gridConfig: {
         colDef: QB_COL_DEFS,
-        gridOptions: {...getBaseGridOptions(), filter: true}
+        gridOptions: {
+            ...getBaseGridOptions(), 
+            filter: true
+        } as GridOptions
     },
     position: PositionTypes.QB,
     rowData: getQbRowData()
@@ -121,5 +152,14 @@ export const FANTASY_FOOTBALL_REC_STATE: FantasyFootballState = {
     },
     position: PositionTypes.WR,
     rowData: getWrTeRowData()
+};
+
+export const FANTASY_FOOTBAL_DEF_RUSH_STATE: FantasyFootballState = {
+    gridConfig: {
+        colDef: DEF_RUSH_COL_DEF,
+        gridOptions: {...getBaseGridOptions(), filter: true}
+    },
+    position: PositionTypes.DEF_RUSH,
+    rowData: getDefRushRowData()
 };
 

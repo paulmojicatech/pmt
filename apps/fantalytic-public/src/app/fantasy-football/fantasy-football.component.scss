@@ -1,6 +1,9 @@
 .main-container {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    mat-sidenav-container {
+        width: 100vw;
+    }
 }
 
 .filter-container {
@@ -27,7 +30,7 @@
     height: 70vh;
     width: 90vw;
     grid-column: 2 / 3;
-    margin-top: 1rem;
+    margin: 1rem;
     ag-grid-angular {
         height: 100%;
         width: 100%;
