@@ -56,7 +56,7 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
     return to.concat(ar || Array.prototype.slice.call(from));
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.parseDefRushResponse = void 0;
+exports.parseDefPassResponse = exports.parseDefRushResponse = void 0;
 var def_const_1 = require("../models/defaults/def.const");
 var cheerio = require('cheerio');
 function parseDefRushResponse(table, url) {
@@ -113,3 +113,73 @@ function parseDefRushResponse(table, url) {
     });
 }
 exports.parseDefRushResponse = parseDefRushResponse;
+function parseDefPassResponse(table, url) {
+    return __awaiter(this, void 0, void 0, function () {
+        var defPassStats, playerSelector, comppctSelector, ydsSelector, tdsSelector, intSelector, sackSelector, $, rows;
+        return __generator(this, function (_a) {
+            defPassStats = [];
+            playerSelector = def_const_1.DEF_PASS_STATS.team.statSelector;
+            comppctSelector = def_const_1.DEF_PASS_STATS.compPct.statSelector;
+            ydsSelector = def_const_1.DEF_PASS_STATS.yds.statSelector;
+            tdsSelector = def_const_1.DEF_PASS_STATS.td.statSelector;
+            intSelector = def_const_1.DEF_PASS_STATS.int.statSelector;
+            sackSelector = def_const_1.DEF_PASS_STATS.sacks.statSelector;
+            $ = cheerio.load(table);
+            rows = $('tbody > tr', table);
+            $(rows).each(function (rowIndex, row) {
+                var defPass = {
+                    url: url,
+                    team: {
+                        statSelector: playerSelector
+                    },
+                    compPct: {
+                        statSelector: comppctSelector
+                    },
+                    yds: {
+                        statSelector: ydsSelector
+                    },
+                    td: {
+                        statSelector: tdsSelector
+                    },
+                    int: {
+                        statSelector: intSelector
+                    },
+                    sacks: {
+                        statSelector: sackSelector
+                    }
+                };
+                $('td', row).each(function (colIndex, col) {
+                    var team = defPass.team, compPct = defPass.compPct, yds = defPass.yds, td = defPass.td, int = defPass.int, sacks = defPass.sacks;
+                    if (colIndex === playerSelector.statColIndex) {
+                        var playerParentSelector = $(".".concat(playerSelector.statName), $(row));
+                        team = __assign(__assign({}, team), { value: playerParentSelector.html().trim() });
+                        defPass = __assign(__assign({}, defPass), { team: team });
+                    }
+                    else if (colIndex === comppctSelector.statColIndex) {
+                        compPct = __assign(__assign({}, compPct), { value: +$(col).html().trim() });
+                        defPass = __assign(__assign({}, defPass), { compPct: compPct });
+                    }
+                    else if (colIndex === ydsSelector.statColIndex) {
+                        yds = __assign(__assign({}, yds), { value: +$(col).html().trim() });
+                        defPass = __assign(__assign({}, defPass), { yds: yds });
+                    }
+                    else if (colIndex === tdsSelector.statColIndex) {
+                        td = __assign(__assign({}, td), { value: +$(col).html().trim() });
+                        defPass = __assign(__assign({}, defPass), { td: td });
+                    }
+                    else if (colIndex === intSelector.statColIndex) {
+                        int = __assign(__assign({}, int), { value: +$(col).html().trim() });
+                        defPass = __assign(__assign({}, defPass), { int: int });
+                    }
+                    else if (colIndex === sackSelector.statColIndex) {
+                        sacks = __assign(__assign({}, sacks), { value: +$(col).html().trim() });
+                        defPass = __assign(__assign({}, defPass), { sacks: sacks });
+                    }
+                });
+                defPassStats = __spreadArray(__spreadArray([], defPassStats, true), [defPass], false);
+            });
+            return [2 /*return*/, Promise.resolve(defPassStats)];
+        });
+    });
+}
+exports.parseDefPassResponse = parseDefPassResponse;

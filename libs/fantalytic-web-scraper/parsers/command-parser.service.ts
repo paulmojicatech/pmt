@@ -39,6 +39,10 @@ export class CommandParser {
                 case 'wr':
                 case 'te':
                     return PositionTypes.WR;
+                case 'def_rush':
+                    return PositionTypes.DEF_RUSH;
+                case 'def_pass':
+                    return PositionTypes.DEF_PASS;
                 default:
                     return PositionTypes.UNKNOWN;
             }

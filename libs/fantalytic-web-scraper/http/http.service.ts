@@ -1,6 +1,6 @@
 import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic.interface';
 import { logError } from '../messaging/error.service';
-import { DEF_RUSH_STATS } from '../models/defaults/def.const';
+import { DEF_PASS_STATS, DEF_RUSH_STATS } from '../models/defaults/def.const';
 import { QB_STATS } from '../models/defaults/qb.const';
 import { RB_STATS } from '../models/defaults/rb.const';
 import { WR_TE_STATS } from '../models/defaults/wr_te.const';
@@ -24,6 +24,9 @@ export async function getSiteContent(position: PositionTypes, year: string): Pro
             break;
         case PositionTypes.DEF_RUSH:
             url = `${DEF_RUSH_STATS.url}`.replace('{year}', `${year}`);
+            break;
+        case PositionTypes.DEF_PASS:
+            url = `${DEF_PASS_STATS.url}`.replace('{year}', `${year}`);
             break;
         default:
             logError('Position is not supported');
