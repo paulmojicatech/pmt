@@ -19,10 +19,6 @@
     button {
         cursor: pointer;
         color: var(--link-color);
-        &.selected {
-            text-decoration: underline;
-            text-decoration-thickness: 5px;
-        }
     }
 }
 
