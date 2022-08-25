@@ -1,5 +1,5 @@
 
-<main class="main-container">
+<main class="main-container" *ngIf="fantasyFootballState$ | async as state">
     <mat-sidenav-container autosize>
         <mat-sidenav-content>
             <div class="filter-container">
@@ -11,19 +11,19 @@
                     <button (click)="updatePosition('DEF_RUSH')" mat-button>DEF (Rushing)</button>
                 </div>
             </div>
-            <div class="grid-container" *ngIf="gridConfig$ | async as gridConfig">
+            <div class="grid-container" *ngIf="state.gridConfig">
                 <ag-grid-angular #statGrid
                     class="ag-theme-alpine"
-                    [columnDefs]="gridConfig.colDef"
-                    [rowData]="rowData$ | async"
+                    [columnDefs]="state.gridConfig.colDef"
+                    [rowData]="state.rowData"
                     rowSelection="multiple"
                     (rowSelected)="handleUpdatedRowSelected()"
-                    [defaultColDef]="gridConfig.gridOptions"></ag-grid-angular>
+                    ></ag-grid-angular>
                 
             </div>
         </mat-sidenav-content>
         <mat-sidenav #drawer mode="side" position="end">
-            <pmt-fantasy-football-sidebar></pmt-fantasy-football-sidebar>
+            <pmt-fantasy-football-sidebar (sideBarEvent)="handleSidebarEvent($event)"></pmt-fantasy-football-sidebar>
         </mat-sidenav>
     </mat-sidenav-container>
     

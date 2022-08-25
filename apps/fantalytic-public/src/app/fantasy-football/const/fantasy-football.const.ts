@@ -1,5 +1,4 @@
 import {ColDef, GridOptions} from 'ag-grid-community';
-import { getBaseGridOptions } from '../../functions/grid.functions';
 import {PositionTypes} from '@pmt/fantalytic-shared';
 import { getDefRushRowData, getQbRowData, getRbRowData, getWrTeRowData } from '../functions/fantasy-football.functions';
 import { FantasyFootballState } from '../models/fantasy-football.interface';
@@ -126,40 +125,29 @@ export const DEF_RUSH_COL_DEF: ColDef[] = [
 
 export const FANTASY_FOOTBALL_INITIAL_STATE: FantasyFootballState = {
     gridConfig: {
-        colDef: QB_COL_DEFS,
-        gridOptions: {
-            ...getBaseGridOptions(), 
-            filter: true
-        } as GridOptions
+        colDef: QB_COL_DEFS
     },
-    position: PositionTypes.QB,
-    rowData: getQbRowData()
+    position: PositionTypes.QB
 };
 
 export const FANTASY_FOOTBALL_RB_STATE: FantasyFootballState = {
     gridConfig: {
-        colDef: RB_COL_DEF,
-        gridOptions: {...getBaseGridOptions(), filter: true}
+        colDef: RB_COL_DEF
     },
-    position: PositionTypes.RB,
-    rowData: getRbRowData()
+    position: PositionTypes.RB
 };
 
 export const FANTASY_FOOTBALL_REC_STATE: FantasyFootballState = {
     gridConfig: {
-        colDef: WR_TE_COL_DEF,
-        gridOptions: {...getBaseGridOptions(), filter: true}
+        colDef: WR_TE_COL_DEF
     },
-    position: PositionTypes.WR,
-    rowData: getWrTeRowData()
+    position: PositionTypes.WR
 };
 
 export const FANTASY_FOOTBAL_DEF_RUSH_STATE: FantasyFootballState = {
     gridConfig: {
-        colDef: DEF_RUSH_COL_DEF,
-        gridOptions: {...getBaseGridOptions(), filter: true}
+        colDef: DEF_RUSH_COL_DEF
     },
-    position: PositionTypes.DEF_RUSH,
-    rowData: getDefRushRowData()
+    position: PositionTypes.DEF_RUSH
 };
 

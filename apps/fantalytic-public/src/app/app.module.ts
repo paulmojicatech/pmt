@@ -14,6 +14,7 @@ import { topicsReducer } from './topics/ngrx/reducer/topics.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { TopicEffects } from './topics/ngrx/effects/topics.effects';
 import { MatButtonModule } from '@angular/material/button';
+import { fantasyFootballReducer } from './fantasy-football/ngrx/reducer/fantasy-football.reducer';
 
 const routes: Route[] = [
   {
@@ -28,7 +29,12 @@ const routes: Route[] = [
   },
   {
     path: 'fantasy-football',
-    loadComponent: () => import('./fantasy-football/fantasy-football.component').then(c => c.FantasyFootballComponent)
+    loadChildren: () => import('./fantasy-football/const/fantasy-football-routes.const').then(mod => mod.FANTASY_FOOTBALL_ROUTES),
+    providers: [
+      importProvidersFrom(
+        StoreModule.forFeature('fantasy-football', fantasyFootballReducer),
+      )
+    ]
   },
   {
     path: '',

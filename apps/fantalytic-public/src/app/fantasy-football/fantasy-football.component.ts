@@ -2,13 +2,17 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
-import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import { ComponentStore } from '@ngrx/component-store';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { Router, RouterModule } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { PositionTypes } from '@pmt/fantalytic-shared';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
-import { map, shareReplay } from 'rxjs';
-import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE, FANTASY_FOOTBAL_DEF_RUSH_STATE } from './const/fantasy-football.const';
+import { Observable } from 'rxjs';
+import { FantasyFootballSidebarComponent } from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
+import { FANTASY_FOOTBALL_ROUTES } from './const/fantasy-football-routes.const';
 import { FantasyFootballState } from './models/fantasy-football.interface';
-import {FantasyFootballSidebarComponent} from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
+import { setPositionType } from './ngrx/actions/fantasy-football.actions';
+import { getFantasyFootballState } from './ngrx/selectors/fantasy-football.selectors';
 @Component({
   selector: 'pmt-fantasy-football',
   standalone: true,
@@ -20,8 +24,7 @@ import {FantasyFootballSidebarComponent} from './components/fantasy-football-sid
     FantasyFootballSidebarComponent
   ],
   templateUrl: './fantasy-football.component.html',
-  styleUrls: ['./fantasy-football.component.scss'],
-  providers: [ComponentStore]
+  styleUrls: ['./fantasy-football.component.scss']
 })
 
 export class FantasyFootballComponent implements OnInit {
@@ -32,22 +35,12 @@ export class FantasyFootballComponent implements OnInit {
   @ViewChild('drawer')
   drawer!: MatSidenav;
 
-  gridConfig$ = this._componentStore.state$.pipe(
-    map(state => state.gridConfig)
-  );
+  fantasyFootballState$!: Observable<FantasyFootballState>;
 
-  position$ = this._componentStore.state$.pipe(
-    map(state => state.position),
-    shareReplay(2)
-  );
-
-  rowData$ = this._componentStore.state$.pipe(
-    map(state => state.rowData)
-  );
-  constructor(private _componentStore: ComponentStore<FantasyFootballState>) {}
+  constructor(private _store: Store<FantasyFootballState>, private _router: Router) {}
   
   ngOnInit(): void {
-      this._componentStore.setState(FANTASY_FOOTBALL_INITIAL_STATE);
+      this.fantasyFootballState$ = this._store.select(getFantasyFootballState);
   }
 
   gridReady(): void {
@@ -66,20 +59,11 @@ export class FantasyFootballComponent implements OnInit {
 
   updatePosition(position: string): void {
     this.drawer.close();
-    switch (position) {
-      case 'RB':
-        this._componentStore.setState(FANTASY_FOOTBALL_RB_STATE);
-        break;
-      case 'WR':
-        this._componentStore.setState(FANTASY_FOOTBALL_REC_STATE);
-        break;
-      case 'DEF_RUSH':
-        this._componentStore.setState(FANTASY_FOOTBAL_DEF_RUSH_STATE);
-        break;
-      default:
-        this._componentStore.setState(FANTASY_FOOTBALL_INITIAL_STATE);
-        break;
-    }
+    this._store.dispatch(setPositionType(position as PositionTypes));
+  }
+
+  handleSidebarEvent(path: string): void {
+    this._router.navigate(['fantasy-football', path]);
   }
 
 }

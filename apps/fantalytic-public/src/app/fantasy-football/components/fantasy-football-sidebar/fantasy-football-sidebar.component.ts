@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, EventEmitter } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { MatButtonModule } from '@angular/material/button';
 
 @Component({
@@ -12,6 +12,7 @@ import { MatButtonModule } from '@angular/material/button';
 })
 export class FantasyFootballSidebarComponent {
 
+  @Output()
   sideBarEvent = new EventEmitter<string>();
 
   readonly SIDEBAR_ITEM_MAP = [
