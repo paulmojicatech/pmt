@@ -17,8 +17,8 @@
                     [columnDefs]="state.gridConfig.colDef"
                     [rowData]="state.rowData"
                     rowSelection="multiple"
-                    (rowSelected)="handleUpdatedRowSelected()"
-                    ></ag-grid-angular>
+                    [defaultColDef]="DEFAULT_COL_DEF_SETTINGS"
+                    (rowSelected)="handleUpdatedRowSelected()"></ag-grid-angular>
                 
             </div>
         </mat-sidenav-content>

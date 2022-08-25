@@ -3,13 +3,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { PositionTypes } from '@pmt/fantalytic-shared';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { Observable } from 'rxjs';
+import { DEFAULT_COL_DEF_SETTINGS } from '../const/grid.const';
 import { FantasyFootballSidebarComponent } from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
-import { FANTASY_FOOTBALL_ROUTES } from './const/fantasy-football-routes.const';
 import { FantasyFootballState } from './models/fantasy-football.interface';
 import { setPositionType } from './ngrx/actions/fantasy-football.actions';
 import { getFantasyFootballState } from './ngrx/selectors/fantasy-football.selectors';
@@ -36,6 +36,8 @@ export class FantasyFootballComponent implements OnInit {
   drawer!: MatSidenav;
 
   fantasyFootballState$!: Observable<FantasyFootballState>;
+
+  readonly DEFAULT_COL_DEF_SETTINGS = DEFAULT_COL_DEF_SETTINGS;
 
   constructor(private _store: Store<FantasyFootballState>, private _router: Router) {}
   

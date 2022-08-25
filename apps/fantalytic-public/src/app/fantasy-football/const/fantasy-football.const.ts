@@ -1,6 +1,5 @@
-import {ColDef, GridOptions} from 'ag-grid-community';
-import {PositionTypes} from '@pmt/fantalytic-shared';
-import { getDefRushRowData, getQbRowData, getRbRowData, getWrTeRowData } from '../functions/fantasy-football.functions';
+import { PositionTypes } from '@pmt/fantalytic-shared';
+import { ColDef } from 'ag-grid-community';
 import { FantasyFootballState } from '../models/fantasy-football.interface';
 
 export const QB_COL_DEFS: ColDef[] = [
