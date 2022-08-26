@@ -9,4 +9,5 @@ export interface FantasyFootballState {
     gridConfig: GridConfig;
     position: PositionTypes;
     rowData?: {[key: string]: number | string}[];
+    selectedRowData?: {[key: string]: number | string}[];
 }

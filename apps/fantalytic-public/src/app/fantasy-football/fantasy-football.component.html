@@ -10,12 +10,16 @@
                     <button (click)="updatePosition('WR')" mat-button>WR / TE</button>
                     <button (click)="updatePosition('DEF_RUSH')" mat-button>DEF (Rushing)</button>
                 </div>
+                <div class="year-container">
+                    <span>Year</span>
+                    <button (click)="filterByYear(year)" mat-button *ngFor="let year of ALL_YEARS">{{year}}</button>
+                </div>
             </div>
             <div class="grid-container" *ngIf="state.gridConfig">
                 <ag-grid-angular #statGrid
                     class="ag-theme-alpine"
                     [columnDefs]="state.gridConfig.colDef"
-                    [rowData]="state.rowData"
+                    [rowData]="state.selectedRowData"
                     rowSelection="multiple"
                     [defaultColDef]="DEFAULT_COL_DEF_SETTINGS"
                     (rowSelected)="handleUpdatedRowSelected()"></ag-grid-angular>

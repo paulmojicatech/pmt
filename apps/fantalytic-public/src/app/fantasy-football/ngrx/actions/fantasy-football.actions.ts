@@ -6,3 +6,8 @@ export const setPositionType = createAction(
     '[Fantasy Football] Set Position Type',
     (position: PositionTypes) => ({position})
 );
+
+export const updateYearFilter = createAction(
+    '[Fantasy Football] Update Filter Year',
+    (year: number) => ({year})
+);
