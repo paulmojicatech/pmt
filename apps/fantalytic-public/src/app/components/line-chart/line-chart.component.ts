@@ -16,6 +16,9 @@ export class LineChartComponent implements OnInit {
   @Input()
   lineChartViewModel?: LineChartViewModel;
 
+  @Input()
+  height?: string;
+
   @ViewChild(BaseChartDirective)
   myChart!: BaseChartDirective;
 

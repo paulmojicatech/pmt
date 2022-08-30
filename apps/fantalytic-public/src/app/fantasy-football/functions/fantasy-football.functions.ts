@@ -82,14 +82,14 @@ export function getLineChartViewModelForQBs(qbStats: {[key: string]: number | st
                 x: {
                     ticks: {
                         font: {
-                            size: 24
+                            size: 18
                         }
                     }
                 },
                 y: {
                     ticks: {
                         font: {
-                            size: 24
+                            size: 18
                         }
                     }
                 }
