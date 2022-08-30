@@ -1,7 +1,7 @@
-import { Component, Input, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
-import { ChartConfiguration } from 'chart.js';
+import { LineChartViewModel } from './models/line-chart.interface';
 
 @Component({
   selector: 'pmt-line-chart',
@@ -11,12 +11,17 @@ import { ChartConfiguration } from 'chart.js';
   styleUrls: ['./line-chart.component.scss'],
   exportAs: 'pmt-line-chart'
 })
-export class LineChartComponent {
+export class LineChartComponent implements OnInit {
   
   @Input()
-  lineChartConfig?: ChartConfiguration;
+  lineChartViewModel?: LineChartViewModel;
 
   @ViewChild(BaseChartDirective)
   myChart!: BaseChartDirective;
+
+  ngOnInit(): void {
+    //this.myChart.options.
+    console.log('TEST', this.myChart);
+  }
   
 }

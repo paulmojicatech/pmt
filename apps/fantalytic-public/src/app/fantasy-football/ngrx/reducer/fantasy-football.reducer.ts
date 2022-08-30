@@ -3,12 +3,13 @@ import { PositionTypes } from "@pmt/fantalytic-shared";
 import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE, FANTASY_FOOTBAL_DEF_RUSH_STATE } from "../../const/fantasy-football.const";
 import { getDefRushRowData, getQbRowData, getRbRowData, getWrTeRowData } from "../../functions/fantasy-football.functions";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
-import { setPositionType, updateYearFilter } from "../actions/fantasy-football.actions";
+import { setPositionType, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
 
 const initialState: FantasyFootballState = {
     ...FANTASY_FOOTBALL_INITIAL_STATE,
     rowData: getQbRowData(),
-    selectedRowData: getQbRowData()
+    selectedRowData: getQbRowData(),
+    selectedPlayers: []
 };
 
 export const fantasyFootballReducer = createReducer(
@@ -50,6 +51,12 @@ export const fantasyFootballReducer = createReducer(
                 return `${row['year']}`.includes(`${year}`);
             });
             return {...state, selectedRowData: updatedRows};
+        }
+    ),
+    on(
+        updateSelectedPlayers,
+        (state, {selectedPlayers}) => {
+            return {...state, selectedPlayers};
         }
     )
 );

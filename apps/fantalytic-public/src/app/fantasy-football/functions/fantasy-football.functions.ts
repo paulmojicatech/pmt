@@ -1,19 +1,21 @@
-import { qbStats2019 } from '../../../assets/stats/2019_qb';
-import { qbStats2020 } from '../../../assets/stats/2020_qb';
-import {qbStats2018} from '../../../assets/stats/2018_qb';
-import { qbStats2021 } from '../../../assets/stats/2021_qb';
-import { rbStats2018 } from '../../../assets/stats/2018_rb';
-import { rbStats2019 } from '../../../assets/stats/2019_rb';
-import { rbStats2020 } from '../../../assets/stats/2020_rb';
-import { rbStats2021 } from '../../../assets/stats/2021_rb';
-import { recStats2018 } from '../../../assets/stats/2018_wr_te';
-import { recStats2019 } from '../../../assets/stats/2019_wr_te';
-import { recStats2020 } from '../../../assets/stats/2020_wr_te';
-import { recStats2021 } from '../../../assets/stats/2021_wr_te';
+import { ChartDataset } from 'chart.js';
 import { defRush2018 } from '../../../assets/stats/2018_def_rush';
+import { qbStats2018 } from '../../../assets/stats/2018_qb';
+import { rbStats2018 } from '../../../assets/stats/2018_rb';
+import { recStats2018 } from '../../../assets/stats/2018_wr_te';
 import { defRush2019 } from '../../../assets/stats/2019_def_rush';
+import { qbStats2019 } from '../../../assets/stats/2019_qb';
+import { rbStats2019 } from '../../../assets/stats/2019_rb';
+import { recStats2019 } from '../../../assets/stats/2019_wr_te';
 import { defRush2020 } from '../../../assets/stats/2020_def_rush';
+import { qbStats2020 } from '../../../assets/stats/2020_qb';
+import { rbStats2020 } from '../../../assets/stats/2020_rb';
+import { recStats2020 } from '../../../assets/stats/2020_wr_te';
 import { defRush2021 } from '../../../assets/stats/2021_def_rush';
+import { qbStats2021 } from '../../../assets/stats/2021_qb';
+import { rbStats2021 } from '../../../assets/stats/2021_rb';
+import { recStats2021 } from '../../../assets/stats/2021_wr_te';
+import { LineChartViewModel } from '../../components/line-chart/models/line-chart.interface';
 
 //#region QB Stats
 export function getQbRowData(): {[key: string]: number | string}[] {
@@ -59,6 +61,44 @@ export function getQbRowData(): {[key: string]: number | string}[] {
     });
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
+
+export function getLineChartViewModelForQBs(qbStats: {[key: string]: number | string}[]): LineChartViewModel {
+    const vm: LineChartViewModel = {
+        labels: ['Passing Yards (in hundreds)', 'Touchdowns', 'Passing Yards Per Attempt', 'Interceptions'],
+        datasets: 
+            qbStats.map((qb) => {
+                return {
+                    label: qb['player'],
+                    data: [
+                        +qb['passingYds'] / 100,
+                        qb['tds'],
+                        qb['passingYdsPerAttempt'],
+                        qb['ints']
+                    ]
+                };
+            }) as ChartDataset[],
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            size: 24
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 24
+                        }
+                    }
+                }
+            }
+        }
+    };
+    return vm;
+}
+
 //#endregion
 
 //#region RB Stats

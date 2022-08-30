@@ -1,9 +1,14 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
-import { ChartConfiguration } from 'chart.js';
+import { Store } from '@ngrx/store';
+import { ChartConfiguration, ChartDataset } from 'chart.js';
+import { Observable } from 'rxjs';
 import { LineChartComponent } from '../../../components/line-chart/line-chart.component';
+import { LineChartViewModel } from '../../../components/line-chart/models/line-chart.interface';
+import { FantasyFootballState } from '../../models/fantasy-football.interface';
+import { FantasyFootballLineChartService } from '../../services/fantasy-football-line-chart.service';
 
 @Component({
   selector: 'pmt-compare-players',
@@ -12,24 +17,13 @@ import { LineChartComponent } from '../../../components/line-chart/line-chart.co
   templateUrl: './compare-players.component.html',
   styleUrls: ['./compare-players.component.scss'],
 })
-export class ComparePlayersComponent {
-  constructor(private _router: Router) {}
+export class ComparePlayersComponent implements OnInit {
+  constructor(private _router: Router, private _lineChartSvc: FantasyFootballLineChartService) {}
 
-  TEST_CONFIG: ChartConfiguration = {
-    data: {
-      datasets: [
-        {
-          label: 'My Data Point',
-          data: [
-            {
-              x: 1,
-              y: 100
-            }
-          ]
-        }
-      ]
-    },
-    type: 'line'
+  lineChartViewModel$?: Observable<LineChartViewModel | undefined>;
+
+  ngOnInit(): void {
+    this.lineChartViewModel$ = this._lineChartSvc.getLineChartViewModel();
   }
 
   goBack(): void {

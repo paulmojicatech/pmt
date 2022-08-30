@@ -1,4 +1,19 @@
-import { createFeatureSelector } from "@ngrx/store";
+import { createFeatureSelector, createSelector } from "@ngrx/store";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
 
 export const getFantasyFootballState = createFeatureSelector<FantasyFootballState>('fantasy-football');
+
+export const getPosition = createSelector(
+    getFantasyFootballState,
+    state => state.position
+);
+
+export const getSelectedRowData = createSelector(
+    getFantasyFootballState,
+    state => state.selectedRowData
+);
+
+export const getSelectedPlayers = createSelector(
+    getFantasyFootballState,
+    state => state.selectedPlayers
+);

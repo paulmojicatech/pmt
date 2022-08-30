@@ -11,3 +11,8 @@ export const updateYearFilter = createAction(
     '[Fantasy Football] Update Filter Year',
     (year: number) => ({year})
 );
+
+export const updateSelectedPlayers = createAction(
+    '[Fantasy Football] Update Selected Players',
+    (selectedPlayers: string[]) => ({selectedPlayers})
+);

@@ -10,4 +10,5 @@ export interface FantasyFootballState {
     position: PositionTypes;
     rowData?: {[key: string]: number | string}[];
     selectedRowData?: {[key: string]: number | string}[];
+    selectedPlayers?: string[];
 }

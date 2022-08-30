@@ -11,7 +11,7 @@ import { Observable, Subject, take, takeUntil } from 'rxjs';
 import { DEFAULT_COL_DEF_SETTINGS } from '../const/grid.const';
 import { FantasyFootballSidebarComponent } from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
 import { FantasyFootballState } from './models/fantasy-football.interface';
-import { setPositionType, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
+import { setPositionType, updateSelectedPlayers, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
 import { getFantasyFootballState } from './ngrx/selectors/fantasy-football.selectors';
 @Component({
   selector: 'pmt-fantasy-football',
@@ -57,8 +57,9 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
   }
 
   handleUpdatedRowSelected(): void {
-    const selectedRows = this.statGrid.api.getSelectedNodes();
-    if (selectedRows.length) {
+    const selectedPlayers = this.statGrid.api.getSelectedNodes().map(node => node.data.player);
+    this._store.dispatch(updateSelectedPlayers(selectedPlayers));
+    if (selectedPlayers.length) {
       this.drawer.open();
     } else {
       this.drawer.close();
