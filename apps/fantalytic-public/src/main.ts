@@ -8,6 +8,7 @@ import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AppComponent } from './app/app.component';
 import { fantasyFootballReducer } from './app/fantasy-football/ngrx/reducer/fantasy-football.reducer';
+import { MobileCheckerService } from './app/fantasy-football/services/mobile-checker.service';
 import { TopicEffects } from './app/topics/ngrx/effects/topics.effects';
 import { topicsReducer } from './app/topics/ngrx/reducer/topics.reducer';
 
@@ -31,6 +32,7 @@ const routes: Route[] = [
   {
     path: 'fantasy-football',
     loadChildren: () => import('./app/fantasy-football/const/fantasy-football-routes.const').then(m => m.FANTASY_FOOTBALL_ROUTES),
+    canActivate: [MobileCheckerService],
     providers: [
       importProvidersFrom(
         StoreModule.forFeature('fantasy-football', fantasyFootballReducer)
