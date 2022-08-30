@@ -57,7 +57,7 @@ export interface IRBStats {
         statSelector: IStatPosition;
         value?: number;
     };
-    rushingYdsPerAttempt: {
+    rushAttempts: {
         statSelector: IStatPosition;
         value?: number;
     };

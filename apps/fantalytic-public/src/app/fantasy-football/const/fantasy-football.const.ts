@@ -47,7 +47,7 @@ export const RB_COL_DEF: ColDef[] = [
         headerName: 'Rushing Yards'
     },
     {
-        field: 'rushingYdsPerAttempt',
+        field: 'rushAttempts',
         headerName: 'Rushing Yards Per Attepmt'
     },
     {

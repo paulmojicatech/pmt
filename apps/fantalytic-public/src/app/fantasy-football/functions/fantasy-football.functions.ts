@@ -108,7 +108,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2018,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
@@ -118,7 +118,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2019,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
@@ -128,7 +128,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2020,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
@@ -138,12 +138,49 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2021,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
     });
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
+}
+
+export function getLineChartViewModelForRBs(rbStats: {[key: string]: number | string}[]): LineChartViewModel {
+    const vm: LineChartViewModel = {
+        labels: ['Rushing Yards (in hundreds)', 'Touchdowns', 'Rushing Attempts (in hundreds)', 'Rushes Over 20 Yards'],
+        datasets: 
+            rbStats.map((rb) => {
+                return {
+                    label: rb['player'],
+                    data: [
+                        +rb['rushingYds'] / 100,
+                        +rb['rushingTds'],
+                        +rb['rushAttempts'] / 100,
+                        +rb['rushing20Yds']
+                    ]
+                };
+            }) as ChartDataset[],
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        }
+    };
+    return vm;
 }
 //#endregion
 

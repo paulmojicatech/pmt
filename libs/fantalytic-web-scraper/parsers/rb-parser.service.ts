@@ -8,7 +8,7 @@ export async function parseRBResponse(table: unknown, url: string): Promise<IRBS
 
     const playerSelector = RB_STATS.player.statSelector;
     const rushingYdsSelector = RB_STATS.rushingYds.statSelector;
-    const rushingYdsPerAttemptSelector = RB_STATS.rushingAttempts.statSelector;
+    const rushAttemptsSelector = RB_STATS.rushingAttempts.statSelector;
     const rushingTdsSelector = RB_STATS.rushingTds.statSelector;
     const rushing20PlusYdsSelector = RB_STATS.rushing20Yds.statSelector;
     const rushing40PlusYdsSelector = RB_STATS.rushing40Yds.statSelector;
@@ -26,8 +26,8 @@ export async function parseRBResponse(table: unknown, url: string): Promise<IRBS
             rushingYds: {
                 statSelector: rushingYdsSelector
             },
-            rushingYdsPerAttempt: {
-                statSelector: rushingYdsPerAttemptSelector
+            rushAttempts: {
+                statSelector: rushAttemptsSelector
             },
             rushingTds: {
                 statSelector: rushingTdsSelector
@@ -44,7 +44,7 @@ export async function parseRBResponse(table: unknown, url: string): Promise<IRBS
             let {
                 player,
                 rushingYds,
-                rushingYdsPerAttempt,
+                rushAttempts,
                 rushingTds,
                 rushing20Yds,
                 rushing40Yds
@@ -69,14 +69,14 @@ export async function parseRBResponse(table: unknown, url: string): Promise<IRBS
                     ...rbStat,
                     rushingYds
                 };
-            } else if (colIndex === rushingYdsPerAttemptSelector.statColIndex) {
-                rushingYdsPerAttempt = {
-                    ...rushingYdsPerAttempt,
+            } else if (colIndex === rushAttemptsSelector.statColIndex) {
+                rushAttempts = {
+                    ...rushAttempts,
                     value: +(<string>$(col).html()).trim()
                 };
                 rbStat = {
                     ...rbStat,
-                    rushingYdsPerAttempt
+                    rushAttempts
                 };
             } else if (colIndex === rushingTdsSelector.statColIndex) {
                 rushingTds = {

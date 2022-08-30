@@ -31,6 +31,8 @@ export class ComparePlayersComponent implements OnInit {
         switch (position) {
           case PositionTypes.QB:
             return 'QB Stats';
+          case PositionTypes.RB:
+            return 'RB Stats';
           default:
             return '';
         }
