@@ -1,14 +1,18 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 
 import { MatButtonModule } from '@angular/material/button';
-import {MatSidenav, MatSidenavModule} from '@angular/material/sidenav';
-import { ComponentStore } from '@ngrx/component-store';
+import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
+import { PositionTypes } from '@pmt/fantalytic-shared';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
-import { map, shareReplay } from 'rxjs';
-import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE, FANTASY_FOOTBAL_DEF_RUSH_STATE } from './const/fantasy-football.const';
+import { Observable, Subject, take, takeUntil } from 'rxjs';
+import { DEFAULT_COL_DEF_SETTINGS } from '../const/grid.const';
+import { FantasyFootballSidebarComponent } from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
 import { FantasyFootballState } from './models/fantasy-football.interface';
-import {FantasyFootballSidebarComponent} from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
+import { setPositionType, updateSelectedPlayers, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
+import { getFantasyFootballState } from './ngrx/selectors/fantasy-football.selectors';
 @Component({
   selector: 'pmt-fantasy-football',
   standalone: true,
@@ -20,11 +24,10 @@ import {FantasyFootballSidebarComponent} from './components/fantasy-football-sid
     FantasyFootballSidebarComponent
   ],
   templateUrl: './fantasy-football.component.html',
-  styleUrls: ['./fantasy-football.component.scss'],
-  providers: [ComponentStore]
+  styleUrls: ['./fantasy-football.component.scss']
 })
 
-export class FantasyFootballComponent implements OnInit {
+export class FantasyFootballComponent implements OnInit, OnDestroy {
 
   @ViewChild('statGrid')
   statGrid!: AgGridAngular;
@@ -32,22 +35,21 @@ export class FantasyFootballComponent implements OnInit {
   @ViewChild('drawer')
   drawer!: MatSidenav;
 
-  gridConfig$ = this._componentStore.state$.pipe(
-    map(state => state.gridConfig)
-  );
+  fantasyFootballState$!: Observable<FantasyFootballState>;
+  
+  readonly DEFAULT_COL_DEF_SETTINGS = DEFAULT_COL_DEF_SETTINGS;
+  readonly ALL_YEARS = [2018,2019,2020,2021];
 
-  position$ = this._componentStore.state$.pipe(
-    map(state => state.position),
-    shareReplay(2)
-  );
+  private _compDestroyedSub$ = new Subject<void>();
 
-  rowData$ = this._componentStore.state$.pipe(
-    map(state => state.rowData)
-  );
-  constructor(private _componentStore: ComponentStore<FantasyFootballState>) {}
+  constructor(private _store: Store<FantasyFootballState>, private _router: Router) {}
   
   ngOnInit(): void {
-      this._componentStore.setState(FANTASY_FOOTBALL_INITIAL_STATE);
+      this.fantasyFootballState$ = this._store.select(getFantasyFootballState);
+  }
+
+  ngOnDestroy(): void {
+      this._compDestroyedSub$.next();
   }
 
   gridReady(): void {
@@ -55,8 +57,9 @@ export class FantasyFootballComponent implements OnInit {
   }
 
   handleUpdatedRowSelected(): void {
-    const selectedRows = this.statGrid.api.getSelectedNodes();
-    if (selectedRows.length) {
+    const selectedPlayers = this.statGrid.api.getSelectedNodes().map(node => node.data.player);
+    this._store.dispatch(updateSelectedPlayers(selectedPlayers));
+    if (selectedPlayers.length) {
       this.drawer.open();
     } else {
       this.drawer.close();
@@ -66,20 +69,15 @@ export class FantasyFootballComponent implements OnInit {
 
   updatePosition(position: string): void {
     this.drawer.close();
-    switch (position) {
-      case 'RB':
-        this._componentStore.setState(FANTASY_FOOTBALL_RB_STATE);
-        break;
-      case 'WR':
-        this._componentStore.setState(FANTASY_FOOTBALL_REC_STATE);
-        break;
-      case 'DEF_RUSH':
-        this._componentStore.setState(FANTASY_FOOTBAL_DEF_RUSH_STATE);
-        break;
-      default:
-        this._componentStore.setState(FANTASY_FOOTBALL_INITIAL_STATE);
-        break;
-    }
+    this._store.dispatch(setPositionType(position as PositionTypes));
+  }
+
+  handleSidebarEvent(path: string): void {
+    this._router.navigate(['fantasy-football', path]);
+  }
+
+  filterByYear(year: number): void {
+    this._store.dispatch(updateYearFilter(year));
   }
 
 }

@@ -4,7 +4,7 @@ import { logError } from "../messaging/error.service";
 import { parseRBResponse } from "./rb-parser.service";
 import { parseWRTEResponse } from './wr-te-parser.service';
 import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic.interface';
-import { parseDefRushResponse } from './def-parser.service';
+import { parseDefPassResponse, parseDefRushResponse } from './def-parser.service';
 
 export async function parserHtmlString(html: any, type: PositionTypes, year: string, url: string = ''): Promise<any> {
     
@@ -42,6 +42,15 @@ export async function parserHtmlString(html: any, type: PositionTypes, year: str
             const defRushOutputPath = `${__dirname}/../output/${year}_def_rush.json`;
             try {
                 await writeFileSync(defRushOutputPath, JSON.stringify(defRushStats));
+            } catch (ex) {
+                logError(`${ex}`);
+            }
+            break;
+        case PositionTypes.DEF_PASS:
+            const defPassStats = await parseDefPassResponse(html, url);
+            const defPassOutputPath = `${__dirname}/../output/${year}_def_pass.json`;
+            try {
+                await writeFileSync(defPassOutputPath, JSON.stringify(defPassStats));
             } catch (ex) {
                 logError(`${ex}`);
             }

@@ -1,0 +1,9 @@
+<header>
+    <mat-icon (click)="goBack()" class="go-back">chevron_left</mat-icon>
+    <div class="header-content">
+        <h2>{{headerContent$ | async}}</h2>
+    </div>
+</header>
+<main class="main-container" *ngIf="lineChartViewModel$ | async as lineChartViewModel">
+    <pmt-line-chart height="75vh" [lineChartViewModel]="lineChartViewModel"></pmt-line-chart>
+</main>

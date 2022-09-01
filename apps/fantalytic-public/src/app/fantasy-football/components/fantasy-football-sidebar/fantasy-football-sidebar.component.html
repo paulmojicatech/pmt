@@ -1,1 +1,3 @@
-<p>fantasy-football-sidebar works!</p>
+<div class="sidebar-container">
+    <button color="primary" *ngFor="let item of SIDEBAR_ITEM_MAP" mat-raised-button (click)="sideBarEvent.emit(item.path)">{{item.label}}</button>
+</div>  

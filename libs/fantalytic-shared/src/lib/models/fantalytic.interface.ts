@@ -57,7 +57,7 @@ export interface IRBStats {
         statSelector: IStatPosition;
         value?: number;
     };
-    rushingYdsPerAttempt: {
+    rushAttempts: {
         statSelector: IStatPosition;
         value?: number;
     };
@@ -126,4 +126,32 @@ export interface IDefRusingStats {
         value?: number;
     };
 
+}
+
+export interface IDefPassingStats {
+    url: string;
+    team: {
+        statSelector: IStatPosition;
+        value?: string;
+    };
+    compPct: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    yds: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    td: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    int: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
+    sacks: {
+        statSelector: IStatPosition;
+        value?: number;
+    };
 }

@@ -1,19 +1,21 @@
-import { qbStats2019 } from '../../../assets/stats/2019_qb';
-import { qbStats2020 } from '../../../assets/stats/2020_qb';
-import {qbStats2018} from '../../../assets/stats/2018_qb';
-import { qbStats2021 } from '../../../assets/stats/2021_qb';
-import { rbStats2018 } from '../../../assets/stats/2018_rb';
-import { rbStats2019 } from '../../../assets/stats/2019_rb';
-import { rbStats2020 } from '../../../assets/stats/2020_rb';
-import { rbStats2021 } from '../../../assets/stats/2021_rb';
-import { recStats2018 } from '../../../assets/stats/2018_wr_te';
-import { recStats2019 } from '../../../assets/stats/2019_wr_te';
-import { recStats2020 } from '../../../assets/stats/2020_wr_te';
-import { recStats2021 } from '../../../assets/stats/2021_wr_te';
+import { ChartDataset } from 'chart.js';
 import { defRush2018 } from '../../../assets/stats/2018_def_rush';
+import { qbStats2018 } from '../../../assets/stats/2018_qb';
+import { rbStats2018 } from '../../../assets/stats/2018_rb';
+import { recStats2018 } from '../../../assets/stats/2018_wr_te';
 import { defRush2019 } from '../../../assets/stats/2019_def_rush';
+import { qbStats2019 } from '../../../assets/stats/2019_qb';
+import { rbStats2019 } from '../../../assets/stats/2019_rb';
+import { recStats2019 } from '../../../assets/stats/2019_wr_te';
 import { defRush2020 } from '../../../assets/stats/2020_def_rush';
+import { qbStats2020 } from '../../../assets/stats/2020_qb';
+import { rbStats2020 } from '../../../assets/stats/2020_rb';
+import { recStats2020 } from '../../../assets/stats/2020_wr_te';
 import { defRush2021 } from '../../../assets/stats/2021_def_rush';
+import { qbStats2021 } from '../../../assets/stats/2021_qb';
+import { rbStats2021 } from '../../../assets/stats/2021_rb';
+import { recStats2021 } from '../../../assets/stats/2021_wr_te';
+import { LineChartViewModel } from '../../components/line-chart/models/line-chart.interface';
 
 //#region QB Stats
 export function getQbRowData(): {[key: string]: number | string}[] {
@@ -59,6 +61,44 @@ export function getQbRowData(): {[key: string]: number | string}[] {
     });
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
+
+export function getLineChartViewModelForQBs(qbStats: {[key: string]: number | string}[]): LineChartViewModel {
+    const vm: LineChartViewModel = {
+        labels: ['Passing Yards (in hundreds)', 'Touchdowns', 'Passing Yards Per Attempt', 'Interceptions'],
+        datasets: 
+            qbStats.map((qb) => {
+                return {
+                    label: qb['player'],
+                    data: [
+                        +qb['passingYds'] / 100,
+                        qb['tds'],
+                        qb['passingYdsPerAttempt'],
+                        qb['ints']
+                    ]
+                };
+            }) as ChartDataset[],
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        }
+    };
+    return vm;
+}
+
 //#endregion
 
 //#region RB Stats
@@ -68,7 +108,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2018,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
@@ -78,7 +118,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2019,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
@@ -88,7 +128,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2020,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
@@ -98,12 +138,49 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             player: stat.player.value,
             year: 2021,
             rushingYds: stat.rushingYds.value,
-            rushingYdsPerAttempt: stat.rushingYdsPerAttempt.value,
+            rushAttempts: stat.rushAttempts.value,
             rushingTds: stat.rushingTds.value,
             rushing20Yds: stat.rushing20Yds.value
         };
     });
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
+}
+
+export function getLineChartViewModelForRBs(rbStats: {[key: string]: number | string}[]): LineChartViewModel {
+    const vm: LineChartViewModel = {
+        labels: ['Rushing Yards (in hundreds)', 'Touchdowns', 'Rushing Attempts (in hundreds)', 'Rushes Over 20 Yards'],
+        datasets: 
+            rbStats.map((rb) => {
+                return {
+                    label: rb['player'],
+                    data: [
+                        +rb['rushingYds'] / 100,
+                        +rb['rushingTds'],
+                        +rb['rushAttempts'] / 100,
+                        +rb['rushing20Yds']
+                    ]
+                };
+            }) as ChartDataset[],
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        }
+    };
+    return vm;
 }
 //#endregion
 
@@ -159,6 +236,46 @@ export function getWrTeRowData(): {[key: string]: number | string}[] {
     });
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
+
+export function getLineChartViewModelForRecs(recStats: {[key: string]: number | string}[]): LineChartViewModel {
+    const vm: LineChartViewModel = {
+        labels: ['Receptions', 'Receiving Yards (in hundreds)', 'Touchdowns', 'Receptions Over 20 Yards', 'Receptions Over 40 Yards', 'Number of Targets'],
+        datasets: 
+            recStats.map((rec) => {
+                return {
+                    label: rec['player'],
+                    data: [
+                        +rec['receptions'],
+                        +rec['receivingYds'] / 100,
+                        +rec['receivingTds'],
+                        +rec['receiving20Plus'],
+                        +rec['receiving40Plus'],
+                        +rec['receivingTargets']
+                    ]
+                };
+            }) as ChartDataset[],
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        }
+    };
+    return vm;
+}
+
 //#endregion
 
 //#region DEF Stats
