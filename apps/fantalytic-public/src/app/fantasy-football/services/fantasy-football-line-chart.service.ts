@@ -5,7 +5,7 @@ import { FantasyFootballState } from '../models/fantasy-football.interface';
 import { getPosition, getSelectedPlayers, getSelectedRowData } from '../ngrx/selectors/fantasy-football.selectors';
 import {forkJoin, take, map, Observable} from 'rxjs';
 import { PositionTypes } from '@pmt/fantalytic-shared';
-import { getLineChartViewModelForQBs, getLineChartViewModelForRBs } from '../functions/fantasy-football.functions';
+import { getLineChartViewModelForQBs, getLineChartViewModelForRBs, getLineChartViewModelForRecs } from '../functions/fantasy-football.functions';
 
 @Injectable({
   providedIn: 'root'
@@ -33,6 +33,14 @@ export class FantasyFootballLineChartService {
             });
             return getLineChartViewModelForRBs(filteredRowData ?? []);
           }
+          case PositionTypes.WR:
+          case PositionTypes.TE: {
+            const filteredRowData = selectedRowData?.filter(row => {
+              return selectedPlayers?.some(player => row['player'] === player);
+            });
+            return getLineChartViewModelForRecs(filteredRowData ?? []);
+          }
+
           default:
             return undefined;
         }

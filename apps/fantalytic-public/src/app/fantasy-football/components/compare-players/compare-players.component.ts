@@ -33,6 +33,10 @@ export class ComparePlayersComponent implements OnInit {
             return 'QB Stats';
           case PositionTypes.RB:
             return 'RB Stats';
+          case PositionTypes.WR:
+          case PositionTypes.TE: {
+            return 'Receiving Stats';
+          }
           default:
             return '';
         }

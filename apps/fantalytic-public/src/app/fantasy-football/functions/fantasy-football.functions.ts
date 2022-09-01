@@ -236,6 +236,46 @@ export function getWrTeRowData(): {[key: string]: number | string}[] {
     });
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
+
+export function getLineChartViewModelForRecs(recStats: {[key: string]: number | string}[]): LineChartViewModel {
+    const vm: LineChartViewModel = {
+        labels: ['Receptions', 'Receiving Yards (in hundreds)', 'Touchdowns', 'Receptions Over 20 Yards', 'Receptions Over 40 Yards', 'Number of Targets'],
+        datasets: 
+            recStats.map((rec) => {
+                return {
+                    label: rec['player'],
+                    data: [
+                        +rec['receptions'],
+                        +rec['receivingYds'] / 100,
+                        +rec['receivingTds'],
+                        +rec['receiving20Plus'],
+                        +rec['receiving40Plus'],
+                        +rec['receivingTargets']
+                    ]
+                };
+            }) as ChartDataset[],
+        options: {
+            scales: {
+                x: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                },
+                y: {
+                    ticks: {
+                        font: {
+                            size: 18
+                        }
+                    }
+                }
+            }
+        }
+    };
+    return vm;
+}
+
 //#endregion
 
 //#region DEF Stats
