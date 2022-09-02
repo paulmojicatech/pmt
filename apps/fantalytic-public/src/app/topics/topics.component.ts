@@ -41,6 +41,9 @@ export class TopicsComponent implements OnInit {
       case 1:
         this._store.dispatch(loadTopics(RssFeedType.FOOTBALLERS));
         break;
+      case 2:
+        this._store.dispatch(loadTopics(RssFeedType.PFF));
+        break;
       default:
         break;
     }
