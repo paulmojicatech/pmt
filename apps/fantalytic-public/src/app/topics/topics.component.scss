@@ -22,6 +22,12 @@
 
 .topics-container {
     width: 100vw;
+    select {
+        height: 2rem;
+        width: 15rem;
+        font-size: 1rem;
+        color: rgb(3,41,42);
+    }
     .topics-text-container {
        display: flex;
        align-items: center;

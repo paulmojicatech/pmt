@@ -1,7 +1,7 @@
 export interface Topic {
     title: string;
     description: string;
-    imageUrl: string;
+    imageUrl?: string;
     link: string;
     publishedDate: string;
 }
