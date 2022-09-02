@@ -32,6 +32,7 @@ export class TopicsComponent implements OnInit {
     this._store.dispatch(loadTopics(RssFeedType.ESPN));
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   updateRssFeed(ev: any): void {
     const selectedIndex = ev.target.options.selectedIndex;
     switch (selectedIndex) {

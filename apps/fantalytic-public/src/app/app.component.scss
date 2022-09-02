@@ -11,9 +11,7 @@ mat-toolbar {
         flex: 1 1 auto;
     }
     input {
-        &:focus {
-            width: 15rem;
-        }
+        
         transition: width .5s ease-in-out;
         height: 2rem;
         width: 7rem;
@@ -21,5 +19,10 @@ mat-toolbar {
         padding: 0 1rem;
         font-size: 1.25rem;
         border: none;
+    }
+    @media screen and (min-width: 800px) {
+        input:focus {
+            width: 15rem;
+        }
     }
 }
