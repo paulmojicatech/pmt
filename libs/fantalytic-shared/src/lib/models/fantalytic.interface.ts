@@ -155,3 +155,13 @@ export interface IDefPassingStats {
         value?: number;
     };
 }
+
+export interface QB {
+    player: string;
+    year: number;
+    passingYds: number;
+    ints: number;
+    passingYdsPerAttempt: number;
+    tds: number;
+    week?: number;
+}
