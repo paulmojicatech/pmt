@@ -59,6 +59,7 @@ export function getQbRowData(): {[key: string]: number | string}[] {
             ints: stat.ints.value
         }
     });
+    console.log('2018', JSON.stringify(stats2019));
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
 

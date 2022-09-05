@@ -24,10 +24,13 @@ namespace Pmt.FantalyticApi.Models
     public Guid Id
     { get; set; }
 
-    public string Name
+    public string Player
     {
       get; set;
     }
+
+    public int Week
+    { get; set; }
 
     public int Year
     { get; set; }
@@ -38,7 +41,7 @@ namespace Pmt.FantalyticApi.Models
     public int Ints
     { get; set; }
 
-    public int PassingYdsPerAttempt
+    public float PassingYdsPerAttempt
     {
       get; set;
     }
