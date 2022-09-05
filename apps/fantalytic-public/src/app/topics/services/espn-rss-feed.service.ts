@@ -8,13 +8,13 @@ import { Topic } from '../models/topics.interface';
 })
 export class EspnRssFeedService {
 
-  private readonly ESPN_RSS_URL = `https://www.espn.com/espn/rss/news`;
+  protected RSS_URL = `https://www.espn.com/espn/rss/news`;
 
-  constructor(private _http: HttpClient) { }
+  constructor(protected _http: HttpClient) { }
 
   getTopics(): Observable<Topic[]> {
     const options = {responseType: 'text' as 'json'};
-    return this._http.get<any>(this.ESPN_RSS_URL, options).pipe(
+    return this._http.get<any>(this.RSS_URL, options).pipe(
       map(resp => {
        const parser = new DOMParser();
        const doc = parser.parseFromString(resp, 'application/xml');
@@ -30,7 +30,7 @@ export class EspnRssFeedService {
     )
   }
 
-  private parseRssItemResponse(item: Element): Topic {
+  protected parseRssItemResponse(item: Element): Topic {
     const title = item.getElementsByTagName('title')[0].textContent ?? '';
     const description = item.getElementsByTagName('description')[0].firstChild?.textContent ?? '';
     const imageUrl = item.getElementsByTagName('enclosure')[0]?.getAttribute('url') ?? '';

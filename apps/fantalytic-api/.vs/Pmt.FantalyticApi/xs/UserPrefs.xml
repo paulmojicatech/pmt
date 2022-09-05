@@ -1,10 +1,16 @@
 ﻿<Properties StartupConfiguration="{5B939A9B-F8BC-48D3-9D72-2FA6C8009B5C}|Default">
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Pmt.FantalyticApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/QBController.cs">
     <Files>
       <File FileName="Program.cs" Line="24" Column="20" />
       <File FileName="Models/QBContext.cs" Line="21" Column="13" />
       <File FileName="appsettings.json" Line="11" Column="134" />
-      <File FileName="Controllers/QBController.cs" Line="24" Column="1" />
+      <File FileName="Controllers/QBController.cs" Line="17" Column="6" />
       <File FileName="Services/IQBService.cs" Line="10" Column="4" />
       <File FileName="Services/QBService.cs" Line="13" Column="6" />
     </Files>
@@ -24,11 +30,5 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.Pmt.FantalyticApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
 </Properties>

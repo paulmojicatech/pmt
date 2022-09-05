@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Pmt.FantalyticApi.Models;
+using System.Text.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -15,6 +16,11 @@ string dbConn = builder.Configuration.GetConnectionString("Postgres");
 builder.Services.AddDbContext<QBContext>(options =>
   options.UseNpgsql(dbConn)
 );
+
+builder.Services.Configure<JsonSerializerOptions>(options =>
+{
+  options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
+});
 
 var app = builder.Build();
 

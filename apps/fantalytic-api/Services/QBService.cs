@@ -5,19 +5,42 @@ namespace Pmt.FantalyticApi.Services
 {
   public class QBService : IQBService
   {
-    public QBService()
+    private QBContext _qbContext;
+
+    public QBService(QBContext ctx)
     {
+      this._qbContext = ctx;
     }
 
-    public Task<IEnumerable<QB>> GetQBs()
+    public async Task<IEnumerable<QB>> GetQBs()
     {
-      throw new NotImplementedException();
+      try
+      {
+        return _qbContext.QBs.ToList();
+      }
+      catch
+      {
+        throw;
+      }
+
     }
 
-    public Task AddQBs(IEnumerable<QB> qbs)
+    public async Task AddQBs(IEnumerable<QB> qbs)
     {
-      throw new NotImplementedException();
+      try
+      {
+        foreach (QB qb in qbs)
+        {
+          await _qbContext.AddAsync(qb);
+        }
+        _qbContext.SaveChanges();
+      }
+      catch
+      {
+        throw;
+      }
     }
+
   }
 }
 

@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pmt.FantalyticApi.Models;
@@ -11,9 +12,10 @@ using Pmt.FantalyticApi.Models;
 namespace Pmt.FantalyticApi.Migrations
 {
     [DbContext(typeof(QBContext))]
-    partial class QBContextModelSnapshot : ModelSnapshot
+    [Migration("20220905115052_2022-09-05-0750")]
+    partial class _202209050750
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -31,15 +33,15 @@ namespace Pmt.FantalyticApi.Migrations
                     b.Property<int>("Ints")
                         .HasColumnType("integer");
 
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.Property<int>("PassingYds")
                         .HasColumnType("integer");
 
                     b.Property<float>("PassingYdsPerAttempt")
                         .HasColumnType("real");
-
-                    b.Property<string>("Player")
-                        .IsRequired()
-                        .HasColumnType("text");
 
                     b.Property<int>("TDs")
                         .HasColumnType("integer");
