@@ -28,7 +28,8 @@ namespace Pmt.FantalyticApi.Controllers
 
       try
       {
-        IEnumerable<QB> qbs = await _qbSvc.GetQBs();
+        IEnumerable<QB> qbItems = await _qbSvc.GetQBs();
+        QBHttpResponse qbs = new QBHttpResponse(qbItems);
         return Ok(qbs);
       }
       catch (Exception ex)
@@ -38,11 +39,11 @@ namespace Pmt.FantalyticApi.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddQBs([FromBody] IEnumerable<QB> qbs)
+    public async Task<IActionResult> AddQBs([FromBody] QBHttpRequest qbs)
     {
       try
       {
-        await _qbSvc.AddQBs(qbs);
+        await _qbSvc.AddQBs(qbs.Qbs);
         return Ok("Success");
       }
       catch (Exception ex)
