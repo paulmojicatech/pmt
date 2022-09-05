@@ -109,6 +109,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             rushing20Yds: stat.rushing20Yds.value
         };
     });
+    console.log('RBs', JSON.stringify(stats2021));
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
 
