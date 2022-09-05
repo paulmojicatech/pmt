@@ -11,7 +11,7 @@ using Pmt.FantalyticApi.Models;
 
 namespace Pmt.FantalyticApi.Migrations
 {
-    [DbContext(typeof(QBContext))]
+    [DbContext(typeof(FantalyticContext))]
     [Migration("20220802051749_InitialAddQB")]
     partial class InitialAddQB
     {

@@ -13,10 +13,11 @@ builder.Services.AddSwaggerGen();
 
 // Set up Postgres
 string dbConn = builder.Configuration.GetConnectionString("Postgres");
-builder.Services.AddDbContext<QBContext>(options =>
+builder.Services.AddDbContext<FantalyticContext>(options =>
   options.UseNpgsql(dbConn)
 );
 
+// Set up JsonSerializer
 builder.Services.Configure<JsonSerializerOptions>(options =>
 {
   options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;

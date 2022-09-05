@@ -10,7 +10,7 @@ using Pmt.FantalyticApi.Models;
 
 namespace Pmt.FantalyticApi.Migrations
 {
-    [DbContext(typeof(QBContext))]
+    [DbContext(typeof(FantalyticContext))]
     partial class QBContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
@@ -53,6 +53,39 @@ namespace Pmt.FantalyticApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("QBs");
+                });
+
+            modelBuilder.Entity("Pmt.FantalyticApi.Models.RB", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Player")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("RushAttempts")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Rushing20Yds")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RushingTds")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("RushingYds")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Week")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("Year")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RBs");
                 });
 #pragma warning restore 612, 618
         }

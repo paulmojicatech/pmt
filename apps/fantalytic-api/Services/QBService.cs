@@ -5,11 +5,11 @@ namespace Pmt.FantalyticApi.Services
 {
   public class QBService : IQBService
   {
-    private QBContext _qbContext;
+    private FantalyticContext _qbContext;
 
-    public QBService(QBContext ctx)
+    public QBService(FantalyticContext ctx)
     {
-      this._qbContext = ctx;
+      _qbContext = ctx;
     }
 
     public async Task<IEnumerable<QB>> GetQBs()

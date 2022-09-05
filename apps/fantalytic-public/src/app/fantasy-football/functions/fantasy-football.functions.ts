@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { ChartDataset } from 'chart.js';
 import { defRush2018 } from '../../../assets/stats/2018_def_rush';
 import { qbStats2018 } from '../../../assets/stats/2018_qb';
@@ -15,50 +16,15 @@ import { defRush2021 } from '../../../assets/stats/2021_def_rush';
 import { qbStats2021 } from '../../../assets/stats/2021_qb';
 import { rbStats2021 } from '../../../assets/stats/2021_rb';
 import { recStats2021 } from '../../../assets/stats/2021_wr_te';
+import {parseQBStats} from '@pmt/fantalytic-shared';
 import { LineChartViewModel } from '../../components/line-chart/models/line-chart.interface';
 
 //#region QB Stats
 export function getQbRowData(): {[key: string]: number | string}[] {
-    const stats2018 = qbStats2018.map(stat => {
-        return {
-            player: stat.player.value,
-            year: 2018,
-            passingYds: stat.passingYds.value,
-            tds: stat.tds.value,
-            passingYdsPerAttempt: stat.passingYdsPerAttempt.value,
-            ints: stat.ints.value
-        }
-    });
-    const stats2019 = qbStats2019.map(stat => {
-        return {
-            player: stat.player.value,
-            year: 2019,
-            passingYds: stat.passingYds.value,
-            tds: stat.tds.value,
-            passingYdsPerAttempt: stat.passingYdsPerAttempt.value,
-            ints: stat.ints.value
-        }
-    });
-    const stats2020 = qbStats2020.map(stat => {
-        return {
-            player: stat.player.value,
-            year: 2020,
-            passingYds: stat.passingYds.value,
-            tds: stat.tds.value,
-            passingYdsPerAttempt: stat.passingYdsPerAttempt.value,
-            ints: stat.ints.value
-        }
-    });
-    const stats2021 = qbStats2021.map(stat => {
-        return {
-            player: stat.player.value,
-            year: 2021,
-            passingYds: stat.passingYds.value,
-            tds: stat.tds.value,
-            passingYdsPerAttempt: stat.passingYdsPerAttempt.value,
-            ints: stat.ints.value
-        }
-    });
+    const stats2018 = parseQBStats(qbStats2018, 2018) as any[];
+    const stats2019 = parseQBStats(qbStats2019, 2019) as any[];
+    const stats2020 = parseQBStats(qbStats2020, 2020) as any[];
+    const stats2021 = parseQBStats(qbStats2021, 2021) as any[];
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
 
@@ -143,6 +109,7 @@ export function getRbRowData(): {[key: string]: number | string}[] {
             rushing20Yds: stat.rushing20Yds.value
         };
     });
+    console.log('RBs', JSON.stringify(stats2021));
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
 

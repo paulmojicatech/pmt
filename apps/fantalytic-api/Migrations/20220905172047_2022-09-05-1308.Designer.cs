@@ -12,8 +12,8 @@ using Pmt.FantalyticApi.Models;
 namespace Pmt.FantalyticApi.Migrations
 {
     [DbContext(typeof(FantalyticContext))]
-    [Migration("20220905131925_2022-09-05-0919")]
-    partial class _202209050919
+    [Migration("20220905172047_2022-09-05-1308")]
+    partial class _202209051308
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -55,6 +55,33 @@ namespace Pmt.FantalyticApi.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("QBs");
+                });
+
+            modelBuilder.Entity("Pmt.FantalyticApi.Models.RB", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Player")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("RushingYds")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("rushAttempts")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("rushing20Yds")
+                        .HasColumnType("integer");
+
+                    b.Property<int>("rushingTds")
+                        .HasColumnType("integer");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RBs");
                 });
 #pragma warning restore 612, 618
         }

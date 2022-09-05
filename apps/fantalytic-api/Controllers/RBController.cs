@@ -10,27 +10,24 @@ using Pmt.FantalyticApi.Services;
 
 namespace Pmt.FantalyticApi.Controllers
 {
-
   [Route("api/[controller]")]
-  public class QBController : Controller
+  public class RBController : Controller
   {
+    private RBService _rbSvc;
 
-    private QBService _qbSvc;
-
-    public QBController(FantalyticContext ctx)
+    public RBController(FantalyticContext ctx)
     {
-      _qbSvc = new QBService(ctx);
+      _rbSvc = new RBService(ctx);
     }
 
     [HttpGet]
-    public async Task<IActionResult> GetAllQBs()
+    public async Task<IActionResult> GetAllRBs()
     {
-
       try
       {
-        IEnumerable<QB> qbItems = await _qbSvc.GetQBs();
-        QBHttpResponse qbs = new QBHttpResponse(qbItems);
-        return Ok(qbs);
+        IEnumerable<RB> rbItems = await _rbSvc.GetRBs();
+        RBHttpResponse rbs = new RBHttpResponse(rbItems);
+        return Ok(rbs);
       }
       catch (Exception ex)
       {
@@ -39,18 +36,17 @@ namespace Pmt.FantalyticApi.Controllers
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddQBs([FromBody] QBHttpRequest qbs)
+    public async Task<IActionResult> AddRBs([FromBody] RBHttpRequest rbReq)
     {
       try
       {
-        await _qbSvc.AddQBs(qbs.Qbs);
+        await _rbSvc.AddRBs(rbReq.Rbs);
         return Ok("Success");
       }
       catch (Exception ex)
       {
         return BadRequest(ex);
       }
-
     }
   }
 }
