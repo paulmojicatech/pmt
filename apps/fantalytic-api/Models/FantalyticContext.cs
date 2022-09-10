@@ -14,6 +14,7 @@ namespace Pmt.FantalyticApi.Models
 
     public DbSet<QB> QBs { get; set; }
     public DbSet<RB> RBs { get; set; }
+    public DbSet<WR_TE> WRs_TEs { get; set; }
 
   }
 

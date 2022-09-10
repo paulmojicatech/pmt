@@ -201,6 +201,7 @@ export function getWrTeRowData(): {[key: string]: number | string}[] {
             receivingTargets: stat.receivingTargets.value
         };
     });
+
     return [...stats2018, ...stats2019, ...stats2020, ...stats2021];
 }
 

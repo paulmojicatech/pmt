@@ -1,34 +1,43 @@
 ﻿<Properties StartupConfiguration="{5B939A9B-F8BC-48D3-9D72-2FA6C8009B5C}|Default">
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.ItemProperties.Pmt.FantalyticApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="40" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="48" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="34" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/QBController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/WR_TEController.cs">
     <Files>
-      <File FileName="Program.cs" Line="24" Column="20" />
-      <File FileName="Models/QBContext.cs" Line="21" Column="13" />
-      <File FileName="appsettings.json" Line="11" Column="134" />
-      <File FileName="Controllers/QBController.cs" Line="17" Column="6" />
-      <File FileName="Services/IQBService.cs" Line="10" Column="4" />
-      <File FileName="Services/QBService.cs" Line="13" Column="6" />
+      <File FileName="Models/Rec.cs" Line="11" Column="39" />
+      <File FileName="Models/FantalyticContext.cs" Line="17" Column="46" />
+      <File FileName="Models/WR_TEHttpRequest.cs" Line="6" Column="49" />
+      <File FileName="Controllers/WR_TEController.cs" Line="28" Column="1" />
+      <File FileName="Controllers/RBController.cs" Line="1" Column="1" />
+      <File FileName="Controllers/QBController.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="Pmt.FantalyticApi" expanded="True">
             <Node name="Pmt.FantalyticApi" expanded="True">
-              <Node name="Controllers" expanded="True" />
-              <Node name="Services" expanded="True" />
+              <Node name="Dependencies" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="WR_TEController.cs" selected="True" />
+              </Node>
+              <Node name="Models" expanded="True" />
             </Node>
           </Node>
         </State>
       </Pad>
       <Pad Id="MonoDevelop.Debugger.WatchPad">
-        <State />
+        <State>
+          <Value>qbs</Value>
+        </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>
