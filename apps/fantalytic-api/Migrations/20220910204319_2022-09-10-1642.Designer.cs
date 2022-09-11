@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pmt.FantalyticApi.Models;
@@ -11,9 +12,10 @@ using Pmt.FantalyticApi.Models;
 namespace Pmt.FantalyticApi.Migrations
 {
     [DbContext(typeof(FantalyticContext))]
-    partial class QBContextModelSnapshot : ModelSnapshot
+    [Migration("20220910204319_2022-09-10-1642")]
+    partial class _202209101642
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

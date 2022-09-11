@@ -1,5 +1,6 @@
-import { PositionTypes } from "@pmt/fantalytic-shared";
+import { PositionTypes, QB, RB, Receivers } from "@pmt/fantalytic-shared";
 import { ColDef } from "ag-grid-community";
+import { FantasyFootballRowData } from "../types/fantasy-football.types";
 
 export interface GridConfig {
     colDef: ColDef[];
@@ -8,7 +9,10 @@ export interface GridConfig {
 export interface FantasyFootballState {
     gridConfig: GridConfig;
     position: PositionTypes;
-    rowData?: {[key: string]: number | string}[];
-    selectedRowData?: {[key: string]: number | string}[];
+    rowData?: FantasyFootballRowData[];
+    selectedRowData?: FantasyFootballRowData[];
     selectedPlayers?: string[];
+    qbs?: QB[];
+    rbs?: RB[];
+    receivers?: Receivers[];
 }

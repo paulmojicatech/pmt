@@ -1,0 +1,1 @@
+export const FANTALYTIC_API_URL = '/api/';

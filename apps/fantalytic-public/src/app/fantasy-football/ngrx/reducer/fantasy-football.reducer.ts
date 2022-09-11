@@ -1,50 +1,15 @@
 import { createReducer, on } from "@ngrx/store";
-import { PositionTypes } from "@pmt/fantalytic-shared";
-import { FANTASY_FOOTBALL_INITIAL_STATE, FANTASY_FOOTBALL_RB_STATE, FANTASY_FOOTBALL_REC_STATE, FANTASY_FOOTBAL_DEF_RUSH_STATE } from "../../const/fantasy-football.const";
-import { getDefRushRowData, getQbRowData, getRbRowData, getWrTeRowData } from "../../functions/fantasy-football.functions";
+import { FANTASY_FOOTBALL_INITIAL_STATE, QB_COL_DEFS, RB_COL_DEF, WR_TE_COL_DEF } from "../../const/fantasy-football.const";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
-import { setPositionType, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
+import { loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceiversSuccess, setRowData, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
 
 const initialState: FantasyFootballState = {
-    ...FANTASY_FOOTBALL_INITIAL_STATE,
-    rowData: getQbRowData(),
-    selectedRowData: getQbRowData(),
-    selectedPlayers: []
+    ...FANTASY_FOOTBALL_INITIAL_STATE
 };
 
 export const fantasyFootballReducer = createReducer(
     initialState,
-    on(
-        setPositionType,
-        (state, {position}) => {
-            let updatedState = FANTASY_FOOTBALL_INITIAL_STATE;
-            switch (position) {
-                case PositionTypes.RB: {
-                    const rowData = getRbRowData();
-                    updatedState = {...FANTASY_FOOTBALL_RB_STATE, rowData, selectedRowData: rowData};
-                    break;
-                }
-                case PositionTypes.WR:
-                case PositionTypes.TE: {
-                    const rowData = getWrTeRowData();
-                    updatedState = {...FANTASY_FOOTBALL_REC_STATE, rowData, selectedRowData: rowData};
-                    break;
-                }
-                case PositionTypes.DEF_RUSH: {
-                    const rowData = getDefRushRowData();
-                    updatedState = {...FANTASY_FOOTBAL_DEF_RUSH_STATE, rowData, selectedRowData: rowData };
-                    break;
-                }
-                default: {
-                    const rowData = getQbRowData();
-                    updatedState = {...FANTASY_FOOTBALL_INITIAL_STATE, rowData, selectedRowData: rowData};
-                    break;
-                }
-            }
-            return updatedState;
-        }
-    ),
-    on(
+   on(
         updateYearFilter,
         (state, {year}) => {
             const updatedRows = state.rowData?.filter(row => {
@@ -58,5 +23,21 @@ export const fantasyFootballReducer = createReducer(
         (state, {selectedPlayers}) => {
             return {...state, selectedPlayers};
         }
+    ),
+    on(
+        loadQbsSuccess,
+        (state, {qbs}) => ({...state, qbs, rowData: qbs, selectedRowData: qbs, gridConfig: {colDef: QB_COL_DEFS}})
+    ),
+    on(
+        loadRbsSuccess,
+        (state, {rbs}) => ({...state, rbs, selectedRowData: rbs, rowData: rbs, gridConfig: {colDef: RB_COL_DEF}})
+    ),
+    on(
+        loadReceiversSuccess,
+        (state, {receivers}) => ({...state, receivers, selectedRowData: receivers, gridConfig: {colDef: WR_TE_COL_DEF}})
+    ),
+    on(
+        setRowData,
+        (state, {rowData}) => ({...state, rowData})
     )
 );

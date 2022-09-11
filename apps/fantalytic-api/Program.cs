@@ -23,6 +23,16 @@ builder.Services.Configure<JsonSerializerOptions>(options =>
   options.PropertyNamingPolicy = JsonNamingPolicy.CamelCase;
 });
 
+// Set up CORS
+builder.Services.AddCors(options =>
+{
+  options.AddPolicy(name: "localhost",
+                     policy =>
+                     {
+                       policy.WithOrigins("http://localhost:4200");
+                     });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

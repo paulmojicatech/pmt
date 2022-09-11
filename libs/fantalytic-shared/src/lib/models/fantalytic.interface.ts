@@ -165,3 +165,25 @@ export interface QB {
     tds: number;
     week?: number;
 }
+
+export interface RB {
+    player: string;
+    rushingYds: number;
+    rushAttempts: number;
+    rushingTds: number;
+    rushing20Yds: number;
+    year: number;
+    week: number;
+}
+
+export interface Receivers {
+    player: string;
+    receptions: number;
+    receivingYds: number;
+    receivingTds: number;
+    receiving20Plus: number;
+    receiving40Plus: number;
+    receivingTargets: number;
+    year: number;
+    week: number;
+}
