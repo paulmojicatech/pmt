@@ -1,0 +1,21 @@
+# Download Microsoft SDK container
+FROM mcr.microsoft.com/dotnet/sdk:6.0-alpine as build
+
+WORKDIR /fantalytic-api
+
+COPY ./apps/fantalytic-api/*.csproj .
+RUN dotnet restore
+
+COPY ./apps/fantalytic-api ./
+RUN dotnet publish -c Release -o out
+
+#Download Microsoft runtime container
+FROM mcr.microsoft.com/dotnet/aspnet:6.0-alpine as runtime
+
+WORKDIR /fantalytic-api
+
+COPY --from=build /fantalytic-api/out .
+
+EXPOSE 80
+
+ENTRYPOINT [ "dotnet", "Pmt.FantalyticApi.dll" ]
