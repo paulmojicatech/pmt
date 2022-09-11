@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://localhost:7198",
+    "target": "https://api.fantalytic.io",
     "secure": false
   }
 }
