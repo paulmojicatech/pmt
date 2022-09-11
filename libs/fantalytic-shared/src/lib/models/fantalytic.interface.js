@@ -9,5 +9,6 @@ var PositionTypes;
     PositionTypes["TE"] = "TE";
     PositionTypes["DEF_RUSH"] = "DEF_RUSH";
     PositionTypes["DEF_PASS"] = "DEF_PASS";
+    PositionTypes["DEF"] = "DEF";
     PositionTypes["UNKNOWN"] = "UNKNOWN";
 })(PositionTypes = exports.PositionTypes || (exports.PositionTypes = {}));

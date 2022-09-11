@@ -16,3 +16,4 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
 Object.defineProperty(exports, "__esModule", { value: true });
 __exportStar(require("./lib/models/fantalytic.interface"), exports);
 __exportStar(require("./lib/models/fantalytic.types"), exports);
+__exportStar(require("./lib/functions/fantalytic.functions"), exports);
