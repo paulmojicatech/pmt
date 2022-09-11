@@ -31,7 +31,7 @@ namespace Pmt.FantalyticApi.Models
       get; set;
     }
 
-    public int TDs
+    public int Tds
     { get; set; }
 
   }
