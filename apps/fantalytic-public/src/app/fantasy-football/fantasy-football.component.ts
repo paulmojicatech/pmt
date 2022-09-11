@@ -45,7 +45,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
   constructor(private _store: Store<FantasyFootballState>, private _router: Router) {}
   
   ngOnInit(): void {
-      this._store.dispatch(loadQbs());
+      this._store.dispatch(setPositionType(PositionTypes.QB));
       this.fantasyFootballState$ = this._store.select(getFantasyFootballState);
   }
 

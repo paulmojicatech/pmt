@@ -4,7 +4,7 @@ import { LineChartViewModel } from '../../components/line-chart/models/line-char
 import { FantasyFootballState } from '../models/fantasy-football.interface';
 import { getPosition, getSelectedPlayers, getSelectedRowData } from '../ngrx/selectors/fantasy-football.selectors';
 import {forkJoin, take, map, Observable} from 'rxjs';
-import { PositionTypes } from '@pmt/fantalytic-shared';
+import { PositionTypes, QB, RB, Receivers } from '@pmt/fantalytic-shared';
 import { getLineChartViewModelForQBs, getLineChartViewModelForRBs, getLineChartViewModelForRecs } from '../functions/fantasy-football.functions';
 
 @Injectable({
@@ -24,21 +24,21 @@ export class FantasyFootballLineChartService {
           case PositionTypes.QB: {
             const filteredRowData = selectedRowData?.filter(row => {
               return selectedPlayers?.some(player => row['player'] === player);
-            });
-            return getLineChartViewModelForQBs(filteredRowData ?? []);
+            }) ?? [];
+            return getLineChartViewModelForQBs(filteredRowData as QB[]);
           }
           case PositionTypes.RB: {
             const filteredRowData = selectedRowData?.filter(row => {
               return selectedPlayers?.some(player => player === row['player']);
-            });
-            return getLineChartViewModelForRBs(filteredRowData ?? []);
+            }) ?? [];
+            return getLineChartViewModelForRBs(filteredRowData as RB[]);
           }
           case PositionTypes.WR:
           case PositionTypes.TE: {
             const filteredRowData = selectedRowData?.filter(row => {
               return selectedPlayers?.some(player => row['player'] === player);
-            });
-            return getLineChartViewModelForRecs(filteredRowData ?? []);
+            }) ?? [];
+            return getLineChartViewModelForRecs(filteredRowData as Receivers[]);
           }
 
           default:

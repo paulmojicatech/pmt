@@ -1,5 +1,6 @@
 import { createAction } from "@ngrx/store";
 import { PositionTypes, QB } from '@pmt/fantalytic-shared';
+import { FantasyFootballRowData } from "../../types/fantasy-football.types";
 
 
 export const setPositionType = createAction(
@@ -30,3 +31,9 @@ export const fantasyFootballError = createAction(
     '[Fantasy Football] Fantasy Football Error',
     (err: string) => ({err})
 );
+
+export const setRowData = createAction(
+    '[Fantasy Football] Set Row Data',
+    (rowData: FantasyFootballRowData[]) => ({rowData})
+);
+

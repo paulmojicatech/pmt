@@ -17,3 +17,8 @@ export const getSelectedPlayers = createSelector(
     getFantasyFootballState,
     state => state.selectedPlayers
 );
+
+export const getQbs = createSelector(
+    getFantasyFootballState,
+    state => state.qbs
+);

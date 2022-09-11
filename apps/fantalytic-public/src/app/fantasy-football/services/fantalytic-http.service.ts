@@ -12,7 +12,7 @@ export class FantalyticHttpService {
 
   constructor(private _httpClient: HttpClient) { }
 
-  getQBss(): Observable<QB[]> {
+  getQBs(): Observable<QB[]> {
     return this._httpClient.get<{qbs: QB[]}>(`${FANTALYTIC_API_URL}qb`).pipe(
       map(qbResp => qbResp.qbs),
       catchError(err => throwError(() => new Error(`${err}`)))
