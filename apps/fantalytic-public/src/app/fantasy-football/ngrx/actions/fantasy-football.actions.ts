@@ -1,5 +1,5 @@
 import { createAction } from "@ngrx/store";
-import { PositionTypes, QB, RB } from '@pmt/fantalytic-shared';
+import { PositionTypes, QB, RB, Receivers } from '@pmt/fantalytic-shared';
 import { FantasyFootballRowData } from "../../types/fantasy-football.types";
 
 
@@ -34,6 +34,15 @@ export const loadRbs = createAction(
 export const loadRbsSuccess = createAction(
     '[Fantasy Football] Load Rbs Success',
     (rbs: RB[]) => ({rbs})
+);
+
+export const loadReceivers = createAction(
+    '[Fantasy Football] Load Receivers'
+);
+
+export const loadReceiversSuccess = createAction(
+    '[Fantasy Football] Load Receivers Success',
+    (receivers: Receivers[]) => ({receivers})
 );
 
 export const fantasyFootballError = createAction(

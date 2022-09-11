@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { PositionTypes, QB, RB } from "@pmt/fantalytic-shared";
+import { PositionTypes, QB, RB, Receivers } from "@pmt/fantalytic-shared";
 import { catchError, filter, iif, map, switchMap, withLatestFrom } from "rxjs";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
 import { FantalyticHttpService } from "../../services/fantalytic-http.service";
-import { fantasyFootballError, loadQbs, loadQbsSuccess, loadRbs, loadRbsSuccess, setPositionType, setRowData } from "../actions/fantasy-football.actions";
-import { getQbs, getRbs } from "../selectors/fantasy-football.selectors";
+import { fantasyFootballError, loadQbs, loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceivers, loadReceiversSuccess, setPositionType } from "../actions/fantasy-football.actions";
+import { getQbs, getRbs, getReceivers } from "../selectors/fantasy-football.selectors";
 
 @Injectable()
 export class FantasyFootballEffects {
@@ -32,6 +32,16 @@ export class FantasyFootballEffects {
         )
     );
 
+    loadReceivers$ = createEffect(
+        () => this._actions$.pipe(
+            ofType(loadReceivers),
+            switchMap(() => this._fantasyHttpSvc.getReceviers().pipe(
+                map(receivers => loadReceiversSuccess(receivers)),
+                catchError(err => ([fantasyFootballError(err)]))
+            ))
+        )
+    );
+
     setPositionTypesQb$ = createEffect(
         () => this._actions$.pipe(
             ofType(setPositionType),
@@ -47,6 +57,15 @@ export class FantasyFootballEffects {
             filter(action => action.position === PositionTypes.RB),
             withLatestFrom(this._store.select(getRbs)),
             switchMap(([,rbs]) => iif(() => !rbs, [loadRbs()], [loadRbsSuccess(rbs as RB[])]))
+        )
+    );
+
+    setPositionTypesReceivers$ = createEffect(
+        () => this._actions$.pipe(
+            ofType(setPositionType),
+            filter(action => action.position === PositionTypes.WR || action.position === PositionTypes.TE),
+            withLatestFrom(this._store.select(getReceivers)),
+            switchMap(([,receivers]) => iif(() => !receivers, [loadReceivers()], [loadReceiversSuccess(receivers as Receivers[])]))
         )
     );
 }

@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
-import { FANTASY_FOOTBALL_INITIAL_STATE, QB_COL_DEFS, RB_COL_DEF } from "../../const/fantasy-football.const";
+import { FANTASY_FOOTBALL_INITIAL_STATE, QB_COL_DEFS, RB_COL_DEF, WR_TE_COL_DEF } from "../../const/fantasy-football.const";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
-import { loadQbsSuccess, loadRbs, loadRbsSuccess, setRowData, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
+import { loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceiversSuccess, setRowData, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
 
 const initialState: FantasyFootballState = {
     ...FANTASY_FOOTBALL_INITIAL_STATE
@@ -31,6 +31,10 @@ export const fantasyFootballReducer = createReducer(
     on(
         loadRbsSuccess,
         (state, {rbs}) => ({...state, rbs, selectedRowData: rbs, rowData: rbs, gridConfig: {colDef: RB_COL_DEF}})
+    ),
+    on(
+        loadReceiversSuccess,
+        (state, {receivers}) => ({...state, receivers, selectedRowData: receivers, gridConfig: {colDef: WR_TE_COL_DEF}})
     ),
     on(
         setRowData,

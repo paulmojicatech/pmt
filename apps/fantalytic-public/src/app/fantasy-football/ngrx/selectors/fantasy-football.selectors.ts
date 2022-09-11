@@ -27,3 +27,8 @@ export const getRbs = createSelector(
     getFantasyFootballState,
     state => state.rbs
 );
+
+export const getReceivers = createSelector(
+    getFantasyFootballState,
+    state => state.receivers
+);
