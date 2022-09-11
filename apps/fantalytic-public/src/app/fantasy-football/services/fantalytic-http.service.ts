@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { QB } from '@pmt/fantalytic-shared';
+import { QB, RB } from '@pmt/fantalytic-shared';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { FANTALYTIC_API_URL } from '../../const/urls.const';
 
@@ -15,6 +15,13 @@ export class FantalyticHttpService {
   getQBs(): Observable<QB[]> {
     return this._httpClient.get<{qbs: QB[]}>(`${FANTALYTIC_API_URL}qb`).pipe(
       map(qbResp => qbResp.qbs),
+      catchError(err => throwError(() => new Error(`${err}`)))
+    );
+  }
+
+  getRBs(): Observable<RB[]> {
+    return this._httpClient.get<{rbs: RB[]}>(`${FANTALYTIC_API_URL}rb`).pipe(
+      map(rbResp => rbResp.rbs),
       catchError(err => throwError(() => new Error(`${err}`)))
     );
   }
