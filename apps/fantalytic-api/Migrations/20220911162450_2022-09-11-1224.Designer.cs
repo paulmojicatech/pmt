@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pmt.FantalyticApi.Models;
@@ -11,9 +12,10 @@ using Pmt.FantalyticApi.Models;
 namespace Pmt.FantalyticApi.Migrations
 {
     [DbContext(typeof(FantalyticContext))]
-    partial class QBContextModelSnapshot : ModelSnapshot
+    [Migration("20220911162450_2022-09-11-1224")]
+    partial class _202209111224
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -50,14 +52,8 @@ namespace Pmt.FantalyticApi.Migrations
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Week")
-                        .HasColumnType("integer");
-
                     b.Property<float>("YdsPerCarry")
                         .HasColumnType("real");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

@@ -14,20 +14,20 @@ export const QB_COL_DEFS: ColDef[] = [
         headerName: 'Year'
     },
     {
-        field: 'passingYds',
-        headerName: 'Passing Yards'
+        field: 'passingYdsPerAttempt',
+        headerName: 'Passing Yards Per Attempt'
     },
     {
         field: 'tds',
         headerName: 'Touchdowns'
     },
     {
-        field: 'passingYdsPerAttempt',
-        headerName: 'Passing Yards Per Attempt'
-    },
-    {
         field: 'ints',
         headerName: 'Interceptions'
+    },
+    {
+        field: 'passingYds',
+        headerName: 'Passing Yards'
     }
 ];
 
@@ -43,8 +43,8 @@ export const RB_COL_DEF: ColDef[] = [
         headerName: 'Year'
     },
     {
-        field: 'rushingYds',
-        headerName: 'Rushing Yards'
+        field: 'rushing20Yds',
+        headerName: '20+ Yard Runs'
     },
     {
         field: 'rushAttempts',
@@ -55,8 +55,8 @@ export const RB_COL_DEF: ColDef[] = [
         headerName: 'Rushing Touchdowns'
     },
     {
-        field: 'rushing20Yds',
-        headerName: '20+ Yard Runs'
+        field: 'rushingYds',
+        headerName: 'Rushing Yards'
     }
 ];
 
@@ -72,14 +72,6 @@ export const WR_TE_COL_DEF: ColDef[] = [
         headerName: 'Year'
     },
     {
-        field: 'receptions',
-        headerName: 'Receptions'
-    },
-    {
-        field: 'receivingYds',
-        headerName: 'Receiving Yards'
-    },
-    {
         field: 'receivingTds',
         headerName: 'Receiving Touchdowns'
     },
@@ -92,8 +84,16 @@ export const WR_TE_COL_DEF: ColDef[] = [
         headerName: 'Receiving 40+ Yards'
     },
     {
+        field: 'receptions',
+        headerName: 'Receptions'
+    },
+    {
         field: 'receivingTargets',
         headerName: 'Targets'
+    },
+    {
+        field: 'receivingYds',
+        headerName: 'Receiving Yards'
     }
 ];
 

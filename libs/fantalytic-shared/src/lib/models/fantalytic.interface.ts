@@ -10,6 +10,7 @@ export enum PositionTypes {
     TE = 'TE',
     DEF_RUSH = 'DEF_RUSH',
     DEF_PASS = 'DEF_PASS',
+    DEF = 'DEF',
     UNKNOWN = 'UNKNOWN'
 }
 
@@ -186,4 +187,17 @@ export interface Receivers {
     receivingTargets: number;
     year: number;
     week: number;
+}
+
+export interface Defense {
+    team: string;
+    rushYdsAllowed: number;
+    ydsPerCarry: number;
+    rushTdsAllowed: number;
+    completionPctAllowed: number;
+    passYdsAllowed: number;
+    ints: number;
+    sacks: number;
+    week: number;
+    year: number;
 }

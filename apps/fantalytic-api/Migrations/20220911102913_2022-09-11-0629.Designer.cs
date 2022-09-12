@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using Pmt.FantalyticApi.Models;
@@ -11,9 +12,10 @@ using Pmt.FantalyticApi.Models;
 namespace Pmt.FantalyticApi.Migrations
 {
     [DbContext(typeof(FantalyticContext))]
-    partial class QBContextModelSnapshot : ModelSnapshot
+    [Migration("20220911102913_2022-09-11-0629")]
+    partial class _202209110629
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -21,48 +23,6 @@ namespace Pmt.FantalyticApi.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
-
-            modelBuilder.Entity("Pmt.FantalyticApi.Models.Defense", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<float>("CompletionPctAllowed")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Ints")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("PassYdsAllowed")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("RushTdsAllowed")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("RushYdsAllowed")
-                        .HasColumnType("integer");
-
-                    b.Property<int>("Sacks")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("Team")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Week")
-                        .HasColumnType("integer");
-
-                    b.Property<float>("YdsPerCarry")
-                        .HasColumnType("real");
-
-                    b.Property<int>("Year")
-                        .HasColumnType("integer");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Defenses");
-                });
 
             modelBuilder.Entity("Pmt.FantalyticApi.Models.QB", b =>
                 {

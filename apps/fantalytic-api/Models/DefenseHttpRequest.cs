@@ -1,0 +1,9 @@
+using System;
+namespace Pmt.FantalyticApi.Models
+{
+  public class DefenseHttpRequest
+  {
+    public IEnumerable<Defense> Defenses { get; set; }
+  }
+}
+
