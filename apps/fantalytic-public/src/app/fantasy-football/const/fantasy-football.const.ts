@@ -97,7 +97,7 @@ export const WR_TE_COL_DEF: ColDef[] = [
     }
 ];
 
-export const DEF_RUSH_COL_DEF: ColDef[] = [
+export const DEF_COL_DEF: ColDef[] = [
     {
         field: 'team',
         headerName: 'Team',
@@ -109,16 +109,28 @@ export const DEF_RUSH_COL_DEF: ColDef[] = [
         headerName: 'Year'
     },
     {
-        field: 'rushYds',
+        field: 'rushYdsAllowed',
         headerName: 'Allowed Rushing Yards'
     },
     {
-        field: 'ypc',
+        field: 'ydsPerCarry',
         headerName: 'Allowed Yards Per Carry'
     },
     {
-        field: 'td',
+        field: 'rushTdsAllowed',
         headerName: 'Allowed Rushing Touchdowns'
+    },
+    {
+        field: 'completionPctAllowed',
+        headerName: 'Completion Percentage Allowed'
+    },
+    {
+        field: 'ints',
+        headerName: 'Interceptions'
+    },
+    {
+        field: 'sacks',
+        headerName: 'Sacks'
     }
 ];
 
@@ -143,9 +155,9 @@ export const FANTASY_FOOTBALL_REC_STATE: FantasyFootballState = {
     position: PositionTypes.WR
 };
 
-export const FANTASY_FOOTBAL_DEF_RUSH_STATE: FantasyFootballState = {
+export const FANTASY_FOOTBAL_DEF_STATE: FantasyFootballState = {
     gridConfig: {
-        colDef: DEF_RUSH_COL_DEF
+        colDef: DEF_COL_DEF
     },
     position: PositionTypes.DEF_RUSH
 };

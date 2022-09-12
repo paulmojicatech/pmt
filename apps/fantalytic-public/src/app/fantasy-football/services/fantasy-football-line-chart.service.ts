@@ -22,21 +22,21 @@ export class FantasyFootballLineChartService {
       map(([position, selectedRowData, selectedPlayers]) => {
         switch (position) {
           case PositionTypes.QB: {
-            const filteredRowData = selectedRowData?.filter(row => {
-              return selectedPlayers?.some(player => row['player'] === player);
+            const filteredRowData = selectedRowData?.filter((row) => {
+              return selectedPlayers?.some(player => (row as QB).player === player);
             }) ?? [];
             return getLineChartViewModelForQBs(filteredRowData as QB[]);
           }
           case PositionTypes.RB: {
             const filteredRowData = selectedRowData?.filter(row => {
-              return selectedPlayers?.some(player => player === row['player']);
+              return selectedPlayers?.some(player => player === (row as RB).player);
             }) ?? [];
             return getLineChartViewModelForRBs(filteredRowData as RB[]);
           }
           case PositionTypes.WR:
           case PositionTypes.TE: {
             const filteredRowData = selectedRowData?.filter(row => {
-              return selectedPlayers?.some(player => row['player'] === player);
+              return selectedPlayers?.some(player => (row as Receivers).player === player);
             }) ?? [];
             return getLineChartViewModelForRecs(filteredRowData as Receivers[]);
           }

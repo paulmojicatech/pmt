@@ -32,3 +32,8 @@ export const getReceivers = createSelector(
     getFantasyFootballState,
     state => state.receivers
 );
+
+export const getDefenses = createSelector(
+    getFantasyFootballState,
+    state => state.defenses
+);

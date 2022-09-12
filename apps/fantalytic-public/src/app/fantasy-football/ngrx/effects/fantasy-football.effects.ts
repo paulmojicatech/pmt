@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { PositionTypes, QB, RB, Receivers } from "@pmt/fantalytic-shared";
+import { Defense, PositionTypes, QB, RB, Receivers } from "@pmt/fantalytic-shared";
 import { catchError, filter, iif, map, switchMap, withLatestFrom } from "rxjs";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
 import { FantalyticHttpService } from "../../services/fantalytic-http.service";
-import { fantasyFootballError, loadQbs, loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceivers, loadReceiversSuccess, setPositionType } from "../actions/fantasy-football.actions";
-import { getQbs, getRbs, getReceivers } from "../selectors/fantasy-football.selectors";
+import { fantasyFootballError, loadDefenses, loadDefensesSuccess, loadQbs, loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceivers, loadReceiversSuccess, setPositionType } from "../actions/fantasy-football.actions";
+import { getDefenses, getQbs, getRbs, getReceivers } from "../selectors/fantasy-football.selectors";
 
 @Injectable()
 export class FantasyFootballEffects {
@@ -42,6 +42,16 @@ export class FantasyFootballEffects {
         )
     );
 
+    loadDefenses$ = createEffect(
+        () => this._actions$.pipe(
+            ofType(loadDefenses),
+            switchMap(() => this._fantasyHttpSvc.getDefenses().pipe(
+                map(defenses => loadDefensesSuccess(defenses)),
+                catchError(err => ([fantasyFootballError(err)]))
+            ))
+        )
+    );
+
     setPositionTypesQb$ = createEffect(
         () => this._actions$.pipe(
             ofType(setPositionType),
@@ -66,6 +76,15 @@ export class FantasyFootballEffects {
             filter(action => action.position === PositionTypes.WR || action.position === PositionTypes.TE),
             withLatestFrom(this._store.select(getReceivers)),
             switchMap(([,receivers]) => iif(() => !receivers, [loadReceivers()], [loadReceiversSuccess(receivers as Receivers[])]))
+        )
+    );
+
+    setPositionTypesDefenses$ = createEffect(
+        () => this._actions$.pipe(
+            ofType(setPositionType),
+            filter(action => action.position === PositionTypes.DEF),
+            withLatestFrom(this._store.select(getDefenses)),
+            switchMap(([, defenses]) => iif(() => !defenses, [loadDefenses()], [loadDefensesSuccess(defenses as Defense[])]))
         )
     );
 }
