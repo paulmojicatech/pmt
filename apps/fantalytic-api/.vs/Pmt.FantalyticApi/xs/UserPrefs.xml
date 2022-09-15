@@ -10,21 +10,21 @@
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/DefenseController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Defense.cs">
     <Files>
-      <File FileName="Models/FantalyticContext.cs" Line="19" Column="4" />
+      <File FileName="Models/FantalyticContext.cs" />
       <File FileName="Models/WR_TEHttpRequest.cs" />
-      <File FileName="Controllers/WR_TEController.cs" Line="28" Column="1" />
+      <File FileName="Controllers/WR_TEController.cs" />
       <File FileName="Controllers/RBController.cs" />
       <File FileName="Controllers/QBController.cs" />
-      <File FileName="Models/QB.cs" Line="32" Column="6" />
-      <File FileName="Models/Def.cs" Line="20" Column="34" />
-      <File FileName="Models/DefenseHttpRequest.cs" Line="6" Column="41" />
-      <File FileName="Models/DefenseHttpResponse.cs" Line="9" Column="27" />
+      <File FileName="Models/QB.cs" />
+      <File FileName="Models/DefenseHttpRequest.cs" />
+      <File FileName="Models/DefenseHttpResponse.cs" />
       <File FileName="Controllers/DefenseController.cs" Line="45" Column="1" />
-      <File FileName="Services/IDefenseService.cs" Line="8" Column="53" />
-      <File FileName="Services/DefenseService.cs" Line="30" Column="1" />
-      <File FileName="Models/QBHttpRequest.cs" Line="1" Column="1" />
+      <File FileName="Services/IDefenseService.cs" />
+      <File FileName="Services/DefenseService.cs" />
+      <File FileName="Models/QBHttpRequest.cs" />
+      <File FileName="Models/Defense.cs" Line="1" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -33,7 +33,9 @@
             <Node name="Pmt.FantalyticApi" expanded="True">
               <Node name="Dependencies" expanded="True" />
               <Node name="Controllers" expanded="True" />
-              <Node name="Models" expanded="True" />
+              <Node name="Models" expanded="True">
+                <Node name="Defense.cs" selected="True" />
+              </Node>
               <Node name="Services" expanded="True" />
             </Node>
           </Node>

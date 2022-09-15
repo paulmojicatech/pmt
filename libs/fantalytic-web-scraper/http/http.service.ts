@@ -13,7 +13,7 @@ import { parserHtmlString } from '../parsers/html-parser.service';
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-export async function getSiteContent(position: PositionTypes, year: string): Promise<void> {
+export async function getSiteContent(position: PositionTypes, year: string, week = 0): Promise<void> {
     let url = '';
     switch(position.toUpperCase()) {
         case PositionTypes.QB:
@@ -42,20 +42,18 @@ export async function getSiteContent(position: PositionTypes, year: string): Pro
             return resp.data;
         });
         const $ = cheerio.load(response);
-        await parserHtmlString(response, position, year);
+        await parserHtmlString(response, position, year, week);
         return Promise.resolve();
     } else {
-        logSuccess('HERE WE ARE');
         const defResp = await axios.get(`${DEF_RUSH_STATS.url}`.replace('{year}', `${year}`)).then((resp: any) => {
             return resp?.data;
         });
         const defPassResp = await axios.get(`${DEF_PASS_STATS.url}`.replace('{year}', `${year}`)).then((resp: any) => {
             return resp?.data;
         });
-        logSuccess('PAST HTTP');
-        const defRushStats = await parseDefRushResponse(defResp, '');
+       const defRushStats = await parseDefRushResponse(defResp, '');
         const defPassStats = await parseDefPassResponse(defPassResp, '');
-        const defStats = parseDefStats(defRushStats, defPassStats, +year);
+        const defStats = parseDefStats(defRushStats, defPassStats, +year, week);
         const defOutput = `${__dirname}/../output/${year}_def.json`;
         try {
             await writeFileSync(defOutput, JSON.stringify(defStats));

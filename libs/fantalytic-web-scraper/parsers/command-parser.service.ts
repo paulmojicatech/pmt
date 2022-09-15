@@ -18,6 +18,7 @@ export class CommandParser {
                         ...command,
                         type: RootCommandTypes.GET,
                         year: command.year,
+                        week: command.week,
                         location: command.location ?? GetLocationType.FILE,
                         pos: args[3] as PositionTypes
                     };
@@ -61,6 +62,8 @@ export class CommandParser {
                             break;
                         case 'year':
                             getCommand['year'] = `${options[index + 1]}`;
+                        case 'week':
+                            getCommand['week'] = `${options[index + 1]}`;
                         default:
                             break;
                     }

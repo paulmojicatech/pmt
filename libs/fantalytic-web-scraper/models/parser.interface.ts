@@ -12,6 +12,7 @@ export interface IFantalyticGetCommand {
     type: RootCommandTypes,
     pos: PositionTypes,
     year: string,
+    week?: number,
     location?: GetLocationType,
     stat?: stats.PostionStat
 }
