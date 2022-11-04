@@ -14,28 +14,44 @@ export class FantalyticHttpService {
 
   getQBs(): Observable<QB[]> {
     return this._httpClient.get<{qbs: QB[]}>(`${FANTALYTIC_API_URL}qb`).pipe(
-      map(qbResp => qbResp.qbs),
+      map(qbResp => {
+        const qbMap = new Map<string, QB>();
+        qbResp.qbs.forEach(qb => qbMap.set(qb.player, qb));
+        return [...qbMap.values()];
+      }),
       catchError(err => throwError(() => new Error(`${err}`)))
     );
   }
 
   getRBs(): Observable<RB[]> {
     return this._httpClient.get<{rbs: RB[]}>(`${FANTALYTIC_API_URL}rb`).pipe(
-      map(rbResp => rbResp.rbs),
+      map(rbResp => {
+        const rbMap = new Map<string, RB>();
+        rbResp.rbs.forEach(rb => rbMap.set(rb.player, rb));
+        return [...rbMap.values()];
+      }),
       catchError(err => throwError(() => new Error(`${err}`)))
     );
   }
 
   getReceviers(): Observable<Receivers[]> {
     return this._httpClient.get<{receivers: Receivers[]}>(`${FANTALYTIC_API_URL}wr_te`).pipe(
-      map(recResp => recResp.receivers),
+      map(recResp => {
+        const recMap = new Map<string, Receivers>();
+        recResp.receivers.forEach(rec => recMap.set(rec.player, rec));
+        return [...recMap.values()];
+      }),
       catchError(err => throwError(() => new Error(`${err}`)))
     );
   }
 
   getDefenses(): Observable<Defense[]> {
     return this._httpClient.get<{defenses: Defense[]}>(`${FANTALYTIC_API_URL}defense`).pipe(
-      map(defenseResp => defenseResp.defenses),
+      map(defenseResp => {
+        const defMap = new Map<string, Defense>();
+        defenseResp.defenses.forEach(def => defMap.set(def.team, def));
+        return [...defMap.values()];
+      }),
       catchError(err => throwError(() => new Error(`${err}`)))
     );
   }

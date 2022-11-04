@@ -7,11 +7,11 @@ import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { PositionTypes } from '@pmt/fantalytic-shared';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
-import { Observable, Subject, take, takeUntil } from 'rxjs';
+import { Observable, Subject } from 'rxjs';
 import { DEFAULT_COL_DEF_SETTINGS } from '../const/grid.const';
 import { FantasyFootballSidebarComponent } from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
 import { FantasyFootballState } from './models/fantasy-football.interface';
-import { loadQbs, setPositionType, updateSelectedPlayers, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
+import { setPositionType, updateSelectedPlayers, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
 import { getFantasyFootballState } from './ngrx/selectors/fantasy-football.selectors';
 @Component({
   selector: 'pmt-fantasy-football',
@@ -38,7 +38,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
   fantasyFootballState$!: Observable<FantasyFootballState>;
   
   readonly DEFAULT_COL_DEF_SETTINGS = DEFAULT_COL_DEF_SETTINGS;
-  readonly ALL_YEARS = [2018,2019,2020,2021];
+  readonly ALL_YEARS = [2018,2019,2020,2021,2022];
 
   private _compDestroyedSub$ = new Subject<void>();
 
