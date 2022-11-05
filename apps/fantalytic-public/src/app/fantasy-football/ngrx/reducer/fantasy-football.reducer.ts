@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
-import { FANTASY_FOOTBALL_INITIAL_STATE, QB_COL_DEFS, RB_COL_DEF, WR_TE_COL_DEF } from "../../const/fantasy-football.const";
+import { DEF_COL_DEF, FANTASY_FOOTBALL_INITIAL_STATE, QB_COL_DEFS, RB_COL_DEF, WR_TE_COL_DEF } from "../../const/fantasy-football.const";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
-import { loadQbsSuccess, loadRbsSuccess, loadReceiversSuccess, setPositionType, setRowData, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
+import { loadDefensesSuccess, loadQbsSuccess, loadRbsSuccess, loadReceiversSuccess, setPositionType, setRowData, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
 
 const initialState: FantasyFootballState = {
     ...FANTASY_FOOTBALL_INITIAL_STATE
@@ -39,6 +39,10 @@ export const fantasyFootballReducer = createReducer(
     on(
         loadReceiversSuccess,
         (state, {receivers}) => ({...state, receivers, rowData: receivers, selectedRowData: receivers, gridConfig: {colDef: WR_TE_COL_DEF}})
+    ),
+    on(
+        loadDefensesSuccess,
+        (state, {defenses}) => ({...state, defenses, rowData: defenses, selectedRowData: defenses, gridConfig: {colDef: DEF_COL_DEF} })
     ),
     on(
         setRowData,
