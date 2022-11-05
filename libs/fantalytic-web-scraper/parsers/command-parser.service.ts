@@ -9,8 +9,9 @@ export class CommandParser {
         const type = args[2] as RootCommandTypes;
         if (!!type) {
             switch (type.toLowerCase()) {
-                case RootCommandTypes.GET:
+                case RootCommandTypes.GET: {
                     let command = this.parseOptions(type, args) as IFantalyticGetCommand;
+
                     if (!command.year) {
                         throw('A year must be specified');
                     }
@@ -23,6 +24,23 @@ export class CommandParser {
                         pos: args[3] as PositionTypes
                     };
                     return command;
+                }
+                case RootCommandTypes.UPLOAD: {
+                    let command = this.parseOptions(type, args) as IFantalyticGetCommand;
+
+                    if (!command.year) {
+                        throw('A year must be specified');
+                    }
+                    command = {
+                        ...command,
+                        type: RootCommandTypes.UPLOAD,
+                        year: command.year,
+                        week: command.week,
+                        location: command.location ?? GetLocationType.FILE,
+                        pos: args[3] as PositionTypes
+                    };
+                    return command;
+                }
                 default:
                     return null;
             }
@@ -54,6 +72,7 @@ export class CommandParser {
     private parseOptions(cmdType: RootCommandTypes, options: string[]): FantalyticCommand | null {
         switch (cmdType) {
             case RootCommandTypes.GET:
+            case RootCommandTypes.UPLOAD:
                 let getCommand: any = {};
                 options.forEach((opt, index) => {
                     switch (opt) {
