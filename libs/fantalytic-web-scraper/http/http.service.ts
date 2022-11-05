@@ -61,9 +61,7 @@ export async function getSiteContent(position: PositionTypes, year: string, isUp
                 await writeFileSync(defOutput, JSON.stringify(defStats));
             } else {
                 const body = {defenses: defStats};
-                await axios.post('https://fantalytic.io/api/defense', body).then((resp: any) => {
-                    Promise.resolve();
-                });
+                await axios.post('https://fantalytic.io/api/defense', body);
             }
             
         } catch (ex) {
