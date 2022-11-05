@@ -81,7 +81,6 @@ export async function parseDefRushResponse(table: unknown, url: string): Promise
         });
         defRushStats = [...defRushStats, defRush];
     });
-
     return Promise.resolve(defRushStats);
 
 }
@@ -189,6 +188,5 @@ export async function parseDefPassResponse(table: unknown, url: string): Promise
         });
         defPassStats = [...defPassStats, defPass];
     });
-
     return Promise.resolve(defPassStats);
 }

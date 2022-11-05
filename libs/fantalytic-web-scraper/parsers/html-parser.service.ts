@@ -7,7 +7,7 @@ import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic
 import { parseDefPassResponse, parseDefRushResponse } from './def-parser.service';
 import { parseQBStats, parseRbStats, parseRecevingStats } from '../../fantalytic-shared/src';
 
-export async function parserHtmlString(html: any, type: PositionTypes, year: string, week: number, url: string = ''): Promise<any> {
+export async function parserHtmlString(html: any, type: PositionTypes, year: string, week: number, isUpload: boolean, url: string = ''): Promise<any> {
     
     switch (type.toUpperCase()) {
         case PositionTypes.QB:

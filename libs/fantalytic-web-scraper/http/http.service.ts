@@ -13,7 +13,7 @@ import { parserHtmlString } from '../parsers/html-parser.service';
 const axios = require('axios');
 const cheerio = require('cheerio');
 
-export async function getSiteContent(position: PositionTypes, year: string, week = 0): Promise<void> {
+export async function getSiteContent(position: PositionTypes, year: string, isUpload: boolean, week = 0): Promise<void> {
     let url = '';
     switch(position.toUpperCase()) {
         case PositionTypes.QB:
@@ -36,13 +36,14 @@ export async function getSiteContent(position: PositionTypes, year: string, week
             break;
         default:
             logError('Position is not supported');
+            break;
     }
     if (`${position}`.toUpperCase() !== PositionTypes.DEF) {
         const response = await axios.get(url).then((resp: any) => {
             return resp.data;
         });
         const $ = cheerio.load(response);
-        await parserHtmlString(response, position, year, week);
+        await parserHtmlString(response, position, year, week, isUpload);
         return Promise.resolve();
     } else {
         const defResp = await axios.get(`${DEF_RUSH_STATS.url}`.replace('{year}', `${year}`)).then((resp: any) => {
@@ -51,16 +52,25 @@ export async function getSiteContent(position: PositionTypes, year: string, week
         const defPassResp = await axios.get(`${DEF_PASS_STATS.url}`.replace('{year}', `${year}`)).then((resp: any) => {
             return resp?.data;
         });
-       const defRushStats = await parseDefRushResponse(defResp, '');
+        const defRushStats = await parseDefRushResponse(defResp, '');
         const defPassStats = await parseDefPassResponse(defPassResp, '');
         const defStats = parseDefStats(defRushStats, defPassStats, +year, week);
-        const defOutput = `${__dirname}/../output/${year}_def.json`;
         try {
-            await writeFileSync(defOutput, JSON.stringify(defStats));
+            if (!isUpload) {
+                const defOutput = `${__dirname}/../output/${year}_def.json`;
+                await writeFileSync(defOutput, JSON.stringify(defStats));
+            } else {
+                const body = {defenses: defStats};
+                await axios.post('https://fantalytic.io/api/defense', body).then((resp: any) => {
+                    Promise.resolve();
+                });
+            }
+            
         } catch (ex) {
             logError(`${ex}`);
+            Promise.reject(ex);
         }
-
     }
     
 }
+
