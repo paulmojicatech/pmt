@@ -20,6 +20,16 @@ mat-toolbar {
         font-size: 1.25rem;
         border: none;
     }
+    h1 {
+        img {
+            height: 3rem;
+            margin-top: .5rem;
+        }
+        a {
+            text-decoration: none;
+            color: #fff;
+        }
+    }
     @media screen and (min-width: 800px) {
         input:focus {
             width: 15rem;
