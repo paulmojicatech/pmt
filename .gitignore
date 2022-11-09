@@ -5,6 +5,8 @@
 /tmp
 /out-tsc
 **/bin/*
+**/ios/*
+**/android/*
 
 # dependencies
 /node_modules
