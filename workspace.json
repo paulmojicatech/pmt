@@ -3,6 +3,8 @@
   "projects": {
     "fantalytic-admin": "apps/fantalytic-admin",
     "fantalytic-admin-e2e": "apps/fantalytic-admin-e2e",
+    "fantalytic-mobile": "apps/fantalytic-mobile",
+    "fantalytic-mobile-e2e": "apps/fantalytic-mobile-e2e",
     "fantalytic-public": "apps/fantalytic-public",
     "fantalytic-public-e2e": "apps/fantalytic-public-e2e",
     "fantalytic-shared": "libs/fantalytic-shared",
