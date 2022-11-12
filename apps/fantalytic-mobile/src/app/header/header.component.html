@@ -1,5 +1,28 @@
 <ion-header>
     <ion-toolbar>
         <ion-title>Fantalytic.io</ion-title>
+        <ion-buttons slot="end">
+            <ion-button id="click-trigger">
+                <ion-icon slot="icon-only" name="american-football-outline"></ion-icon>
+            </ion-button>
+            <ion-popover trigger="click-trigger" triggerAction="click">
+                <ng-template>
+                    <ion-list>
+                        <ion-item>
+                            <ion-icon name="american-football-outline"></ion-icon>
+                            <span class="menu-label">Football</span>
+                        </ion-item>
+                        <ion-item>
+                            <ion-icon name="basketball-outline"></ion-icon>
+                            <span class="menu-label">Basketball</span>
+                        </ion-item>
+                        <ion-item>
+                            <ion-icon name="baseball-outline"></ion-icon>
+                            <span class="menu-label">Baseball</span>
+                        </ion-item>
+                    </ion-list>
+                </ng-template>
+            </ion-popover>
+        </ion-buttons>     
     </ion-toolbar>
 </ion-header>
