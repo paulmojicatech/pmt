@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/prefer-for-of */
+/* eslint-disable no-underscore-dangle */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
-import { Topic } from '@pmt/fantalytic-shared';
+import { Topic } from '../../../../../../libs/fantalytic-shared/src/index';
 
 @Injectable({
   providedIn: 'root'
 })
 export class EspnRssFeedService {
 
-  protected RSS_URL = `https://www.espn.com/espn/rss/news`;
+  // eslint-disable-next-line @typescript-eslint/naming-convention
+  protected RSS_URL = 'https://www.espn.com/espn/rss/news';
 
   constructor(protected _http: HttpClient) { }
 
@@ -24,10 +27,10 @@ export class EspnRssFeedService {
         const topic = this.parseRssItemResponse(items[i]);
         topics = [...topics, topic];
        }
-       // console.log('DOC', doc); 
+       // console.log('DOC', doc);
        return topics;
       })
-    )
+    );
   }
 
   protected parseRssItemResponse(item: Element): Topic {

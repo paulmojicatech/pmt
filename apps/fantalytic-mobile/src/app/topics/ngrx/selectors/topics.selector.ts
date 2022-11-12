@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { TopicsState } from "@pmt/fantalytic-shared";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { TopicsState } from '../../../../../../../libs/fantalytic-shared/src/index';
 
 export const getTopicsState = createFeatureSelector<TopicsState>('topics');
 
