@@ -19,6 +19,7 @@ export class TopicsComponent implements OnInit {
 
   _store = inject(Store);
   topics$ = this._store.select(getTopics).pipe(filter(topics => !!topics));
+  rssFeeds = RssFeedType;
 
   ngOnInit(): void {
    this._store.dispatch(loadTopics(RssFeedType.ESPN));

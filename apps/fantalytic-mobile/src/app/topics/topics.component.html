@@ -1,4 +1,9 @@
 <ion-content>
+    <div class="feeds-container">
+        <select (change)="updateRssFeed($event)">
+            <option *ngFor="let rss of rssFeeds | keyvalue" [value]="rss.value">{{rss.value}}</option>
+        </select>
+    </div>
     <ion-card *ngFor="let card of (topics$ | async)">
         <img *ngIf="card.imageUrl" [src]="card.imageUrl" />
         <ion-card-title>{{card.title}}</ion-card-title>
