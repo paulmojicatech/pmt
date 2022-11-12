@@ -1,5 +1,5 @@
-import { createAction } from "@ngrx/store";
-import { RssFeedType, Topic } from "@pmt/fantalytic-shared";
+import { createAction } from '@ngrx/store';
+import { RssFeedType, Topic } from '../../../../../../../libs/fantalytic-shared/src/index';
 
 export const loadTopics = createAction(
     '[Topics] Load Topics',

@@ -3,12 +3,11 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { filter, Observable } from 'rxjs';
 import { TOPICS_TEXT } from './const/topics.const';
-import { Topic, TopicsState } from './models/topics.interface';
+import { Topic, TopicsState, RssFeedType } from '@pmt/fantalytic-shared';
 import { loadTopics } from './ngrx/actions/topics.actions';
 import { getTopics } from './ngrx/selectors/topics.selector';
 import {MatCardModule} from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { RssFeedType } from './enums/topics.enum';
 
 @Component({
   selector: 'pmt-topics',

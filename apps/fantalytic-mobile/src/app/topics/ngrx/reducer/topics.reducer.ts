@@ -1,6 +1,6 @@
-import { createReducer, on } from "@ngrx/store";
-import { TopicsState } from "@pmt/fantalytic-shared";
-import { loadTopicsSuccess } from "../actions/topics.actions";
+import { createReducer, on } from '@ngrx/store';
+import { TopicsState } from '../../../../../../../libs/fantalytic-shared/src/index';
+import { loadTopicsSuccess } from '../actions/topics.actions';
 
 const initialState: TopicsState = {
     topics: undefined

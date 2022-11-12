@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Topic } from '../models/topics.interface';
+import { Topic } from '@pmt/fantalytic-shared';
 import { EspnRssFeedService } from './espn-rss-feed.service';
 
 @Injectable({

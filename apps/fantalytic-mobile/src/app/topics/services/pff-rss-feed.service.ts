@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Topic } from '@pmt/fantalytic-shared';
+import { Topic } from '../../../../../../libs/fantalytic-shared/src/index';
 import { EspnRssFeedService } from './espn-rss-feed.service';
 
 @Injectable({
@@ -8,6 +8,7 @@ import { EspnRssFeedService } from './espn-rss-feed.service';
 })
 export class PffRssFeedService extends EspnRssFeedService {
 
+  // eslint-disable-next-line @typescript-eslint/naming-convention
   protected override RSS_URL = 'https://pfffantasy.libsyn.com/rss';
 
   constructor(protected override _http: HttpClient) {
