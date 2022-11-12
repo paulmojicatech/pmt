@@ -1,8 +1,8 @@
 import { CapacitorConfig } from '@capacitor/cli';
 
 const config: CapacitorConfig = {
-  appId: 'io.ionic.starter',
-  appName: 'fantalytic-mobile',
+  appId: 'io.fantalytica',
+  appName: 'Fantalytic',
   webDir: 'www',
   bundledWebRuntime: false
 };
