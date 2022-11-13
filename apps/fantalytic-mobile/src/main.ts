@@ -31,6 +31,10 @@ const routes: Route[] = [
             EffectsModule.forFeature([TopicEffects])
           )
         ]
+      },
+      {
+        path: 'fantasy-football',
+        loadChildren: () => import('./app/fantasy-football/const/fantasy-football-routes.const').then(m => m.fantasyFootballRoutes)
       }
     ]
   },
@@ -39,17 +43,6 @@ const routes: Route[] = [
     pathMatch: 'full',
     redirectTo: 'tabs/topics'
   },
-  // {
-  //   path: 'fantasy-football',
-  //   loadChildren: () => import('./app/fantasy-football/const/fantasy-football-routes.const').then(m => m.FANTASY_FOOTBALL_ROUTES),
-  //   canActivate: [MobileCheckerService],
-  //   providers: [
-  //     importProvidersFrom(
-  //       StoreModule.forFeature('fantasy-football', fantasyFootballReducer),
-  //       EffectsModule.forFeature([FantasyFootballEffects])
-  //     )
-  //   ]
-  // }
 ];
 
 bootstrapApplication(
