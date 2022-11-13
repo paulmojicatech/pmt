@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { IonicModule } from '@ionic/angular';
+import { IonContent, IonicModule } from '@ionic/angular';
 
 @Component({
   selector: 'pmt-fantasy-football',
@@ -9,8 +9,6 @@ import { IonicModule } from '@ionic/angular';
   templateUrl: './fantasy-football.component.html',
   styleUrls: ['./fantasy-football.component.scss'],
 })
-export class FantasyFootballComponent implements OnInit {
-  constructor() {}
+export class FantasyFootballComponent {
 
-  ngOnInit(): void {}
 }
