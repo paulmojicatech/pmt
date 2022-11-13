@@ -1,0 +1,52 @@
+{
+  "name": "fantalytic-web-scraper-cron",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/fantalytic-web-scraper-cron/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/fantalytic-web-scraper-cron",
+        "main": "apps/fantalytic-web-scraper-cron/src/main.ts",
+        "tsConfig": "apps/fantalytic-web-scraper-cron/tsconfig.app.json",
+        "assets": ["apps/fantalytic-web-scraper-cron/src/assets"]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true,
+          "extractLicenses": true,
+          "inspect": false,
+          "fileReplacements": [
+            {
+              "replace": "apps/fantalytic-web-scraper-cron/src/environments/environment.ts",
+              "with": "apps/fantalytic-web-scraper-cron/src/environments/environment.prod.ts"
+            }
+          ]
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/js:tsc",
+      "options": {
+        "buildTarget": "fantalytic-web-scraper-cron:build"
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "fantalytic-web-scraper-cron:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/fantalytic-web-scraper-cron/**/*.ts"]
+      }
+    }
+  },
+  "tags": []
+}
