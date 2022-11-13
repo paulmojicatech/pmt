@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
+import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'pmt-header',
@@ -10,8 +11,10 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./header.component.scss'],
   exportAs: 'pmt-header'
 })
-export class HeaderComponent implements OnInit {
-  constructor() {}
+export class HeaderComponent {
+  activeModule$ = new BehaviorSubject<string>('Football');
 
-  ngOnInit(): void {}
+  switchActiveModule(module: string): void {
+    this.activeModule$.next(module);
+  }
 }

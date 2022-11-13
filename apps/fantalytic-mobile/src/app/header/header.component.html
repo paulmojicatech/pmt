@@ -8,15 +8,15 @@
             <ion-popover trigger="click-trigger" triggerAction="click">
                 <ng-template>
                     <ion-list>
-                        <ion-item>
-                            <ion-icon name="american-football-outline"></ion-icon>
+                        <ion-item [ngClass]="{'active': (activeModule$ | async) === 'Football'}" (click)="switchActiveModule('Football')">
+                            <ion-icon [ngClass]="{'active': (activeModule$ | async) === 'Football'}" name="american-football-outline"></ion-icon>
                             <span class="menu-label">Football</span>
                         </ion-item>
-                        <ion-item>
+                        <ion-item (click)="switchActiveModule('Basketball')" [ngClass]="{'active': (activeModule$ | async) === 'Basketball'}">
                             <ion-icon name="basketball-outline"></ion-icon>
                             <span class="menu-label">Basketball</span>
                         </ion-item>
-                        <ion-item>
+                        <ion-item (click)="switchActiveModule('Baseball')" [ngClass]="{'active': (activeModule$ | async) === 'Baseball'}">
                             <ion-icon name="baseball-outline"></ion-icon>
                             <span class="menu-label">Baseball</span>
                         </ion-item>
