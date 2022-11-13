@@ -7,15 +7,16 @@
 import * as express from 'express';
 import * as path from 'path';
 import * as cron from 'node-cron';
-import {getQBStats, postUpdatedQBs} from './app/services/qb.service';
+import {deleteAllQBsForYear, getQBStats, postUpdatedQBs} from './app/services/qb.service';
 
 const axios = require('axios');
 
 const app = express();
 
-cron.schedule("0 0 * * *", async () => {
+cron.schedule("1 * * * * *", async () => {
   console.log('QB STATS CRON');
   const qbs = await getQBStats(2022);
+  await deleteAllQBsForYear(2022);
   await postUpdatedQBs(qbs);
 });
 

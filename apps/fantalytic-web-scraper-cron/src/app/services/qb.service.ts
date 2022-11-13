@@ -25,9 +25,6 @@ export async function getQBStats(year: number, url = ''): Promise<QB[]> {
     
 }
 
-/*  */
-
-
 export function parseQBResponse(table: unknown, url: string): IQBStats[] {
     let qbStats: IQBStats[] = [];
 
@@ -129,6 +126,15 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
 export async function postUpdatedQBs(qbs: QB[]): Promise<void> {
     try {
         await axios.post('https://fantalytic.io/api/qb', {qbs});
+        return Promise.resolve();
+    } catch (err) {
+        return Promise.reject(err);
+    }
+}
+
+export async function deleteAllQBsForYear(year: number): Promise<void> {
+    try {
+        await axios.delete('https://fantalytic.io/api/qb', {data: {year}});
         return Promise.resolve();
     } catch (err) {
         return Promise.reject(err);

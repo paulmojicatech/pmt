@@ -2,7 +2,7 @@
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MultiItemStartupConfigurations />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Services/QBService.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
     <Files>
       <File FileName="Models/FantalyticContext.cs" />
       <File FileName="Models/WR_TEHttpRequest.cs" />
@@ -15,10 +15,11 @@
       <File FileName="Controllers/DefenseController.cs" />
       <File FileName="Services/IDefenseService.cs" />
       <File FileName="Services/DefenseService.cs" />
-      <File FileName="Models/QBHttpRequest.cs" Line="11" Column="32" />
+      <File FileName="Models/QBHttpRequest.cs" />
       <File FileName="Models/Defense.cs" />
       <File FileName="Services/WR_TEService.cs" />
-      <File FileName="Services/QBService.cs" Line="35" Column="1" />
+      <File FileName="Services/QBService.cs" Line="48" Column="1" />
+      <File FileName="Program.cs" Line="51" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -26,9 +27,7 @@
           <Node name="Pmt.FantalyticApi" expanded="True">
             <Node name="Pmt.FantalyticApi" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="QBController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
@@ -50,8 +49,6 @@
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/DefenseService.cs" relfile="Services/DefenseService.cs" line="28" column="1" />
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/DefenseController.cs" relfile="Controllers/DefenseController.cs" line="50" column="1" />
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="53" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="48" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/QBController.cs" relfile="Controllers/QBController.cs" line="61" column="1" />
       <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="34" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
