@@ -50,7 +50,7 @@
       }
     }
   },
-  "defaultProject": "mfe-docs",
+  "defaultProject": "fantalytic-public",
   "$schema": "./node_modules/nx/schemas/nx-schema.json",
   "targetDefaults": {
     "build": {

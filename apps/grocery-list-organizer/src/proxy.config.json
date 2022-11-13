@@ -1,8 +1,0 @@
-{
-    "/security/*": {
-        "target": "http://fantalytic.io",
-        "secure": true,
-        "changeOrigin": true,
-        "logLevel": "debug"
-    }
-}
