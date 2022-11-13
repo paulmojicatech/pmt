@@ -1,10 +1,8 @@
 import { writeFileSync } from 'fs';
-import { parseDefStats } from '../../fantalytic-shared/src';
-import { PositionTypes } from '../../fantalytic-shared/src/lib/models/fantalytic.interface';
+import { parseDefStats, PositionTypes } from '../../fantalytic-shared/src/index';
 import { logError } from '../messaging/error.service';
-import { logSuccess } from '../messaging/success.service';
 import { DEF_PASS_STATS, DEF_RUSH_STATS } from '../models/defaults/def.const';
-import { QB_STATS } from '../models/defaults/qb.const';
+import { QB_STATS } from '../../fantalytic-shared/src/index';
 import { RB_STATS } from '../models/defaults/rb.const';
 import { WR_TE_STATS } from '../models/defaults/wr_te.const';
 import { parseDefPassResponse, parseDefRushResponse } from '../parsers/def-parser.service';

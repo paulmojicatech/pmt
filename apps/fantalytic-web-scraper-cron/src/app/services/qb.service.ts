@@ -1,6 +1,28 @@
-import { IQBStats, QB_STATS } from "../../fantalytic-shared/src/index";
+/* eslint-disable @typescript-eslint/no-var-requires */
+import { IQBStats, parseQBStats, QB, QB_STATS } from '@pmt/fantalytic-shared';
 
 const cheerio = require('cheerio');
+const axios = require('axios');
+const QB_URL = QB_STATS.url;
+
+export async function getQBStats(year: number, url = '', qbs: QB[] = []): Promise<QB[]> {
+    const urlToUse = url ? url : QB_URL.replace('{year}', `${year}`);
+    const response = (await axios.get(urlToUse))?.data;
+    const $ = cheerio.load(response);
+    const qbStats = await parseQBResponse(response, urlToUse);
+    const parsedQbStats = parseQBStats(qbStats, year);
+    qbs = qbs.concat(parsedQbStats);
+    const nextLinkSelector = $('.nfl-o-table-pagination__next', response);
+    const linkUrl = $(nextLinkSelector).attr('href');
+    while (linkUrl) {
+        await getQBStats(year, `https://nfl.com${linkUrl}`, qbs);
+    }
+
+    return Promise.resolve(qbs);
+}
+
+/*  */
+
 
 export async function parseQBResponse(table: unknown, url: string): Promise<IQBStats[]> {
     let qbStats: IQBStats[] = [];
