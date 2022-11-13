@@ -52,6 +52,21 @@ namespace Pmt.FantalyticApi.Controllers
       }
 
     }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteQBs([FromBody] QBHttpDeletRequest req)
+    {
+      try
+      {
+        _qbSvc.DeleteQBs(req.Year);
+        return Ok("Success");
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex);
+      }
+
+    }
   }
 }
 
