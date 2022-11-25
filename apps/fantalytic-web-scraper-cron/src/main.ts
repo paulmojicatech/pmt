@@ -10,11 +10,9 @@ import * as cron from 'node-cron';
 import * as bodyParser from 'body-parser';
 import {deleteAllQBsForYear, getQBStats, postUpdatedQBs} from './app/services/qb.service';
 
-const axios = require('axios');
-
 const app = express();
 
-cron.schedule("1 * * * * *", async () => {
+cron.schedule("0 0 0 * * *", async () => {
   console.log('QB STATS CRON');
   const qbs = await getQBStats(2022);
   await deleteAllQBsForYear(2022);

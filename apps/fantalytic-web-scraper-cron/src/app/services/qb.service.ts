@@ -71,7 +71,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
                 const playerParentSelector = $(`.${playerSelector.statName}`, $(row));
                 player = {
                     ...player,
-                    value: playerParentSelector.html().trim()
+                    value: playerParentSelector?.html()?.trim() ?? 'Bad Data'
                 };
                 qbStat = {
                     ...qbStat,
@@ -80,7 +80,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
             } else if (colIndex === passingStatSelector.statColIndex) {
                 passingYds = {
                     ...passingYds,
-                    value: +(<string>$(col).html()).trim()
+                    value: +(<string>$(col).html())?.trim() ?? 0
                 }
                 qbStat = {
                     ...qbStat,
@@ -89,7 +89,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
             } else if (colIndex === passingYdsPerAttemptSelector.statColIndex) {
                 passingYdsPerAttempt = {
                     ...passingYdsPerAttempt,
-                    value: +(<string>$(col).html()).trim()
+                    value: +(<string>$(col).html())?.trim() ?? 0
                 };
                 qbStat = {
                     ...qbStat,
@@ -98,7 +98,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
             } else if (colIndex === intsSelector.statColIndex) {
                 ints = {
                     ...ints,
-                    value: +(<string>$(col).html()).trim()
+                    value: +(<string>$(col).html())?.trim() ?? 0
                 };
                 qbStat = {
                     ...qbStat,
@@ -107,7 +107,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
             } else if (colIndex === tdsSelector.statColIndex) {
                 tds = {
                     ...tds,
-                    value: +(<string>$(col).html()).trim()
+                    value: +(<string>$(col).html())?.trim() ?? 0
                 };
                 qbStat = {
                     ...qbStat,
@@ -119,7 +119,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
         qbStats = [...qbStats, qbStat];
     });
 
-    return qbStats;
+    return qbStats.filter(stat => stat.player.value !== 'Bad Data');
 
 }
 
