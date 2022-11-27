@@ -9,6 +9,7 @@ export interface GridConfig {
 export interface FantasyFootballState {
     gridConfig: GridConfig;
     position: PositionTypes;
+    year?: number;
     rowData?: FantasyFootballRowData[];
     selectedRowData?: FantasyFootballRowData[];
     selectedPlayers?: string[];

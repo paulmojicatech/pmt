@@ -41,6 +41,19 @@ namespace Pmt.FantalyticApi.Services
       }
     }
 
+    public void DeleteQBs(int year)
+    {
+      try
+      {
+        _qbContext.QBs.RemoveRange(_qbContext.QBs.Where(qb => qb.Year == year));
+        _qbContext.SaveChanges();
+      }
+      catch
+      {
+        throw;
+      }
+    }
+
   }
 }
 

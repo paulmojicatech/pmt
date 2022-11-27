@@ -7,6 +7,7 @@ namespace Pmt.FantalyticApi.Services
   {
     Task<IEnumerable<WR_TE>> GetWRTEs();
     Task AddWRTEs(IEnumerable<WR_TE> recs);
+    void DeleteWRTEs(int year);
   }
 }
 

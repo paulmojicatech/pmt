@@ -5,5 +5,10 @@ namespace Pmt.FantalyticApi.Models
   {
     public IEnumerable<RB> Rbs { get; set; }
   }
+
+  public class RBHttpDeleteRequest
+  {
+    public int Year { get; set; }
+  }
 }
 

@@ -32,6 +32,19 @@ namespace Pmt.FantalyticApi.Services
     {
       return _context.RBs.ToList();
     }
+
+    public void DeleteRBs(int year)
+    {
+      try
+      {
+        _context.RBs.RemoveRange(_context.RBs.Where(rb => rb.Year == year));
+        _context.SaveChanges();
+      }
+      catch (Exception ex)
+      {
+        throw;
+      }
+    }
   }
 }
 

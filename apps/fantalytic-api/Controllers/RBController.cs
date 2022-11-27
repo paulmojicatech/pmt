@@ -48,6 +48,20 @@ namespace Pmt.FantalyticApi.Controllers
         return BadRequest(ex);
       }
     }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteRBs([FromBody] RBHttpDeleteRequest rbReq)
+    {
+      try
+      {
+        _rbSvc.DeleteRBs(rbReq.Year);
+        return Ok("Success");
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex);
+      }
+    }
   }
 }
 

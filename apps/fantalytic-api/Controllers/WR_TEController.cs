@@ -52,6 +52,20 @@ namespace Pmt.FantalyticApi.Controllers
       }
     }
 
+    [HttpDelete]
+    public async Task<IActionResult> DeleteReceivers([FromBody] WR_TEHttpDeleteRequest req)
+    {
+      try
+      {
+        _svc.DeleteWRTEs(req.Year);
+        return Ok("Success");
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex);
+      }
+    }
+
   }
 }
 

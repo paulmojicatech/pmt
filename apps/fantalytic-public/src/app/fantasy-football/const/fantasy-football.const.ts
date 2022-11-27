@@ -138,14 +138,15 @@ export const FANTASY_FOOTBALL_INITIAL_STATE: FantasyFootballState = {
     gridConfig: {
         colDef: QB_COL_DEFS
     },
-    position: PositionTypes.QB
+    position: PositionTypes.QB,
+    year: 2022
 };
 
 export const FANTASY_FOOTBALL_RB_STATE: FantasyFootballState = {
     gridConfig: {
         colDef: RB_COL_DEF
     },
-    position: PositionTypes.RB
+    position: PositionTypes.RB,
 };
 
 export const FANTASY_FOOTBALL_REC_STATE: FantasyFootballState = {

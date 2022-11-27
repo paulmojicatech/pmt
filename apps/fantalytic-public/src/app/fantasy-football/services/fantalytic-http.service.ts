@@ -15,9 +15,7 @@ export class FantalyticHttpService {
   getQBs(): Observable<QB[]> {
     return this._httpClient.get<{qbs: QB[]}>(`${FANTALYTIC_API_URL}qb`).pipe(
       map(qbResp => {
-        const qbMap = new Map<string, QB>();
-        qbResp.qbs.forEach(qb => qbMap.set(qb.player, qb));
-        return [...qbMap.values()];
+        return qbResp.qbs;
       }),
       catchError(err => throwError(() => new Error(`${err}`)))
     );

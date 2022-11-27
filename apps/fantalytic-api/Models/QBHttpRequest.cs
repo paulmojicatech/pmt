@@ -5,5 +5,10 @@ namespace Pmt.FantalyticApi.Models
   {
     public IEnumerable<QB> Qbs { get; set; }
   }
+
+  public class QBHttpDeletRequest
+  {
+    public int Year { get; set; }
+  }
 }
 

@@ -8,7 +8,7 @@ namespace Pmt.FantalyticApi.Services
   {
     Task<IEnumerable<RB>> GetRBs();
     Task AddRBs(IEnumerable<RB> rbs);
-
+    void DeleteRBs(int year);
   }
 }
 
