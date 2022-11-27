@@ -5,14 +5,14 @@
             <div class="filter-container">
                 <div class="position-container">
                     <span>Position</span>
-                    <button (click)="updatePosition('QB')" mat-button>QB</button>
-                    <button (click)="updatePosition('RB')" mat-button>RB</button>
-                    <button (click)="updatePosition('WR')" mat-button>WR / TE</button>
-                    <button (click)="updatePosition('DEF')" mat-button>DEF</button>
+                    <button [ngClass]="{'active': (currentPosition$ | async) === 'QB'}" (click)="updatePosition('QB')" mat-button>QB</button>
+                    <button [ngClass]="{'active': (currentPosition$ | async) === 'RB'}" (click)="updatePosition('RB')" mat-button>RB</button>
+                    <button [ngClass]="{'active': (currentPosition$ | async) === 'WR'}" (click)="updatePosition('WR')" mat-button>WR / TE</button>
+                    <button [ngClass]="{'active': (currentPosition$ | async) === 'DEF'}" (click)="updatePosition('DEF')" mat-button>DEF</button>
                 </div>
                 <div class="year-container">
                     <span>Year</span>
-                    <button (click)="filterByYear(year)" mat-button *ngFor="let year of ALL_YEARS">{{year}}</button>
+                    <button [ngClass]="{'active': (currentYear$ | async) === year}" (click)="filterByYear(year)" mat-button *ngFor="let year of ALL_YEARS">{{year}}</button>
                 </div>
             </div>
             <div class="grid-container" *ngIf="state.gridConfig">

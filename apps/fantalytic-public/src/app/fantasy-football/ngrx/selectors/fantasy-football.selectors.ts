@@ -37,3 +37,8 @@ export const getDefenses = createSelector(
     getFantasyFootballState,
     state => state.defenses
 );
+
+export const getSelectedYear = createSelector(
+    getFantasyFootballState,
+    state => state.year
+);

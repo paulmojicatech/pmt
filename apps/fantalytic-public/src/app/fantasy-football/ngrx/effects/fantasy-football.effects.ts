@@ -6,7 +6,7 @@ import { catchError, filter, iif, map, switchMap, withLatestFrom } from "rxjs";
 import { FantasyFootballState } from "../../models/fantasy-football.interface";
 import { FantalyticHttpService } from "../../services/fantalytic-http.service";
 import { fantasyFootballError, loadDefenses, loadDefensesSuccess, loadQbs, loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceivers, loadReceiversSuccess, setPositionType } from "../actions/fantasy-football.actions";
-import { getDefenses, getQbs, getRbs, getReceivers } from "../selectors/fantasy-football.selectors";
+import { getFantasyFootballState } from "../selectors/fantasy-football.selectors";
 
 @Injectable()
 export class FantasyFootballEffects {
@@ -56,8 +56,8 @@ export class FantasyFootballEffects {
         () => this._actions$.pipe(
             ofType(setPositionType),
             filter(action => action.position === PositionTypes.QB),
-            withLatestFrom(this._store.select(getQbs)),
-            switchMap(([,qbs]) => iif(() => !qbs, [loadQbs()], [loadQbsSuccess(qbs as QB[])]))
+            withLatestFrom(this._store.select(getFantasyFootballState)),
+            switchMap(([,state]) => iif(() => !state.qbs, [loadQbs()], [loadQbsSuccess(state.qbs as QB[])]))
         )
     );
 
@@ -65,8 +65,8 @@ export class FantasyFootballEffects {
         () => this._actions$.pipe(
             ofType(setPositionType),
             filter(action => action.position === PositionTypes.RB),
-            withLatestFrom(this._store.select(getRbs)),
-            switchMap(([,rbs]) => iif(() => !rbs, [loadRbs()], [loadRbsSuccess(rbs as RB[])]))
+            withLatestFrom(this._store.select(getFantasyFootballState)),
+            switchMap(([,state]) => iif(() => !state.rbs, [loadRbs()], [loadRbsSuccess(state.rbs as RB[])]))
         )
     );
 
@@ -74,8 +74,8 @@ export class FantasyFootballEffects {
         () => this._actions$.pipe(
             ofType(setPositionType),
             filter(action => action.position === PositionTypes.WR || action.position === PositionTypes.TE),
-            withLatestFrom(this._store.select(getReceivers)),
-            switchMap(([,receivers]) => iif(() => !receivers, [loadReceivers()], [loadReceiversSuccess(receivers as Receivers[])]))
+            withLatestFrom(this._store.select(getFantasyFootballState)),
+            switchMap(([,state]) => iif(() => !state.receivers, [loadReceivers()], [loadReceiversSuccess(state.receivers as Receivers[])]))
         )
     );
 
@@ -83,8 +83,8 @@ export class FantasyFootballEffects {
         () => this._actions$.pipe(
             ofType(setPositionType),
             filter(action => action.position === PositionTypes.DEF),
-            withLatestFrom(this._store.select(getDefenses)),
-            switchMap(([, defenses]) => iif(() => !defenses, [loadDefenses()], [loadDefensesSuccess(defenses as Defense[])]))
+            withLatestFrom(this._store.select(getFantasyFootballState)),
+            switchMap(([, state]) => iif(() => !state.defenses, [loadDefenses()], [loadDefensesSuccess(state.defenses as Defense[])]))
         )
     );
 }
