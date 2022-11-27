@@ -40,6 +40,19 @@ namespace Pmt.FantalyticApi.Services
       }
 
     }
+
+    public void DeleteWRTEs(int year)
+    {
+      try
+      {
+        _ctx.WRs_TEs.RemoveRange(_ctx.WRs_TEs.Where(rec => rec.Year == year));
+        _ctx.SaveChanges();
+      }
+      catch (Exception ex)
+      {
+        throw;
+      }
+    }
   }
 }
 

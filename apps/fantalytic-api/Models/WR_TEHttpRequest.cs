@@ -5,5 +5,10 @@ namespace Pmt.FantalyticApi.Models
   {
     public IEnumerable<WR_TE> Receivers { get; set; }
   }
+
+  public class WR_TEHttpDeleteRequest
+  {
+    public int Year { get; set; }
+  }
 }
 

@@ -11,7 +11,10 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "dist/apps/fantalytic-web-scraper-cron/main.js"
+            "program": "dist/apps/fantalytic-web-scraper-cron/main.js",
+            "env": {
+                "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+            }
         }
     ]
 }
