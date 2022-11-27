@@ -24,14 +24,14 @@ cron.schedule("0 0 0 * * *", async () => {
 });
 
 app.use('/assets', express.static(path.join(__dirname, 'assets')));
-app.use('/api/qbs', bodyParser.json());
-app.use('/api/rbs', bodyParser.json());
+app.use('/scrape/qbs', bodyParser.json());
+app.use('/scrape/rbs', bodyParser.json());
 
 app.get('/api', (req, res) => {
   res.send({ message: 'Welcome to fantalytic-web-scraper-cron!' });
 });
 
-app.route('/api/qbs')
+app.route('/scrape/qbs')
   .post(async (req, res) => {
     try {
       const year = +req.body.year;
@@ -45,7 +45,7 @@ app.route('/api/qbs')
     
   });
 
-app.route('/api/rbs')
+app.route('/scrape/rbs')
   .post(async (req, res) => {
     try {
       const year = +req.body.year;
@@ -62,6 +62,6 @@ app.route('/api/rbs')
 
 const port = process.env.port || 3333;
 const server = app.listen(port, () => {
-  console.log(`Listening at http://localhost:${port}/api`);
+  console.log(`Listening at http://localhost:${port}/scrape`);
 });
 server.on('error', console.error);

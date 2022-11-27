@@ -1,0 +1,12 @@
+FROM node:latest
+
+WORKDIR /fantalytic-web-scraper-cron
+
+RUN npm i -g npm@latest
+
+COPY ./dist/apps/fantalytic-web-scraper-cron/* .
+COPY ./fantalytic-web-scraper-cron.package.json ./package.json
+
+RUN npm i
+
+CMD ["npm", "start"]
