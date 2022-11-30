@@ -5,8 +5,9 @@ namespace Pmt.FantalyticApi.Services
 {
   public interface IDefenseService
   {
-    Task AddDefenses(IEnumerable<Defense> defenses);
-    Task<IEnumerable<Defense>> GetDefenses();
+    void AddDefenses(IEnumerable<Defense> defenses);
+    IEnumerable<Defense> GetDefenses();
+    void DeleteDefenses(int year);
   }
 }
 

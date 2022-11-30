@@ -26,7 +26,7 @@ namespace Pmt.FantalyticApi.Controllers
     {
       try
       {
-        IEnumerable<Defense> defs = await _svc.GetDefenses();
+        IEnumerable<Defense> defs = _svc.GetDefenses();
         DefenseHttpResponse resp = new DefenseHttpResponse(defs);
         return Ok(resp);
 
@@ -42,7 +42,21 @@ namespace Pmt.FantalyticApi.Controllers
     {
       try
       {
-        await _svc.AddDefenses(req.Defenses);
+        _svc.AddDefenses(req.Defenses);
+        return Ok("Success");
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex);
+      }
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteDefenses([FromBody] DefenseHttpDeleteRequest req)
+    {
+      try
+      {
+        _svc.DeleteDefenses(req.Year);
         return Ok("Success");
       }
       catch (Exception ex)
