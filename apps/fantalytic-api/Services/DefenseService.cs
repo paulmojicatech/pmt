@@ -12,7 +12,7 @@ namespace Pmt.FantalyticApi.Services
       _ctx = ctx;
     }
 
-    public async Task AddDefenses(IEnumerable<Defense> defenses)
+    public void AddDefenses(IEnumerable<Defense> defenses)
     {
       try
       {
@@ -21,7 +21,7 @@ namespace Pmt.FantalyticApi.Services
           _ctx.Defenses.Add(def);
         }
 
-        await _ctx.SaveChangesAsync();
+        _ctx.SaveChanges();
       }
       catch
       {
@@ -29,11 +29,24 @@ namespace Pmt.FantalyticApi.Services
       }
     }
 
-    public async Task<IEnumerable<Defense>> GetDefenses()
+    public IEnumerable<Defense> GetDefenses()
     {
       try
       {
         return _ctx.Defenses.ToList();
+      }
+      catch
+      {
+        throw;
+      }
+    }
+
+    public void DeleteDefenses(int year)
+    {
+      try
+      {
+        _ctx.Defenses.RemoveRange(_ctx.Defenses.Where(def => def.Year == year));
+        _ctx.SaveChanges();
       }
       catch
       {
