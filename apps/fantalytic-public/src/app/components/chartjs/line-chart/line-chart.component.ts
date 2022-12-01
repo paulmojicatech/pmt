@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, ViewChild } from '@angular/core';
 import { BaseChartDirective, NgChartsModule } from 'ng2-charts';
-import { LineChartViewModel } from './models/line-chart.interface';
+import { LineChartViewModel } from '../../../../../../../libs/fantalytic-shared/src/lib/models/chartjs/line-chart.interface';
 
 @Component({
   selector: 'pmt-line-chart',

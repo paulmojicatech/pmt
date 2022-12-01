@@ -1,10 +1,10 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
 import { Store } from "@ngrx/store";
-import { Defense, PositionTypes, QB, RB, Receivers } from "@pmt/fantalytic-shared";
+import { Defense, PositionTypes, QB, RB, Receivers } from "../../../models/fantalytic.interface";
 import { catchError, filter, iif, map, switchMap, withLatestFrom } from "rxjs";
-import { FantasyFootballState } from "../../models/fantasy-football.interface";
-import { FantalyticHttpService } from "../../services/fantalytic-http.service";
+import { FantasyFootballState } from "../../../models/fantasy-football.interface";
+import { FantalyticHttpService } from '../../../services/fantalytic-http.service';
 import { fantasyFootballError, loadDefenses, loadDefensesSuccess, loadQbs, loadQbsSuccess, loadRbs, loadRbsSuccess, loadReceivers, loadReceiversSuccess, setPositionType } from "../actions/fantasy-football.actions";
 import { getFantasyFootballState } from "../selectors/fantasy-football.selectors";
 

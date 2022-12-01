@@ -3,13 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { PositionTypes } from '@pmt/fantalytic-shared';
+import { PositionTypes, getPosition, FantasyFootballLineChartService, FantasyFootballState, LineChartViewModel } from '@pmt/fantalytic-shared';
 import { map, Observable } from 'rxjs';
 import { LineChartComponent } from '../../../components/chartjs/line-chart/line-chart.component';
-import { LineChartViewModel } from '../../../components/chartjs/line-chart/models/line-chart.interface';
-import { FantasyFootballState } from '../../models/fantasy-football.interface';
-import { getPosition } from '../../ngrx/selectors/fantasy-football.selectors';
-import { FantasyFootballLineChartService } from '../../services/fantasy-football-line-chart.service';
 
 @Component({
   selector: 'pmt-compare-players',

@@ -1,6 +1,6 @@
 import { PositionTypes } from '@pmt/fantalytic-shared';
 import { ColDef } from 'ag-grid-community';
-import { FantasyFootballState } from '../models/fantasy-football.interface';
+import { FantasyFootballState } from '../../models/fantasy-football.interface';
 
 export const QB_COL_DEFS: ColDef[] = [
     {

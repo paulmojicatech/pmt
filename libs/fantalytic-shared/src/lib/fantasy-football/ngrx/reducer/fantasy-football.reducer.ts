@@ -1,7 +1,7 @@
 import { createReducer, on } from "@ngrx/store";
-import { PositionTypes } from "@pmt/fantalytic-shared";
+import { PositionTypes } from "../../../models/fantalytic.interface";
 import { DEF_COL_DEF, FANTASY_FOOTBALL_INITIAL_STATE, QB_COL_DEFS, RB_COL_DEF, WR_TE_COL_DEF } from "../../const/fantasy-football.const";
-import { FantasyFootballState } from "../../models/fantasy-football.interface";
+import { FantasyFootballState } from "../../../models/fantasy-football.interface";
 import { FantasyFootballRowData } from "../../types/fantasy-football.types";
 import { loadDefensesSuccess, loadQbsSuccess, loadRbsSuccess, loadReceiversSuccess, setPositionType, setRowData, updateSelectedPlayers, updateYearFilter } from "../actions/fantasy-football.actions";
 

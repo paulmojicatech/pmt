@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Defense, QB, RB, Receivers } from '@pmt/fantalytic-shared';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { FANTALYTIC_API_URL } from '../../const/urls.const';
+import { FANTALYTIC_API_URL } from '../const/urls.const';
 
 @Injectable({
   providedIn: 'root'
