@@ -1,4 +1,4 @@
-import { Defense, PositionTypes, QB, RB, Receivers } from "@pmt/fantalytic-shared";
+import { Defense, PositionTypes, QB, RB, Receivers } from "../models/fantalytic.interface";
 import { ColDef } from "ag-grid-community";
 import { FantasyFootballRowData } from "../fantasy-football/types/fantasy-football.types";
 

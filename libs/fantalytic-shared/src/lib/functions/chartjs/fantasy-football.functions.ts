@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { QB, RB, Receivers } from '@pmt/fantalytic-shared';
+import { QB, RB, Receivers } from '../../models/fantalytic.interface';
 import { ChartDataset } from 'chart.js';
 import { LineChartViewModel } from '../../models/chartjs/line-chart.interface';
 

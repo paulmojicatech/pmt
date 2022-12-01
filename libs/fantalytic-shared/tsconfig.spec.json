@@ -16,5 +16,5 @@
     "**/*.test.jsx",
     "**/*.spec.jsx",
     "**/*.d.ts"
-  ]
+, "../../apps/fantalytic-public/src/app/fantasy-football/services/fantalytic-http.service.spec.ts"  ]
 }

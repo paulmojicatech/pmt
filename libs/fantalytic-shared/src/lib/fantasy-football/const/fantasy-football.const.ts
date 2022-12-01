@@ -1,4 +1,4 @@
-import { PositionTypes } from '@pmt/fantalytic-shared';
+import { PositionTypes } from '../../models/fantalytic.interface';
 import { ColDef } from 'ag-grid-community';
 import { FantasyFootballState } from '../../models/fantasy-football.interface';
 

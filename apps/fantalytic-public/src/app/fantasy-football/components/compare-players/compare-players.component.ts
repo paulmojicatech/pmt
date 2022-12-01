@@ -3,8 +3,10 @@ import { Component, OnInit } from '@angular/core';
 import { MatIconModule } from '@angular/material/icon';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { PositionTypes, getPosition, FantasyFootballLineChartService, FantasyFootballState, LineChartViewModel } from '@pmt/fantalytic-shared';
+import { PositionTypes, FantasyFootballState, LineChartViewModel } from '@pmt/fantalytic-shared';
+import { getPosition } from '../../ngrx/selectors/fantasy-football.selectors';
 import { map, Observable } from 'rxjs';
+import { FantasyFootballLineChartService } from '../../services/fantasy-football-line-chart.service'
 import { LineChartComponent } from '../../../components/chartjs/line-chart/line-chart.component';
 
 @Component({

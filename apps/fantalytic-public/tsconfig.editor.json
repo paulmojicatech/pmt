@@ -1,6 +1,6 @@
 {
   "extends": "./tsconfig.json",
-  "include": ["**/*.ts", "../../libs/fantalytic-shared/src/lib/functions/chartjs/fantasy-football.functions.ts", "../../libs/fantalytic-shared/src/lib/models/chartjs/line-chart.interface.ts", "../../libs/fantalytic-shared/src/lib/services/fantasy-football-line-chart.service.spec.ts", "../../libs/fantalytic-shared/src/lib/const/urls.const.ts", "../../libs/fantalytic-shared/src/lib/services/fantalytic-http.service.spec.ts", "../../libs/fantalytic-shared/src/lib/fantasy-football/types/fantasy-football.types.ts", "../../libs/fantalytic-shared/src/lib/fantasy-football/const/fantasy-football.const.ts", "../../libs/fantalytic-shared/src/lib/models/fantasy-football.interface.ts"],
+  "include": ["**/*.ts", "../../libs/fantalytic-shared/src/lib/functions/chartjs/fantasy-football.functions.ts", "../../libs/fantalytic-shared/src/lib/models/chartjs/line-chart.interface.ts", "../../libs/fantalytic-shared/src/lib/services/fantasy-football-line-chart.service.spec.ts", "../../libs/fantalytic-shared/src/lib/const/urls.const.ts", "src/app/fantasy-football/services/fantalytic-http.service.spec.ts", "../../libs/fantalytic-shared/src/lib/fantasy-football/types/fantasy-football.types.ts", "../../libs/fantalytic-shared/src/lib/fantasy-football/const/fantasy-football.const.ts", "../../libs/fantalytic-shared/src/lib/models/fantasy-football.interface.ts"],
   "compilerOptions": {
     "types": ["jest", "node"]
   }

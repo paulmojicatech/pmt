@@ -1,8 +1,9 @@
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-underscore-dangle */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Defense, QB, RB, Receivers } from '@pmt/fantalytic-shared';
+import { Defense, QB, RB, Receivers, FANTALYTIC_API_URL } from '../../../../../libs/fantalytic-shared/src';
 import { catchError, map, Observable, throwError } from 'rxjs';
-import { FANTALYTIC_API_URL } from '../const/urls.const';
 
 @Injectable({
   providedIn: 'root'

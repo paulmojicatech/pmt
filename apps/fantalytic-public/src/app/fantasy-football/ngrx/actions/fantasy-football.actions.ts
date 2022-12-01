@@ -1,6 +1,6 @@
 import { createAction } from "@ngrx/store";
-import { Defense, PositionTypes, QB, RB, Receivers } from '@pmt/fantalytic-shared';
-import { FantasyFootballRowData } from "../../types/fantasy-football.types";
+
+import { Defense, PositionTypes, QB, RB, Receivers, FantasyFootballRowData } from '@pmt/fantalytic-shared';
 
 
 export const setPositionType = createAction(

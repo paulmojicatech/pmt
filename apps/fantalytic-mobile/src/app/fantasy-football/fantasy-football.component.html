@@ -2,7 +2,7 @@
     <section class="tabs-container">
         <div class="year-container">
             <select>
-                
+                <option *ngFor="let year of AVAILABLE_YEARS" [value]="year" [selected]="year === (selectedYear$ | async)">{{year}}</option>                
             </select>
         </div>
     </section>

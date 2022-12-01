@@ -5,12 +5,13 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { getFantasyFootballState, getPosition, getSelectedYear, PositionTypes, setPositionType, updateSelectedPlayers, updateYearFilter } from '@pmt/fantalytic-shared';
+import { getFantasyFootballState, getPosition, getSelectedYear } from './ngrx/selectors/fantasy-football.selectors';
+import {  setPositionType, updateSelectedPlayers, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
 import { AgGridAngular, AgGridModule } from 'ag-grid-angular';
 import { Observable, Subject } from 'rxjs';
 import { DEFAULT_COL_DEF_SETTINGS } from '../const/grid.const';
 import { FantasyFootballSidebarComponent } from './components/fantasy-football-sidebar/fantasy-football-sidebar.component';
-import { FantasyFootballState } from '../../../../../libs/fantalytic-shared/src/lib/models/fantasy-football.interface';
+import { FantasyFootballState, PositionTypes } from '@pmt/fantalytic-shared';
 @Component({
   selector: 'pmt-fantasy-football',
   standalone: true,
