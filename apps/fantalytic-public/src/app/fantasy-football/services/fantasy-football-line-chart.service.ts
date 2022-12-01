@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LineChartViewModel } from '../../components/line-chart/models/line-chart.interface';
+import { LineChartViewModel } from '../../components/chartjs/line-chart/models/line-chart.interface';
 import { FantasyFootballState } from '../models/fantasy-football.interface';
 import { getPosition, getSelectedPlayers, getSelectedRowData } from '../ngrx/selectors/fantasy-football.selectors';
 import {forkJoin, take, map, Observable} from 'rxjs';

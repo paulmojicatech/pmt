@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { QB, RB, Receivers } from '@pmt/fantalytic-shared';
 import { ChartDataset } from 'chart.js';
-import { LineChartViewModel } from '../../components/line-chart/models/line-chart.interface';
+import { LineChartViewModel } from '../../components/chartjs/line-chart/models/line-chart.interface';
 
 //#region QB Stats
 
@@ -12,7 +12,7 @@ export function getLineChartViewModelForQBs(qbStats: QB[]): LineChartViewModel {
             qbStats.map((qb) => {
                 return {
                     label: qb.player,
-                    fill: true,
+                    fill: false,
                     data: [
                         qb.passingYdsPerAttempt,
                         qb.ints,
@@ -37,6 +37,13 @@ export function getLineChartViewModelForQBs(qbStats: QB[]): LineChartViewModel {
                         }
                     }
                 }
+            },
+            plugins: {
+                legend: {
+                    labels: {
+                        boxHeight: 0
+                    }
+                }
             }
         }
     };
@@ -53,7 +60,7 @@ export function getLineChartViewModelForRBs(rbStats: RB[]): LineChartViewModel {
             rbStats.map((rb) => {
                 return {
                     label: rb['player'],
-                    fill: true,
+                    fill: false,
                     data: [
                         rb.rushAttempts / 100,
                         rb.rushing20Yds,
@@ -63,6 +70,13 @@ export function getLineChartViewModelForRBs(rbStats: RB[]): LineChartViewModel {
                 };
             }) as ChartDataset[],
         options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        boxHeight: 0
+                    }
+                }
+            },
             scales: {
                 x: {
                     ticks: {
@@ -92,7 +106,7 @@ export function getLineChartViewModelForRecs(recStats: Receivers[]): LineChartVi
         datasets: 
             recStats.map((rec) => {
                 return {
-                    fill: true,
+                    fill: false,
                     label: rec['player'],
                     data: [
                         rec.receiving20Plus,
@@ -105,6 +119,13 @@ export function getLineChartViewModelForRecs(recStats: Receivers[]): LineChartVi
                 };
             }) as ChartDataset[],
         options: {
+            plugins: {
+                legend: {
+                    labels: {
+                        boxHeight: 0
+                    }
+                }
+            },
             scales: {
                 x: {
                     ticks: {
