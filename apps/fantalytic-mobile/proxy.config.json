@@ -1,0 +1,6 @@
+{
+    "/api": {
+      "target": "https://api.fantalytic.io",
+      "secure": false
+    }
+  }

@@ -1,0 +1,10 @@
+.year-container {
+    select {
+        margin-left: 1rem;
+    }
+}
+.table-header, .stats-container {
+    width: 100%;
+    display: inline-flex;
+    justify-content: space-between;
+}

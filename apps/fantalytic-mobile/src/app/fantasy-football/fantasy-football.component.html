@@ -5,5 +5,30 @@
                 <option *ngFor="let year of AVAILABLE_YEARS" [value]="year" [selected]="year === (selectedYear$ | async)">{{year}}</option>                
             </select>
         </div>
+        <ion-accordion-group (ionChange)="handleAccordionStateChange($event)">
+            <ion-accordion *ngFor="let pos of positionsMap; let i = index;" [value]="pos.value">
+                <ion-item slot="header">
+                    <ion-label>{{pos.label}}</ion-label>
+                </ion-item>
+                <div class="pos-container" slot="content">
+                    <ng-template #positionTable let-positionData="positionData">
+                        <div class="table-header">
+                            <span class="ion-padding">{{positionData.header[0]}}</span>
+                            <span class="ion-padding">{{positionData.header[1]}}</span>
+                        </div>
+                        
+                        <ion-item *ngFor="let stat of positionData.stats">
+                            <div class="stats-container">
+                                <span>{{stat.player}}</span>
+                                <span>{{stat.stat}}</span>
+                            </div>                                 
+                        </ion-item>
+                            
+                    </ng-template>
+                    <ng-container *ngTemplateOutlet="positionTable;context:pos.ctx"></ng-container>
+                </div>
+            </ion-accordion>
+        </ion-accordion-group>
     </section>
 </ion-content>
+
