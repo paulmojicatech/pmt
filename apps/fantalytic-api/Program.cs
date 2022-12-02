@@ -24,14 +24,15 @@ builder.Services.Configure<JsonSerializerOptions>(options =>
 });
 
 // Set up CORS
-builder.Services.AddCors(options =>
-{
-  options.AddPolicy(name: "localhost",
-                     policy =>
-                     {
-                       policy.WithOrigins("http://localhost:4200");
-                     });
-});
+// builder.Services.AddCors(options =>
+// {
+//   options.AddPolicy(name: "localhost",
+//                      policy =>
+//                      {
+//                        policy.WithOrigins("http://localhost:4200", "capacitor://localhost", "http://localhost");
+//                      });
+// });
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -43,6 +44,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors(x => x
+  .AllowAnyMethod()
+  .AllowAnyHeader()
+  .SetIsOriginAllowed(origin => true)
+  .AllowCredentials());
 
 app.UseAuthorization();
 

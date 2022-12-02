@@ -1,5 +1,5 @@
-import { createFeatureSelector, createSelector } from "@ngrx/store";
-import { FantasyFootballState } from "@pmt/fantalytic-shared";
+import { createFeatureSelector, createSelector } from '@ngrx/store';
+import { FantasyFootballState } from '../../../../../../../libs/fantalytic-shared/src';
 
 export const getFantasyFootballState = createFeatureSelector<FantasyFootballState>('fantasy-football');
 

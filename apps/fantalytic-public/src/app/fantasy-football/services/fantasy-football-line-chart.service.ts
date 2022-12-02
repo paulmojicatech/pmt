@@ -1,11 +1,9 @@
 import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { LineChartViewModel } from '../../components/chartjs/line-chart/models/line-chart.interface';
-import { FantasyFootballState } from '../models/fantasy-football.interface';
+import { LineChartViewModel, FantasyFootballState, PositionTypes, QB, RB, Receivers, getLineChartViewModelForQBs, getLineChartViewModelForRBs, getLineChartViewModelForRecs } from '@pmt/fantalytic-shared';
 import { getPosition, getSelectedPlayers, getSelectedRowData } from '../ngrx/selectors/fantasy-football.selectors';
 import {forkJoin, take, map, Observable} from 'rxjs';
-import { PositionTypes, QB, RB, Receivers } from '@pmt/fantalytic-shared';
-import { getLineChartViewModelForQBs, getLineChartViewModelForRBs, getLineChartViewModelForRecs } from '../functions/fantasy-football.functions';
+
 
 @Injectable({
   providedIn: 'root'

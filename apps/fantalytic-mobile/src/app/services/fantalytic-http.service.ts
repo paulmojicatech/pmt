@@ -1,18 +1,29 @@
+/* eslint-disable @typescript-eslint/naming-convention */
+/* eslint-disable arrow-body-style */
+/* eslint-disable no-underscore-dangle */
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Defense, QB, RB, Receivers, FANTALYTIC_API_URL } from '@pmt/fantalytic-shared';
+import { Defense, QB, RB, Receivers, FANTALYTIC_API_URL } from '../../../../../libs/fantalytic-shared/src';
 import { catchError, map, Observable, throwError } from 'rxjs';
+import { Platform } from '@ionic/angular';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FantalyticHttpService {
 
+  private _URL: string;
 
-  constructor(private _httpClient: HttpClient) { }
+  constructor(private _httpClient: HttpClient, platform: Platform) {
+    if (platform.is('android') || platform.is('ios')) {
+      this._URL = 'https://api.fantalytic.io/api/';
+    } else {
+      this._URL = FANTALYTIC_API_URL;
+    }
+   }
 
   getQBs(): Observable<QB[]> {
-    return this._httpClient.get<{qbs: QB[]}>(`${FANTALYTIC_API_URL}qb`).pipe(
+    return this._httpClient.get<{qbs: QB[]}>(`${this._URL}qb`).pipe(
       map(qbResp => {
         return qbResp.qbs;
       }),
@@ -21,7 +32,7 @@ export class FantalyticHttpService {
   }
 
   getRBs(): Observable<RB[]> {
-    return this._httpClient.get<{rbs: RB[]}>(`${FANTALYTIC_API_URL}rb`).pipe(
+    return this._httpClient.get<{rbs: RB[]}>(`${this._URL}rb`).pipe(
       map(rbResp => {
         return rbResp.rbs;
       }),
@@ -30,7 +41,7 @@ export class FantalyticHttpService {
   }
 
   getReceviers(): Observable<Receivers[]> {
-    return this._httpClient.get<{receivers: Receivers[]}>(`${FANTALYTIC_API_URL}wr_te`).pipe(
+    return this._httpClient.get<{receivers: Receivers[]}>(`${this._URL}wr_te`).pipe(
       map(recResp => {
         return recResp.receivers;
       }),
@@ -39,7 +50,7 @@ export class FantalyticHttpService {
   }
 
   getDefenses(): Observable<Defense[]> {
-    return this._httpClient.get<{defenses: Defense[]}>(`${FANTALYTIC_API_URL}defense`).pipe(
+    return this._httpClient.get<{defenses: Defense[]}>(`${this._URL}defense`).pipe(
       map(defenseResp => {
         return defenseResp.defenses;
       }),
