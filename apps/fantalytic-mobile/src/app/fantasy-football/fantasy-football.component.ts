@@ -137,7 +137,7 @@ export class FantasyFootballComponent implements OnInit {
       }
       case 'def': {
         if (!this.positionsMap[3].ctx.positionData.stats.length) {
-          this.recs$.pipe(take(1)).subscribe(stats => {
+          this.def$.pipe(take(1)).subscribe(stats => {
             this.positionsMap[3] = {...this.positionsMap[3], ctx: {positionData: {...this.positionsMap[3].ctx.positionData, stats}}};
           });
           break;
