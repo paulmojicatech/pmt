@@ -95,8 +95,8 @@ export class FantasyFootballComponent implements OnInit {
 
   def$ = combineLatest([this._store.select(getDefenses), this.selectedYear$]).pipe(
     filter(([def]) => !!def),
-    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed})).sort((prev, next) => {
-        if (prev.stat > next.stat) {
+    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed + def.rushYdsAllowed})).sort((prev, next) => {
+        if (prev.stat < next.stat) {
           return -1;
         }
         return 1;
