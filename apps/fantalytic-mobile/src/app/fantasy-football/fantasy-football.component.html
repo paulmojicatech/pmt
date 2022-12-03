@@ -17,7 +17,7 @@
                             <span class="ion-padding">{{positionData.header[1]}}</span>
                         </div>
                         
-                        <ion-item *ngFor="let stat of positionData.stats">
+                        <ion-item *ngFor="let stat of positionData.stats; trackBy: statTrackByFn;">
                             <div class="stats-container">
                                 <span>{{stat.player}}</span>
                                 <span>{{stat.stat}}</span>

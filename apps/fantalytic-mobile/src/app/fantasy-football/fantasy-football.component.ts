@@ -18,6 +18,7 @@ export class FantasyFootballComponent implements OnInit {
 
 
   readonly AVAILABLE_YEARS = [2018,2019,2020,2021,2022];
+
   positionsMap: {label: string; ctx: {positionData: {header: string[]; stats: any[]}}; value: string}[] = [
     {
       label: 'QBs',
@@ -142,6 +143,10 @@ export class FantasyFootballComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  statTrackByFn(index: number, stat: any): string {
+    return stat.player;
   }
 
 }
