@@ -73,7 +73,8 @@ function parseDefRushingStats(def: IDefRusingStats, week = 0): Defense {
       rushYdsAllowed: def.rushYds?.value ?? 0,
       ydsPerCarry: def.ypc?.value ?? 0,
       rushTdsAllowed: def.td?.value ?? 0,
-      week
+      week,
+      imageUrl: def.imageUrl.value
     } as Defense;
 }
 
@@ -84,6 +85,7 @@ function parseDefPassingStats(def: IDefPassingStats, week = 0): Defense {
     passYdsAllowed: def.yds?.value ?? 0,
     ints: def.int?.value ?? 0,
     sacks: def.sacks?.value ?? 0,
-    week
+    week,
+    imageUrl: def.imageUrl.value
   } as Defense;
 }

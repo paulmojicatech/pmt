@@ -1,30 +1,43 @@
 ﻿<Properties StartupConfiguration="{5B939A9B-F8BC-48D3-9D72-2FA6C8009B5C}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Program.cs">
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="40" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="48" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="34" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/DefenseController.cs" relfile="Controllers/DefenseController.cs" line="50" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="53" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="34" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="57" column="1" />
+      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/DefenseController.cs" relfile="Controllers/DefenseController.cs" line="45" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/DefenseController.cs">
     <Files>
       <File FileName="Models/FantalyticContext.cs" />
       <File FileName="Models/WR_TEHttpRequest.cs" />
       <File FileName="Controllers/WR_TEController.cs" />
       <File FileName="Controllers/RBController.cs" />
-      <File FileName="Controllers/QBController.cs" />
-      <File FileName="Models/QB.cs" />
+      <File FileName="Controllers/QBController.cs" Line="26" Column="45" />
+      <File FileName="Models/QB.cs" Line="37" Column="19" />
       <File FileName="Models/DefenseHttpRequest.cs" />
       <File FileName="Models/DefenseHttpResponse.cs" />
-      <File FileName="Controllers/DefenseController.cs" Line="35" Column="8" />
+      <File FileName="Controllers/DefenseController.cs" Line="28" Column="8" />
       <File FileName="Services/IDefenseService.cs" />
       <File FileName="Services/DefenseService.cs" />
       <File FileName="Models/QBHttpRequest.cs" />
-      <File FileName="Models/Defense.cs" />
+      <File FileName="Models/Defense.cs" Line="21" Column="40" />
       <File FileName="Services/WR_TEService.cs" />
       <File FileName="Services/QBService.cs" />
       <File FileName="Program.cs" Line="52" Column="24" />
       <File FileName="Services/IQBService.cs" />
       <File FileName="Services/IRBService.cs" />
       <File FileName="Services/RBService.cs" />
-      <File FileName="Models/RB.cs" />
+      <File FileName="Models/RB.cs" Line="19" Column="19" />
       <File FileName="Models/RBHttpRequest.cs" />
       <File FileName="Models/QBHttpResponse.cs" />
       <File FileName="Services/IWR_TEService.cs" />
-      <File FileName="Models/WR_TE.cs" />
+      <File FileName="Models/WR_TE.cs" Line="20" Column="41" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -32,7 +45,9 @@
           <Node name="Pmt.FantalyticApi" expanded="True">
             <Node name="Pmt.FantalyticApi" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True" />
+              <Node name="Controllers" expanded="True">
+                <Node name="DefenseController.cs" selected="True" />
+              </Node>
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>
@@ -46,19 +61,7 @@
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="40" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="48" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="34" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/DefenseController.cs" relfile="Controllers/DefenseController.cs" line="50" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="53" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Services/QBService.cs" relfile="Services/QBService.cs" line="34" column="1" />
-      <Breakpoint file="/Users/paulmojica/dev/pmt/pmt/apps/fantalytic-api/Controllers/RBController.cs" relfile="Controllers/RBController.cs" line="57" column="1" />
-    </BreakpointStore>
-  </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MonoDevelop.Ide.ItemProperties.Pmt.FantalyticApi PreferredExecutionTarget="/Applications/Google Chrome.app" />
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
 </Properties>

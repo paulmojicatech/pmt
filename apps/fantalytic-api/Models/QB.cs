@@ -34,6 +34,8 @@ namespace Pmt.FantalyticApi.Models
     public int Tds
     { get; set; }
 
+    public string? ImageUrl { get; set; }
+
   }
 }
 

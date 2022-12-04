@@ -18,7 +18,7 @@ namespace Pmt.FantalyticApi.Models
     public int Sacks { get; set; }
     public int Year { get; set; }
     public int Week { get; set; }
-
+    public string? ImageUrl { get; set; }
   }
 }
 

@@ -126,12 +126,20 @@ export interface IDefRusingStats {
         statSelector: IStatPosition;
         value?: number;
     };
+    imageUrl: {
+        statSelector: IStatPosition;
+        value?: string;
+    }
 
 }
 
 export interface IDefPassingStats {
     url: string;
     team: {
+        statSelector: IStatPosition;
+        value?: string;
+    };
+    imageUrl: {
         statSelector: IStatPosition;
         value?: string;
     };
@@ -200,4 +208,5 @@ export interface Defense {
     sacks: number;
     week: number;
     year: number;
+    imageUrl: string;
 }
