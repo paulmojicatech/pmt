@@ -8,6 +8,13 @@ export const DEF_RUSH_STATS: IDefRusingStats = {
             statName: 'd3-o-club-fullname'
         }
     },
+    imageUrl: {
+        statSelector: {
+            statColIndex: 0,
+            statName: 'img-responsive'
+
+        }
+    },
     rushYds: {
         statSelector: {
             statColIndex: 2,
@@ -34,6 +41,12 @@ export const DEF_PASS_STATS: IDefPassingStats = {
         statSelector: {
             statColIndex: 0,
             statName: 'd3-o-club-fullname'
+        }
+    },
+    imageUrl: {
+        statSelector: {
+            statColIndex: 0,
+            statName: 'img-responsive'
         }
     },
     compPct: {

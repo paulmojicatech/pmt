@@ -93,8 +93,9 @@ app.route('/scrape/recs')
 app.route('/scrape/defenses')
   .post(async (req, res) => {
     try {
-      const defs = await getDefStats(2022);
-      await deleteAllDefsForYear(2022);
+      const year = +req.body.year;
+      const defs = await getDefStats(year);
+      await deleteAllDefsForYear(year);
       await postUpdatedDefs(defs);
       res.send({message: 'Success'});
     } catch (err) {

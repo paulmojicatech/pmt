@@ -25,6 +25,7 @@ export function parseDefRushResponse(table: unknown, url: string): IDefRusingSta
     let defRushStats: IDefRusingStats[] = [];
 
     const teamSelector = DEF_RUSH_STATS.team.statSelector;
+    const imgUrlSelector = DEF_RUSH_STATS.imageUrl.statSelector;
     const allowedRushingYdsSelector = DEF_RUSH_STATS.rushYds.statSelector;
     const ypcSelector = DEF_RUSH_STATS.ypc.statSelector;
     const tdsSelector = DEF_RUSH_STATS.td.statSelector;
@@ -38,6 +39,9 @@ export function parseDefRushResponse(table: unknown, url: string): IDefRusingSta
             url,
             team: {
                 statSelector: teamSelector
+            },
+            imageUrl: {
+                statSelector: imgUrlSelector
             },
             ypc: {
                 statSelector: ypcSelector
@@ -53,6 +57,7 @@ export function parseDefRushResponse(table: unknown, url: string): IDefRusingSta
         $('td', row).each((colIndex: number, col: any) => {
             let {
                 team,
+                imageUrl,
                 ypc,
                 rushYds,
                 td
@@ -64,9 +69,16 @@ export function parseDefRushResponse(table: unknown, url: string): IDefRusingSta
                     ...team,
                     value: teamParentSelector?.html()?.trim() ?? 'Bad Data'
                 };
+                const imgParentSelector = $(`.d3-o-club-logo`, $(row));
+                const imgSrcSelector = $(`.${imgUrlSelector.statName}`, $(imgParentSelector));
+                imageUrl = {
+                    ...imageUrl,
+                    value: imgSrcSelector?.attr('src') ?? ''
+                };
                 defRushStat = {
                     ...defRushStat,
-                    team
+                    team,
+                    imageUrl
                 };
             } else if (colIndex === ypcSelector.statColIndex) {
                 ypc = {
@@ -109,6 +121,7 @@ export function parseDefPassResponse(table: unknown, url: string): IDefPassingSt
     let defPassStats: IDefPassingStats[] = [];
 
     const teamSelector = DEF_PASS_STATS.team.statSelector;
+    const imgUrlSelector = DEF_PASS_STATS.imageUrl.statSelector;
     const compPctSelector = DEF_PASS_STATS.compPct.statSelector;
     const intsSelector = DEF_PASS_STATS.int.statSelector;
     const sacksSelector = DEF_PASS_STATS.sacks.statSelector;
@@ -124,6 +137,9 @@ export function parseDefPassResponse(table: unknown, url: string): IDefPassingSt
             url,
             team: {
                 statSelector: teamSelector
+            },
+            imageUrl: {
+                statSelector: imgUrlSelector
             },
             compPct: {
                 statSelector: compPctSelector
@@ -145,6 +161,7 @@ export function parseDefPassResponse(table: unknown, url: string): IDefPassingSt
         $('td', row).each((colIndex: number, col: any) => {
             let {
                 team,
+                imageUrl,
                 compPct,
                 int,
                 sacks,
@@ -158,9 +175,17 @@ export function parseDefPassResponse(table: unknown, url: string): IDefPassingSt
                     ...team,
                     value: teamParentSelector?.html()?.trim() ?? 'Bad Data'
                 };
+                
+                const imgParentSelector = $(`.d3-o-club-logo`, $(row));
+                const imgSrcSelector = $(`.${imgUrlSelector.statName}`, $(imgParentSelector));
+                imageUrl = {
+                    ...imageUrl,
+                    value: imgSrcSelector?.attr('src') ?? ''
+                };
                 defPassStat = {
                     ...defPassStat,
-                    team
+                    team,
+                    imageUrl
                 };
             } else if (colIndex === compPctSelector.statColIndex) {
                 compPct = {

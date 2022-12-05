@@ -14,6 +14,10 @@
         "plugin:@angular-eslint/template/process-inline-templates"
       ],
       "rules": {
+        "no-fallthrough": "off",
+        "@typescript-eslint/naming-convention": "off",
+        "@typescript-eslint/member-ordering": "off",
+        "no-underscore-dangle": "off",
         "@angular-eslint/component-class-suffix": [
           "error",
           {

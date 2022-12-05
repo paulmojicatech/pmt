@@ -1,8 +1,4 @@
 /* eslint-disable max-len */
-/* eslint-disable no-fallthrough */
-/* eslint-disable @typescript-eslint/naming-convention */
-/* eslint-disable @typescript-eslint/member-ordering */
-/* eslint-disable no-underscore-dangle */
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
@@ -22,6 +18,7 @@ export class FantasyFootballComponent implements OnInit {
 
 
   readonly AVAILABLE_YEARS = [2018,2019,2020,2021,2022];
+
   positionsMap: {label: string; ctx: {positionData: {header: string[]; stats: any[]}}; value: string}[] = [
     {
       label: 'QBs',
@@ -98,8 +95,8 @@ export class FantasyFootballComponent implements OnInit {
 
   def$ = combineLatest([this._store.select(getDefenses), this.selectedYear$]).pipe(
     filter(([def]) => !!def),
-    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed})).sort((prev, next) => {
-        if (prev.stat > next.stat) {
+    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed + def.rushYdsAllowed})).sort((prev, next) => {
+        if (prev.stat < next.stat) {
           return -1;
         }
         return 1;
@@ -137,7 +134,7 @@ export class FantasyFootballComponent implements OnInit {
       }
       case 'def': {
         if (!this.positionsMap[3].ctx.positionData.stats.length) {
-          this.recs$.pipe(take(1)).subscribe(stats => {
+          this.def$.pipe(take(1)).subscribe(stats => {
             this.positionsMap[3] = {...this.positionsMap[3], ctx: {positionData: {...this.positionsMap[3].ctx.positionData, stats}}};
           });
           break;
@@ -146,6 +143,10 @@ export class FantasyFootballComponent implements OnInit {
       default:
         break;
     }
+  }
+
+  statTrackByFn(index: number, stat: any): string {
+    return stat.player;
   }
 
 }
