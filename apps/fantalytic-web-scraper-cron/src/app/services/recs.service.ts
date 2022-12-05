@@ -29,6 +29,7 @@ export function parseRecResponse(table: unknown, url: string): IWRTEStats[] {
     let recStats: IWRTEStats[] = [];
 
     const playerSelector = WR_TE_STATS.player.statSelector;
+    const imgSelector = WR_TE_STATS.imageUrl.statSelector;
     const receptionsStatSelector = WR_TE_STATS.receptions.statSelector;
     const targetsSelector = WR_TE_STATS.receivingTargets.statSelector;
     const recYdsSelector = WR_TE_STATS.receivingYds.statSelector;
@@ -45,6 +46,9 @@ export function parseRecResponse(table: unknown, url: string): IWRTEStats[] {
             url,
             player: {
                 statSelector: playerSelector
+            },
+            imageUrl: {
+                statSelector: imgSelector
             },
             receptions: {
                 statSelector: receptionsStatSelector
@@ -69,6 +73,7 @@ export function parseRecResponse(table: unknown, url: string): IWRTEStats[] {
         $('td', row).each((colIndex: number, col: any) => {
             let {
                 player,
+                imageUrl,
                 receptions,
                 receivingTargets,
                 receiving20Plus,
@@ -83,9 +88,16 @@ export function parseRecResponse(table: unknown, url: string): IWRTEStats[] {
                     ...player,
                     value: playerParentSelector?.html()?.trim() ?? 'Bad Data'
                 };
+                const imgParentSelector = $(`.d3-o-player-headshot`, $(row));
+                const imgSrcSelector = $(`.${imgSelector.statName}`, $(imgParentSelector));
+                imageUrl = {
+                    ...imageUrl,
+                    value: `${imgSrcSelector?.attr('src')}`?.replace('/t_lazy', '') ?? ''
+                };
                 recStat = {
                     ...recStat,
-                    player
+                    player,
+                    imageUrl
                 };
             } else if (colIndex === receptionsStatSelector.statColIndex) {
                 receptions = {

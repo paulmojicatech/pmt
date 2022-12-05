@@ -20,6 +20,10 @@ export interface IQBStats {
         statSelector: IStatPosition;
         value?: string;
     };
+    imageUrl: {
+        statSelector: IStatPosition;
+        value?: string;
+    }
     passingYds: {
         statSelector: IStatPosition;
         value?: number;
@@ -54,6 +58,10 @@ export interface IRBStats {
         statSelector: IStatPosition;
         value?: string;
     };
+    imageUrl: {
+        statSelector: IStatPosition,
+        value?: string;
+    },
     rushingYds: {
         statSelector: IStatPosition;
         value?: number;
@@ -79,6 +87,10 @@ export interface IRBStats {
 export interface IWRTEStats {
   url: string;
   player: {
+    statSelector: IStatPosition;
+    value?: string;
+  };
+  imageUrl: {
     statSelector: IStatPosition;
     value?: string;
   };
@@ -173,6 +185,7 @@ export interface QB {
     passingYdsPerAttempt: number;
     tds: number;
     week?: number;
+    imageUrl?: string;
 }
 
 export interface RB {
@@ -183,6 +196,7 @@ export interface RB {
     rushing20Yds: number;
     year: number;
     week: number;
+    imageUrl?: string;
 }
 
 export interface Receivers {
@@ -195,6 +209,7 @@ export interface Receivers {
     receivingTargets: number;
     year: number;
     week: number;
+    imageUrl?: string;
 }
 
 export interface Defense {

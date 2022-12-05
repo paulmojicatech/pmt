@@ -7,6 +7,13 @@ export const WR_TE_STATS = {
         statLabel: "Player",
       },
     },
+    imageUrl: {
+      statSelector: {
+        statColIndex: 0,
+        statName: 'img-responsive',
+        statLabel: 'Image'
+      }
+    },
     receptions: {
       statSelector: {
         statColIndex: 1,

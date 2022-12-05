@@ -8,6 +8,12 @@ export const QB_STATS: IQBStats = {
             statName: 'd3-o-player-fullname'
         }
     },
+    imageUrl: {
+        statSelector: {
+            statColIndex: 0,
+            statName: 'img-responsive'
+        }
+    },
     passingYds: {
         statSelector: {
             statColIndex: 1,
