@@ -29,6 +29,7 @@ export function parseRBResponse(table: unknown, url: string): IRBStats[] {
     let rbStats: IRBStats[] = [];
 
     const playerSelector = RB_STATS.player.statSelector;
+    const imgSelector = RB_STATS.imageUrl.statSelector;
     const rushingStatSelector = RB_STATS.rushingYds.statSelector;
     const rushingAttempts = RB_STATS.rushingAttempts.statSelector;
     const rushing20plusyardseach = RB_STATS.rushing20Yds.statSelector;
@@ -44,6 +45,9 @@ export function parseRBResponse(table: unknown, url: string): IRBStats[] {
             url,
             player: {
                 statSelector: playerSelector
+            },
+            imageUrl: {
+                statSelector: imgSelector
             },
             rushAttempts: {
                 statSelector: rushingAttempts
@@ -65,6 +69,7 @@ export function parseRBResponse(table: unknown, url: string): IRBStats[] {
         $('td', row).each((colIndex: number, col: any) => {
             let {
                 player,
+                imageUrl,
                 rushAttempts,
                 rushingYds,
                 rushing20Yds,
@@ -78,9 +83,16 @@ export function parseRBResponse(table: unknown, url: string): IRBStats[] {
                     ...player,
                     value: playerParentSelector?.html()?.trim() ?? 'Bad Data'
                 };
+                const imgParentSelector = $(`.d3-o-player-headshot`, $(row));
+                const imgSrcSelector = $(`.${imgSelector.statName}`, $(imgParentSelector));
+                imageUrl = {
+                    ...imageUrl,
+                    value: `${imgSrcSelector?.attr('src')}`?.replace('/t_lazy', '') ?? ''
+                };
                 rbStat = {
                     ...rbStat,
-                    player
+                    player,
+                    imageUrl
                 };
             } else if (colIndex === rushingStatSelector.statColIndex) {
                 rushingYds = {

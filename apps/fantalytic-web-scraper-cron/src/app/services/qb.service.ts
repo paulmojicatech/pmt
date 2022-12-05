@@ -29,6 +29,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
     let qbStats: IQBStats[] = [];
 
     const playerSelector = QB_STATS.player.statSelector;
+    const imgSelector = QB_STATS.imageUrl.statSelector;
     const passingStatSelector = QB_STATS.passingYds.statSelector;
     const passingYdsPerAttemptSelector = QB_STATS.passingYdsPerAttempt.statSelector;
     const intsSelector = QB_STATS.ints.statSelector;
@@ -43,6 +44,9 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
             url,
             player: {
                 statSelector: playerSelector
+            },
+            imageUrl: {
+                statSelector: imgSelector
             },
             passingYds: {
                 statSelector: passingStatSelector
@@ -61,6 +65,7 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
         $('td', row).each((colIndex: number, col: any) => {
             let {
                 player,
+                imageUrl,
                 passingYds,
                 passingYdsPerAttempt,
                 ints,
@@ -69,13 +74,20 @@ export function parseQBResponse(table: unknown, url: string): IQBStats[] {
              
             if (colIndex === playerSelector.statColIndex) {
                 const playerParentSelector = $(`.${playerSelector.statName}`, $(row));
+                const imgParentSelector = $(`.d3-o-player-headshot`, $(row));
+                const imgSrcSelector = $(`.${imgSelector.statName}`, $(imgParentSelector));
                 player = {
                     ...player,
                     value: playerParentSelector?.html()?.trim() ?? 'Bad Data'
                 };
+                imageUrl = {
+                    ...imageUrl,
+                    value: `${imgSrcSelector?.attr('src')}`.replace('/t_lazy', '') ?? ''
+                };
                 qbStat = {
                     ...qbStat,
-                    player
+                    player,
+                    imageUrl
                 };
             } else if (colIndex === passingStatSelector.statColIndex) {
                 passingYds = {

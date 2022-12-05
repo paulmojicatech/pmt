@@ -18,26 +18,25 @@
       <File FileName="Models/WR_TEHttpRequest.cs" />
       <File FileName="Controllers/WR_TEController.cs" />
       <File FileName="Controllers/RBController.cs" />
-      <File FileName="Controllers/QBController.cs" Line="26" Column="45" />
-      <File FileName="Models/QB.cs" Line="37" Column="19" />
+      <File FileName="Controllers/QBController.cs" />
       <File FileName="Models/DefenseHttpRequest.cs" />
       <File FileName="Models/DefenseHttpResponse.cs" />
       <File FileName="Controllers/DefenseController.cs" Line="28" Column="8" />
       <File FileName="Services/IDefenseService.cs" />
       <File FileName="Services/DefenseService.cs" />
       <File FileName="Models/QBHttpRequest.cs" />
-      <File FileName="Models/Defense.cs" Line="21" Column="40" />
+      <File FileName="Models/Defense.cs" />
       <File FileName="Services/WR_TEService.cs" />
       <File FileName="Services/QBService.cs" />
-      <File FileName="Program.cs" Line="52" Column="24" />
+      <File FileName="Program.cs" />
       <File FileName="Services/IQBService.cs" />
       <File FileName="Services/IRBService.cs" />
       <File FileName="Services/RBService.cs" />
-      <File FileName="Models/RB.cs" Line="19" Column="19" />
+      <File FileName="Models/RB.cs" />
       <File FileName="Models/RBHttpRequest.cs" />
       <File FileName="Models/QBHttpResponse.cs" />
       <File FileName="Services/IWR_TEService.cs" />
-      <File FileName="Models/WR_TE.cs" Line="20" Column="41" />
+      <File FileName="Models/WR_TE.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -45,9 +44,7 @@
           <Node name="Pmt.FantalyticApi" expanded="True">
             <Node name="Pmt.FantalyticApi" expanded="True">
               <Node name="Dependencies" expanded="True" />
-              <Node name="Controllers" expanded="True">
-                <Node name="DefenseController.cs" selected="True" />
-              </Node>
+              <Node name="Controllers" expanded="True" />
               <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True" />
             </Node>

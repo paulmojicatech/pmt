@@ -10,6 +10,7 @@ export function parseQBStats(qbStats: IQBStats[], year: number, week = 0): QB[] 
       tds: stat.tds.value,
       passingYdsPerAttempt: stat.passingYdsPerAttempt.value,
       ints: stat.ints.value,
+      imageUrl: stat.imageUrl.value
     } as QB;
   });
 }
@@ -23,7 +24,8 @@ export function parseRbStats(rbStats: IRBStats[], year: number, week = 0): RB[] 
       rushingYds: stat.rushingYds.value ?? 0,
       rushAttempts: stat.rushAttempts.value ?? 0,
       rushingTds: stat.rushingTds.value ?? 0,
-      rushing20Yds: stat.rushing20Yds.value ?? 0
+      rushing20Yds: stat.rushing20Yds.value ?? 0,
+      imageUrl: stat.imageUrl.value
     };
     return rb;
   })
@@ -33,6 +35,7 @@ export function parseRecevingStats(wrStats: IWRTEStats[], year: number, week = 0
   return wrStats.map(stat => {
     const rec: Receivers = {
       player: stat.player.value ?? '',
+      imageUrl: stat.imageUrl.value,
       year,
       week,
       receptions: stat.receptions.value ?? 0,

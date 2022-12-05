@@ -6,6 +6,12 @@ export const RB_STATS = {
             statName: 'd3-o-player-fullname'
         }
     },
+    imageUrl: {
+        statSelector: {
+            statColIndex: 0,
+            statName: 'img-responsive'
+        }
+    },
     rushingYds: {
         statSelector: {
             statColIndex: 1,
