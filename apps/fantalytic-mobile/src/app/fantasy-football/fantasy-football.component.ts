@@ -66,7 +66,7 @@ export class FantasyFootballComponent implements OnInit {
   selectedYear$ = this._store.select(getSelectedYear);
   qbs$ = combineLatest([this._store.select(getQbs), this.selectedYear$]).pipe(
     filter(([qbs]) => !!qbs),
-    map(([qbs, year]) => qbs.filter(qb => qb.year === year).map(qb => ({player: qb.player, stat: qb.passingYds, id: qb.id})).sort((prev, next) => {
+    map(([qbs, year]) => qbs.filter(qb => qb.year === year).map(qb => ({player: qb.player, stat: qb.passingYds, id: qb.id, imgUrl: qb.imageUrl})).sort((prev, next) => {
         if (prev.stat > next.stat) {
           return -1;
         }
@@ -75,7 +75,7 @@ export class FantasyFootballComponent implements OnInit {
   );
   rbs$ = combineLatest([this._store.select(getRbs), this.selectedYear$]).pipe(
     filter(([rbs]) => !!rbs),
-    map(([rbs, year]) => rbs.filter(rb => rb.year === year).map(rb => ({player: rb.player, stat: rb.rushingYds, id: rb.id})).sort((prev, next) => {
+    map(([rbs, year]) => rbs.filter(rb => rb.year === year).map(rb => ({player: rb.player, stat: rb.rushingYds, id: rb.id, imgUrl: rb.imageUrl})).sort((prev, next) => {
         if (prev.stat > next.stat) {
           return -1;
         }
@@ -85,7 +85,7 @@ export class FantasyFootballComponent implements OnInit {
 
   recs$ = combineLatest([this._store.select(getReceivers), this.selectedYear$]).pipe(
     filter(([recs]) => !!recs),
-    map(([recs, year]) => recs.filter(rec => rec.year === year).map(rec => ({player: rec.player, stat: rec.receivingYds, id: rec.id})).sort((prev, next) => {
+    map(([recs, year]) => recs.filter(rec => rec.year === year).map(rec => ({player: rec.player, stat: rec.receivingYds, id: rec.id, imgUrl: rec.imageUrl})).sort((prev, next) => {
         if (prev.stat > next.stat) {
           return -1;
         }
@@ -95,7 +95,7 @@ export class FantasyFootballComponent implements OnInit {
 
   def$ = combineLatest([this._store.select(getDefenses), this.selectedYear$]).pipe(
     filter(([def]) => !!def),
-    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed + def.rushYdsAllowed, id: def.id})).sort((prev, next) => {
+    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed + def.rushYdsAllowed, id: def.id, imgUrl: def.imageUrl})).sort((prev, next) => {
         if (prev.stat < next.stat) {
           return -1;
         }
