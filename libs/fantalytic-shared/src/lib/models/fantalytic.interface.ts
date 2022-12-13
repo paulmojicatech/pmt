@@ -178,6 +178,7 @@ export interface IDefPassingStats {
 }
 
 export interface QB {
+    id?: string;
     player: string;
     year: number;
     passingYds: number;
@@ -189,6 +190,7 @@ export interface QB {
 }
 
 export interface RB {
+    id?: string;
     player: string;
     rushingYds: number;
     rushAttempts: number;
@@ -200,6 +202,7 @@ export interface RB {
 }
 
 export interface Receivers {
+    id?: string;
     player: string;
     receptions: number;
     receivingYds: number;
@@ -213,6 +216,7 @@ export interface Receivers {
 }
 
 export interface Defense {
+    id?: string;
     team: string;
     rushYdsAllowed: number;
     ydsPerCarry: number;
