@@ -1,20 +1,26 @@
 <ion-content>
     <section class="tabs-container">
         <div class="year-container">
-            <select>
+            <select (change)="updateSelectedYear($event)">
                 <option *ngFor="let year of AVAILABLE_YEARS" [value]="year" [selected]="year === (selectedYear$ | async)">{{year}}</option>                
+            </select>
+            <select (change)="handleStatTypeChanged($event)" *ngIf="availableStatsSub$ | async as availableStats">
+                <option *ngFor="let statType of availableStats" [value]="statType">{{statType}}</option>
             </select>
         </div>
         <ion-accordion-group (ionChange)="handleAccordionStateChange($event)">
-            <ion-accordion *ngFor="let pos of positionsMap; let i = index;" [value]="pos.value">
+            <ion-accordion *ngFor="let pos of positionsMapSub$ | async; let i = index;" [value]="pos.value">
                 <ion-item slot="header">
                     <ion-label>{{pos.label}}</ion-label>
                 </ion-item>
                 <div class="pos-container" slot="content">
                     <ng-template #positionTable let-positionData="positionData">
                         <div class="table-header">
-                            <span class="ion-padding">{{positionData.header[0]}}</span>
-                            <span class="ion-padding">{{positionData.header[1]}}</span>
+                            <span *ngIf="pos.label !== 'Defenses'; else team" class="ion-padding">Player</span>
+                            <ng-template #team>
+                                <span class="ion-padding">Team</span>
+                            </ng-template>
+                            <span class="ion-padding">{{currentStatHeaderSub$ | async}}</span>
                         </div>
                         
                         <ion-item *ngFor="let stat of positionData.stats; trackBy: statTrackByFn;">

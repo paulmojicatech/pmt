@@ -1,11 +1,13 @@
+/* eslint-disable quote-props */
 /* eslint-disable max-len */
 import { CommonModule } from '@angular/common';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
-import { combineLatest, filter, map, Observable, take } from 'rxjs';
-import { loadDefenses, loadQbs, loadRbs, loadReceivers } from './ngrx/actions/fantasy-football.actions';
-import { getDefenses, getQbs, getRbs, getReceivers, getSelectedYear } from './ngrx/selectors/fantasy-football.selectors';
+import { BehaviorSubject, combineLatest, filter, map, Observable, Subject, take, takeUntil } from 'rxjs';
+import { PositionTypes } from '../../../../../libs/fantalytic-shared/src';
+import { loadDefenses, loadQbs, loadRbs, loadReceivers, setPositionType, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
+import { getDefenses, getPosition, getQbs, getRbs, getReceivers, getSelectedYear } from './ngrx/selectors/fantasy-football.selectors';
 
 @Component({
   selector: 'pmt-fantasy-football',
@@ -14,131 +16,159 @@ import { getDefenses, getQbs, getRbs, getReceivers, getSelectedYear } from './ng
   templateUrl: './fantasy-football.component.html',
   styleUrls: ['./fantasy-football.component.scss'],
 })
-export class FantasyFootballComponent implements OnInit {
+export class FantasyFootballComponent implements OnInit, OnDestroy {
 
 
   readonly AVAILABLE_YEARS = [2018,2019,2020,2021,2022];
 
-  positionsMap: {label: string; ctx: {positionData: {header: string[]; stats: any[]}}; value: string}[] = [
+  positionsMapSub$ = new BehaviorSubject<{label: string; ctx: {positionData: {stats: any[]}}; value: string; availableStats: {[key: string]: string}}[]>([
     {
       label: 'QBs',
       ctx: {
         positionData: {
-          header: ['Passing', 'Yds'],
           stats: []
         },
       },
-      value: 'qb'
+      value: 'qb',
+      availableStats: {
+        'Passing Yds': 'passingYds',
+        'Passing TDs': 'tds',
+        'Interceptions': 'ints',
+        'Passing Yds Per Attempt': 'passingYdsPerAttempt'
+      }
     },
     {
       label: 'RBs',
       ctx: {
         positionData: {
-          header: ['Rushing', 'Yds'],
           stats: []
         },
       },
-      value: 'rb'
+      value: 'rb',
+      availableStats: {
+        'Rushing Yds': 'rushingYds',
+        'Rushing Attempts': 'rushAttempts',
+        'Rushing TDs': 'rushingTds',
+        '20+ Runs': 'rushing20Yds'
+      }
     },
     {
       label: 'Receivers',
       ctx: {
         positionData: {
-          header: ['Receiving', 'Yds'],
           stats: []
         }
       },
-      value: 'rec'
+      value: 'rec',
+      availableStats: {
+        'Receiving Yds': 'receivingYds',
+        'Receptions': 'receptions',
+        'Receiving TDs': 'receivingTds',
+        'Targets': 'receivingTargets',
+        '20+ Catches': 'receiving20Plus',
+        '40+ Catches': 'receiving40Plus'
+      }
     },
     {
       label: 'Defenses',
       ctx: {
         positionData: {
-          header: ['Defense', 'Yds Allowed'],
           stats: []
         },
       },
-      value: 'def'
+      value: 'def',
+      availableStats: {
+        'Rushing Yds Allowed': 'rushYdsAllowed',
+        'Rushing TDs Allowed': 'rushTdsAllowed',
+        'Completion Pct Allowed': 'completionPctAllowed',
+        'Passing Yds Allowed': 'passYdsAllowed',
+        'Interceptions': 'ints',
+        'Sacks': 'sacks'
+      }
     },
-  ];
+  ]);
 
+  availableStatsSub$ = new BehaviorSubject<string[]>(['Passing Yds', 'Passing TDs', 'Interceptions', 'Passing Yds Per Attempt']);
+  currentStatHeaderSub$ = new BehaviorSubject<string>('Passing Yds');
   private _store = inject(Store);
+
   selectedYear$ = this._store.select(getSelectedYear);
-  qbs$ = combineLatest([this._store.select(getQbs), this.selectedYear$]).pipe(
-    filter(([qbs]) => !!qbs),
-    map(([qbs, year]) => qbs.filter(qb => qb.year === year).map(qb => ({player: qb.player, stat: qb.passingYds, id: qb.id, imgUrl: qb.imageUrl})).sort((prev, next) => {
-        if (prev.stat > next.stat) {
-          return -1;
-        }
-        return 1;
-      }))
-  );
-  rbs$ = combineLatest([this._store.select(getRbs), this.selectedYear$]).pipe(
-    filter(([rbs]) => !!rbs),
-    map(([rbs, year]) => rbs.filter(rb => rb.year === year).map(rb => ({player: rb.player, stat: rb.rushingYds, id: rb.id, imgUrl: rb.imageUrl})).sort((prev, next) => {
-        if (prev.stat > next.stat) {
-          return -1;
-        }
-        return 1;
-      }))
-  );
+  private _currentPosition$ = this._store.select(getPosition);
+  qbs$ = this._store.select(getQbs).pipe(filter(qbs => !!qbs));
+  rbs$ = this._store.select(getRbs).pipe(filter(rbs => !!rbs));
+  recs$ = this._store.select(getReceivers).pipe(filter(recs => !!recs));
+  def$ = this._store.select(getDefenses).pipe(filter(defs => !!defs));
 
-  recs$ = combineLatest([this._store.select(getReceivers), this.selectedYear$]).pipe(
-    filter(([recs]) => !!recs),
-    map(([recs, year]) => recs.filter(rec => rec.year === year).map(rec => ({player: rec.player, stat: rec.receivingYds, id: rec.id, imgUrl: rec.imageUrl})).sort((prev, next) => {
-        if (prev.stat > next.stat) {
-          return -1;
-        }
-        return 1;
-      }))
-  );
-
-  def$ = combineLatest([this._store.select(getDefenses), this.selectedYear$]).pipe(
-    filter(([def]) => !!def),
-    map(([defs, year]) => defs.filter(def => def.year === year).map(def => ({player: def.team, stat: def.passYdsAllowed + def.rushYdsAllowed, id: def.id, imgUrl: def.imageUrl})).sort((prev, next) => {
-        if (prev.stat < next.stat) {
-          return -1;
-        }
-        return 1;
-      }))
-  );
-
+  private _onDestroySub$ = new Subject<void>();
 
   ngOnInit(): void {
     this._store.dispatch(loadQbs());
     this._store.dispatch(loadRbs());
     this._store.dispatch(loadReceivers());
     this._store.dispatch(loadDefenses());
-    this.qbs$.pipe(take(1)).subscribe(stats => {
-      this.positionsMap[0] = {...this.positionsMap[0], ctx: {positionData: {...this.positionsMap[0].ctx.positionData, stats}}};
+    combineLatest([this.selectedYear$, this.qbs$, this.rbs$, this.recs$, this.def$, this._currentPosition$, this.currentStatHeaderSub$]).pipe(
+      takeUntil(this._onDestroySub$)
+    ).subscribe(([year, qbs, rbs, recs, defs, position, currentStatHeader]) => {
+      switch (position) {
+        case PositionTypes.QB: {
+          const updatedState = this.getUpdatedPositionStats(qbs, year, currentStatHeader, 0);
+          this.positionsMapSub$.next(updatedState);
+          break;
+        }
+        case PositionTypes.RB: {
+          const updatedState = this.getUpdatedPositionStats(rbs, year, currentStatHeader, 1);
+          this.positionsMapSub$.next(updatedState);
+          break;
+        }
+        case PositionTypes.WR: {
+          const updatedState = this.getUpdatedPositionStats(recs, year, currentStatHeader, 2);
+          this.positionsMapSub$.next(updatedState);
+          break;
+        }
+        case PositionTypes.DEF: {
+          const updatedState = this.getUpdatedPositionStats(defs, year, currentStatHeader, 3);
+          this.positionsMapSub$.next(updatedState);
+          break;
+        }
+        default:
+          break;
+      }
     });
+  }
+
+  ngOnDestroy(): void {
+    this._onDestroySub$.next();
   }
 
   handleAccordionStateChange(ev: any): void {
     switch (ev.detail.value) {
+      case 'qb': {
+        this._store.dispatch(setPositionType(PositionTypes.QB));
+        const updatedStats = Object.keys(this.positionsMapSub$.getValue()[0].availableStats);
+        this.availableStatsSub$.next(updatedStats);
+        this.currentStatHeaderSub$.next('Passing Yds');
+        break;
+      }
       case 'rb': {
-        if (!this.positionsMap[1].ctx.positionData.stats.length) {
-          this.rbs$.pipe(take(1)).subscribe(stats => {
-            this.positionsMap[1] = {...this.positionsMap[1], ctx: {positionData: {...this.positionsMap[1].ctx.positionData, stats}}};
-          });
-          break;
-        }
+        this._store.dispatch(setPositionType(PositionTypes.RB));
+        const updatedStats = Object.keys(this.positionsMapSub$.getValue()[1].availableStats);
+        this.availableStatsSub$.next(updatedStats);
+        this.currentStatHeaderSub$.next('Rushing Yds');
+        break;
       }
       case 'rec': {
-        if (!this.positionsMap[2].ctx.positionData.stats.length) {
-          this.recs$.pipe(take(1)).subscribe(stats => {
-            this.positionsMap[2] = {...this.positionsMap[2], ctx: {positionData: {...this.positionsMap[2].ctx.positionData, stats}}};
-          });
-          break;
-        }
+        this._store.dispatch(setPositionType(PositionTypes.WR));
+        const updatedStats = Object.keys(this.positionsMapSub$.getValue()[2].availableStats);
+        this.availableStatsSub$.next(updatedStats);
+        this.currentStatHeaderSub$.next('Receiving Yds');
+        break;
       }
       case 'def': {
-        if (!this.positionsMap[3].ctx.positionData.stats.length) {
-          this.def$.pipe(take(1)).subscribe(stats => {
-            this.positionsMap[3] = {...this.positionsMap[3], ctx: {positionData: {...this.positionsMap[3].ctx.positionData, stats}}};
-          });
-          break;
-        }
+        this._store.dispatch(setPositionType(PositionTypes.DEF));
+        const updatedStats = Object.keys(this.positionsMapSub$.getValue()[3].availableStats);
+        this.availableStatsSub$.next(updatedStats);
+        this.currentStatHeaderSub$.next('Rushing Yds Allowed');
+        break;
       }
       default:
         break;
@@ -147,6 +177,42 @@ export class FantasyFootballComponent implements OnInit {
 
   statTrackByFn(index: number, stat: any): string {
     return stat.id ?? stat.player;
+  }
+
+  updateSelectedYear(event: Event): void {
+    const year = +(event.target as HTMLSelectElement).value;
+    this._store.dispatch(updateYearFilter(year));
+  }
+
+  handleStatTypeChanged(event: Event): void {
+    const statType = (event.target as HTMLSelectElement).value;
+    this.currentStatHeaderSub$.next(statType);
+
+  }
+
+  private getUpdatedPositionStats(positionData: any[], year: number, currentStatHeader: string, index: number): {label: string; ctx: {positionData: {stats: any[]}}; value: string; availableStats: {[key: string]: string}}[] {
+    const currentPositionMapState = this.positionsMapSub$.getValue();
+    const updatedPositionMap = {
+      ...currentPositionMapState[index],
+      ctx: {
+        positionData: {
+          stats: positionData.filter(pos => pos.year === year).map(pos => (
+            {
+              player: pos.player,
+              imgUrl: pos.imageUrl,
+              stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
+            }
+          )).sort((prev, next) => {
+            if (prev.stat > next.stat) {
+              return -1;
+            }
+            return 1;
+          })
+        }
+      }
+    };
+    currentPositionMapState[index] = updatedPositionMap;
+    return currentPositionMapState;
   }
 
 }
