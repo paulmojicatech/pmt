@@ -1,0 +1,29 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header>
+<ion-content *ngIf="player$ | async as player">
+
+    <ion-card>
+        <img [src]="player.imageUrl" />
+        <ion-card-header>{{player.player}}</ion-card-header>
+    </ion-card>
+
+    <ion-card-content>
+        <ion-grid>
+            <ion-row>
+                <ion-col *ngFor="let stat of player.stats">
+                    {{stat.text}}
+                </ion-col>
+            </ion-row>
+            <ion-row>
+                <ion-col *ngFor="let stat of player.stats">
+                    {{player[stat.key]}}
+                </ion-col>
+            </ion-row>
+        </ion-grid>
+    </ion-card-content>
+</ion-content>
