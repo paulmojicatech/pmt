@@ -27,7 +27,10 @@
                             <div class="stats-container">
                                 <span class="player-container">
                                     <ion-avatar>
-                                        <img [src]="stat.imgUrl" />
+                                        <img *ngIf="stat.imgUrl && stat.imgUrl !== 'undefined'; else noImage" [src]="stat.imgUrl" />
+                                        <ng-template #noImage>
+                                            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+                                        </ng-template>
                                     </ion-avatar>
                                     <span>{{stat.player}}</span>
                                 </span>

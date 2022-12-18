@@ -206,7 +206,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
             {
               id: pos.id,
               player: pos.player,
-              imgUrl: pos.imageUrl,
+              imgUrl: pos.imageUrl ?? 'https://ionicframework.com/docs/img/demos/avatar.svg',
               stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
             }
           )).sort((prev, next) => {
