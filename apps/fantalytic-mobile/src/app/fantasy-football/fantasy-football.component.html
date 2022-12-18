@@ -23,7 +23,7 @@
                             <span class="ion-padding">{{currentStatHeaderSub$ | async}}</span>
                         </div>
                         
-                        <ion-item *ngFor="let stat of positionData.stats; trackBy: statTrackByFn;">
+                        <ion-item *ngFor="let stat of positionData.stats; trackBy: statTrackByFn;" (click)="handlePlayerSelected(stat.id)">
                             <div class="stats-container">
                                 <span class="player-container">
                                     <ion-avatar>

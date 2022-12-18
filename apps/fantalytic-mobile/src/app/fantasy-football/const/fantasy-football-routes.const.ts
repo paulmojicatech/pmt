@@ -18,6 +18,10 @@ export const fantasyFootballRoutes: Route[] = [
           ]
     },
     {
+      path: 'player-details/:id',
+      loadComponent: () => import('../player-detail/player-detail.component').then(c => c.PlayerDetailComponent)
+    },
+    {
         path: '',
         pathMatch: 'full',
         redirectTo: 'fantasy-football'

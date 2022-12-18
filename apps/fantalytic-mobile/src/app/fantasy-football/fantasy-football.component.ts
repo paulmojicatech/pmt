@@ -2,6 +2,7 @@
 /* eslint-disable max-len */
 import { CommonModule } from '@angular/common';
 import { Component, inject, OnDestroy, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, filter, map, Observable, Subject, take, takeUntil } from 'rxjs';
@@ -91,6 +92,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
   availableStatsSub$ = new BehaviorSubject<string[]>(['Passing Yds', 'Passing TDs', 'Interceptions', 'Passing Yds Per Attempt']);
   currentStatHeaderSub$ = new BehaviorSubject<string>('Passing Yds');
   private _store = inject(Store);
+  private _router = inject(Router);
 
   selectedYear$ = this._store.select(getSelectedYear);
   private _currentPosition$ = this._store.select(getPosition);
@@ -190,6 +192,10 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
 
   }
 
+  handlePlayerSelected(playerId: string): void {
+    this._router.navigate(['tabs', 'fantasy-football', `player-details`, playerId]);
+  }
+
   private getUpdatedPositionStats(positionData: any[], year: number, currentStatHeader: string, index: number): {label: string; ctx: {positionData: {stats: any[]}}; value: string; availableStats: {[key: string]: string}}[] {
     const currentPositionMapState = this.positionsMapSub$.getValue();
     const updatedPositionMap = {
@@ -198,6 +204,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
         positionData: {
           stats: positionData.filter(pos => pos.year === year).map(pos => (
             {
+              id: pos.id,
               player: pos.player,
               imgUrl: pos.imageUrl,
               stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
