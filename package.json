@@ -15,6 +15,7 @@
     "docker-deploy-fantalytic-api": "docker build -t paulmojicatech/fantalytic-api -f fantalytic-api-dockerfile . && docker push paulmojicatech/fantalytic-api",
     "fantalytic-web-scraper-cron": "nx build --project fantalytic-web-scraper-cron && cd dist/apps/fantalytic-web-scraper-cron && node ./main.js",
     "fantalytic-mobile-build-sync-open-ios": "rm -rf apps/fantalytic-mobile/www/* && nx build --project=fantalytic-mobile --configuration prod && cp -a dist/apps/fantalytic-mobile/* apps/fantalytic-mobile/www && cd apps/fantalytic-mobile && cap sync ios && cap open ios && cd ../..",
+    "fantalytic-mobile-build-sync-open-android": "rm -rf apps/fantalytic-mobile/www/* && nx build --project=fantalytic-mobile --configuration prod && cp -a dist/apps/fantalytic-mobile/* apps/fantalytic-mobile/www && cd apps/fantalytic-mobile && cap sync android && cap open android && cd ../..",
     "docker-deploy-fantalytic-web-scraper-cron": "nx build --project fantalytic-web-scraper-cron && docker build -t paulmojicatech/fantalytic-web-scraper-cron-image -f fantalytic-web-scraper-cron-image-dockerfile . && docker push paulmojicatech/fantalytic-web-scraper-cron-image"
   },
   "private": true,

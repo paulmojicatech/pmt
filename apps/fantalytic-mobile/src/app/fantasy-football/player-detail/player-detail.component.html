@@ -1,14 +1,10 @@
-<ion-header>
-    <ion-toolbar>
-        <ion-buttons slot="start">
-            <ion-back-button></ion-back-button>
-        </ion-buttons>
-    </ion-toolbar>
-</ion-header>
 <ion-content *ngIf="player$ | async as player">
 
     <ion-card>
-        <img [src]="player.imageUrl" />
+        <img *ngIf="player.imageUrl && player.imageUrl !== 'undefined'; else noImage" [src]="player.imageUrl" />
+        <ng-template #noImage>
+            <img src="https://ionicframework.com/docs/img/demos/avatar.svg" />
+        </ng-template>
         <ion-card-header>{{player.player}}</ion-card-header>
     </ion-card>
 

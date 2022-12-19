@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnDestroy } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ActivatedRoute } from '@angular/router';
 import { combineLatest, EMPTY, map, shareReplay, switchMap } from 'rxjs';
@@ -8,6 +8,7 @@ import { getDefenses, getPosition, getQbs, getRbs, getReceivers } from '../ngrx/
 import { PositionTypes } from '../../../../../../libs/fantalytic-shared/src';
 import { IonicModule } from '@ionic/angular';
 import { FANTASY_FOOTBALL_STAT_HEADER_MAP } from '../const/fantasy-football.const';
+import { setHasBackButton } from 'src/app/ngrx/actions/shared.actions';
 
 @Component({
   selector: 'pmt-player-detail',
@@ -16,7 +17,7 @@ import { FANTASY_FOOTBALL_STAT_HEADER_MAP } from '../const/fantasy-football.cons
   templateUrl: './player-detail.component.html',
   styleUrls: ['./player-detail.component.scss'],
 })
-export class PlayerDetailComponent {
+export class PlayerDetailComponent implements OnDestroy {
 
   private _route = inject(ActivatedRoute);
   private _store = inject(Store);
@@ -61,5 +62,9 @@ export class PlayerDetailComponent {
       };
     })
   );
+
+  ngOnDestroy(): void {
+    this._store.dispatch(setHasBackButton(false));
+  }
 
 }

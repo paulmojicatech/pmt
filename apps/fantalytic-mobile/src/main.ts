@@ -12,6 +12,7 @@ import { TopicEffects } from './app/topics/ngrx/effects/topics.effects';
 import { topicsReducer } from './app/topics/ngrx/reducer/topics.reducer';
 import { environment } from './environments/environment';
 import { IonicModule } from '@ionic/angular';
+import { sharedReducer } from './app/ngrx/reducers/shared.reducer';
 
 if (environment.production) {
   enableProdMode();
@@ -53,6 +54,7 @@ bootstrapApplication(
         RouterModule.forRoot(routes),
         IonicModule.forRoot(),
         StoreModule.forRoot({}),
+        StoreModule.forFeature('shared', sharedReducer),
         EffectsModule.forRoot([]),
         StoreDevtoolsModule.instrument({}),
         HttpClientModule,
