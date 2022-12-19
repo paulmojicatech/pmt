@@ -1,6 +1,11 @@
 <ion-header>
     <ion-toolbar>
-        <ion-title>Fantalytic.io</ion-title>
+        <ion-buttons *ngIf="hasBackButton$ | async" slot="start">
+            <ion-button (click)="goBack()">
+                <ion-icon slot="start" name="chevron-back-outline"></ion-icon>
+            </ion-button>
+        </ion-buttons>
+        <ion-title>Fantalytic.io</ion-title>        
         <ion-buttons slot="end">
             <ion-button id="click-trigger">
                 <ion-icon slot="icon-only" name="american-football-outline"></ion-icon>

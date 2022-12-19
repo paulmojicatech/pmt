@@ -7,6 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
 import { BehaviorSubject, combineLatest, filter, map, Observable, Subject, take, takeUntil } from 'rxjs';
 import { PositionTypes } from '../../../../../libs/fantalytic-shared/src';
+import { setHasBackButton } from '../ngrx/actions/shared.actions';
 import { loadDefenses, loadQbs, loadRbs, loadReceivers, setPositionType, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
 import { getDefenses, getPosition, getQbs, getRbs, getReceivers, getSelectedYear } from './ngrx/selectors/fantasy-football.selectors';
 
@@ -193,6 +194,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
   }
 
   handlePlayerSelected(playerId: string): void {
+    this._store.dispatch(setHasBackButton(true));
     this._router.navigate(['tabs', 'fantasy-football', `player-details`, playerId]);
   }
 
