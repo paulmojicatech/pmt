@@ -5,7 +5,7 @@ import { Component, inject, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { IonicModule } from '@ionic/angular';
 import { Store } from '@ngrx/store';
-import { BehaviorSubject, combineLatest, filter, map, Observable, Subject, take, takeUntil } from 'rxjs';
+import { BehaviorSubject, combineLatest, filter, Subject, takeUntil } from 'rxjs';
 import { PositionTypes } from '../../../../../libs/fantalytic-shared/src';
 import { setHasBackButton } from '../ngrx/actions/shared.actions';
 import { loadDefenses, loadQbs, loadRbs, loadReceivers, setPositionType, updateYearFilter } from './ngrx/actions/fantasy-football.actions';
@@ -129,7 +129,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
           break;
         }
         case PositionTypes.DEF: {
-          const updatedState = this.getUpdatedPositionStats(defs, year, currentStatHeader, 3);
+          const updatedState = this.getUpdatedPositionStatsForDefense(defs, year, currentStatHeader, 3);
           this.positionsMapSub$.next(updatedState);
           break;
         }
@@ -200,28 +200,72 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
 
   private getUpdatedPositionStats(positionData: any[], year: number, currentStatHeader: string, index: number): {label: string; ctx: {positionData: {stats: any[]}}; value: string; availableStats: {[key: string]: string}}[] {
     const currentPositionMapState = this.positionsMapSub$.getValue();
+    const allStats = positionData.filter(pos => pos.year === year).map(pos => (
+      {
+        id: pos.id,
+        player: pos.player,
+        imgUrl: pos.imageUrl ?? 'https://ionicframework.com/docs/img/demos/avatar.svg',
+        stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
+      }
+    )).sort((prev, next) => {
+      if (prev.stat > next.stat) {
+        return -1;
+      }
+      return 1;
+    });
+    const stats = [];
+    for (let i = 0; i < 15; i++) {
+      stats.push(allStats[i]);
+    }
     const updatedPositionMap = {
       ...currentPositionMapState[index],
       ctx: {
         positionData: {
-          stats: positionData.filter(pos => pos.year === year).map(pos => (
-            {
-              id: pos.id,
-              player: pos.player,
-              imgUrl: pos.imageUrl ?? 'https://ionicframework.com/docs/img/demos/avatar.svg',
-              stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
-            }
-          )).sort((prev, next) => {
-            if (prev.stat > next.stat) {
-              return -1;
-            }
-            return 1;
-          })
+          stats
         }
       }
     };
     currentPositionMapState[index] = updatedPositionMap;
     return currentPositionMapState;
   }
+
+  private getUpdatedPositionStatsForDefense(positionData: any[], year: number, currentStatHeader: string, index: number): {label: string; ctx: {positionData: {stats: any[]}}; value: string; availableStats: {[key: string]: string}}[] {
+    const currentPositionMapState = this.positionsMapSub$.getValue();
+    const allStats = positionData.filter(pos => pos.year === year).map(pos => (
+      {
+        id: pos.id,
+        player: pos.player,
+        imgUrl: pos.imageUrl ?? 'https://ionicframework.com/docs/img/demos/avatar.svg',
+        stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
+      }
+    )).sort((prev, next) => {
+      if (currentStatHeader === 'Intersections' || currentStatHeader === 'Sacks') {
+        if (prev.stat > next.stat) {
+          return -1;
+        }
+        return 1;
+      } else {
+        if (prev.stat < next.stat) {
+          return -1;
+        }
+        return 1;
+      }
+    });
+    const stats = [];
+    for (let i = 0; i < 15; i++) {
+      stats.push(allStats[i]);
+    }
+    const updatedPositionMap = {
+      ...currentPositionMapState[index],
+      ctx: {
+        positionData: {
+          stats
+        }
+      }
+    };
+    currentPositionMapState[index] = updatedPositionMap;
+    return currentPositionMapState;
+  }
+
 
 }
