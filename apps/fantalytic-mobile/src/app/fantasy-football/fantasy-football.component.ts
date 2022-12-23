@@ -239,7 +239,7 @@ export class FantasyFootballComponent implements OnInit, OnDestroy {
         stat: +pos[currentPositionMapState[index].availableStats[currentStatHeader]]
       }
     )).sort((prev, next) => {
-      if (currentStatHeader === 'Intersections' || currentStatHeader === 'Sacks') {
+      if (currentStatHeader === 'Interceptions' || currentStatHeader === 'Sacks') {
         if (prev.stat > next.stat) {
           return -1;
         }
