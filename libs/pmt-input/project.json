@@ -1,4 +1,5 @@
 {
+  "name": "pmt-input",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/pmt-input/src",
@@ -6,9 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/pmt-input"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/pmt-input"],
       "options": {
         "jestConfig": "libs/pmt-input/jest.config.js",
         "passWithNoTests": true
