@@ -1,0 +1,83 @@
+{
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/grocery-list/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nrwl/web:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "compiler": "babel",
+        "outputPath": "dist/apps/grocery-list",
+        "index": "apps/grocery-list/src/index.html",
+        "baseHref": "/",
+        "main": "apps/grocery-list/src/main.tsx",
+        "polyfills": "apps/grocery-list/src/polyfills.ts",
+        "tsConfig": "apps/grocery-list/tsconfig.app.json",
+        "assets": [
+          "apps/grocery-list/src/favicon.ico",
+          "apps/grocery-list/src/assets"
+        ],
+        "styles": ["apps/grocery-list/src/styles.scss"],
+        "scripts": [],
+        "webpackConfig": "@nrwl/react/plugins/webpack"
+      },
+      "configurations": {
+        "development": {
+          "extractLicenses": false,
+          "optimization": false,
+          "sourceMap": true,
+          "vendorChunk": true
+        },
+        "production": {
+          "fileReplacements": [
+            {
+              "replace": "apps/grocery-list/src/environments/environment.ts",
+              "with": "apps/grocery-list/src/environments/environment.prod.ts"
+            }
+          ],
+          "optimization": true,
+          "outputHashing": "all",
+          "sourceMap": false,
+          "namedChunks": false,
+          "extractLicenses": true,
+          "vendorChunk": false
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nrwl/web:dev-server",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "grocery-list:build",
+        "hmr": true
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "grocery-list:build:development"
+        },
+        "production": {
+          "buildTarget": "grocery-list:build:production",
+          "hmr": false
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/grocery-list/**/*.{ts,tsx,js,jsx}"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/apps/grocery-list"],
+      "options": {
+        "jestConfig": "apps/grocery-list/jest.config.ts",
+        "passWithNoTests": true
+      }
+    }
+  },
+  "tags": []
+}
