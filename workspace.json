@@ -16,6 +16,7 @@
     "marvintherapy-public": "apps/marvintherapy-public",
     "marvintherapy-public-e2e": "apps/marvintherapy-public-e2e",
     "pmt-autocomplete": "libs/pmt-autocomplete",
+    "pmt-calendar": "libs/pmt-calendar",
     "pmt-common-angular-components": "libs/pmt-common-angular-components",
     "pmt-input": "libs/pmt-input",
     "pmt-simple-form": "libs/pmt-simple-form"

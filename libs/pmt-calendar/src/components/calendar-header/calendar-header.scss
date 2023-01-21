@@ -1,0 +1,22 @@
+
+.calendar-header-container {
+    display: inline-flex;
+    justify-content: center;
+    justify-self: center;
+    width: 100%;
+    border: 1px solid #d3d3d3;
+    border-radius: 4px;
+    span {
+        padding: 1rem;
+
+    }
+    button {
+        background-color: #fff;
+        padding: 1rem;
+        font-size: 1.25rem;
+        &.selected {
+            background-color: blue;
+            color: #fff;
+        }
+    }
+}

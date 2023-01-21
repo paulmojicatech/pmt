@@ -1,7 +1,16 @@
 {
+  "plugins": [],
   "npmScope": "pmt",
-  "affected": {
-    "defaultBase": "main"
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
+  },
+  "targetDefaults": {
+    "build": {
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
   },
   "tasksRunnerOptions": {
     "default": {
@@ -12,7 +21,12 @@
       }
     }
   },
-  "plugins": [],
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nxext/stencil"
+  },
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",
@@ -48,17 +62,5 @@
       }
     }
   },
-  "defaultProject": "fantalytic-public",
-  "$schema": "./node_modules/nx/schemas/nx-schema.json",
-  "targetDefaults": {
-    "build": {
-      "dependsOn": ["^build"],
-      "inputs": ["production", "^production"]
-    }
-  },
-  "namedInputs": {
-    "default": ["{projectRoot}/**/*", "sharedGlobals"],
-    "sharedGlobals": [],
-    "production": ["default"]
-  }
+  "defaultProject": "fantalytic-public"
 }

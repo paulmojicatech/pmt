@@ -23,6 +23,9 @@
         "libs/marvel-shared-components/src/index.ts"
       ],
       "@pmt/pmt-autocomplete": ["libs/pmt-autocomplete/src/index.ts"],
+      "@pmt/pmt-calendar": ["dist/libs/pmt-calendar"],
+      "@pmt/pmt-calendar/*": ["dist/libs/pmt-calendar/dist/components/*"],
+      "@pmt/pmt-calendar/loader": ["dist/libs/pmt-calendar/loader"],
       "@pmt/pmt-common-angular-components": [
         "libs/pmt-common-angular-components/src/index.ts"
       ],

@@ -1,0 +1,13 @@
+:host {
+  display: block;
+}
+
+.container {
+  padding: 1rem;
+  display: inline-flex;
+  justify-content: center;
+  width: 100vw;
+  pmt-calendar-header {
+    width: 100%;
+  }
+}
