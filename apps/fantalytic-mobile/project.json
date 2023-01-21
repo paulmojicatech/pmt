@@ -1,4 +1,5 @@
 {
+  "name": "fantalytic-mobile",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/fantalytic-mobile/src",
@@ -6,9 +7,7 @@
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/fantalytic-mobile",
         "index": "apps/fantalytic-mobile/src/index.html",
@@ -98,9 +97,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/fantalytic-mobile"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/fantalytic-mobile"],
       "options": {
         "jestConfig": "apps/fantalytic-mobile/jest.config.js",
         "passWithNoTests": true

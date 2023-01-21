@@ -1,4 +1,5 @@
 {
+  "name": "pmt-common-angular-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/pmt-common-angular-components/src",
@@ -7,7 +8,7 @@
     "test": {
       "executor": "@nrwl/jest:jest",
       "outputs": [
-        "coverage/libs/pmt-common-angular-components"
+        "{workspaceRoot}/coverage/libs/pmt-common-angular-components"
       ],
       "options": {
         "jestConfig": "libs/pmt-common-angular-components/jest.config.js",

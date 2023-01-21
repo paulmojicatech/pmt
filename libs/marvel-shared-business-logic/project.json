@@ -1,4 +1,5 @@
 {
+  "name": "marvel-shared-business-logic",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/marvel-shared-business-logic/src",
@@ -6,9 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/marvel-shared-business-logic"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/marvel-shared-business-logic"],
       "options": {
         "jestConfig": "libs/marvel-shared-business-logic/jest.config.js",
         "passWithNoTests": true

@@ -1,4 +1,5 @@
 {
+  "name": "pmt-simple-form",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/pmt-simple-form/src",
@@ -6,9 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/pmt-simple-form"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/pmt-simple-form"],
       "options": {
         "jestConfig": "libs/pmt-simple-form/jest.config.js",
         "passWithNoTests": true
