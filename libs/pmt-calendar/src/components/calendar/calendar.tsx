@@ -36,21 +36,25 @@ export class CalendarComponent {
   render() {
     return (
       <section class="container">
-        <div class="header">
         <div class="calendar-header-container">
-                {Object.keys(CALENDAR_VIEW).map(key => {
-                    return (
-                        <button 
-                            class={CALENDAR_VIEW[key] === this.currentView ? 'selected' : ''} 
-                            onClick={() => this.updateCurrentView(CALENDAR_VIEW[key])} key={key}>
-                                {CALENDAR_VIEW[key]}
-                        </button>
-                    );
-                })}
-            </div>
+            {Object.keys(CALENDAR_VIEW).map(key => {
+                return (
+                    <button 
+                        class={CALENDAR_VIEW[key] === this.currentView ? 'selected' : ''} 
+                        onClick={() => this.updateCurrentView(CALENDAR_VIEW[key])} key={key}>
+                            {CALENDAR_VIEW[key]}
+                    </button>
+                );
+            })}
         </div>
-        <div class="subb-header">
+        <div class="calendar-sub-header">
           <h1>{this.currentSubTitle}</h1>
+          <div class="move-view-container">
+              <button>{'<'}</button>
+              <button>Today</button>
+              <button>{'>'}</button>
+
+          </div>
         </div>
       </section>
       
