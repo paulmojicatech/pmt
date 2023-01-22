@@ -8,7 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface PmtCalendar {
     }
-    interface PmtCalendarHeader {
+    interface PmtCalendarSubHeader {
     }
 }
 declare global {
@@ -18,25 +18,25 @@ declare global {
         prototype: HTMLPmtCalendarElement;
         new (): HTMLPmtCalendarElement;
     };
-    interface HTMLPmtCalendarHeaderElement extends Components.PmtCalendarHeader, HTMLStencilElement {
+    interface HTMLPmtCalendarSubHeaderElement extends Components.PmtCalendarSubHeader, HTMLStencilElement {
     }
-    var HTMLPmtCalendarHeaderElement: {
-        prototype: HTMLPmtCalendarHeaderElement;
-        new (): HTMLPmtCalendarHeaderElement;
+    var HTMLPmtCalendarSubHeaderElement: {
+        prototype: HTMLPmtCalendarSubHeaderElement;
+        new (): HTMLPmtCalendarSubHeaderElement;
     };
     interface HTMLElementTagNameMap {
         "pmt-calendar": HTMLPmtCalendarElement;
-        "pmt-calendar-header": HTMLPmtCalendarHeaderElement;
+        "pmt-calendar-sub-header": HTMLPmtCalendarSubHeaderElement;
     }
 }
 declare namespace LocalJSX {
     interface PmtCalendar {
     }
-    interface PmtCalendarHeader {
+    interface PmtCalendarSubHeader {
     }
     interface IntrinsicElements {
         "pmt-calendar": PmtCalendar;
-        "pmt-calendar-header": PmtCalendarHeader;
+        "pmt-calendar-sub-header": PmtCalendarSubHeader;
     }
 }
 export { LocalJSX as JSX };
@@ -44,7 +44,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "pmt-calendar": LocalJSX.PmtCalendar & JSXBase.HTMLAttributes<HTMLPmtCalendarElement>;
-            "pmt-calendar-header": LocalJSX.PmtCalendarHeader & JSXBase.HTMLAttributes<HTMLPmtCalendarHeaderElement>;
+            "pmt-calendar-sub-header": LocalJSX.PmtCalendarSubHeader & JSXBase.HTMLAttributes<HTMLPmtCalendarSubHeaderElement>;
         }
     }
 }
