@@ -2,6 +2,7 @@ import { Component, h, State } from '@stencil/core';
 import { CALENDAR_VIEW } from '../../models/calendar.const';
 import { CalendarView } from '../../models/calendar.types';
 import { format } from 'date-fns';
+import { getNextView, getPrevView } from '../../utils/utils';
 @Component({
   tag: 'pmt-calendar',
   styleUrl: 'calendar.scss',
@@ -13,24 +14,47 @@ export class CalendarComponent {
   currentView: CalendarView = 'Month';
 
   @State()
-  currentSubTitle: string = format(new Date(new Date().getFullYear(), new Date().getMonth()), 'MMMM yyyy');
+  currentDate: Date = new Date();
+
+  handleGetNextView(): void {
+    const nextView = getNextView(this.currentView, this.currentDate);
+    this.currentDate = nextView;
+  }
+
+  handleGetPrevView(): void {
+    const nextView = getPrevView(this.currentView, this.currentDate);
+    this.currentDate = nextView;
+  }
 
   updateCurrentView(view: CalendarView) {
       this.currentView = view;
       const today = new Date();
       switch (view) {
         case 'Day': {
-          this.currentSubTitle = format(today, 'MMMM dd, yyyy');
+          this.currentDate = today;
           break;
         }
         case 'Year': {
-          this.currentSubTitle = format(today, 'yyyy');
+          this.currentDate = today;
           break;
         }
         default:
-          this.currentSubTitle = format(today, 'MMMM yyyy');
+          this.currentDate = today;
           break;
       }
+  }
+
+  formatCurrentDate(): string {
+    switch (this.currentView) {
+      case 'Day': {
+        return format(this.currentDate, 'MMM dd, yyyy');
+      }
+      case 'Year': {
+        return format(this.currentDate, 'yyyy');
+      }
+      default:
+        return format(this.currentDate, 'MMM yyyy');
+    }
   }
 
   render() {
@@ -48,11 +72,11 @@ export class CalendarComponent {
             })}
         </div>
         <div class="calendar-sub-header">
-          <h1>{this.currentSubTitle}</h1>
+          <h1>{this.formatCurrentDate()}</h1>
           <div class="move-view-container">
-              <button>{'<'}</button>
+              <button onClick={() => this.handleGetPrevView()}>{'<'}</button>
               <button>Today</button>
-              <button>{'>'}</button>
+              <button onClick={() => this.handleGetNextView()}>{'>'}</button>
 
           </div>
         </div>
