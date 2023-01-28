@@ -26,6 +26,10 @@ export class CalendarComponent {
     this.currentDate = nextView;
   }
 
+  handleTodayBtnPress(): void {
+    this.currentDate = new Date();
+  }
+
   updateCurrentView(view: CalendarView) {
       this.currentView = view;
       const today = new Date();
@@ -75,10 +79,14 @@ export class CalendarComponent {
           <h1>{this.formatCurrentDate()}</h1>
           <div class="move-view-container">
               <button onClick={() => this.handleGetPrevView()}>{'<'}</button>
-              <button>Today</button>
+              <button onClick={() => this.handleTodayBtnPress()}>Today</button>
               <button onClick={() => this.handleGetNextView()}>{'>'}</button>
 
           </div>
+        </div>
+
+        <div class="main-container">
+            <pmt-month-view currentDate={this.currentDate}></pmt-month-view>
         </div>
       </section>
       

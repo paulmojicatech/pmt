@@ -8,6 +8,9 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 export namespace Components {
     interface PmtCalendar {
     }
+    interface PmtMonthView {
+        "currentDate": Date;
+    }
 }
 declare global {
     interface HTMLPmtCalendarElement extends Components.PmtCalendar, HTMLStencilElement {
@@ -16,15 +19,26 @@ declare global {
         prototype: HTMLPmtCalendarElement;
         new (): HTMLPmtCalendarElement;
     };
+    interface HTMLPmtMonthViewElement extends Components.PmtMonthView, HTMLStencilElement {
+    }
+    var HTMLPmtMonthViewElement: {
+        prototype: HTMLPmtMonthViewElement;
+        new (): HTMLPmtMonthViewElement;
+    };
     interface HTMLElementTagNameMap {
         "pmt-calendar": HTMLPmtCalendarElement;
+        "pmt-month-view": HTMLPmtMonthViewElement;
     }
 }
 declare namespace LocalJSX {
     interface PmtCalendar {
     }
+    interface PmtMonthView {
+        "currentDate"?: Date;
+    }
     interface IntrinsicElements {
         "pmt-calendar": PmtCalendar;
+        "pmt-month-view": PmtMonthView;
     }
 }
 export { LocalJSX as JSX };
@@ -32,6 +46,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "pmt-calendar": LocalJSX.PmtCalendar & JSXBase.HTMLAttributes<HTMLPmtCalendarElement>;
+            "pmt-month-view": LocalJSX.PmtMonthView & JSXBase.HTMLAttributes<HTMLPmtMonthViewElement>;
         }
     }
 }
