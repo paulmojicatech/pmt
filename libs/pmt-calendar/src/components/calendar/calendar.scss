@@ -1,0 +1,56 @@
+:host {
+  display: block;
+  top: 0;
+  left: 0;
+  position: absolute;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100vw;
+}
+
+
+.calendar-header-container {
+  display: inline-flex;
+  justify-content: center;
+  justify-self: center;
+  width: 100%;
+  padding: 1rem 0;
+  span {
+      padding: 1rem;
+
+  }
+  button {
+      background-color: #fff;
+      padding: 1rem;
+      font-size: 1.25rem;
+      &.selected {
+          background-color: blue;
+          color: #fff;
+      }
+  }
+}
+.calendar-sub-header {
+  display: inline-flex;
+  justify-content: space-between;
+  padding: 0 1rem;
+  h1 {
+    font-size: 2rem;
+    font-weight: 400;
+  }
+  .move-view-container {
+    display: inline-flex;
+    align-self: center;
+    button {
+      height: 2rem;
+      padding: .5rem;
+      background-color: #fff;
+      &::second {
+        width: 50%;
+      }
+    }
+  }
+}

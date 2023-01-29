@@ -1,7 +1,10 @@
 {
+  "plugins": [],
   "npmScope": "pmt",
-  "affected": {
-    "defaultBase": "main"
+  "namedInputs": {
+    "default": ["{projectRoot}/**/*", "sharedGlobals"],
+    "sharedGlobals": [],
+    "production": ["default"]
   },
   "tasksRunnerOptions": {
     "default": {
@@ -12,7 +15,12 @@
       }
     }
   },
-  "plugins": [],
+  "affected": {
+    "defaultBase": "main"
+  },
+  "cli": {
+    "defaultCollection": "@nxext/stencil"
+  },
   "generators": {
     "@nrwl/angular:application": {
       "style": "scss",
@@ -29,7 +37,16 @@
     },
     "@nrwl/react": {
       "application": {
+        "style": "scss",
+        "linter": "eslint",
         "babel": true
+      },
+      "component": {
+        "style": "scss"
+      },
+      "library": {
+        "style": "scss",
+        "linter": "eslint"
       }
     },
     "@nrwl/next": {

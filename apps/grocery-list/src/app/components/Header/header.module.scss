@@ -1,0 +1,15 @@
+.headerContainer {
+    justify-content: space-between;
+    align-items: center;
+
+    h1 {
+        margin-left: 2rem;
+    }
+}
+
+.searchInput {
+    height: 2rem;
+    border-radius: 1rem;
+    padding: .5rem;
+    margin-right: 2rem;
+}
