@@ -1,4 +1,5 @@
 {
+  "name": "marvel-shared-components",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "library",
   "sourceRoot": "libs/marvel-shared-components/src",
@@ -6,9 +7,7 @@
   "targets": {
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/libs/marvel-shared-components"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/libs/marvel-shared-components"],
       "options": {
         "jestConfig": "libs/marvel-shared-components/jest.config.js",
         "passWithNoTests": true

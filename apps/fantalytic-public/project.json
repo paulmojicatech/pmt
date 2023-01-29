@@ -1,13 +1,12 @@
 {
+  "name": "fantalytic-public",
   "projectType": "application",
   "sourceRoot": "apps/fantalytic-public/src",
   "prefix": "pmt",
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
-      "outputs": [
-        "{options.outputPath}"
-      ],
+      "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/fantalytic-public",
         "index": "apps/fantalytic-public/src/index.html",
@@ -90,9 +89,7 @@
     },
     "test": {
       "executor": "@nrwl/jest:jest",
-      "outputs": [
-        "coverage/apps/fantalytic-public"
-      ],
+      "outputs": ["{workspaceRoot}/coverage/apps/fantalytic-public"],
       "options": {
         "jestConfig": "apps/fantalytic-public/jest.config.ts",
         "passWithNoTests": true
