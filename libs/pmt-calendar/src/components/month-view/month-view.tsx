@@ -11,7 +11,7 @@ export class MonthViewComponent {
 
     render() {
         return (
-            <div>{this.currentDate}</div>
+            <div>{this.currentDate.toLocaleDateString()}</div>
         );
     }
 }
