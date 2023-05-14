@@ -1,9 +1,9 @@
 import { HttpClientModule } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { Route, RouterModule, provideRouter } from '@angular/router';
-import { EffectsModule, provideEffects } from '@ngrx/effects';
-import { StoreModule, provideStore } from '@ngrx/store';
+import { Route, RouterModule } from '@angular/router';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { FantasyFootballEffects } from './fantasy-football/ngrx/effects/fantasy-football.effects';
 import { fantasyFootballReducer } from './fantasy-football/ngrx/reducer/fantasy-football.reducer';
