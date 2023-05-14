@@ -87,7 +87,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/fantalytic-mobile/src/**/*.ts",
@@ -96,7 +96,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/fantalytic-mobile"],
       "options": {
         "jestConfig": "apps/fantalytic-mobile/jest.config.js",

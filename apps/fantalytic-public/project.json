@@ -1,5 +1,6 @@
 {
   "name": "fantalytic-public",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "projectType": "application",
   "sourceRoot": "apps/fantalytic-public/src",
   "prefix": "pmt",
@@ -79,7 +80,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "apps/fantalytic-public/**/*.ts",
@@ -88,7 +89,7 @@
       }
     },
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/fantalytic-public"],
       "options": {
         "jestConfig": "apps/fantalytic-public/jest.config.ts",
