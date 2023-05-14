@@ -1,0 +1,33 @@
+<section class="m-2" *ngIf="fantasyFootballState$ | async as state">
+  <mat-sidenav-container autosize >
+    <mat-sidenav-content>
+        <div class="filter-container">
+            <div class="position-container">
+                <span>Position</span>
+                <button [ngClass]="{'active': (currentPosition$ | async) === 'QB'}" (click)="updatePosition('QB')" mat-button>QB</button>
+                <button [ngClass]="{'active': (currentPosition$ | async) === 'RB'}" (click)="updatePosition('RB')" mat-button>RB</button>
+                <button [ngClass]="{'active': (currentPosition$ | async) === 'WR'}" (click)="updatePosition('WR')" mat-button>WR / TE</button>
+                <button [ngClass]="{'active': (currentPosition$ | async) === 'DEF'}" (click)="updatePosition('DEF')" mat-button>DEF</button>
+            </div>
+            <div class="year-container">
+                <span>Year</span>
+                <button [ngClass]="{'active': (currentYear$ | async) === year}" (click)="filterByYear(year)" mat-button *ngFor="let year of ALL_YEARS">{{year}}</button>
+            </div>
+        </div>
+        <div class="grid-container" *ngIf="state.gridConfig">
+            <ag-grid-angular #statGrid
+                class="ag-theme-alpine"
+                [columnDefs]="state.gridConfig.colDef"
+                [rowData]="state.selectedRowData"
+                rowSelection="multiple"
+                [defaultColDef]="DEFAULT_COL_DEF_SETTINGS"
+                (rowSelected)="handleUpdatedRowSelected()"></ag-grid-angular>
+            
+        </div>
+    </mat-sidenav-content>
+    <mat-sidenav #drawer mode="side" position="end">
+        <pmt-fantasy-football-sidebar (sideBarEvent)="handleSidebarEvent($event)"></pmt-fantasy-football-sidebar>
+    </mat-sidenav>
+  </mat-sidenav-container>
+</section>
+

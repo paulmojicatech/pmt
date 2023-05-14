@@ -45,3 +45,10 @@ h3 {
 .mat-button-wrapper {
   color: unset;
 }
+
+// material overrides
+.mat-primary {
+  .mdc-button__label {
+    color: #fff;
+  }
+}
