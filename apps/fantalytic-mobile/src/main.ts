@@ -1,18 +1,11 @@
-import {HttpClientModule} from '@angular/common/http';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import { enableProdMode, importProvidersFrom } from '@angular/core';
+import { appConfig } from './app/app.config';
+
 import { bootstrapApplication } from '@angular/platform-browser';
-import { Route, RouterModule } from '@angular/router';
-import { EffectsModule } from '@ngrx/effects';
-import { StoreModule } from '@ngrx/store';
-import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
 import { AppComponent } from './app/app.component';
 import { TopicEffects } from './app/topics/ngrx/effects/topics.effects';
 import { topicsReducer } from './app/topics/ngrx/reducer/topics.reducer';
 import { environment } from './environments/environment';
-import { IonicModule } from '@ionic/angular';
-import { sharedReducer } from './app/ngrx/reducers/shared.reducer';
 
 if (environment.production) {
   enableProdMode();
@@ -21,45 +14,35 @@ if (environment.production) {
 const routes: Route[] = [
   {
     path: 'tabs',
-    loadComponent: () => import('./app/tabs/tabs.page').then(p => p.TabsPage),
+    loadComponent: () => import('./app/tabs/tabs.page').then((p) => p.TabsPage),
     children: [
       {
         path: 'topics',
-        loadComponent: () => import('./app/topics/topics.component').then(c => c.TopicsComponent),
+        loadComponent: () =>
+          import('./app/topics/topics.component').then(
+            (c) => c.TopicsComponent
+          ),
         providers: [
           importProvidersFrom(
             StoreModule.forFeature('topics', topicsReducer),
             EffectsModule.forFeature([TopicEffects])
-          )
-        ]
+          ),
+        ],
       },
       {
         path: 'fantasy-football',
-        loadChildren: () => import('./app/fantasy-football/const/fantasy-football-routes.const').then(m => m.fantasyFootballRoutes)
-      }
-    ]
+        loadChildren: () =>
+          import(
+            './app/fantasy-football/const/fantasy-football-routes.const'
+          ).then((m) => m.fantasyFootballRoutes),
+      },
+    ],
   },
   {
     path: '',
     pathMatch: 'full',
-    redirectTo: 'tabs/topics'
+    redirectTo: 'tabs/topics',
   },
 ];
 
-bootstrapApplication(
-  AppComponent,
-  {
-    providers: [
-      importProvidersFrom(
-        RouterModule.forRoot(routes),
-        IonicModule.forRoot(),
-        StoreModule.forRoot({}),
-        StoreModule.forFeature('shared', sharedReducer),
-        EffectsModule.forRoot([]),
-        StoreDevtoolsModule.instrument({}),
-        HttpClientModule,
-        BrowserAnimationsModule
-      )
-    ]
-  }
-);
+bootstrapApplication(AppComponent, appConfig);

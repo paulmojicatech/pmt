@@ -6,7 +6,7 @@
   "prefix": "pmt",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/pmt-input"],
       "options": {
         "jestConfig": "libs/pmt-input/jest.config.js",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/pmt-input/src/**/*.ts",

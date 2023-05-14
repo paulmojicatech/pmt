@@ -1,54 +1,6 @@
-@media screen and (max-width: 800px) {
-    .topics-container {
-        h3 {
-            margin: .5rem;
-            text-align: justify;
-        }
+mat-card-actions {
+    a {
+        position: absolute;
+        bottom: 0;
     }
-    .topics-card-container {
-        grid-template-columns: 1fr;
-    }
-    
-}
-
-@media screen and (min-width: 801px) {
-    .topics-container h3 {
-        margin: 2rem;
-    }
-    .topics-card-container {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
-
-.topics-container {
-    width: 100vw;
-    select {
-        height: 2rem;
-        width: 15rem;
-        font-size: 1rem;
-        color: rgb(3,41,42);
-    }
-    .topics-text-container {
-       display: flex;
-       align-items: center;
-       
-    }
-    .topics-card-container {
-        display: grid;
-        row-gap: 2rem;
-        column-gap: 2rem;
-        margin: 0 2rem;
-    
-    }
-
-    .mat-card {
-        .mat-card-actions {
-            a {
-                position: absolute;
-                bottom: 0;
-            }
-        }
-        
-    }
-
 }

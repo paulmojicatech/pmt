@@ -6,7 +6,7 @@
   "prefix": "pmt",
   "targets": {
     "test": {
-      "executor": "@nrwl/jest:jest",
+      "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/pmt-simple-form"],
       "options": {
         "jestConfig": "libs/pmt-simple-form/jest.config.js",
@@ -14,7 +14,7 @@
       }
     },
     "lint": {
-      "executor": "@nrwl/linter:eslint",
+      "executor": "@nx/linter:eslint",
       "options": {
         "lintFilePatterns": [
           "libs/pmt-simple-form/src/**/*.ts",
