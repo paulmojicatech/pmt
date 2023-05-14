@@ -25,17 +25,33 @@ const routes: Route[] = [
   },
   {
     path: 'fantasy-football',
-    loadChildren: () =>
-      import('../app/fantasy-football/const/fantasy-football-routes.const').then(
-        (m) => m.FANTASY_FOOTBALL_ROUTES
-      ),
+    loadComponent: () => import('../app/fantasy-football/fantasy-football.component').then((a) => a.FantasyFootballComponent),
     canActivate: [MobileCheckerService],
     providers: [
       importProvidersFrom(
-        StoreModule.forFeature('fantasyFootball', fantasyFootballReducer),
+        StoreModule.forFeature('fantasy-football', fantasyFootballReducer),
         EffectsModule.forFeature([FantasyFootballEffects]),
       )      
     ],
+    children: [
+    {
+        path: 'stats',
+        loadComponent: () => import('../app/fantasy-football/components/stats/stats.component').then(c => c.StatsComponent)
+      },
+      {
+        path: 'compare',
+        loadComponent: () => import('../app/fantasy-football/components/compare-players/compare-players.component').then(c => c.ComparePlayersComponent)
+      },
+      {
+        path: 'scores',
+        loadComponent: () => import('../app/fantasy-football/components/scores/scores.component').then(c => c.ScoresComponent)
+      },
+      {
+          path: '',
+          pathMatch: 'full',
+          redirectTo: 'stats'
+      }
+  ]
   },
   {
     path: '',
