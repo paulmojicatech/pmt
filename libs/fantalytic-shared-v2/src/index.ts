@@ -1,2 +1,2 @@
-export {parseESPNRSSFeed} from './lib/fantalytic-shared-topics';
-export {Topic} from './lib/models/topics/topics.interface';
+export * from './lib/fantalytic-shared-topics';
+export * from './lib/models/topics/topics.interface';
