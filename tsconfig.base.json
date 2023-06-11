@@ -16,6 +16,7 @@
     "baseUrl": ".",
     "paths": {
       "@pmt/fantalytic-shared": ["libs/fantalytic-shared/src/index.ts"],
+      "@pmt/fantalytic-shared-v2": ["libs/fantalytic-shared-v2/src/index.ts"],
       "@pmt/marvel-shared-business-logic": [
         "libs/marvel-shared-business-logic/src/index.ts"
       ],
