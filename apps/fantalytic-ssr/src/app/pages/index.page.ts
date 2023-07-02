@@ -3,6 +3,8 @@ import { Component, inject } from '@angular/core';
 import { EspnRssFeedService } from '../topics/services/espn-rss-feed.service';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import {MatCardModule} from '@angular/material/card';
+import { FfaRssFeedService } from '../topics/services/ffa-rss-feed.service';
+import { FootballersRssService } from '../topics/services/footballers-rss.service';
 
 @Component({
   selector: 'fantalytic-ssr-home',
@@ -14,9 +16,15 @@ import {MatCardModule} from '@angular/material/card';
   },
   template: `
     <mat-toolbar color="primary">
-      <span class="text-white">Fantalytic.io</span>
-    </mat-toolbar>
-    <main class="p-0 w-[100vw] flex flex-wrap">
+      <span class="text-white">Fantalytic.io</span>      
+    </mat-toolbar>   
+    <main class="p-0 w-[100vw] flex flex-wrap">  
+    <div class="inline-flex m-2 w-full">
+        <label class="mr-2">RSS Feeds:</label>
+        <select (change)="handleRssFeedChange($event.target)">
+          <option *ngFor="let rssFeed of RSS_FEEDS" value="{{rssFeed}}">{{rssFeed}}</option>
+        </select>
+      </div>        
       <div *ngFor="let topic of topics$ | async" class="w-[30%] m-2">
         <mat-card class="h-full">
           <mat-card-header>
@@ -25,7 +33,7 @@ import {MatCardModule} from '@angular/material/card';
             </mat-card-title>
           </mat-card-header>
           <mat-card-content>
-            <img mat-card-image src="{{topic.imageUrl}}" alt="ESPN Image" />
+            <img *ngIf="topic.imageUrl" mat-card-image src="{{topic.imageUrl}}" alt="Image" />
             <div class="mt-2">{{topic.description}}</div>
           </mat-card-content>
           <mat-card-actions>
@@ -41,5 +49,28 @@ import {MatCardModule} from '@angular/material/card';
 })
 export default class HomeComponent {
   private _espnRssFeedSvc = inject(EspnRssFeedService);
+  private _ffaRssFeedSvc = inject(FfaRssFeedService);
+  private _footballersRssFeedSvc = inject(FootballersRssService);
+  readonly RSS_FEEDS = ['ESPN', 'Footballers'];
+
+
   topics$ = this._espnRssFeedSvc.getTopics();
+
+  handleRssFeedChange(ev: EventTarget | null): void {
+    const rssFeed = (ev as HTMLSelectElement).value;
+    switch (rssFeed) {
+      case 'ESPN':
+        this.topics$ = this._espnRssFeedSvc.getTopics();
+        break;
+      case 'FFA':
+        this.topics$ = this._ffaRssFeedSvc.getTopics();
+        break;
+      case 'Footballers':
+        this.topics$ = this._footballersRssFeedSvc.getTopics();
+        break;
+      default:
+        break;
+    }
+  }
+
 }
