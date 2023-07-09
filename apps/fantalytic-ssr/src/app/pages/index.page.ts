@@ -1,9 +1,7 @@
 import { AsyncPipe, DatePipe, NgFor, NgIf } from '@angular/common';
 import { Component, inject } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatToolbarModule } from '@angular/material/toolbar';
+import { ToolbarComponent } from '../shared/components/toolbar/toolbar.component';
 import { EspnRssFeedService } from '../topics/services/espn-rss-feed.service';
 import { FfaRssFeedService } from '../topics/services/ffa-rss-feed.service';
 import { FootballersRssService } from '../topics/services/footballers-rss.service';
@@ -11,36 +9,13 @@ import { FootballersRssService } from '../topics/services/footballers-rss.servic
 @Component({
   selector: 'fantalytic-ssr-home',
   standalone: true,
-  imports: [AsyncPipe, NgFor, DatePipe, NgIf, MatToolbarModule, MatCardModule, MatIconModule, MatMenuModule],
+  imports: [AsyncPipe, NgFor, DatePipe, NgIf, ToolbarComponent, MatCardModule],
   host: {
     class:
       'flex min-h-screen flex-col text-zinc-900 bg-zinc-50 w-[100vw]',
   },
   template: `
-    <mat-toolbar color="primary">
-      <div class="inline-flex justify-between w-full">
-        <span class="text-white">Fantalytic.io</span> 
-        <button mat-button [matMenuTriggerFor]="menu">
-          <div class="flex-col h-full justify-around">
-            <div class="w-[2rem] text-white border-b-2 mb-2"></div>
-            <div class="w-[2rem] text-white border-b-2 mb-2"></div>
-            <div class="w-[2rem] text-white border-b-2 mb-2"></div>
-          </div>
-         
-        </button>
-        <mat-menu #menu="matMenu">
-          <ul>
-            <li class="p-2">
-              <button>Topics</button>
-            </li>
-            <li class="p-2">
-              <button>Fantasy Football</button>
-            </li>
-          </ul>         
-        </mat-menu>
-      </div>
-           
-    </mat-toolbar>   
+    <pmt-toolbar></pmt-toolbar>
     <main class="p-0 w-[100vw] flex flex-wrap">  
     <div class="inline-flex m-2 w-full">
         <label class="mr-2">RSS Feeds:</label>
