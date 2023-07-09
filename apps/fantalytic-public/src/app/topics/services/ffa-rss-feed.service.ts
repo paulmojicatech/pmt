@@ -14,17 +14,6 @@ export class FfaRssFeedService extends EspnRssFeedService {
   }
 
   protected override parseRssItemResponse(item: Element): Topic {
-    const title = item.getElementsByTagName('title')[0].textContent ?? '';
-    const description =
-      item
-        .getElementsByTagName('description')[0]
-        .firstChild?.textContent?.replace('<p>', '')
-        .replace('</p>', '') ?? '';
-    const link =
-      item.getElementsByTagName('link')[0].firstChild?.textContent ?? '';
-    const publishedDate =
-      item.getElementsByTagName('pubDate')[0].textContent ?? '';
-    const topic = { title, description, publishedDate, link };
-    return topic;
+    
   }
 }

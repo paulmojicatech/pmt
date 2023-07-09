@@ -1,0 +1,24 @@
+<mat-toolbar color="primary">
+  <div class="inline-flex justify-between w-full">
+    <span class="text-white">Fantalytic.io</span> 
+    <button mat-button [matMenuTriggerFor]="menu">
+      <div class="flex-col h-full justify-around">
+        <div class="w-[2rem] text-white border-b-2 mb-2"></div>
+        <div class="w-[2rem] text-white border-b-2 mb-2"></div>
+        <div class="w-[2rem] text-white border-b-2 mb-2"></div>
+      </div>
+     
+    </button>
+    <mat-menu #menu="matMenu">
+      <ul>
+        <li class="p-2">
+          <button routerLink="/">Topics</button>
+        </li>
+        <li class="p-2">
+          <button routerLink="/fantasy-football">Fantasy Football</button>
+        </li>
+      </ul>         
+    </mat-menu>
+  </div>
+       
+</mat-toolbar>   
