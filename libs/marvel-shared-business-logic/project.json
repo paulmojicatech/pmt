@@ -9,12 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/marvel-shared-business-logic"],
       "options": {
-        "jestConfig": "libs/marvel-shared-business-logic/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/marvel-shared-business-logic/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "libs/marvel-shared-business-logic/src/**/*.ts",

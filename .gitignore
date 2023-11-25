@@ -83,3 +83,5 @@ libs/fantalytic-web-scraper/package-lock.json
 libs/fantalytic-web-scraper/output/*
 apps/fantalytic-public/src/assets/stats/*
 apps/fantalytic-api/local.settings.json
+
+.nx/cache

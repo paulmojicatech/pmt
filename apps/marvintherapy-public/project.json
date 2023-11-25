@@ -9,7 +9,6 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
-        "root": "apps/marvintherapy-public",
         "outputPath": "dist/apps/marvintherapy-public"
       },
       "configurations": {
@@ -39,12 +38,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/marvintherapy-public"],
       "options": {
-        "jestConfig": "apps/marvintherapy-public/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "apps/marvintherapy-public/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/marvintherapy-public/**/*.{ts,tsx,js,jsx}"]
