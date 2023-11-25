@@ -6,27 +6,31 @@ export const routes: Routes = [
     loadComponent: () => import('./tabs.page').then(p => p.TabsPage),
     children: [
       {
-        path: 'tab1',
-        loadChildren: () => import('../tab1/tab1.routes').then(r => r.routes)
+        path: 'home',
+        loadComponent: () => import('../home/home.page').then(p => p.HomePage)
       },
       {
-        path: 'tab2',
-        loadChildren: () => import('../tab2/tab2.routes').then(r => r.routes)
+        path: 'map',
+        loadComponent: () => import('../map/map.page').then(p => p.MapPage)
       },
       {
-        path: 'tab3',
-        loadChildren: () => import('../tab3/tab3.routes').then(r => r.routes)
+        path: 'search',
+        loadComponent: () => import('../search/search.page').then(p => p.SearchPage)
+      },
+      {
+        path: 'account',
+        loadComponent: () => import('../account/account.page').then(p => p.AccountPage)
       },
       {
         path: '',
-        redirectTo: '/tabs/tab1',
+        redirectTo: '/tabs/home',
         pathMatch: 'full'
       }
     ]
   },
   {
     path: '',
-    redirectTo: '/tabs/tab1',
+    redirectTo: '/tabs/home',
     pathMatch: 'full'
   }
 ];
