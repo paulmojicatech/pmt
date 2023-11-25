@@ -9,12 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/pmt-autocomplete"],
       "options": {
-        "jestConfig": "libs/pmt-autocomplete/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/pmt-autocomplete/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "libs/pmt-autocomplete/src/**/*.ts",

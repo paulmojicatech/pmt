@@ -62,10 +62,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "fantalytic-public:build:production"
+          "buildTarget": "fantalytic-public:build:production"
         },
         "development": {
-          "browserTarget": "fantalytic-public:build:development"
+          "buildTarget": "fantalytic-public:build:development"
         }
       },
       "defaultConfiguration": "development",
@@ -76,11 +76,11 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "fantalytic-public:build"
+        "buildTarget": "fantalytic-public:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "apps/fantalytic-public/**/*.ts",
@@ -92,8 +92,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/fantalytic-public"],
       "options": {
-        "jestConfig": "apps/fantalytic-public/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/fantalytic-public/jest.config.ts"
       }
     }
   },

@@ -9,12 +9,11 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/libs/pmt-simple-form"],
       "options": {
-        "jestConfig": "libs/pmt-simple-form/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/pmt-simple-form/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "libs/pmt-simple-form/src/**/*.ts",

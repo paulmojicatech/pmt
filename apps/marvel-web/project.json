@@ -59,10 +59,10 @@
       "executor": "@angular-devkit/build-angular:dev-server",
       "configurations": {
         "production": {
-          "browserTarget": "marvel-web:build:production"
+          "buildTarget": "marvel-web:build:production"
         },
         "development": {
-          "browserTarget": "marvel-web:build:development"
+          "buildTarget": "marvel-web:build:development"
         }
       },
       "defaultConfiguration": "development"
@@ -70,11 +70,11 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "marvel-web:build"
+        "buildTarget": "marvel-web:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "apps/marvel-web/src/**/*.ts",
@@ -86,8 +86,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/marvel-web"],
       "options": {
-        "jestConfig": "apps/marvel-web/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "apps/marvel-web/jest.config.js"
       }
     }
   },

@@ -65,7 +65,7 @@
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": ["apps/grocery-list/**/*.{ts,tsx,js,jsx}"]
@@ -75,8 +75,7 @@
       "executor": "@nx/jest:jest",
       "outputs": ["{workspaceRoot}/coverage/apps/grocery-list"],
       "options": {
-        "jestConfig": "apps/grocery-list/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "apps/grocery-list/jest.config.ts"
       }
     }
   },

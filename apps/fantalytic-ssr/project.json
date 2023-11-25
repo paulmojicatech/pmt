@@ -8,9 +8,9 @@
       "executor": "@nx/vite:build",
       "outputs": [
         "{options.outputPath}",
-        "dist/apps/fantalytic-ssr/.nitro",
-        "dist/apps/fantalytic-ssr/ssr",
-        "dist/apps/fantalytic-ssr/analog"
+        "{workspaceRoot}/dist/apps/fantalytic-ssr/.nitro",
+        "{workspaceRoot}/dist/apps/fantalytic-ssr/ssr",
+        "{workspaceRoot}/dist/apps/fantalytic-ssr/analog"
       ],
       "options": {
         "main": "apps/fantalytic-ssr/src/main.ts",
@@ -48,11 +48,11 @@
     "extract-i18n": {
       "executor": "@angular-devkit/build-angular:extract-i18n",
       "options": {
-        "browserTarget": "fantalytic-ssr:build"
+        "buildTarget": "fantalytic-ssr:build"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "outputs": ["{options.outputFile}"],
       "options": {
         "lintFilePatterns": [
@@ -63,7 +63,7 @@
     },
     "test": {
       "executor": "@nx/vite:test",
-      "outputs": ["apps/fantalytic-ssr/coverage"]
+      "outputs": ["{projectRoot}/coverage"]
     }
   },
   "tags": []

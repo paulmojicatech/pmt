@@ -11,12 +11,11 @@
         "{workspaceRoot}/coverage/libs/pmt-common-angular-components"
       ],
       "options": {
-        "jestConfig": "libs/pmt-common-angular-components/jest.config.js",
-        "passWithNoTests": true
+        "jestConfig": "libs/pmt-common-angular-components/jest.config.js"
       }
     },
     "lint": {
-      "executor": "@nx/linter:eslint",
+      "executor": "@nx/eslint:lint",
       "options": {
         "lintFilePatterns": [
           "libs/pmt-common-angular-components/src/**/*.ts",
