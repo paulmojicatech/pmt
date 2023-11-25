@@ -1,0 +1,33 @@
+{
+  "name": "disney-planner-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/disney-planner-e2e/src",
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/disney-planner-e2e/cypress.json",
+        "testingType": "e2e",
+        "devServerTarget": "disney-planner:serve:development"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "disney-planner:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "disney-planner:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/disney-planner-e2e/**/*.{js,ts}"]
+      }
+    }
+  },
+  "tags": [],
+  "implicitDependencies": ["disney-planner"]
+}
