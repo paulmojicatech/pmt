@@ -1,13 +1,23 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { IonicModule } from '@ionic/angular';
+import { ScheduleComponent } from './components/schedule/schedule.component';
 
 @Component({
   selector: 'disney-home',
   template: `
-    <div>Home Page</div>
+    <ion-header>
+      <ion-toolbar>
+        <ion-title>Home</ion-title>
+      </ion-toolbar>
+    </ion-header>
+    <ion-content>
+      
+    </ion-content>
   `,
   standalone: true,
-  imports: [CommonModule],
+  imports: [IonicModule, ScheduleComponent],
   styles: ``
 })
-export class HomePage {}
+export class HomePage {
+  
+}
