@@ -1,0 +1,7 @@
+{
+  "name": "disney-planner",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
