@@ -33,7 +33,10 @@
       "@pmt/pmt-input": ["libs/pmt-input/src/index.ts"],
       "@pmt/pmt-mobile-toolbar": ["libs/pmt-mobile-toolbar/src/index.ts"],
       "@pmt/pmt-simple-form": ["libs/pmt-simple-form/src/index.ts"],
-      "disney-planner-models": ["libs/disney-planner-models/src/index.ts"]
+      "disney-planner-models": ["libs/disney-planner-models/src/index.ts"],
+      "disney-planner-trips-ngrx": [
+        "libs/disney-planner-trips-ngrx/src/index.ts"
+      ]
     }
   },
   "exclude": ["node_modules", "tmp"]
