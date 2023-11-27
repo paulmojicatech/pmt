@@ -1,0 +1,27 @@
+{
+  "name": "disney-planner-trips-ngrx",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/disney-planner-trips-ngrx/src",
+  "prefix": "lib",
+  "tags": [],
+  "projectType": "library",
+  "targets": {
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": ["{workspaceRoot}/coverage/{projectRoot}"],
+      "options": {
+        "jestConfig": "libs/disney-planner-trips-ngrx/jest.config.ts"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": [
+          "libs/disney-planner-trips-ngrx/**/*.ts",
+          "libs/disney-planner-trips-ngrx/**/*.html"
+        ]
+      }
+    }
+  }
+}

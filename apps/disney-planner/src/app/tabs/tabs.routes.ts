@@ -1,4 +1,7 @@
 import { Routes } from '@angular/router';
+import { provideEffects } from '@ngrx/effects';
+import { provideState } from '@ngrx/store';
+import { fromUpcomingTrips, fromUpcomingTripsEffects } from 'disney-planner-trips-ngrx';
 
 export const routes: Routes = [
   {
@@ -7,7 +10,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'home',
-        loadComponent: () => import('../home/home.page').then(p => p.HomePage)
+        loadComponent: () => import('../home/home.page').then(p => p.HomePage),
+        providers: [
+          provideState(fromUpcomingTrips.upcomingTripsFeature),
+          provideEffects([fromUpcomingTripsEffects.UpcomingTripsEffects])
+        ]
       },
       {
         path: 'map',
