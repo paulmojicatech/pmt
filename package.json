@@ -27,7 +27,7 @@
     "@angular-eslint/eslint-plugin": "17.3.0",
     "@angular-eslint/eslint-plugin-template": "17.3.0",
     "@angular-eslint/template-parser": "17.3.0",
-    "@angular/cli": "~17.0.0",
+    "@angular/cli": "~17.3.0",
     "@angular/compiler-cli": "17.3.3",
     "@angular/language-service": "17.3.3",
     "@capacitor/android": "^5.0.3",
@@ -73,7 +73,7 @@
     "@vitest/ui": "0.34.7",
     "autoprefixer": "^10.4.0",
     "babel-jest": "29.4.3",
-    "cypress": "^13.0.0",
+    "cypress": "^13.6.6",
     "eslint": "8.57.0",
     "eslint-config-next": "13.1.1",
     "eslint-config-prettier": "9.0.0",
@@ -166,4 +166,3 @@
     "zone.js": "0.14.4"
   }
 }
-

@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/fantalytic-public/src",
   "prefix": "pmt",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -95,6 +96,5 @@
         "jestConfig": "apps/fantalytic-public/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

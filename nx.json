@@ -57,9 +57,6 @@
       ]
     }
   },
-  "affected": {
-    "defaultBase": "main"
-  },
   "generators": {
     "@nx/angular:application": {
       "style": "scss",
@@ -96,5 +93,6 @@
       }
     }
   },
-  "nxCloudAccessToken": "ZGNjNDliZDItYTljYy00ZjRmLWJhNWEtNmM0NDJhZGMyYjVlfHJlYWQtd3JpdGU="
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }

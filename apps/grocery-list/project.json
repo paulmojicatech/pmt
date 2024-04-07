@@ -3,6 +3,7 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/grocery-list/src",
   "projectType": "application",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@nx/web:webpack",
@@ -78,6 +79,5 @@
         "jestConfig": "apps/grocery-list/jest.config.ts"
       }
     }
-  },
-  "tags": []
+  }
 }

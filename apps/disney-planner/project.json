@@ -4,16 +4,16 @@
   "projectType": "application",
   "prefix": "disney",
   "sourceRoot": "apps/disney-planner/src",
-  "tags": [],  
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
       "outputs": ["{options.outputPath}"],
       "options": {
         "outputPath": "dist/apps/disney-planner",
-        "index": "apps/disney-planner/src/index.html",        
+        "index": "apps/disney-planner/src/index.html",
         "polyfills": ["zone.js"],
-        "tsConfig": "apps/disney-planner/tsconfig.app.json",        
+        "tsConfig": "apps/disney-planner/tsconfig.app.json",
         "inlineStyleLanguage": "scss",
         "main": "apps/disney-planner/src/main.ts",
         "assets": [
