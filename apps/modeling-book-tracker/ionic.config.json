@@ -1,0 +1,7 @@
+{
+  "name": "modeling-book-tracker",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react"
+}

@@ -1,0 +1,29 @@
+{
+  "name": "modeling-book-tracker-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "projectType": "application",
+  "sourceRoot": "apps/modeling-book-tracker-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["modeling-book-tracker"],
+  "targets": {
+    "e2e": {
+      "executor": "@nx/cypress:cypress",
+      "options": {
+        "cypressConfig": "apps/modeling-book-tracker-e2e/cypress.config.ts",
+        "testingType": "e2e",
+        "devServerTarget": "modeling-book-tracker:serve"
+      },
+      "configurations": {
+        "production": {
+          "devServerTarget": "modeling-book-tracker:serve:production"
+        },
+        "ci": {
+          "devServerTarget": "modeling-book-tracker:serve-static"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
