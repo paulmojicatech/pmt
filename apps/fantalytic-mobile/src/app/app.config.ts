@@ -6,7 +6,7 @@ import { StoreModule } from '@ngrx/store';
 import { sharedReducer } from './app/ngrx/reducers/shared.reducer';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { HttpClientModule } from '@angular/common/http';
+import {} from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 export const appConfig: ApplicationConfig = {
   providers: [
