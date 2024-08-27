@@ -65,7 +65,7 @@ function parseFfaRssItemResponse(item: Element): Topic {
 function parseFootballersRssItemResponse(item: Element): Topic {
   const title = item.getElementsByTagName('title')[0].textContent ?? '';
   const description = item.getElementsByTagName('description')[0].firstChild?.textContent ?? '';
-  const link = item.getElementsByTagName('link')[0].firstChild?.textContent ?? '';
+  const link = item.getElementsByTagName('link')[0]?.firstChild?.textContent ?? '';
   const publishedDate = item.getElementsByTagName('pubDate')[0].textContent ?? '';
   const topic = {title, description, publishedDate,  link};
   return topic;

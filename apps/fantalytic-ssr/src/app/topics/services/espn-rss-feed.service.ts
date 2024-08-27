@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Topic, parseESPNRSSFeed } from 'libs/fantalytic-shared-v2/src';
+import { Topic, parseESPNRSSFeed } from '@pmt/fantalytic-shared-v2';
 import { Observable, catchError, map, throwError } from 'rxjs';
 
 @Injectable({

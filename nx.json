@@ -57,9 +57,6 @@
       ]
     }
   },
-  "affected": {
-    "defaultBase": "main"
-  },
   "generators": {
     "@nx/angular:application": {
       "style": "scss",
@@ -77,9 +74,10 @@
     },
     "@nx/react": {
       "application": {
+        "babel": true,
         "style": "scss",
         "linter": "eslint",
-        "babel": true
+        "bundler": "webpack"
       },
       "component": {
         "style": "scss"
@@ -96,5 +94,6 @@
       }
     }
   },
-  "nxCloudAccessToken": "ZGNjNDliZDItYTljYy00ZjRmLWJhNWEtNmM0NDJhZGMyYjVlfHJlYWQtd3JpdGU="
+  "useInferencePlugins": false,
+  "defaultBase": "main"
 }

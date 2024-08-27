@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/marvel-web/src",
   "prefix": "pmt",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -89,6 +90,5 @@
         "jestConfig": "apps/marvel-web/jest.config.js"
       }
     }
-  },
-  "tags": []
+  }
 }

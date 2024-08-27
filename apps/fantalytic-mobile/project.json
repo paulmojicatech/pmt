@@ -4,6 +4,7 @@
   "projectType": "application",
   "sourceRoot": "apps/fantalytic-mobile/src",
   "prefix": "pmt",
+  "tags": [],
   "targets": {
     "build": {
       "executor": "@angular-devkit/build-angular:browser",
@@ -192,6 +193,5 @@
         }
       }
     }
-  },
-  "tags": []
+  }
 }

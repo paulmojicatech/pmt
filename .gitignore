@@ -85,3 +85,4 @@ apps/fantalytic-public/src/assets/stats/*
 apps/fantalytic-api/local.settings.json
 
 .nx/cache
+.nx/workspace-data

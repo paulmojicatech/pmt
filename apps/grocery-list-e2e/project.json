@@ -3,6 +3,8 @@
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
   "sourceRoot": "apps/grocery-list-e2e/src",
   "projectType": "application",
+  "tags": [],
+  "implicitDependencies": ["grocery-list"],
   "targets": {
     "e2e": {
       "executor": "@nx/cypress:cypress",
@@ -24,7 +26,5 @@
         "lintFilePatterns": ["apps/grocery-list-e2e/**/*.{js,ts}"]
       }
     }
-  },
-  "tags": [],
-  "implicitDependencies": ["grocery-list"]
+  }
 }
