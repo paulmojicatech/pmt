@@ -42,27 +42,15 @@ export const HELPFUL_FORMS = {
           text: 'Insurance Responsibility',
           href: '/forms/Responsibility to know your Insurance__regulations_guidelines.pdf',
         },
+        {
+          text: 'Telehealth Informed Consent',
+          href: '/forms/TelehealthInformedConsent.pdf',
+        }
       ],
     },
     {
       text: 'PQRS',
-      formDetails: [
-        {
-          text: 'Coordination of Care',
-          href: '/forms/CoordinationOfCare.pdf',
-        },
-        {
-          text: 'VAS',
-          href: '/forms/VAS.jpeg',
-        },
-        {
-          text: 'EASI Form',
-          href: '/forms/EASI_Web.pdf',
-        },
-        {
-          text: 'Tobacco Screening',
-          href: '/forms/TobaccoScreening.pdf',
-        },
+      formDetails: [    
         {
           text: 'Medication Flowsheet',
           href: '/forms/MedicationFlowsheet_Word.pdf',
