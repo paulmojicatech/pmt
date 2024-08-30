@@ -5,8 +5,9 @@ COPY ./dist/apps/marvintherapy-public/.next ./.next
 COPY ./dist/apps/marvintherapy-public/public ./public
 COPY ./dist/apps/marvintherapy-public/next.config.js ./next.config.js
 COPY ./dist/apps/marvintherapy-public/package.json ./package.json
+COPY ./dist/apps/marvintherapy-public/.nx-helpers ./.nx-helpers
 RUN npm i
 
-CMD ["node_modules/.bin/next", "start"]
+CMD ["npm", "start"]
 
 
