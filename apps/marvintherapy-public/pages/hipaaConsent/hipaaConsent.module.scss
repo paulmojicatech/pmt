@@ -1,0 +1,119 @@
+.header {
+  font-size: 2rem;
+  font-weight: bold;
+}
+.container {
+  width: 100%;
+  height: 100%;
+  padding: 2rem;
+}
+.mb1Rem {
+  margin-bottom: 1rem;
+}
+.mb2Rem {
+  margin-bottom: 2rem;
+}
+.ml1Rem {
+  margin-left: 1rem;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.approvalContainer {  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: .5rem;  
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.primaryButton {
+  padding: 1rem;
+  background-color: #0072E5;
+  color: #fff;
+  border-radius: .5rem;
+}
+
+.cursive {
+  font-family: 'Dancing Script', cursive;
+  font-size: 2rem;
+}
+
+.bgTransparent {
+  background-color: transparent;
+}
+
+.dialogContainer {  
+  flex-direction: column;
+  align-items: center;  
+  padding: 2rem;
+  height: 75%;
+  width: 90%;
+  display: none;    
+  &.visible {
+    display: flex;
+  }
+  .dialogHeader {
+    display: inline-flex;
+    width: 100%;
+    justify-content: flex-end;
+    height: 10%;
+  }
+  .dialogBody {  
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;      
+    height: 80%;
+    input {
+      width: 100%;
+      padding: 1rem;
+      border: 1px solid #0072E5;
+      border-radius: .5rem;
+    }
+  }
+  .dialogFooter {
+    display: flex;
+    justify-content: center;
+    height: 10%;
+    width: 100%;
+    .cancelButton {
+      margin-right: 1rem;
+      border-radius: .5rem;
+      width: 70%;
+    }
+    .signAgreeButton {
+      width: 70%;
+    }
+  }
+  
+}
+
+@media screen and (min-width: 700px) {
+  .approvalContainer {
+    width: 50%;
+    grid-template-columns: 1fr 5fr;
+  }
+  .signButton {
+    width: 50%;
+  }
+  .dialogContainer {
+    width: 50%;
+    .dialogBody {
+      
+      input {
+        width: 50%;
+      }
+    }
+    .dialogFooter {
+      .cancelButton {        
+        width: 25%;
+      }
+      .signAgreeButton {
+        width: 25%;
+      }
+    }
+  }
+}
