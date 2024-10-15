@@ -2,6 +2,8 @@ import styles from './hipaaConsent.module.scss';
 import {PmtHeader} from '../../components/header/header';
 import { Fragment, useState } from 'react';
 import {P1, P2, P3, P4} from '../../public/content/hipaa-consent-content.const';
+import {usePDF} from 'react-to-pdf';
+import {v4} from 'uuid';
 
 export function HipaaConsent() {   
   const initialState = {
@@ -12,10 +14,13 @@ export function HipaaConsent() {
     isDialogVisible: false,
     clientSignature: '',
     familySignature: '',
-    parentSignature: ''
+    parentSignature: '',
+    fileName: `${v4()}.pdf`
   };
   const [currentState, setState] = useState(initialState);
   const {hasSignedClientSignature, hasSignedFamilySignature, hasSignedParentSignature, isDialogVisible, clientSignature, familySignature, parentSignature} = currentState;
+
+  const {toPDF, targetRef} = usePDF({filename: currentState.fileName});
 
   const handleShowDialog = (currentDialogOpen: string) => {    
     const dialog = document.getElementById('consentDialog') as HTMLDialogElement;
@@ -60,11 +65,22 @@ export function HipaaConsent() {
     dialog.close();
   };
 
+  const handleEmailForm = async () => {
+    const pdf = await toPDF();
+    console.log(pdf);
+    const updatedFileName = `${v4()}.pdf`;
+    setState({...currentState, fileName: updatedFileName});
+  };
+
   return (
     <Fragment>
       <PmtHeader backgroundUrl="/images/aboutMe.jpg" />      
         <section className={styles.container}>
-          <h1 className={`${styles.mb2Rem} ${styles.header}`}>Agreement & Consent For Treatment</h1>
+          <h1 className={`${styles.header}`}>Agreement & Consent For Treatment</h1>
+          <div className={styles.emailButtonContainer}>
+            <button onClick={() => handleEmailForm()} disabled={!hasSignedClientSignature} className={styles.primaryButton}>Email Form</button>
+          </div>
+          <div className={styles.pdfContainer} ref={targetRef}>
           <article className={styles.mb1Rem}>{P1}</article >
           <article className={styles.mb1Rem}>{P2}</article>
           <article className={styles.mb1Rem}>{P3}</article>
@@ -84,6 +100,7 @@ export function HipaaConsent() {
             {!hasSignedParentSignature && <button className={`${styles.primaryButton} ${styles.ml1Rem}`} onClick={() => handleShowDialog('hasSignedParentSignature')}>Click to sign</button>}
             {hasSignedParentSignature && <span className={`${styles.cursive} ${styles.ml1Rem}`}>{parentSignature}</span>}
           </div>
+          </div>          
         </section>
         <dialog id="consentDialog" className={`${styles.dialogContainer} ${isDialogVisible ? styles.visible : ''}`}>    
           <div className={styles.dialogHeader}>
