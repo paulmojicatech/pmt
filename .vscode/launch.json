@@ -4,6 +4,7 @@
     // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
+      
         {
             "type": "node",
             "request": "launch",
@@ -15,6 +16,12 @@
             "env": {
                 "NODE_TLS_REJECT_UNAUTHORIZED": "0"
             }
+        },
+        {
+          "name": "Marvin Therapy Public Next.js: debug server-side",
+          "type": "node-terminal",
+          "request": "launch",
+          "command": "npm run marvintherapy-public"
         },
         {
           // Use IntelliSense to find out which attributes exist for C# debugging

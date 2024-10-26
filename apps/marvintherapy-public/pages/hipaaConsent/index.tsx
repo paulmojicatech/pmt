@@ -2,7 +2,7 @@ import styles from './hipaaConsent.module.scss';
 import {PmtHeader} from '../../components/header/header';
 import { Fragment, useState } from 'react';
 import {P1, P2, P3, P4} from '../../public/content/hipaa-consent-content.const';
-import {usePDF} from 'react-to-pdf';
+import {Margin, usePDF} from 'react-to-pdf';
 import {v4} from 'uuid';
 
 export function HipaaConsent() {   
@@ -12,13 +12,14 @@ export function HipaaConsent() {
     hasSignedParentSignature: false,
     currentDialogOpen: '',
     isDialogVisible: false,
+    isDownloadDialogVisible: false,
     clientSignature: '',
     familySignature: '',
     parentSignature: '',
     fileName: `${v4()}.pdf`
   };
   const [currentState, setState] = useState(initialState);
-  const {hasSignedClientSignature, hasSignedFamilySignature, hasSignedParentSignature, isDialogVisible, clientSignature, familySignature, parentSignature} = currentState;
+  const {hasSignedClientSignature, hasSignedFamilySignature, hasSignedParentSignature, isDialogVisible, clientSignature, familySignature, parentSignature, isDownloadDialogVisible, fileName} = currentState;
 
   const {toPDF, targetRef} = usePDF({filename: currentState.fileName});
 
@@ -65,22 +66,32 @@ export function HipaaConsent() {
     dialog.close();
   };
 
-  const handleEmailForm = async () => {
-    const pdf = await toPDF();
-    console.log(pdf);
-    const updatedFileName = `${v4()}.pdf`;
-    setState({...currentState, fileName: updatedFileName});
+  const handleDownloadForm = async () => {
+    await toPDF({
+      method: 'open',
+      page: {
+        margin: Margin.MEDIUM
+      }
+    });    
+    setState({...currentState, isDownloadDialogVisible: true});    
+    const dialog = document.getElementById('downloadDialog') as HTMLDialogElement;
+    dialog.showModal();
   };
+
+  const handleCloseDownloadDialog = () => {
+    const updatedFileName = `${v4()}.pdf`;
+    setState({...currentState, fileName: updatedFileName, isDownloadDialogVisible: false});
+  }
 
   return (
     <Fragment>
       <PmtHeader backgroundUrl="/images/aboutMe.jpg" />      
-        <section className={styles.container}>
-          <h1 className={`${styles.header}`}>Agreement & Consent For Treatment</h1>
+        <section className={styles.container}>          
           <div className={styles.emailButtonContainer}>
-            <button onClick={() => handleEmailForm()} disabled={!hasSignedClientSignature} className={styles.primaryButton}>Email Form</button>
+            <button onClick={() => handleDownloadForm()} disabled={!hasSignedClientSignature} className={styles.primaryButton}>Download Form</button>
           </div>
           <div className={styles.pdfContainer} ref={targetRef}>
+          <h1 className={`${styles.header}`}>Agreement & Consent For Treatment</h1>
           <article className={styles.mb1Rem}>{P1}</article >
           <article className={styles.mb1Rem}>{P2}</article>
           <article className={styles.mb1Rem}>{P3}</article>
@@ -114,6 +125,16 @@ export function HipaaConsent() {
             <button onClick={() => handleCancel()} className={`${styles.cancelButton}`}>Cancel</button>
             <button onClick={() => handleSignAndAgree()} className={`${styles.primaryButton} ${styles.signAgreeButton}`}>Sign</button>
           </div>
+        </dialog>
+        <dialog id="downloadDialog" className={`${styles.dialogContainer} ${isDownloadDialogVisible ? styles.visible : ''}`}>
+          {isDownloadDialogVisible &&
+          <Fragment>
+            <article className={styles.mb2Rem}>The form {fileName} has been saved in your Downloads folder.  Please attach the file to an email to <a className={styles.emailLink} href="mailto:kirstin.abraham@marvintherapy.com">Kirstin.Abraham@marvintherapy.com</a> </article>        
+            <div className={styles.dialogFooter}>
+              <button onClick={() => handleCloseDownloadDialog()} className={`${styles.primaryButton}`}>Close</button>            
+            </div>
+          </Fragment>          
+          }
         </dialog>
     </Fragment>    
   );  
