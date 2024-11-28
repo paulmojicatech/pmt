@@ -66,6 +66,14 @@ export const Contact = () => {
                 height={350}
               />
             </div>
+            <div className={styles.container}>
+              <span className={styles.bold}>Email</span>
+              <a className={styles.link} href="mailto:kirstin.abraham@marvintherapy.com">kirstin.abraham@marvintherapy.com</a>
+              <span className={styles.bold}>Phone:</span>
+              <a className={styles.link} href="tel">(704) 233-7594</a>
+              <span className={styles.bold}>Fax:</span>
+              <span>(704) 565-4130</span>
+            </div>
             <div className={styles.formContainer}>
               <h3>Enter your contact info and message below</h3>
               <TextField

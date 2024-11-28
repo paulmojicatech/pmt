@@ -11,7 +11,7 @@
 
 .formContainer {
   text-align: center;
-  width: 50%;
+  width: 80%;
   display: flex;
   flex-direction: column;
   padding-top: 1rem;
@@ -19,6 +19,22 @@
   align-items: center;
 }
 
+@media screen and (min-width: 700px) {
+  .formContainer {
+    width: 50%;
+  }
+
+}
+
 .sendContainer {
   align-self: flex-end;
+}
+
+.link {
+  color: blue;
+  text-decoration: underline;
+}
+
+.bold {
+  font-weight: 800;
 }

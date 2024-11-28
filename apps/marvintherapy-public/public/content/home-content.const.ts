@@ -1,4 +1,4 @@
-export const HOME_COMPONENT_MAIN_CONTENT = `Today you are one step closer to a new you where you feel empowered and on a positive path to growth and well-being.                
+export const HOME_COMPONENT_MAIN_CONTENT = `Today you are one step closer to a new you where you feel empowered and on a positive path to growth and well-being.
 If you're looking for extra support and guidance through a challenging situation or you're just ready to move
 in a new direction in your life, I look forward to working with you to achieve your goals.
 Please call or email me for an individual, couples or family therapy consultation today.`;
@@ -62,13 +62,13 @@ export const TELEHEALTH_DESCRIPTION = `Behavioral health — like other areas of
 
 Behavioral telehealth also benefits patients who can access care from their homes with more options for safety, privacy, and convenience.
 
-Behavioral telehealth may also be referred to as telebehavioral health, telemental health, or telepsychology. 
+Behavioral telehealth may also be referred to as telebehavioral health, telemental health, or telepsychology.
 
 I’m happy to offer Telehealth services through the HIPAA compliant platform “Session”, provided by Psychology Today. `;
 
 export const BUSINESS_NAME = 'Kirstin R. Abraham, LCSW';
 export const PHONE = '(704) 233-7594';
-export const FAX = '(866) 706-1632';
+export const FAX = '(704) 565-4130';
 export const ADDRESS = `8211 Avanti Drive, Marvin, NC 28173`;
 
 export const TYPES_OF_THERAPY = [
