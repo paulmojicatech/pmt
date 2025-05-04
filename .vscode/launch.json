@@ -45,6 +45,24 @@
           "name": ".NET Core Attach",
           "type": "coreclr",
           "request": "attach"
+        },
+        {
+          "name": "Launch Marvintherapy Public (Next.js)",
+          "type": "node",
+          "request": "launch",
+          "program": "${workspaceFolder}/node_modules/next/dist/bin/next",
+          "cwd": "${workspaceFolder}/apps/marvintherapy-public",
+          "runtimeExecutable": "node",
+          "env": {
+              "NODE_ENV": "development",
+              "PORT": "3000"
+          },
+          "console": "integratedTerminal",
+          "restart": true,
+          "sourceMaps": true,
+          "outFiles": [
+              "${workspaceFolder}/apps/marvintherapy-public/.next/**/*.js"
+          ],
         }
     ]
 }

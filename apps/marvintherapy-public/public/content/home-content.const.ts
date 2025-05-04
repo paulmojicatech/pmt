@@ -36,8 +36,8 @@ export const CLINICAL_SUPERVISION_SUMMARY =
 export const CLINICAL_SUPERVISION_TYPES = {
   title: 'Supervision Types currently offered:',
   items: [
-    'Individual Supervision : $70',
-    'Group Supervision : $50 (based on availability)',
+    'Individual Supervision :$90',
+    'Group Supervision : $70 (based on availability)',
   ],
 };
 export const INDIVIDUAL_THERAPY_ITEMS = {

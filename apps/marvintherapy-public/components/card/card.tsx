@@ -87,7 +87,7 @@ export const PmtCard = (props: CardProps) => {
                 </Typeography>
               </Fragment>
             )}
-            {(props.type === CardType.TELEHEALTH ||
+            {(
               props.type === CardType.WHY_DO_PEOPLE_GO ||
               props.type === CardType.WHAT_IS_IT_LIKE ||
               props.type === CardType.MEDICATION_VS_PSYCHOTHERAPY) && (
