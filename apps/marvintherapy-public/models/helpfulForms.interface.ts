@@ -20,7 +20,7 @@ export const HELPFUL_FORMS = {
         },
         {
           text: 'Authorization Form',
-          href: '/forms/Authorization.pdf',
+          href: '/helpfulForms/authorizationForm',
         },
         {
           text: 'Beck Depression Inventory',
@@ -32,11 +32,11 @@ export const HELPFUL_FORMS = {
         },
         {
           text: 'No Harm Contract',
-          href: '/forms/NoHarmContract.pdf',
+          href: '/helpfulForms/noHarmForm',
         },
         {
           text: 'Non Subpoena',
-          href: '/forms/SampleNonSubpoenaKirstin.pdf',
+          href: '/helpfulForms/nonSubpoenaForm',
         },
         {
           text: 'Insurance Responsibility',
