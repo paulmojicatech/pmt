@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj": {}
+    "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj": {}
   },
   "projects": {
-    "/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj": {
+    "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
+        "projectUniqueName": "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
         "projectName": "marvintherapy-api",
-        "projectPath": "/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
+        "projectPath": "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
         "packagesPath": "/Users/paulmojica/.nuget/packages/",
-        "outputPath": "/Users/paulmojica/dev/pmt/pmt/apps/marvintherapy-api/marvintherapy-api/obj/",
+        "outputPath": "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/Users/paulmojica/.nuget/NuGet/NuGet.Config"
@@ -32,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -57,7 +62,8 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -69,7 +75,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.200/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/8.0.201/RuntimeIdentifierGraph.json"
         }
       }
     }

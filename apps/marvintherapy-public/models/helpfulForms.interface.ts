@@ -8,15 +8,15 @@ export const HELPFUL_FORMS = {
       formDetails: [
         {
           text: 'HIPAA Consent',
-          href: '/forms/consentToTxAndHippa.pdf',
+          href: '/helpfulForms/consentForm',
         },
         {
           text: 'Client Psychotherapy Intake Form',
-          href: '/forms/ClientIntake.pdf',
+          href: '/helpfulForms/intakeForm',
         },
         {
           text: 'Limits of Confidentiality/Therapy Cancellation Policy',
-          href: '/forms/ConfidentialityAndCancellationPolicy.pdf',
+          href: '/helpfulForms/limitsOfConfidentiality',
         },
         {
           text: 'Authorization Form',
@@ -50,7 +50,7 @@ export const HELPFUL_FORMS = {
     },
     {
       text: 'PQRS',
-      formDetails: [    
+      formDetails: [
         {
           text: 'Medication Flowsheet',
           href: '/forms/MedicationFlowsheet_Word.pdf',

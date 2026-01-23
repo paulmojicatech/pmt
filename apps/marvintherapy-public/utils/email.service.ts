@@ -52,4 +52,44 @@ export class EmailService {
       return Promise.reject(e);
     }
   }
+
+  async sendSignedForm(
+    clientName: string,
+    pdfBytes: Uint8Array,
+    subject: string
+  ): Promise<void> {
+    try {
+      // Convert PDF bytes to base64
+      const base64Pdf = btoa(
+        Array.from(pdfBytes)
+          .map((byte) => String.fromCharCode(byte))
+          .join('')
+      );
+
+      const body = {
+        subject: `${subject} - ${clientName}`,
+        message: `Attached is the signed ${subject.toLowerCase()} for ${clientName}`,
+        email: ['paulmojicatech@gmail.com', 'kirstin.abraham@marvintherapy.com'],
+        attachment: {
+          filename: `${subject.replace(/\s+/g, '-')}-${clientName.replace(/\s+/g, '-')}-${Date.now()}.pdf`,
+          content: base64Pdf,
+          contentType: 'application/pdf',
+        }
+      };
+
+      await fetch(`${settings.AZURE_SEND_SIGNED_FORM_URL}`, {
+        method: 'POST',
+        body: JSON.stringify(body),
+        mode: 'cors',
+        headers: {
+          'Content-Type': 'application/json',
+          'Access-Control-Allow-Headers': '*',
+        },
+      });
+
+      return Promise.resolve();
+    } catch (e) {
+      return Promise.reject(e);
+    }
+  }
 }
