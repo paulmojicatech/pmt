@@ -1,0 +1,399 @@
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  min-height: 80vh;
+  background: #f5f5f5;
+}
+
+.formSection {
+  background: #fff;
+  padding: 3rem;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+  h1 {
+    color: #000;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    text-align: center;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+  }
+
+  h2 {
+    color: #000;
+    margin: 2rem 0 1.5rem;
+    font-size: 1.2rem;
+    text-align: center;
+    font-weight: bold;
+  }
+}
+
+.pdfPreview {
+  background: #f8f9fa;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 2rem;
+  text-align: center;
+
+  p {
+    margin: 0;
+    color: #495057;
+  }
+
+  a {
+    color: #007bff;
+    text-decoration: underline;
+    font-weight: 500;
+
+    &:hover {
+      color: #0056b3;
+    }
+  }
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+
+.consentText {
+  margin: 2rem 0;
+  line-height: 1.8;
+  text-align: justify;
+
+  p {
+    margin-bottom: 1rem;
+    color: #000;
+    font-size: 0.95rem;
+  }
+
+  .attestation {
+    margin-top: 1.5rem;
+    text-align: left;
+  }
+
+  .acknowledgment {
+    margin-top: 1.5rem;
+    text-align: left;
+
+    strong {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+  }
+}
+
+.pageDivider {
+  border: none;
+  border-top: 2px solid #dee2e6;
+  margin: 3rem 0;
+}
+
+.signatureBlock {
+  margin: 2rem 0;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid #e9ecef;
+
+  &:last-of-type {
+    border-bottom: none;
+  }
+}
+
+.signatureLabel {
+  margin-bottom: 1rem;
+
+  p {
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1.4;
+    color: #000;
+    margin: 0;
+  }
+}
+
+.signatureRow {
+  display: grid;
+  grid-template-columns: 3fr 1fr;
+  gap: 2rem;
+  align-items: start;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+}
+
+.signatureField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 600;
+    color: #000;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  label {
+    font-weight: 600;
+    color: #000;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    padding: 0.75rem;
+    border: 1px solid #000;
+    border-radius: 0;
+    font-size: 0.95rem;
+    background: #fff;
+
+    &:focus {
+      outline: none;
+      border-color: #000;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+  }
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin: 1.5rem 0;
+
+  label {
+    font-weight: 600;
+    color: #000;
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  input {
+    padding: 0.75rem;
+    border: 1px solid #000;
+    border-radius: 0;
+    font-size: 0.95rem;
+    background: #fff;
+
+    &:focus {
+      outline: none;
+      border-color: #000;
+      box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.1);
+    }
+
+    &:required:invalid {
+      border-color: #000;
+    }
+  }
+}
+
+.signatureContainer {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+  cursor: crosshair;
+}
+
+.signatureCanvas {
+  width: 100%;
+  height: 120px;
+  touch-action: none;
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 4px;
+}
+
+.sigCanvas {
+  width: 100%;
+  height: 100%;
+}
+
+.therapistSignature {
+  border-bottom: 2px solid #000;
+  min-height: 80px;
+  display: flex;
+  align-items: flex-end;
+  padding: 0.5rem;
+  background: #fafafa;
+  position: relative;
+}
+
+.prefilledSignature {
+  max-width: 200px;
+  max-height: 60px;
+  opacity: 0.8;
+}
+
+.staticDate {
+  border-bottom: 2px solid #000;
+  padding: 0.75rem;
+  min-height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.clearButton {
+  align-self: flex-start;
+  padding: 0.4rem 1rem;
+  background-color: #6c757d;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover {
+    background-color: #5a6268;
+  }
+
+  &:active {
+    background-color: #545b62;
+  }
+}
+
+.submitSection {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.submitButton {
+  padding: 1rem 2.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.15s ease-in-out;
+
+  &:hover:not(:disabled) {
+    background-color: #218838;
+  }
+
+  &:active:not(:disabled) {
+    background-color: #1e7e34;
+  }
+
+  &:disabled {
+    background-color: #6c757d;
+    cursor: not-allowed;
+  }
+}
+
+.disclaimer {
+  margin-top: 2rem;
+  padding: 1rem;
+  background-color: #fff3cd;
+  border: 1px solid #ffeaa7;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  color: #856404;
+
+  p {
+    margin: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem 0.5rem;
+  }
+
+  .formSection {
+    padding: 1.5rem;
+
+    h1 {
+      font-size: 1.2rem;
+    }
+
+    h2 {
+      font-size: 1rem;
+    }
+  }
+
+  .signatureRow {
+    grid-template-columns: 1fr;
+  }
+
+  .submitButton {
+    width: 100%;
+    padding: 0.875rem 1.5rem;
+  }
+}
+
+.spinnerContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 0.6s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-size: 0.95rem;
+  font-weight: 500;
+  z-index: 1000;
+  animation: slideIn 0.3s ease-out;
+}
+
+.toast.success {
+  background-color: #10b981;
+  color: white;
+}
+
+.toast.error {
+  background-color: #ef4444;
+  color: white;
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(400px);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

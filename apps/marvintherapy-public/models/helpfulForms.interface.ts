@@ -8,56 +8,56 @@ export const HELPFUL_FORMS = {
       formDetails: [
         {
           text: 'HIPAA Consent',
-          href: '/forms/consentToTxAndHippa.pdf',
+          href: '/helpfulForms/consentForm',
         },
         {
           text: 'Client Psychotherapy Intake Form',
-          href: '/forms/ClientIntake.pdf',
+          href: '/helpfulForms/intakeForm',
         },
         {
           text: 'Limits of Confidentiality/Therapy Cancellation Policy',
-          href: '/forms/ConfidentialityAndCancellationPolicy.pdf',
+          href: '/helpfulForms/limitsOfConfidentiality',
         },
         {
           text: 'Authorization Form',
-          href: '/forms/Authorization.pdf',
+          href: '/helpfulForms/authorizationForm',
         },
         {
           text: 'Beck Depression Inventory',
-          href: '/forms/Beck_Depression_Inventory.pdf',
+          href: '/helpfulForms/beckDepression',
         },
         {
           text: 'Burns Anxiety Inventory',
-          href: '/forms/burns_anxiety_inventory.pdf',
+          href: '/helpfulForms/burnsAnxiety',
         },
         {
           text: 'No Harm Contract',
-          href: '/forms/NoHarmContract.pdf',
+          href: '/helpfulForms/noHarmForm',
         },
         {
           text: 'Non Subpoena',
-          href: '/forms/SampleNonSubpoenaKirstin.pdf',
+          href: '/helpfulForms/nonSubpoenaForm',
         },
         {
           text: 'Insurance Responsibility',
-          href: '/forms/Responsibility to know your Insurance__regulations_guidelines.pdf',
+          href: '/helpfulForms/insuranceResponsibility',
         },
         {
           text: 'Telehealth Informed Consent',
-          href: '/forms/TelehealthInformedConsent.pdf',
+          href: '/helpfulForms/telehealthConsent',
         }
       ],
     },
     {
       text: 'PQRS',
-      formDetails: [    
+      formDetails: [
         {
           text: 'Medication Flowsheet',
-          href: '/forms/MedicationFlowsheet_Word.pdf',
+          href: '/helpfulForms/medicalFlowsheet',
         },
         {
           text: 'Medical Record Summary',
-          href: '/forms/MedicalRecordSummary.pdf',
+          href: '/helpfulForms/medicalRecord',
         },
       ],
     },
@@ -66,7 +66,7 @@ export const HELPFUL_FORMS = {
       formDetails: [
         {
           text: 'Referral Form',
-          href: '/forms/ReferralForm.pdf',
+          href: '/helpfulForms/referralForm',
         },
       ],
     },
