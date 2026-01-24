@@ -3,7 +3,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import PmtHeader from '../../components/header/header';
 import PmtFooter from '../../components/footer/footer';
 import styles from './consentForm.module.scss';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
 import { EmailService } from '../../utils/email.service';
 
 interface FormData {
@@ -170,7 +170,7 @@ export const ConsentForm = () => {
         });
       }
 
-      page1.drawText(formData.clientDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica });
+      page1.drawText(formData.clientDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 50;
 
@@ -195,7 +195,7 @@ export const ConsentForm = () => {
       }
 
       if (formData.spouseDate) {
-        page1.drawText(formData.spouseDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica });
+        page1.drawText(formData.spouseDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
       }
 
       yPosition -= 50;
@@ -221,7 +221,7 @@ export const ConsentForm = () => {
       }
 
       if (formData.parentGuardianDate) {
-        page1.drawText(formData.parentGuardianDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica });
+        page1.drawText(formData.parentGuardianDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
       }
 
       yPosition -= 50;
@@ -294,7 +294,7 @@ export const ConsentForm = () => {
         });
       }
 
-      page2.drawText(formData.hipaaDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica });
+      page2.drawText(formData.hipaaDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 40;
 
@@ -302,7 +302,7 @@ export const ConsentForm = () => {
       page2.drawText('PRINT NAME', { x: 60, y: yPosition, size: 9, font: helveticaBold });
       yPosition -= 5;
       page2.drawLine({ start: { x: 60, y: yPosition }, end: { x: 540, y: yPosition }, thickness: 1 });
-      page2.drawText(formData.printName, { x: 60, y: yPosition - 15, size: 10, font: helvetica });
+      page2.drawText(formData.printName, { x: 60, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 40;
 
@@ -316,7 +316,7 @@ export const ConsentForm = () => {
       yPosition -= 5;
       page2.drawLine({ start: { x: 60, y: yPosition }, end: { x: 540, y: yPosition }, thickness: 1 });
       if (formData.patientName) {
-        page2.drawText(formData.patientName, { x: 60, y: yPosition - 15, size: 10, font: helvetica });
+        page2.drawText(formData.patientName, { x: 60, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
       }
 
       // Save the PDF

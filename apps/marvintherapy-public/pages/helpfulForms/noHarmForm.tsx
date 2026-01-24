@@ -3,7 +3,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import PmtHeader from '../../components/header/header';
 import PmtFooter from '../../components/footer/footer';
 import styles from './consentForm.module.scss';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
 import { EmailService } from '../../utils/email.service';
 
 interface FormData {
@@ -98,8 +98,31 @@ export const NoHarmForm = () => {
       yPosition -= 50;
 
       // Client name at the top
-      page.drawText(`I, ${formData.clientName}, hereby agree that I will not`, {
+      const beforeName = 'I, ';
+      const afterName = ', hereby agree that I will not';
+      
+      // Draw the text before the name
+      const beforeWidth = helveticaBold.widthOfTextAtSize(beforeName, 11);
+      page.drawText(beforeName, {
         x: 60,
+        y: yPosition,
+        size: 11,
+        font: helveticaBold,
+      });
+      
+      // Draw the name in blue
+      const nameWidth = helveticaBold.widthOfTextAtSize(formData.clientName, 11);
+      page.drawText(formData.clientName, {
+        x: 60 + beforeWidth,
+        y: yPosition,
+        size: 11,
+        font: helveticaBold,
+        color: rgb(0, 0, 1),
+      });
+      
+      // Draw the text after the name
+      page.drawText(afterName, {
+        x: 60 + beforeWidth + nameWidth,
         y: yPosition,
         size: 11,
         font: helveticaBold,
@@ -235,8 +258,24 @@ export const NoHarmForm = () => {
 
       // Contact information
       if (formData.contactInfo) {
-        yPosition = drawWrappedText(formData.contactInfo, 60, yPosition, width - 120, 11, helvetica);
-        yPosition -= 20;
+        const words = formData.contactInfo.split(' ');
+        let line = '';
+        let currentY = yPosition;
+
+        for (let i = 0; i < words.length; i++) {
+          const testLine = line + words[i] + ' ';
+          const testWidth = helvetica.widthOfTextAtSize(testLine, 11);
+
+          if (testWidth > width - 120 && i > 0) {
+            page.drawText(line, { x: 60, y: currentY, size: 11, font: helvetica, color: rgb(0, 0, 1) });
+            line = words[i] + ' ';
+            currentY -= 15;
+          } else {
+            line = testLine;
+          }
+        }
+        page.drawText(line, { x: 60, y: currentY, size: 11, font: helvetica, color: rgb(0, 0, 1) });
+        yPosition = currentY - 20;
       }
 
       yPosition -= 40;
@@ -277,7 +316,7 @@ export const NoHarmForm = () => {
         });
       }
 
-      page.drawText(formData.clientDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica });
+      page.drawText(formData.clientDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 50;
 
@@ -300,7 +339,7 @@ export const NoHarmForm = () => {
         });
       }
 
-      page.drawText(formData.witnessDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica });
+      page.drawText(formData.witnessDate, { x: 460, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       // Save the PDF
       const pdfBytes = await pdfDoc.save();

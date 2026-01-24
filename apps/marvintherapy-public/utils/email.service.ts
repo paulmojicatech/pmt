@@ -69,7 +69,7 @@ export class EmailService {
       const body = {
         subject: `${subject} - ${clientName}`,
         message: `Attached is the signed ${subject.toLowerCase()} for ${clientName}`,
-        email: ['paulmojicatech@gmail.com', 'kirstin.abraham@marvintherapy.com'],
+        email: ['kirstin.abraham@marvintherapy.com'],
         attachment: {
           filename: `${subject.replace(/\s+/g, '-')}-${clientName.replace(/\s+/g, '-')}-${Date.now()}.pdf`,
           content: base64Pdf,

@@ -131,7 +131,7 @@ export const AuthorizationForm = () => {
       page1.drawLine({ start: { x: 140, y: yPosition - 2 }, end: { x: 550, y: yPosition - 2 }, thickness: 1 });
 
       const clientName = `${formData.clientFirstName}     ${formData.clientMiddleName}     ${formData.clientLastName}`;
-      page1.drawText(clientName, { x: 140, y: yPosition + 2, size: 9, font: helvetica });
+      page1.drawText(clientName, { x: 140, y: yPosition + 2, size: 9, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 20;
       page1.drawText('First Name           Middle Name           Last Name', {
@@ -146,14 +146,14 @@ export const AuthorizationForm = () => {
       // Date of Birth
       page1.drawText('2.', { x: 40, y: yPosition, size: 10, font: helvetica });
       page1.drawText('Date of Birth:', { x: 60, y: yPosition, size: 10, font: helvetica });
-      page1.drawText(formData.dateOfBirth, { x: 140, y: yPosition, size: 10, font: helvetica });
+      page1.drawText(formData.dateOfBirth, { x: 140, y: yPosition, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 24;
 
       // Date authorization initiated
       page1.drawText('3.', { x: 40, y: yPosition, size: 10, font: helvetica });
       page1.drawText('Date authorization initiated:', { x: 60, y: yPosition, size: 10, font: helvetica });
-      page1.drawText(formData.dateAuthorized, { x: 200, y: yPosition, size: 10, font: helvetica });
+      page1.drawText(formData.dateAuthorized, { x: 200, y: yPosition, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 24;
 
@@ -161,7 +161,7 @@ export const AuthorizationForm = () => {
       page1.drawText('4.', { x: 40, y: yPosition, size: 10, font: helvetica });
       page1.drawText('Authorization Initiated by:', { x: 60, y: yPosition, size: 10, font: helvetica });
       page1.drawLine({ start: { x: 60, y: yPosition - 16 }, end: { x: 550, y: yPosition - 16 }, thickness: 1 });
-      page1.drawText(formData.authorizedBy, { x: 60, y: yPosition - 30, size: 9, font: helvetica });
+      page1.drawText(formData.authorizedBy, { x: 60, y: yPosition - 30, size: 9, font: helvetica, color: rgb(0, 0, 1) });
       yPosition -= 32;
       page1.drawText('Name (client, provider, or other)', {
         x: 200,
@@ -221,7 +221,7 @@ export const AuthorizationForm = () => {
       page1.drawText('Other (describe information in detail):', { x: 80, y: yPosition, size: 9, font: helvetica });
       page1.drawLine({ start: { x: 260, y: yPosition - 2 }, end: { x: 550, y: yPosition - 2 }, thickness: 1 });
       if (formData.otherInformation) {
-        page1.drawText(formData.otherInformation, { x: 260, y: yPosition - 16, size: 8, font: helvetica });
+        page1.drawText(formData.otherInformation, { x: 260, y: yPosition - 16, size: 8, font: helvetica, color: rgb(0, 0, 1) });
       }
 
       yPosition -= 35;
@@ -268,7 +268,7 @@ export const AuthorizationForm = () => {
       page1.drawText('Other (describe):', { x: 80, y: yPosition, size: 9, font: helvetica });
       page1.drawLine({ start: { x: 165, y: yPosition - 2 }, end: { x: 550, y: yPosition - 2 }, thickness: 1 });
       if (formData.purposeOther) {
-        page1.drawText(formData.purposeOther, { x: 165, y: yPosition - 16, size: 8, font: helvetica });
+        page1.drawText(formData.purposeOther, { x: 165, y: yPosition - 16, size: 8, font: helvetica, color: rgb(0, 0, 1) });
       }
 
       yPosition -= 35;
@@ -282,7 +282,7 @@ export const AuthorizationForm = () => {
         font: helvetica,
       });
       page1.drawLine({ start: { x: 60, y: yPosition - 16 }, end: { x: 550, y: yPosition - 16 }, thickness: 1 });
-      page1.drawText(formData.personAuthorizedToMake, { x: 60, y: yPosition - 30, size: 9, font: helvetica });
+      page1.drawText(formData.personAuthorizedToMake, { x: 60, y: yPosition - 30, size: 9, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 50;
 
@@ -295,14 +295,14 @@ export const AuthorizationForm = () => {
         font: helvetica,
       });
       page1.drawLine({ start: { x: 60, y: yPosition - 16 }, end: { x: 550, y: yPosition - 16 }, thickness: 1 });
-      page1.drawText(formData.personAuthorizedToReceive, { x: 60, y: yPosition - 30, size: 9, font: helvetica });
+      page1.drawText(formData.personAuthorizedToReceive, { x: 60, y: yPosition - 30, size: 9, font: helvetica, color: rgb(0, 0, 1) });
 
       yPosition -= 50;
 
       // Expiration
       page1.drawText('9.', { x: 40, y: yPosition, size: 10, font: helvetica });
       page1.drawText('This Authorization will expire on', { x: 60, y: yPosition, size: 10, font: helvetica });
-      page1.drawText(formData.expirationDate, { x: 240, y: yPosition, size: 10, font: helvetica });
+      page1.drawText(formData.expirationDate, { x: 240, y: yPosition, size: 10, font: helvetica, color: rgb(0, 0, 1) });
       page1.drawText('or upon the happening of the following event:', {
         x: 300,
         y: yPosition,
@@ -313,7 +313,7 @@ export const AuthorizationForm = () => {
       yPosition -= 4;
       page1.drawLine({ start: { x: 60, y: yPosition }, end: { x: 550, y: yPosition }, thickness: 1 });
       if (formData.expirationEvent) {
-        page1.drawText(formData.expirationEvent, { x: 60, y: yPosition - 14, size: 9, font: helvetica });
+        page1.drawText(formData.expirationEvent, { x: 60, y: yPosition - 14, size: 9, font: helvetica, color: rgb(0, 0, 1) });
       }
 
       yPosition -= 40;
@@ -391,6 +391,7 @@ export const AuthorizationForm = () => {
           y: yPosition - 16,
           size: 9,
           font: helvetica,
+          color: rgb(0, 0, 1),
         });
       }
 
@@ -399,7 +400,7 @@ export const AuthorizationForm = () => {
       // Date of signature
       page1.drawText('Date of signature:', { x: 40, y: yPosition, size: 9, font: helveticaBold });
       page1.drawLine({ start: { x: 140, y: yPosition - 2 }, end: { x: 250, y: yPosition - 2 }, thickness: 1 });
-      page1.drawText(formData.patientSignatureDate, { x: 140, y: yPosition - 16, size: 9, font: helvetica });
+      page1.drawText(formData.patientSignatureDate, { x: 140, y: yPosition - 16, size: 9, font: helvetica, color: rgb(0, 0, 1) });
 
       // PAGE 2 - Patient Rights
       yPosition = height - 50;

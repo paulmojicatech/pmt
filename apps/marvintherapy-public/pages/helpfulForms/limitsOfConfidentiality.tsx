@@ -3,7 +3,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import PmtHeader from '../../components/header/header';
 import PmtFooter from '../../components/footer/footer';
 import styles from './consentForm.module.scss';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
 import { EmailService } from '../../utils/email.service';
 
 interface FormData {
@@ -198,7 +198,7 @@ export const LimitsOfConfidentiality = () => {
 
       yPosition -= 5;
       page1.drawLine({ start: { x: 60, y: yPosition }, end: { x: 280, y: yPosition }, thickness: 1 });
-      page1.drawText(formData.date, { x: 60, y: yPosition - 15, size: 10, font: helvetica });
+      page1.drawText(formData.date, { x: 60, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       // Page 2: Cancellation Policy
       const page2 = pdfDoc.addPage([612, 792]);
@@ -262,7 +262,7 @@ export const LimitsOfConfidentiality = () => {
 
       yPosition -= 5;
       page2.drawLine({ start: { x: 60, y: yPosition }, end: { x: 280, y: yPosition }, thickness: 1 });
-      page2.drawText(formData.date, { x: 60, y: yPosition - 15, size: 10, font: helvetica });
+      page2.drawText(formData.date, { x: 60, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       // Save the PDF
       const pdfBytes = await pdfDoc.save();

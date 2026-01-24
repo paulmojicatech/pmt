@@ -24,11 +24,11 @@ export const HELPFUL_FORMS = {
         },
         {
           text: 'Beck Depression Inventory',
-          href: '/forms/Beck_Depression_Inventory.pdf',
+          href: '/helpfulForms/beckDepression',
         },
         {
           text: 'Burns Anxiety Inventory',
-          href: '/forms/burns_anxiety_inventory.pdf',
+          href: '/helpfulForms/burnsAnxiety',
         },
         {
           text: 'No Harm Contract',
@@ -40,11 +40,11 @@ export const HELPFUL_FORMS = {
         },
         {
           text: 'Insurance Responsibility',
-          href: '/forms/Responsibility to know your Insurance__regulations_guidelines.pdf',
+          href: '/helpfulForms/insuranceResponsibility',
         },
         {
           text: 'Telehealth Informed Consent',
-          href: '/forms/TelehealthInformedConsent.pdf',
+          href: '/helpfulForms/telehealthConsent',
         }
       ],
     },
@@ -53,11 +53,11 @@ export const HELPFUL_FORMS = {
       formDetails: [
         {
           text: 'Medication Flowsheet',
-          href: '/forms/MedicationFlowsheet_Word.pdf',
+          href: '/helpfulForms/medicalFlowsheet',
         },
         {
           text: 'Medical Record Summary',
-          href: '/forms/MedicalRecordSummary.pdf',
+          href: '/helpfulForms/medicalRecord',
         },
       ],
     },
@@ -66,7 +66,7 @@ export const HELPFUL_FORMS = {
       formDetails: [
         {
           text: 'Referral Form',
-          href: '/forms/ReferralForm.pdf',
+          href: '/helpfulForms/referralForm',
         },
       ],
     },

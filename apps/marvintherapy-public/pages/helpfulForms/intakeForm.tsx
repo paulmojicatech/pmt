@@ -186,7 +186,7 @@ export const IntakeForm = () => {
       let yPos = height - 50;
 
       // Helper function to draw wrapped text
-      const drawWrappedText = (page: any, text: string, x: number, y: number, maxWidth: number, fontSize: number, font: any) => {
+      const drawWrappedText = (page: any, text: string, x: number, y: number, maxWidth: number, fontSize: number, font: any, color?: any) => {
         const words = text.split(' ');
         let line = '';
         let currentY = y;
@@ -196,15 +196,30 @@ export const IntakeForm = () => {
           const testWidth = font.widthOfTextAtSize(testLine, fontSize);
 
           if (testWidth > maxWidth && i > 0) {
-            page.drawText(line, { x, y: currentY, size: fontSize, font });
+            if (color) {
+              page.drawText(line, { x, y: currentY, size: fontSize, font, color });
+            } else {
+              page.drawText(line, { x, y: currentY, size: fontSize, font });
+            }
             line = words[i] + ' ';
             currentY -= fontSize + 4;
           } else {
             line = testLine;
           }
         }
-        page.drawText(line, { x, y: currentY, size: fontSize, font });
+        if (color) {
+          page.drawText(line, { x, y: currentY, size: fontSize, font, color });
+        } else {
+          page.drawText(line, { x, y: currentY, size: fontSize, font });
+        }
         return currentY - fontSize - 4;
+      };
+      
+      // Helper to draw label + value with value in blue
+      const drawLabelValue = (page: any, label: string, value: string, x: number, y: number, fontSize: number, font: any) => {
+        const labelWidth = font.widthOfTextAtSize(label, fontSize);
+        page.drawText(label, { x, y, size: fontSize, font });
+        page.drawText(value, { x: x + labelWidth, y, size: fontSize, font, color: rgb(0, 0, 1) });
       };
 
       // PAGE 1 - Personal Information
@@ -242,9 +257,9 @@ export const IntakeForm = () => {
 
       // Name
       page1.drawText('Name:', { x: 60, y: yPos, size: 10, font: helvetica });
-      page1.drawText(`${formData.lastName}`, { x: 100, y: yPos - 10, size: 10, font: helvetica });
-      page1.drawText(`${formData.firstName}`, { x: 220, y: yPos - 10, size: 10, font: helvetica });
-      page1.drawText(`${formData.middleInitial}`, { x: 340, y: yPos - 10, size: 10, font: helvetica });
+      page1.drawText(`${formData.lastName}`, { x: 100, y: yPos - 10, size: 10, font: helvetica, color: rgb(0, 0, 1) });
+      page1.drawText(`${formData.firstName}`, { x: 220, y: yPos - 10, size: 10, font: helvetica, color: rgb(0, 0, 1) });
+      page1.drawText(`${formData.middleInitial}`, { x: 340, y: yPos - 10, size: 10, font: helvetica, color: rgb(0, 0, 1) });
       yPos -= 15;
       page1.drawText('(Last)', { x: 100, y: yPos, size: 8, font: helvetica });
       page1.drawText('(First)', { x: 220, y: yPos, size: 8, font: helvetica });
@@ -255,74 +270,62 @@ export const IntakeForm = () => {
       // Parent/Guardian
       page1.drawText('Name of parent/guardian (if under 18 years):', { x: 60, y: yPos, size: 10, font: helvetica });
       yPos -= 15;
-      page1.drawText(`${formData.parentGuardianLastName}`, { x: 100, y: yPos, size: 10, font: helvetica });
-      page1.drawText(`${formData.parentGuardianFirstName}`, { x: 220, y: yPos, size: 10, font: helvetica });
-      page1.drawText(`${formData.parentGuardianMiddleInitial}`, { x: 340, y: yPos, size: 10, font: helvetica });
+      page1.drawText(`${formData.parentGuardianLastName}`, { x: 100, y: yPos, size: 10, font: helvetica, color: rgb(0, 0, 1) });
+      page1.drawText(`${formData.parentGuardianFirstName}`, { x: 220, y: yPos, size: 10, font: helvetica, color: rgb(0, 0, 1) });
+      page1.drawText(`${formData.parentGuardianMiddleInitial}`, { x: 340, y: yPos, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPos -= 30;
 
       // Birth Date, Age, Gender
-      page1.drawText(`Birth Date: ${formData.birthDate}  Age: ${formData.age}  Gender: ${formData.gender}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page1, 'Birth Date: ', `${formData.birthDate}  `, 60, yPos, 10, helvetica);
+      const bdWidth = helvetica.widthOfTextAtSize(`Birth Date: ${formData.birthDate}  `, 10);
+      drawLabelValue(page1, 'Age: ', `${formData.age}  `, 60 + bdWidth, yPos, 10, helvetica);
+      const ageWidth = helvetica.widthOfTextAtSize(`Age: ${formData.age}  `, 10);
+      drawLabelValue(page1, 'Gender: ', formData.gender, 60 + bdWidth + ageWidth, yPos, 10, helvetica);
 
       yPos -= 25;
 
       // Marital Status
-      page1.drawText(`Marital Status: ${formData.maritalStatus}`, { x: 60, y: yPos, size: 10, font: helvetica });
+      drawLabelValue(page1, 'Marital Status: ', formData.maritalStatus, 60, yPos, 10, helvetica);
 
       yPos -= 25;
 
       // Children
-      page1.drawText(`Please list any children/age: ${formData.children}`, { x: 60, y: yPos, size: 10, font: helvetica });
+      drawLabelValue(page1, 'Please list any children/age: ', formData.children, 60, yPos, 10, helvetica);
 
       yPos -= 25;
 
       // Address
-      page1.drawText(`Address: ${formData.streetAddress}`, { x: 60, y: yPos, size: 10, font: helvetica });
+      drawLabelValue(page1, 'Address: ', formData.streetAddress, 60, yPos, 10, helvetica);
       yPos -= 15;
-      page1.drawText(`${formData.city}, ${formData.state} ${formData.zip}`, { x: 60, y: yPos, size: 10, font: helvetica });
+      page1.drawText(`${formData.city}, ${formData.state} ${formData.zip}`, { x: 60, y: yPos, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
       yPos -= 25;
 
       // Phone numbers
-      page1.drawText(`Home Phone: ${formData.homePhone}  May we leave a message? ${formData.homePhoneMessage}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page1, 'Home Phone: ', `${formData.homePhone}  `, 60, yPos, 10, helvetica);
+      const hpWidth = helvetica.widthOfTextAtSize(`Home Phone: ${formData.homePhone}  `, 10);
+      drawLabelValue(page1, 'May we leave a message? ', formData.homePhoneMessage, 60 + hpWidth, yPos, 10, helvetica);
 
       yPos -= 20;
 
-      page1.drawText(`Cell/Other Phone: ${formData.cellPhone}  May we leave a message? ${formData.cellPhoneMessage}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page1, 'Cell/Other Phone: ', `${formData.cellPhone}  `, 60, yPos, 10, helvetica);
+      const cpWidth = helvetica.widthOfTextAtSize(`Cell/Other Phone: ${formData.cellPhone}  `, 10);
+      drawLabelValue(page1, 'May we leave a message? ', formData.cellPhoneMessage, 60 + cpWidth, yPos, 10, helvetica);
 
       yPos -= 15;
 
-      page1.drawText(`May we text this number? ${formData.textPermission}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page1, 'May we text this number? ', formData.textPermission, 60, yPos, 10, helvetica);
 
       yPos -= 25;
 
       // Email
-      page1.drawText(`E-mail: ${formData.email}`, { x: 60, y: yPos, size: 10, font: helvetica });
+      drawLabelValue(page1, 'E-mail: ', formData.email, 60, yPos, 10, helvetica);
 
       yPos -= 25;
 
       // Referred by
-      page1.drawText(`Referred by (if any): ${formData.referredBy}`, { x: 60, y: yPos, size: 10, font: helvetica });
+      drawLabelValue(page1, 'Referred by (if any): ', formData.referredBy, 60, yPos, 10, helvetica);
 
       yPos -= 30;
 
@@ -334,46 +337,32 @@ export const IntakeForm = () => {
         font: helvetica,
       });
       yPos -= 14;
-      page1.drawText(`services, etc.)? ${formData.previousMentalHealthServices}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page1, 'services, etc.)? ', formData.previousMentalHealthServices, 60, yPos, 10, helvetica);
       yPos -= 20;
-      page1.drawText(`Previous therapist/practitioner: ${formData.previousTherapist}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page1, 'Previous therapist/practitioner: ', formData.previousTherapist, 60, yPos, 10, helvetica);
 
       // PAGE 2 - Health Information
       yPos = height - 50;
 
-      page2.drawText(`Are you currently taking any prescription medication? ${formData.currentMedication}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page2, 'Are you currently taking any prescription medication? ', formData.currentMedication, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.medicationList) {
-        yPos = drawWrappedText(page2, `Please list: ${formData.medicationList}`, 60, yPos, width - 120, 10, helvetica);
+        const label = 'Please list: ';
+        const labelWidth = helvetica.widthOfTextAtSize(label, 10);
+        page2.drawText(label, { x: 60, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page2, formData.medicationList, 60 + labelWidth, yPos, width - 120 - labelWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
-      page2.drawText(`Have you ever been prescribed psychiatric medication? ${formData.previousPsychiatricMedication}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page2, 'Have you ever been prescribed psychiatric medication? ', formData.previousPsychiatricMedication, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.previousMedicationList) {
-        yPos = drawWrappedText(page2, `Please list and provide dates: ${formData.previousMedicationList}`, 60, yPos, width - 120, 10, helvetica);
+        const label = 'Please list and provide dates: ';
+        const labelWidth = helvetica.widthOfTextAtSize(label, 10);
+        page2.drawText(label, { x: 60, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page2, formData.previousMedicationList, 60 + labelWidth, yPos, width - 120 - labelWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
@@ -395,10 +384,13 @@ export const IntakeForm = () => {
         font: helvetica,
       });
       yPos -= 15;
-      page2.drawText(`${formData.physicalHealth}`, { x: 80, y: yPos, size: 10, font: helveticaBold });
+      page2.drawText(`${formData.physicalHealth}`, { x: 80, y: yPos, size: 10, font: helveticaBold, color: rgb(0, 0, 1) });
       yPos -= 20;
       if (formData.healthProblems) {
-        yPos = drawWrappedText(page2, `Please list any specific health problems: ${formData.healthProblems}`, 80, yPos, width - 140, 10, helvetica);
+        const healthLabel = 'Please list any specific health problems: ';
+        const healthWidth = helvetica.widthOfTextAtSize(healthLabel, 10);
+        page2.drawText(healthLabel, { x: 80, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page2, formData.healthProblems, 80 + healthWidth, yPos, width - 140 - healthWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
@@ -411,135 +403,91 @@ export const IntakeForm = () => {
         font: helvetica,
       });
       yPos -= 15;
-      page2.drawText(`${formData.sleepingHabits}`, { x: 80, y: yPos, size: 10, font: helveticaBold });
+      page2.drawText(`${formData.sleepingHabits}`, { x: 80, y: yPos, size: 10, font: helveticaBold, color: rgb(0, 0, 1) });
       yPos -= 20;
       if (formData.sleepProblems) {
-        yPos = drawWrappedText(page2, `Please list any specific sleep problems: ${formData.sleepProblems}`, 80, yPos, width - 140, 10, helvetica);
+        const sleepLabel = 'Please list any specific sleep problems: ';
+        const sleepWidth = helvetica.widthOfTextAtSize(sleepLabel, 10);
+        page2.drawText(sleepLabel, { x: 80, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page2, formData.sleepProblems, 80 + sleepWidth, yPos, width - 140 - sleepWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
-      page2.drawText(`3. How many times per week do you generally exercise? ${formData.exerciseFrequency}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page2, '3. How many times per week do you generally exercise? ', formData.exerciseFrequency, 60, yPos, 10, helvetica);
       yPos -= 20;
-      page2.drawText(`What type of exercise: ${formData.exerciseType}`, {
-        x: 80,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page2, 'What type of exercise: ', formData.exerciseType, 80, yPos, 10, helvetica);
 
       yPos -= 25;
 
-      yPos = drawWrappedText(page2, `4. Please list any difficulties you experience with your appetite or eating patterns: ${formData.appetiteDifficulties}`, 60, yPos, width - 120, 10, helvetica);
+      const appetiteLabel = '4. Please list any difficulties you experience with your appetite or eating patterns: ';
+      const appetiteWidth = helvetica.widthOfTextAtSize(appetiteLabel, 10);
+      page2.drawText(appetiteLabel, { x: 60, y: yPos, size: 10, font: helvetica });
+      if (formData.appetiteDifficulties) {
+        yPos = drawWrappedText(page2, formData.appetiteDifficulties, 60 + appetiteWidth, yPos, width - 120 - appetiteWidth, 10, helvetica, rgb(0, 0, 1));
+      }
 
       yPos -= 25;
 
-      page2.drawText(`5. Are you currently experiencing overwhelming sadness, grief or depression? ${formData.sadnessDepression}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page2, '5. Are you currently experiencing overwhelming sadness, grief or depression? ', formData.sadnessDepression, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.sadnessDuration) {
-        page2.drawText(`If yes, for approximately how long? ${formData.sadnessDuration}`, {
-          x: 80,
-          y: yPos,
-          size: 10,
-          font: helvetica,
-        });
+        drawLabelValue(page2, 'If yes, for approximately how long? ', formData.sadnessDuration, 80, yPos, 10, helvetica);
         yPos -= 15;
       }
 
       // PAGE 3 - Additional Health & History
       yPos = height - 50;
 
-      page3.drawText(`6. Are you currently experiencing anxiety, panic attacks or have any phobias? ${formData.anxietyPanic}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page3, '6. Are you currently experiencing anxiety, panic attacks or have any phobias? ', formData.anxietyPanic, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.anxietyStart) {
-        page3.drawText(`If yes, when did you begin experiencing this? ${formData.anxietyStart}`, {
-          x: 80,
-          y: yPos,
-          size: 10,
-          font: helvetica,
-        });
+        drawLabelValue(page3, 'If yes, when did you begin experiencing this? ', formData.anxietyStart, 80, yPos, 10, helvetica);
         yPos -= 15;
       }
 
       yPos -= 25;
 
-      page3.drawText(`7. Are you currently experiencing any chronic pain? ${formData.chronicPain}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page3, '7. Are you currently experiencing any chronic pain? ', formData.chronicPain, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.chronicPainDescription) {
-        yPos = drawWrappedText(page3, `If yes, please describe: ${formData.chronicPainDescription}`, 80, yPos, width - 140, 10, helvetica);
+        const painLabel = 'If yes, please describe: ';
+        const painWidth = helvetica.widthOfTextAtSize(painLabel, 10);
+        page3.drawText(painLabel, { x: 80, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page3, formData.chronicPainDescription, 80 + painWidth, yPos, width - 140 - painWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
-      page3.drawText(`8. Do you drink alcohol more than once a week? ${formData.alcoholUse}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page3, '8. Do you drink alcohol more than once a week? ', formData.alcoholUse, 60, yPos, 10, helvetica);
 
       yPos -= 25;
 
-      page3.drawText(`9. How often do you engage recreational drug use? ${formData.drugUse}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page3, '9. How often do you engage recreational drug use? ', formData.drugUse, 60, yPos, 10, helvetica);
 
       yPos -= 25;
 
-      page3.drawText(`10. Are you currently in a romantic relationship? ${formData.romanticRelationship}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page3, '10. Are you currently in a romantic relationship? ', formData.romanticRelationship, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.relationshipDuration) {
-        page3.drawText(`If yes, for how long? ${formData.relationshipDuration}`, {
-          x: 80,
-          y: yPos,
-          size: 10,
-          font: helvetica,
-        });
+        drawLabelValue(page3, 'If yes, for how long? ', formData.relationshipDuration, 80, yPos, 10, helvetica);
         yPos -= 15;
       }
       if (formData.relationshipRating) {
-        page3.drawText(`On a scale of 1-10, how would you rate your relationship? ${formData.relationshipRating}`, {
-          x: 80,
-          y: yPos,
-          size: 10,
-          font: helvetica,
-        });
+        drawLabelValue(page3, 'On a scale of 1-10, how would you rate your relationship? ', formData.relationshipRating, 80, yPos, 10, helvetica);
         yPos -= 15;
       }
 
       yPos -= 25;
 
-      yPos = drawWrappedText(page3, `11. What significant life changes or stressful events have you experienced recently: ${formData.significantLifeChanges}`, 60, yPos, width - 120, 10, helvetica);
+      const lifeChangesLabel = '11. What significant life changes or stressful events have you experienced recently: ';
+      const lifeChangesWidth = helvetica.widthOfTextAtSize(lifeChangesLabel, 10);
+      page3.drawText(lifeChangesLabel, { x: 60, y: yPos, size: 10, font: helvetica });
+      if (formData.significantLifeChanges) {
+        yPos = drawWrappedText(page3, formData.significantLifeChanges, 60 + lifeChangesWidth, yPos, width - 120 - lifeChangesWidth, 10, helvetica, rgb(0, 0, 1));
+      }
 
       yPos -= 30;
 
@@ -553,19 +501,19 @@ export const IntakeForm = () => {
       yPos -= 20;
 
       const familyHistory = [
-        `Alcohol/Substance Abuse: ${formData.alcoholSubstanceAbuse}`,
-        `Anxiety: ${formData.anxiety}`,
-        `Depression: ${formData.depression}`,
-        `Domestic Violence: ${formData.domesticViolence}`,
-        `Eating Disorders: ${formData.eatingDisorders}`,
-        `Obesity: ${formData.obesity}`,
-        `Obsessive Compulsive Behavior: ${formData.obsessiveCompulsiveBehavior}`,
-        `Schizophrenia: ${formData.schizophrenia}`,
-        `Suicide Attempts: ${formData.suicideAttempts}`,
+        { label: 'Alcohol/Substance Abuse: ', value: formData.alcoholSubstanceAbuse },
+        { label: 'Anxiety: ', value: formData.anxiety },
+        { label: 'Depression: ', value: formData.depression },
+        { label: 'Domestic Violence: ', value: formData.domesticViolence },
+        { label: 'Eating Disorders: ', value: formData.eatingDisorders },
+        { label: 'Obesity: ', value: formData.obesity },
+        { label: 'Obsessive Compulsive Behavior: ', value: formData.obsessiveCompulsiveBehavior },
+        { label: 'Schizophrenia: ', value: formData.schizophrenia },
+        { label: 'Suicide Attempts: ', value: formData.suicideAttempts },
       ];
 
       for (const item of familyHistory) {
-        page3.drawText(item, { x: 60, y: yPos, size: 9, font: helvetica });
+        drawLabelValue(page3, item.label, item.value, 60, yPos, 9, helvetica);
         yPos -= 14;
       }
 
@@ -581,57 +529,65 @@ export const IntakeForm = () => {
 
       yPos -= 25;
 
-      page4.drawText(`1. Are you currently employed? ${formData.currentlyEmployed}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page4, '1. Are you currently employed? ', formData.currentlyEmployed, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.employmentSituation) {
-        yPos = drawWrappedText(page4, `If yes, what is your current employment situation: ${formData.employmentSituation}`, 80, yPos, width - 140, 10, helvetica);
+        const empLabel = 'If yes, what is your current employment situation: ';
+        const empWidth = helvetica.widthOfTextAtSize(empLabel, 10);
+        page4.drawText(empLabel, { x: 80, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page4, formData.employmentSituation, 80 + empWidth, yPos, width - 140 - empWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
       if (formData.workEnjoyment) {
-        yPos = drawWrappedText(page4, `Do you enjoy your work? Is there anything stressful about your current work? ${formData.workEnjoyment}`, 60, yPos, width - 120, 10, helvetica);
+        const workLabel = 'Do you enjoy your work? Is there anything stressful about your current work? ';
+        const workWidth = helvetica.widthOfTextAtSize(workLabel, 10);
+        page4.drawText(workLabel, { x: 60, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page4, formData.workEnjoyment, 60 + workWidth, yPos, width - 120 - workWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
-      page4.drawText(`2. Do you consider yourself to be spiritual or religious? ${formData.spiritualReligious}`, {
-        x: 60,
-        y: yPos,
-        size: 10,
-        font: helvetica,
-      });
+      drawLabelValue(page4, '2. Do you consider yourself to be spiritual or religious? ', formData.spiritualReligious, 60, yPos, 10, helvetica);
       yPos -= 20;
       if (formData.faithBelief) {
-        yPos = drawWrappedText(page4, `If yes, describe your faith or belief: ${formData.faithBelief}`, 80, yPos, width - 140, 10, helvetica);
+        const faithLabel = 'If yes, describe your faith or belief: ';
+        const faithWidth = helvetica.widthOfTextAtSize(faithLabel, 10);
+        page4.drawText(faithLabel, { x: 80, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page4, formData.faithBelief, 80 + faithWidth, yPos, width - 140 - faithWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
       if (formData.strengths) {
-        yPos = drawWrappedText(page4, `3. What do you consider to be some of your strengths? ${formData.strengths}`, 60, yPos, width - 120, 10, helvetica);
+        const strengthsLabel = '3. What do you consider to be some of your strengths? ';
+        const strengthsWidth = helvetica.widthOfTextAtSize(strengthsLabel, 10);
+        page4.drawText(strengthsLabel, { x: 60, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page4, formData.strengths, 60 + strengthsWidth, yPos, width - 120 - strengthsWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
       if (formData.weaknesses) {
-        yPos = drawWrappedText(page4, `4. What do you consider to be some of your weaknesses? ${formData.weaknesses}`, 60, yPos, width - 120, 10, helvetica);
+        const weaknessesLabel = '4. What do you consider to be some of your weaknesses? ';
+        const weaknessesWidth = helvetica.widthOfTextAtSize(weaknessesLabel, 10);
+        page4.drawText(weaknessesLabel, { x: 60, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page4, formData.weaknesses, 60 + weaknessesWidth, yPos, width - 120 - weaknessesWidth, 10, helvetica, rgb(0, 0, 1));
         yPos -= 10;
       }
 
       yPos -= 25;
 
       if (formData.therapyGoals) {
-        yPos = drawWrappedText(page4, `5. What would you like to accomplish out of your time in therapy? ${formData.therapyGoals}`, 60, yPos, width - 120, 10, helvetica);
+        const goalsLabel = '5. What would you like to accomplish out of your time in therapy? ';
+        const goalsWidth = helvetica.widthOfTextAtSize(goalsLabel, 10);
+        page4.drawText(goalsLabel, { x: 60, y: yPos, size: 10, font: helvetica });
+        yPos = drawWrappedText(page4, formData.therapyGoals, 60 + goalsWidth, yPos, width - 120 - goalsWidth, 10, helvetica, rgb(0, 0, 1));
       }
 
       // Save and send PDF

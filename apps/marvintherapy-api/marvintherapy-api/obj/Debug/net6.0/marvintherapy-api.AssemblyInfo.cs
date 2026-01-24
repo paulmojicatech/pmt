@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("marvintherapy-api")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+767d60f071824bcb0462aed8eb9f87f30e918efb")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a354166fd3a166d342d43c95c1232b2a6da9ffde")]
 [assembly: System.Reflection.AssemblyProductAttribute("marvintherapy-api")]
 [assembly: System.Reflection.AssemblyTitleAttribute("marvintherapy-api")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

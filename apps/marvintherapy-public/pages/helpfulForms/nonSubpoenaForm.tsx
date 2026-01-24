@@ -3,7 +3,7 @@ import SignatureCanvas from 'react-signature-canvas';
 import PmtHeader from '../../components/header/header';
 import PmtFooter from '../../components/footer/footer';
 import styles from './consentForm.module.scss';
-import { PDFDocument } from 'pdf-lib';
+import { PDFDocument, rgb } from 'pdf-lib';
 import { EmailService } from '../../utils/email.service';
 
 interface SignatureData {
@@ -182,6 +182,7 @@ export const NonSubpoenaForm = () => {
             y: yPosition,
             size: 10,
             font: helvetica,
+            color: rgb(0, 0, 1),
           });
           yPosition -= 20;
         }
@@ -198,19 +199,18 @@ export const NonSubpoenaForm = () => {
           const signatureDims = signatureImage.scale(0.15);
           page.drawImage(signatureImage, {
             x: 150,
-            y: yPosition - signatureDims.height + 5,
+            y: yPosition - signatureDims.height + 20,
             width: signatureDims.width,
             height: signatureDims.height,
           });
         }
 
-        page.drawText(sigData.date, { x: 420, y: yPosition - 15, size: 10, font: helvetica });
+        page.drawText(sigData.date, { x: 420, y: yPosition - 15, size: 10, font: helvetica, color: rgb(0, 0, 1) });
 
         yPosition -= 50;
 
         // Add new page if running out of space
         if (yPosition < 100 && i < signatureDataUrls.length - 1) {
-          const newPage = pdfDoc.addPage([612, 792]);
           yPosition = height - 60;
         }
       }
