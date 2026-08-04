@@ -458,6 +458,7 @@ export const NoHarmForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={clientSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}
@@ -496,6 +497,7 @@ export const NoHarmForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={witnessSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}

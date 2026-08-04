@@ -774,6 +774,7 @@ export const AuthorizationForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={patientSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}
@@ -818,6 +819,7 @@ export const AuthorizationForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={representativeSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}

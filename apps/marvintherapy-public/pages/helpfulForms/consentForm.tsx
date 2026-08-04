@@ -406,6 +406,7 @@ export const ConsentForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={clientSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}
@@ -446,6 +447,7 @@ export const ConsentForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={spouseSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}
@@ -485,6 +487,7 @@ export const ConsentForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={parentGuardianSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}
@@ -592,6 +595,7 @@ export const ConsentForm = () => {
                   <div className={styles.signatureContainer}>
                     <SignatureCanvas
                       ref={hipaaSignatureRef}
+                      clearOnResize={false}
                       penColor="black"
                       minWidth={4}
                       maxWidth={5}

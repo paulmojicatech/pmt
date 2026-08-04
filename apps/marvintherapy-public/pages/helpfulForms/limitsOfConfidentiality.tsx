@@ -382,6 +382,7 @@ export const LimitsOfConfidentiality = () => {
               <div className={styles.signatureCanvas}>
                 <SignatureCanvas
                   ref={signatureRef}
+                  clearOnResize={false}
                   canvasProps={{
                     className: styles.sigCanvas,
                   }}
@@ -431,6 +432,7 @@ export const LimitsOfConfidentiality = () => {
               <div className={styles.signatureCanvas}>
                 <SignatureCanvas
                   ref={cancellationSignatureRef}
+                  clearOnResize={false}
                   canvasProps={{
                     className: styles.sigCanvas,
                   }}

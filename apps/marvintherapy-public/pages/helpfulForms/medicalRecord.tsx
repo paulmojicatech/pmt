@@ -469,6 +469,7 @@ export const MedicalRecordSummaryForm = () => {
                 <div className={styles.signatureContainer}>
                   <SignatureCanvas
                     ref={signatureRef}
+                    clearOnResize={false}
                     penColor="black"
                     minWidth={4}
                     maxWidth={5}

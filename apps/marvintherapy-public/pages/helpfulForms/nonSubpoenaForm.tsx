@@ -324,6 +324,7 @@ export const NonSubpoenaForm = () => {
                     <div className={styles.signatureContainer}>
                       <SignatureCanvas
                         ref={ref}
+                        clearOnResize={false}
                         penColor="black"
                         minWidth={4}
                         maxWidth={5}
