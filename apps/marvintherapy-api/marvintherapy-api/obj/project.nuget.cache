@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "27bZgte36MXykukS2p0hXKGfYE93Cp2w7HeH7JtD9Fnh1qfkXQs0AzfVZ4l8qJsY3qTbVmmfo3E9sKoxlt1vCg==",
+  "dgSpecHash": "grf5TXZ/rBw=",
   "success": true,
   "projectFilePath": "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
   "expectedPackageFiles": [
@@ -17,14 +17,19 @@
     "/Users/paulmojica/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
     "/Users/paulmojica/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512",
     "/Users/paulmojica/.nuget/packages/system.buffers/4.5.1/system.buffers.4.5.1.nupkg.sha512",
-    "/Users/paulmojica/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
+    "/Users/paulmojica/.nuget/packages/system.runtime.compilerservices.unsafe/5.0.0/system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512",
+    "/Users/paulmojica/.nuget/packages/microsoft.netcore.app.ref/6.0.36/microsoft.netcore.app.ref.6.0.36.nupkg.sha512",
+    "/Users/paulmojica/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.36/microsoft.aspnetcore.app.ref.6.0.36.nupkg.sha512",
+    "/Users/paulmojica/.nuget/packages/microsoft.netcore.app.host.osx-arm64/6.0.36/microsoft.netcore.app.host.osx-arm64.6.0.36.nupkg.sha512"
   ],
   "logs": [
     {
       "code": "NU1903",
       "level": "Warning",
-      "warningLevel": 1,
       "message": "Package 'MongoDB.Driver' 2.14.1 has a known high severity vulnerability, https://github.com/advisories/GHSA-7j9m-j397-g4wx",
+      "projectPath": "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
+      "warningLevel": 1,
+      "filePath": "/Users/paulmojica/dev/pmt/apps/marvintherapy-api/marvintherapy-api/marvintherapy-api.csproj",
       "libraryId": "MongoDB.Driver",
       "targetGraphs": [
         "net6.0"

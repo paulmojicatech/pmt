@@ -162,10 +162,6 @@ export const IntakeForm = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleRadioChange = (name: string, value: string) => {
-    setFormData((prev) => ({ ...prev, [name]: value }));
-  };
-
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -737,15 +733,15 @@ export const IntakeForm = () => {
             <div className={styles.formGroup}>
               <label>Marital Status *</label>
               <div className={styles.radioGroup}>
-                {['Never Married', 'Domestic Partnership', 'Married', 'Separated', 'Divorced', 'Widowed'].map((status) => (
+                {['Never Married', 'Domestic Partnership', 'Married', 'Separated', 'Divorced', 'Widowed'].map((status, index) => (
                   <label key={status} className={styles.radioLabel}>
                     <input
                       type="radio"
                       name="maritalStatus"
                       value={status}
                       checked={formData.maritalStatus === status}
-                      onChange={() => handleRadioChange('maritalStatus', status)}
-                      required
+                      onChange={handleInputChange}
+                      required={index === 0}
                     />
                     {status}
                   </label>
@@ -833,7 +829,7 @@ export const IntakeForm = () => {
                       name="homePhoneMessage"
                       value="Yes"
                       checked={formData.homePhoneMessage === 'Yes'}
-                      onChange={() => handleRadioChange('homePhoneMessage', 'Yes')}
+                      onChange={handleInputChange}
                     />
                     Yes
                   </label>
@@ -843,7 +839,7 @@ export const IntakeForm = () => {
                       name="homePhoneMessage"
                       value="No"
                       checked={formData.homePhoneMessage === 'No'}
-                      onChange={() => handleRadioChange('homePhoneMessage', 'No')}
+                      onChange={handleInputChange}
                     />
                     No
                   </label>
@@ -872,7 +868,7 @@ export const IntakeForm = () => {
                       name="cellPhoneMessage"
                       value="Yes"
                       checked={formData.cellPhoneMessage === 'Yes'}
-                      onChange={() => handleRadioChange('cellPhoneMessage', 'Yes')}
+                      onChange={handleInputChange}
                     />
                     Yes
                   </label>
@@ -882,7 +878,7 @@ export const IntakeForm = () => {
                       name="cellPhoneMessage"
                       value="No"
                       checked={formData.cellPhoneMessage === 'No'}
-                      onChange={() => handleRadioChange('cellPhoneMessage', 'No')}
+                      onChange={handleInputChange}
                     />
                     No
                   </label>
@@ -899,7 +895,7 @@ export const IntakeForm = () => {
                     name="textPermission"
                     value="Yes"
                     checked={formData.textPermission === 'Yes'}
-                    onChange={() => handleRadioChange('textPermission', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -909,7 +905,7 @@ export const IntakeForm = () => {
                     name="textPermission"
                     value="No"
                     checked={formData.textPermission === 'No'}
-                    onChange={() => handleRadioChange('textPermission', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -948,7 +944,7 @@ export const IntakeForm = () => {
                     name="previousMentalHealthServices"
                     value="Yes"
                     checked={formData.previousMentalHealthServices === 'Yes'}
-                    onChange={() => handleRadioChange('previousMentalHealthServices', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -958,7 +954,7 @@ export const IntakeForm = () => {
                     name="previousMentalHealthServices"
                     value="No"
                     checked={formData.previousMentalHealthServices === 'No'}
-                    onChange={() => handleRadioChange('previousMentalHealthServices', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -992,7 +988,7 @@ export const IntakeForm = () => {
                     name="currentMedication"
                     value="Yes"
                     checked={formData.currentMedication === 'Yes'}
-                    onChange={() => handleRadioChange('currentMedication', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1002,7 +998,7 @@ export const IntakeForm = () => {
                     name="currentMedication"
                     value="No"
                     checked={formData.currentMedication === 'No'}
-                    onChange={() => handleRadioChange('currentMedication', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1031,7 +1027,7 @@ export const IntakeForm = () => {
                     name="previousPsychiatricMedication"
                     value="Yes"
                     checked={formData.previousPsychiatricMedication === 'Yes'}
-                    onChange={() => handleRadioChange('previousPsychiatricMedication', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1041,7 +1037,7 @@ export const IntakeForm = () => {
                     name="previousPsychiatricMedication"
                     value="No"
                     checked={formData.previousPsychiatricMedication === 'No'}
-                    onChange={() => handleRadioChange('previousPsychiatricMedication', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1073,7 +1069,7 @@ export const IntakeForm = () => {
                       name="physicalHealth"
                       value={rating}
                       checked={formData.physicalHealth === rating}
-                      onChange={() => handleRadioChange('physicalHealth', rating)}
+                      onChange={handleInputChange}
                     />
                     {rating}
                   </label>
@@ -1102,7 +1098,7 @@ export const IntakeForm = () => {
                       name="sleepingHabits"
                       value={rating}
                       checked={formData.sleepingHabits === rating}
-                      onChange={() => handleRadioChange('sleepingHabits', rating)}
+                      onChange={handleInputChange}
                     />
                     {rating}
                   </label>
@@ -1163,7 +1159,7 @@ export const IntakeForm = () => {
                     name="sadnessDepression"
                     value="Yes"
                     checked={formData.sadnessDepression === 'Yes'}
-                    onChange={() => handleRadioChange('sadnessDepression', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1173,7 +1169,7 @@ export const IntakeForm = () => {
                     name="sadnessDepression"
                     value="No"
                     checked={formData.sadnessDepression === 'No'}
-                    onChange={() => handleRadioChange('sadnessDepression', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1207,7 +1203,7 @@ export const IntakeForm = () => {
                     name="anxietyPanic"
                     value="Yes"
                     checked={formData.anxietyPanic === 'Yes'}
-                    onChange={() => handleRadioChange('anxietyPanic', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1217,7 +1213,7 @@ export const IntakeForm = () => {
                     name="anxietyPanic"
                     value="No"
                     checked={formData.anxietyPanic === 'No'}
-                    onChange={() => handleRadioChange('anxietyPanic', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1246,7 +1242,7 @@ export const IntakeForm = () => {
                     name="chronicPain"
                     value="Yes"
                     checked={formData.chronicPain === 'Yes'}
-                    onChange={() => handleRadioChange('chronicPain', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1256,7 +1252,7 @@ export const IntakeForm = () => {
                     name="chronicPain"
                     value="No"
                     checked={formData.chronicPain === 'No'}
-                    onChange={() => handleRadioChange('chronicPain', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1285,7 +1281,7 @@ export const IntakeForm = () => {
                     name="alcoholUse"
                     value="Yes"
                     checked={formData.alcoholUse === 'Yes'}
-                    onChange={() => handleRadioChange('alcoholUse', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1295,7 +1291,7 @@ export const IntakeForm = () => {
                     name="alcoholUse"
                     value="No"
                     checked={formData.alcoholUse === 'No'}
-                    onChange={() => handleRadioChange('alcoholUse', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1328,7 +1324,7 @@ export const IntakeForm = () => {
                     name="romanticRelationship"
                     value="Yes"
                     checked={formData.romanticRelationship === 'Yes'}
-                    onChange={() => handleRadioChange('romanticRelationship', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1338,7 +1334,7 @@ export const IntakeForm = () => {
                     name="romanticRelationship"
                     value="No"
                     checked={formData.romanticRelationship === 'No'}
-                    onChange={() => handleRadioChange('romanticRelationship', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1428,7 +1424,7 @@ export const IntakeForm = () => {
                     name="currentlyEmployed"
                     value="Yes"
                     checked={formData.currentlyEmployed === 'Yes'}
-                    onChange={() => handleRadioChange('currentlyEmployed', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1438,7 +1434,7 @@ export const IntakeForm = () => {
                     name="currentlyEmployed"
                     value="No"
                     checked={formData.currentlyEmployed === 'No'}
-                    onChange={() => handleRadioChange('currentlyEmployed', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
@@ -1478,7 +1474,7 @@ export const IntakeForm = () => {
                     name="spiritualReligious"
                     value="Yes"
                     checked={formData.spiritualReligious === 'Yes'}
-                    onChange={() => handleRadioChange('spiritualReligious', 'Yes')}
+                    onChange={handleInputChange}
                   />
                   Yes
                 </label>
@@ -1488,7 +1484,7 @@ export const IntakeForm = () => {
                     name="spiritualReligious"
                     value="No"
                     checked={formData.spiritualReligious === 'No'}
-                    onChange={() => handleRadioChange('spiritualReligious', 'No')}
+                    onChange={handleInputChange}
                   />
                   No
                 </label>
